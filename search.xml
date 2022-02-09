@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -63,7 +63,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -101,7 +101,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 前端 </category>
           
       </categories>
       
@@ -128,7 +128,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -153,7 +153,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -178,7 +178,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -203,7 +203,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -228,7 +228,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -253,7 +253,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -280,7 +280,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -307,7 +307,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -334,7 +334,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -359,41 +359,16 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
       
         <tags>
-            
-            <tag> Java </tag>
             
             <tag> Interview </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>HTML常用转义字符</title>
-      <link href="/2021/12/17/HTML_2_CommonEscape/"/>
-      <url>/2021/12/17/HTML_2_CommonEscape/</url>
-      
-        <content type="html"><![CDATA[<p>实体名称易理解，但不一定支持所有浏览器；</p><p>实体(Entity)编号，各种浏览器都能处理。</p><span id="more"></span><p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/HTML%E5%B8%B8%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6.png" alt="image-20211217224643782"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 学习 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> HTML </tag>
+            <tag> Java </tag>
             
         </tags>
       
@@ -411,7 +386,32 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTML常用转义字符</title>
+      <link href="/2021/12/17/HTML_2_CommonEscape/"/>
+      <url>/2021/12/17/HTML_2_CommonEscape/</url>
+      
+        <content type="html"><![CDATA[<p>实体名称易理解，但不一定支持所有浏览器；</p><p>实体(Entity)编号，各种浏览器都能处理。</p><span id="more"></span><p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/HTML%E5%B8%B8%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6.png" alt="image-20211217224643782"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
           
       </categories>
       
@@ -436,7 +436,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -461,7 +461,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -488,7 +488,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -517,7 +517,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -546,7 +546,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -575,7 +575,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -604,7 +604,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -629,7 +629,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -654,7 +654,7 @@
       
       <categories>
           
-          <category> 学习 </category>
+          <category> 后端 </category>
           
       </categories>
       
