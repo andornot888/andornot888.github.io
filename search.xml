@@ -377,11 +377,11 @@
     
     
     <entry>
-      <title>打开新标签页</title>
-      <link href="/2021/12/17/HTML_1_OpenNewTab/"/>
-      <url>/2021/12/17/HTML_1_OpenNewTab/</url>
+      <title>HTML常用转义字符</title>
+      <link href="/2021/12/17/HTML_2_CommonEscape/"/>
+      <url>/2021/12/17/HTML_2_CommonEscape/</url>
       
-        <content type="html"><![CDATA[<p>打开新标签页需配置&lt;a&gt;标签target属性为<code>_blank</code>。</p><ul><li>_parent：在父窗口中打开链接。</li><li>_self：默认，当前页面跳转。</li><li>_top：在当前窗体打开链接，并替换当前的整个窗体(框架页)。</li><li>_blank：新窗口打开。</li></ul><span id="more"></span><p>打开新标签页：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.xxx.com/&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>访问xxx!<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>实体名称易理解，但不一定支持所有浏览器；</p><p>实体(Entity)编号，各种浏览器都能处理。</p><span id="more"></span><p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/HTML%E5%B8%B8%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6.png" alt="image-20211217224643782"></p>]]></content>
       
       
       <categories>
@@ -402,11 +402,11 @@
     
     
     <entry>
-      <title>HTML常用转义字符</title>
-      <link href="/2021/12/17/HTML_2_CommonEscape/"/>
-      <url>/2021/12/17/HTML_2_CommonEscape/</url>
+      <title>打开新标签页</title>
+      <link href="/2021/12/17/HTML_1_OpenNewTab/"/>
+      <url>/2021/12/17/HTML_1_OpenNewTab/</url>
       
-        <content type="html"><![CDATA[<p>实体名称易理解，但不一定支持所有浏览器；</p><p>实体(Entity)编号，各种浏览器都能处理。</p><span id="more"></span><p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/HTML%E5%B8%B8%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6.png" alt="image-20211217224643782"></p>]]></content>
+        <content type="html"><![CDATA[<p>打开新标签页需配置&lt;a&gt;标签target属性为<code>_blank</code>。</p><ul><li>_parent：在父窗口中打开链接。</li><li>_self：默认，当前页面跳转。</li><li>_top：在当前窗体打开链接，并替换当前的整个窗体(框架页)。</li><li>_blank：新窗口打开。</li></ul><span id="more"></span><p>打开新标签页：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.xxx.com/&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>访问xxx!<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -645,23 +645,25 @@
     
     
     <entry>
-      <title>XML相关知识</title>
-      <link href="/2021/01/12/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86_XML/"/>
-      <url>/2021/01/12/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86_XML/</url>
+      <title>XML与HTML的主要区别</title>
+      <link href="/2021/01/12/XML_1_XML%E4%B8%8EHTML%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/"/>
+      <url>/2021/01/12/XML_1_XML%E4%B8%8EHTML%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/</url>
       
-        <content type="html"><![CDATA[<p>  XML 指可扩展标记语言（e<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage）。</p><p>XML 被设计用来传输和存储数据。</p><span id="more"></span><h2 id="XML与HTML的主要区别"><a href="#XML与HTML的主要区别" class="headerlink" title="XML与HTML的主要区别"></a>XML与HTML的主要区别</h2><ul><li>与HTML不同， XML是大小写敏感的。例如，<code>&lt;H1&gt;</code>和<code>&lt;h1&gt;</code>是不同的XML标签。</li><li>在HTML中，如果从上下文可以分清哪里是段落或列表项的结尾，那么结束标签(如<code>&lt;/p&gt;</code>或<code>&lt;/li&gt;</code>)就可以省略，而在XML中结束标签绝对不能省略。</li><li>在XML中，只有单个标签而没有相对应的结束标签的元素必须以<code>/</code>结尾，比如<code>&lt;img src=&quot;coffeecup.png&quot;/&gt;</code>。这样，解析器就知道不需要查找<code>&lt;/img&gt;</code>标签了。</li><li>在XML中,属性值必须用引号括起来。在HTML中，引号是可有可无的。例如，<code>&lt;applet code=&quot;MyApplet.class&quot; width=300 height=300&gt;</code>对HTML来说是合法的，但是对XML来说则是不合法的。在XML中,必须使用引号，比如， <code>width=&quot;300&quot;</code>。</li><li>在 HTML 中，属性名可以没有值。例如 <code>&lt;input type=&quot;radio&quot; name=&quot;language&quot; value=&quot;Java&quot; checked&gt;</code>。在XML中，所有属性必须都有属性值，比如，<code>checked=&quot;true&quot;</code>或<code>checked=&quot;checked&quot;</code>。</li></ul>]]></content>
+        <content type="html"><![CDATA[<p>  XML 指可扩展标记语言（e<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage）。</p><p>XML 被设计用来传输和存储数据。</p><span id="more"></span><p><strong>XML与HTML的主要区别：</strong></p><ul><li>与HTML不同， XML是大小写敏感的。例如，<code>&lt;H1&gt;</code>和<code>&lt;h1&gt;</code>是不同的XML标签。</li><li>在HTML中，如果从上下文可以分清哪里是段落或列表项的结尾，那么结束标签(如<code>&lt;/p&gt;</code>或<code>&lt;/li&gt;</code>)就可以省略，而在XML中结束标签绝对不能省略。</li><li>在XML中，只有单个标签而没有相对应的结束标签的元素必须以<code>/</code>结尾，比如<code>&lt;img src=&quot;coffeecup.png&quot;/&gt;</code>。这样，解析器就知道不需要查找<code>&lt;/img&gt;</code>标签了。</li><li>在XML中,属性值必须用引号括起来。在HTML中，引号是可有可无的。例如，<code>&lt;applet code=&quot;MyApplet.class&quot; width=300 height=300&gt;</code>对HTML来说是合法的，但是对XML来说则是不合法的。在XML中,必须使用引号，比如， <code>width=&quot;300&quot;</code>。</li><li>在 HTML 中，属性名可以没有值。例如 <code>&lt;input type=&quot;radio&quot; name=&quot;language&quot; value=&quot;Java&quot; checked&gt;</code>。在XML中，所有属性必须都有属性值，比如，<code>checked=&quot;true&quot;</code>或<code>checked=&quot;checked&quot;</code>。</li></ul>]]></content>
       
       
       <categories>
           
-          <category> 后端 </category>
+          <category> 前端 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 基础知识 </tag>
+            <tag> HTML </tag>
+            
+            <tag> XML </tag>
             
         </tags>
       
