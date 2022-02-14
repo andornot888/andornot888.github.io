@@ -364,11 +364,11 @@
     
     
     <entry>
-      <title>打开新标签页</title>
-      <link href="/2021/12/17/HTML_1_OpenNewTab/"/>
-      <url>/2021/12/17/HTML_1_OpenNewTab/</url>
+      <title>HTML常用转义字符</title>
+      <link href="/2021/12/17/HTML_2_CommonEscape/"/>
+      <url>/2021/12/17/HTML_2_CommonEscape/</url>
       
-        <content type="html"><![CDATA[<p>打开新标签页需配置&lt;a&gt;标签target属性为<code>_blank</code>。</p><ul><li>_parent：在父窗口中打开链接。</li><li>_self：默认，当前页面跳转。</li><li>_top：在当前窗体打开链接，并替换当前的整个窗体(框架页)。</li><li>_blank：新窗口打开。</li></ul><span id="more"></span><p>打开新标签页：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.xxx.com/&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>访问xxx!<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>实体名称易理解，但不一定支持所有浏览器；</p><p>实体(Entity)编号，各种浏览器都能处理。</p><span id="more"></span><p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/HTML%E5%B8%B8%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6.png" alt="image-20211217224643782"></p>]]></content>
       
       
       <categories>
@@ -389,11 +389,11 @@
     
     
     <entry>
-      <title>HTML常用转义字符</title>
-      <link href="/2021/12/17/HTML_2_CommonEscape/"/>
-      <url>/2021/12/17/HTML_2_CommonEscape/</url>
+      <title>打开新标签页</title>
+      <link href="/2021/12/17/HTML_1_OpenNewTab/"/>
+      <url>/2021/12/17/HTML_1_OpenNewTab/</url>
       
-        <content type="html"><![CDATA[<p>实体名称易理解，但不一定支持所有浏览器；</p><p>实体(Entity)编号，各种浏览器都能处理。</p><span id="more"></span><p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/HTML%E5%B8%B8%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6.png" alt="image-20211217224643782"></p>]]></content>
+        <content type="html"><![CDATA[<p>打开新标签页需配置&lt;a&gt;标签target属性为<code>_blank</code>。</p><ul><li>_parent：在父窗口中打开链接。</li><li>_self：默认，当前页面跳转。</li><li>_top：在当前窗体打开链接，并替换当前的整个窗体(框架页)。</li><li>_blank：新窗口打开。</li></ul><span id="more"></span><p>打开新标签页：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.xxx.com/&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>访问xxx!<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
