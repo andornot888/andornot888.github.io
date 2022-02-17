@@ -20,30 +20,36 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="个人成长记录与分享">
-<meta property="og:type" content="website">
-<meta property="og:title" content="与或非&#39;s Blog">
-<meta property="og:url" content="http://example.com/page/3/index.html">
+  <meta name="description" content="一、基本命令1.1 关机和重启关机 123shutdown -h now     立刻关机shutdown -h 5       5分钟后关机poweroff            立刻关机  重启 123shutdown -r now        立刻重启shutdown -r 5        5分钟后重启reboot                立刻重启  1.2 帮助命令–help命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令大全">
+<meta property="og:url" content="http://example.com/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/index.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
-<meta property="og:description" content="个人成长记录与分享">
+<meta property="og:description" content="一、基本命令1.1 关机和重启关机 123shutdown -h now     立刻关机shutdown -h 5       5分钟后关机poweroff            立刻关机  重启 123shutdown -r now        立刻重启shutdown -r 5        5分钟后重启reboot                立刻重启  1.2 帮助命令–help命令">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A81.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A83.png">
+<meta property="article:published_time" content="2020-11-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-17T01:55:05.738Z">
 <meta property="article:author" content="与或非">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A81.png">
 
-<link rel="canonical" href="http://example.com/page/3/">
+<link rel="canonical" href="http://example.com/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>与或非's Blog</title>
+  <title>Linux命令大全 | 与或非's Blog</title>
   
 
 
@@ -184,914 +190,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/06/Java_12_%E5%8F%8D%E5%B0%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/06/Java_12_%E5%8F%8D%E5%B0%84/" class="post-title-link" itemprop="url">反射</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-06 00:00:00" itemprop="dateCreated datePublished" datetime="2021-05-06T00:00:00+08:00">2021-05-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-14 16:21:40" itemprop="dateModified" datetime="2022-02-14T16:21:40+08:00">2022-02-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>14k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
-            </span>
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-反射的概述"><a href="#1-反射的概述" class="headerlink" title="1.反射的概述"></a>1.反射的概述</h3><ul>
-<li><p>反射机制</p>
-<p>是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；<br>对于任意一个对象，都能够调用它的任意属性和方法；<br>这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。</p>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/06/Java_12_%E5%8F%8D%E5%B0%84/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/05/Java_11_%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/05/Java_11_%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/" class="post-title-link" itemprop="url">类加载器</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-05 00:00:00" itemprop="dateCreated datePublished" datetime="2021-05-05T00:00:00+08:00">2021-05-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-14 15:55:49" itemprop="dateModified" datetime="2022-02-14T15:55:49+08:00">2022-02-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="类加载器的作用"><a href="#类加载器的作用" class="headerlink" title="类加载器的作用"></a>类加载器的作用</h3><p>负责将.class文件（存储的物理文件）加载在到内存中</p>
-<p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A81.png" alt="01_类加载器"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/05/Java_11_%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/Spring_%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/19/Spring_%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="post-title-link" itemprop="url">对象、数组、集合工具类</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-19 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-19T00:00:00+08:00">2021-03-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-09 17:32:16" itemprop="dateModified" datetime="2022-02-09T17:32:16+08:00">2022-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-                <a href="/tags/API/" rel="tag"><i class="fa fa-tag"></i> API</a>
-                <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="ObjectUtils"><a href="#ObjectUtils" class="headerlink" title="ObjectUtils"></a>ObjectUtils</h3><h4 id="1-获取对象的基本信息"><a href="#1-获取对象的基本信息" class="headerlink" title="1.获取对象的基本信息"></a>1.获取对象的基本信息</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/19/Spring_%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7%E7%B1%BB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/11/Spring_%E5%8F%8D%E5%B0%84%E3%80%81AOP%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/11/Spring_%E5%8F%8D%E5%B0%84%E3%80%81AOP%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="post-title-link" itemprop="url">反射、AOP工具类</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-11 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-11T00:00:00+08:00">2021-03-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-09 17:32:20" itemprop="dateModified" datetime="2022-02-09T17:32:20+08:00">2022-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-                <a href="/tags/API/" rel="tag"><i class="fa fa-tag"></i> API</a>
-                <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="ReflectionUtils"><a href="#ReflectionUtils" class="headerlink" title="ReflectionUtils"></a>ReflectionUtils</h3><h4 id="1-获取方法"><a href="#1-获取方法" class="headerlink" title="1.获取方法"></a>1.获取方法</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/11/Spring_%E5%8F%8D%E5%B0%84%E3%80%81AOP%E5%B7%A5%E5%85%B7%E7%B1%BB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/06/Spring_%E6%96%AD%E8%A8%80%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/06/Spring_%E6%96%AD%E8%A8%80%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="post-title-link" itemprop="url">断言工具类</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-06 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-06T00:00:00+08:00">2021-03-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-09 17:32:12" itemprop="dateModified" datetime="2022-02-09T17:32:12+08:00">2022-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-                <a href="/tags/API/" rel="tag"><i class="fa fa-tag"></i> API</a>
-                <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>830</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>断言是一个逻辑判断，用于检查不应该发生的情况</p>
-</li>
-<li><p>Assert 关键字在 JDK1.4 中引入，可通过 JVM 参数<code>-enableassertions</code>开启</p>
-</li>
-<li><p>SpringBoot 中提供了 Assert 断言工具类，通常用于数据合法性检查</p>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/06/Spring_%E6%96%AD%E8%A8%80%E5%B7%A5%E5%85%B7%E7%B1%BB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/18/Spring_%E6%96%87%E4%BB%B6%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81IO%20%E6%B5%81%E5%B7%A5%E5%85%B7%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/18/Spring_%E6%96%87%E4%BB%B6%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81IO%20%E6%B5%81%E5%B7%A5%E5%85%B7%E7%B1%BB/" class="post-title-link" itemprop="url">文件、资源、IO 流工具类</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-18 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-18T00:00:00+08:00">2021-02-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-09 17:32:25" itemprop="dateModified" datetime="2022-02-09T17:32:25+08:00">2022-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-                <a href="/tags/API/" rel="tag"><i class="fa fa-tag"></i> API</a>
-                <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="FileCopyUtils"><a href="#FileCopyUtils" class="headerlink" title="FileCopyUtils"></a>FileCopyUtils</h3><h4 id="1-输入"><a href="#1-输入" class="headerlink" title="1.输入"></a>1.输入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从文件中读入到字节数组中</span></span><br><span class="line"><span class="type">byte</span>[] copyToByteArray(File in)</span><br><span class="line"><span class="comment">// 从输入流中读入到字节数组中</span></span><br><span class="line"><span class="type">byte</span>[] copyToByteArray(InputStream in)</span><br><span class="line"><span class="comment">// 从输入流中读入到字符串中</span></span><br><span class="line">String <span class="title function_">copyToString</span><span class="params">(Reader in)</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/18/Spring_%E6%96%87%E4%BB%B6%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81IO%20%E6%B5%81%E5%B7%A5%E5%85%B7%E7%B1%BB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86_%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%B8%8E%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/21/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86_%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%B8%8E%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">绝对路径与相对路径的区别</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-21T00:00:00+08:00">2021-01-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-09 17:33:26" itemprop="dateModified" datetime="2022-02-09T17:33:26+08:00">2022-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"><i class="fa fa-tag"></i> 基础知识</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>402</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h3><p>是从盘符开始的路径，形如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\windows\system32\cmd.exe</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/21/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86_%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%B8%8E%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E5%8C%BA%E5%88%AB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/Java_1_String%E3%80%81StringBuffer%E5%92%8CStringBuilder/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/20/Java_1_String%E3%80%81StringBuffer%E5%92%8CStringBuilder/" class="post-title-link" itemprop="url">String、StringBuffer和StringBuilder的区别</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-20T00:00:00+08:00">2021-01-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-11 15:40:47" itemprop="dateModified" datetime="2022-02-11T15:40:47+08:00">2022-02-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>string、stringbuffer和stringbuilder的区别是什么？string为什么是不可变的？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/20/Java_1_String%E3%80%81StringBuffer%E5%92%8CStringBuilder/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/12/XML_1_XML%E4%B8%8EHTML%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/12/XML_1_XML%E4%B8%8EHTML%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">XML与HTML的主要区别</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-12 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-12T00:00:00+08:00">2021-01-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-09 17:39:11" itemprop="dateModified" datetime="2022-02-09T17:39:11+08:00">2022-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
-                <a href="/tags/XML/" rel="tag"><i class="fa fa-tag"></i> XML</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>660</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>  XML 指可扩展标记语言（e<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage）。</p>
-<p>XML 被设计用来传输和存储数据。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/12/XML_1_XML%E4%B8%8EHTML%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -1107,10 +209,9 @@
       <meta itemprop="name" content="与或非's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Linux命令大全</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Linux命令大全
+        </h1>
 
         <div class="post-meta">
           
@@ -1166,7 +267,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一、基本命令"><a href="#一、基本命令" class="headerlink" title="一、基本命令"></a>一、基本命令</h2><h3 id="1-1-关机和重启"><a href="#1-1-关机和重启" class="headerlink" title="1.1 关机和重启"></a>1.1 关机和重启</h3><p>关机</p>
+        <h2 id="一、基本命令"><a href="#一、基本命令" class="headerlink" title="一、基本命令"></a>一、基本命令</h2><h3 id="1-1-关机和重启"><a href="#1-1-关机和重启" class="headerlink" title="1.1 关机和重启"></a>1.1 关机和重启</h3><p>关机</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now     立刻关机</span><br><span class="line">shutdown -h 5       5分钟后关机</span><br><span class="line">poweroff            立刻关机</span><br></pre></td></tr></table></figure>
 
 <p>重启</p>
@@ -1386,25 +487,34 @@
 <p>复制一行内容：y+y</p>
 <p>粘贴复制的内容：p</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/12/XML_1_XML%E4%B8%8EHTML%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB/" rel="next" title="XML与HTML的主要区别">
+      XML与HTML的主要区别 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
 
 
 
@@ -1456,6 +566,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">一、基本命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%85%B3%E6%9C%BA%E5%92%8C%E9%87%8D%E5%90%AF"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 关机和重启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 帮助命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">二、目录操作命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%9B%AE%E5%BD%95%E5%88%87%E6%8D%A2-cd"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 目录切换 cd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%9B%AE%E5%BD%95%E6%9F%A5%E7%9C%8B-ls-al"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 目录查看 ls [-al]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E3%80%90%E5%A2%9E%EF%BC%8C%E5%88%A0%EF%BC%8C%E6%94%B9%EF%BC%8C%E6%9F%A5%E3%80%91"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 目录操作【增，删，改，查】</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E3%80%90%E5%A2%9E%E3%80%91-mkdir"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 创建目录【增】 mkdir</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95%E6%88%96%E6%96%87%E4%BB%B6%E3%80%90%E5%88%A0%E3%80%91rm"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 删除目录或文件【删】rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-3-%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9%E3%80%90%E6%94%B9%E3%80%91mv-%E5%92%8C-cp"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 目录修改【改】mv 和 cp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-4-%E6%90%9C%E7%B4%A2%E7%9B%AE%E5%BD%95%E3%80%90%E6%9F%A5%E3%80%91find"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 搜索目录【查】find</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">三、文件操作命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E3%80%90%E5%A2%9E%EF%BC%8C%E5%88%A0%EF%BC%8C%E6%94%B9%EF%BC%8C%E6%9F%A5%E3%80%91"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 文件操作【增，删，改，查】</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E3%80%90%E5%A2%9E%E3%80%91touch"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 新建文件【增】touch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6-%E3%80%90%E5%88%A0%E3%80%91-rm"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 删除文件 【删】 rm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E3%80%90%E6%94%B9%E3%80%91-vi%E6%88%96vim"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 修改文件【改】 vi或vim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9F%A5%E7%9C%8B%E3%80%90%E6%9F%A5%E3%80%91"><span class="nav-number">3.1.4.</span> <span class="nav-text">3.1.4 文件的查看【查】</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%9D%83%E9%99%90%E4%BF%AE%E6%94%B9"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 权限修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">四、压缩文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%89%93%E5%8C%85%E5%92%8C%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 打包和压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%A7%A3%E5%8E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 解压</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">五、查找命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-grep"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-find"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-locate"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 locate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-whereis"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 whereis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-which"><span class="nav-number">5.5.</span> <span class="nav-text">5.5 which</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81su%E3%80%81sudo"><span class="nav-number">6.</span> <span class="nav-text">六、su、sudo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-su"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 su</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-sudo"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 sudo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1"><span class="nav-number">7.</span> <span class="nav-text">七、系统服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">八、网络管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E4%B8%BB%E6%9C%BA%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 主机名配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-IP-%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 IP 地址配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-%E5%9F%9F%E5%90%8D%E6%98%A0%E5%B0%84"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 域名映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%8C%87%E4%BB%A4crontab-%E9%85%8D%E7%BD%AE"><span class="nav-number">9.</span> <span class="nav-text">九、定时任务指令crontab 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">9.1.</span> <span class="nav-text">9.1 命令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E%E3%80%81%E5%AE%9E%E4%BE%8B"><span class="nav-number">9.2.</span> <span class="nav-text">9.2 配置说明、实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">10.</span> <span class="nav-text">十、其他命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%EF%BC%9Apwd"><span class="nav-number">10.1.</span> <span class="nav-text">10.1 查看当前目录：pwd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%EF%BC%9Aps-ef"><span class="nav-number">10.2.</span> <span class="nav-text">10.2 查看进程：ps -ef</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-%E7%BB%93%E6%9D%9F%E8%BF%9B%E7%A8%8B%EF%BC%9Akill"><span class="nav-number">10.3.</span> <span class="nav-text">10.3 结束进程：kill</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-4-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">10.4.</span> <span class="nav-text">10.4 网络通信命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-5-%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="nav-number">10.5.</span> <span class="nav-text">10.5 配置网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-6-%E9%87%8D%E5%90%AF%E7%BD%91%E7%BB%9C"><span class="nav-number">10.6.</span> <span class="nav-text">10.6 重启网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-7-%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="nav-number">10.7.</span> <span class="nav-text">10.7 切换用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-8-%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">10.8.</span> <span class="nav-text">10.8 关闭防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-9-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="nav-number">10.9.</span> <span class="nav-text">10.9 修改文件权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-10-%E6%B8%85%E5%B1%8F"><span class="nav-number">10.10.</span> <span class="nav-text">10.10 清屏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-11-vi%E6%A8%A1%E5%BC%8F%E4%B8%8B%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">10.11.</span> <span class="nav-text">10.11 vi模式下快捷键</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
