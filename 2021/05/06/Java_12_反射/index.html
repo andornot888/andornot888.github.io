@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="与或非&#39;s Blog">
 <meta property="og:description" content="1.反射的概述 反射机制 是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意属性和方法；这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/%E5%8F%8D%E5%B0%84_1.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/java12_1.png">
 <meta property="article:published_time" content="2021-05-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-14T08:21:40.163Z">
+<meta property="article:modified_time" content="2022-02-22T14:50:00.475Z">
 <meta property="article:author" content="与或非">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/%E5%8F%8D%E5%B0%84_1.png">
+<meta name="twitter:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/java12_1.png">
 
 <link rel="canonical" href="http://example.com/2021/05/06/Java_12_%E5%8F%8D%E5%B0%84/">
 
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-14 16:21:40" itemprop="dateModified" datetime="2022-02-14T16:21:40+08:00">2022-02-14</time>
+                <time title="修改时间：2022-02-22 22:50:00" itemprop="dateModified" datetime="2022-02-22T22:50:00+08:00">2022-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -283,7 +283,7 @@
 <li><p>Class.forName(全类名)方法</p>
 </li>
 </ul>
-<p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/%E5%8F%8D%E5%B0%84_1.png" alt="08_获取Class对象的三种方式"></p>
+<p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/java12_1.png" alt="08_获取Class对象的三种方式"></p>
 </li>
 <li><p>示例代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">study</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;学生在学习&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Student&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReflectDemo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        <span class="comment">//1.Class类中的静态方法forName(&quot;全类名&quot;)</span></span><br><span class="line">            <span class="comment">//全类名:包名 + 类名</span></span><br><span class="line">        <span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Class.forName(<span class="string">&quot;com.jia.myreflect2.Student&quot;</span>);</span><br><span class="line">        System.out.println(clazz);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.通过class属性来获取</span></span><br><span class="line">        <span class="type">Class</span> <span class="variable">clazz2</span> <span class="operator">=</span> Student.class;</span><br><span class="line">        System.out.println(clazz2);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.利用对象的getClass方法来获取class对象</span></span><br><span class="line">        <span class="comment">//getClass方法是定义在Object类中.</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">        <span class="type">Class</span> <span class="variable">clazz3</span> <span class="operator">=</span> s.getClass();</span><br><span class="line">        System.out.println(clazz3);</span><br><span class="line"></span><br><span class="line">        System.out.println(clazz == clazz2);</span><br><span class="line">        System.out.println(clazz2 == clazz3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -480,8 +480,8 @@ getDeclaredConstructor (Class<?>… parameterTypes)</p>
       <i class="fa fa-chevron-left"></i> 类加载器
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/10/28/jQuery_1_prop()%20%E5%92%8C%20attr()%20%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="prop() 和 attr() 的区别">
-      prop() 和 attr() 的区别 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/06/21/git_1_gitignore/" rel="next" title="Github的.gitignore忽略文件">
+      Github的.gitignore忽略文件 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -557,7 +557,7 @@ getDeclaredConstructor (Class<?>… parameterTypes)</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -627,7 +627,7 @@ getDeclaredConstructor (Class<?>… parameterTypes)</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">93k</span>
+    <span title="站点总字数">94k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
