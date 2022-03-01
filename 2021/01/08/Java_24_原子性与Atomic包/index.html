@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://gitee.com/andornot888/andornot_images/raw/master//imgs/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://gitee.com/andornot888/andornot_images/raw/master//imgs/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1 问题小路同学虽然知道结婚基金是十万，但是当基金的余额发生变化的时候，小路同学无法知道最新的余额。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原子性与Atomic包">
+<meta property="og:url" content="http://example.com/2021/01/08/Java_24_%E5%8E%9F%E5%AD%90%E6%80%A7%E4%B8%8EAtomic%E5%8C%85/index.html">
+<meta property="og:site_name" content="与或非&#39;s Blog">
+<meta property="og:description" content="1 问题小路同学虽然知道结婚基金是十万，但是当基金的余额发生变化的时候，小路同学无法知道最新的余额。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T13:12:01.819Z">
+<meta property="article:author" content="与或非">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="多线程">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/01/08/Java_24_%E5%8E%9F%E5%AD%90%E6%80%A7%E4%B8%8EAtomic%E5%8C%85/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>原子性与Atomic包 | 与或非's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">与或非's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/Java_24_%E5%8E%9F%E5%AD%90%E6%80%A7%E4%B8%8EAtomic%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          原子性与Atomic包
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-08 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-08T00:00:00+08:00">2021-01-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+                <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h3><p>小路同学虽然知道结婚基金是十万，但是当基金的余额发生变化的时候，小路同学无法知道最新的余额。</p>
+<span id="more"></span>
+
+<p><strong>代码分析 :</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyThread1</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread1</span>();</span><br><span class="line">        t1.setName(<span class="string">&quot;小路同学&quot;</span>);</span><br><span class="line">        t1.start();</span><br><span class="line"></span><br><span class="line">        <span class="type">MyThread2</span> <span class="variable">t2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread2</span>();</span><br><span class="line">        t2.setName(<span class="string">&quot;小皮同学&quot;</span>);</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Money</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="variable">money</span> <span class="operator">=</span> <span class="number">100000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread1</span> <span class="keyword">extends</span>  <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(Money.money == <span class="number">100000</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;结婚基金已经不是十万了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread2</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Money.money = <span class="number">90000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-volatile解决"><a href="#2-volatile解决" class="headerlink" title="2 volatile解决"></a>2 volatile解决</h3><p><strong>以上案例出现的问题 :</strong></p>
+<p>​    当A线程修改了共享数据时，B线程没有及时获取到最新的值，如果还在使用原先的值，就会出现问题 </p>
+<p>​    1，堆内存是唯一的，每一个线程都有自己的线程栈。</p>
+<p>​    2 ，每一个线程在使用堆里面变量的时候，都会先拷贝一份到变量的副本中。</p>
+<p>​    3 ，在线程中，每一次使用是从变量的副本中获取的。</p>
+<p><strong>Volatile关键字 :</strong> 强制线程每次在使用的时候，都会看一下共享区域最新的值</p>
+<p><strong>代码实现 :</strong> <strong>使用volatile关键字解决</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyThread1</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread1</span>();</span><br><span class="line">        t1.setName(<span class="string">&quot;小路同学&quot;</span>);</span><br><span class="line">        t1.start();</span><br><span class="line"></span><br><span class="line">        <span class="type">MyThread2</span> <span class="variable">t2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread2</span>();</span><br><span class="line">        t2.setName(<span class="string">&quot;小皮同学&quot;</span>);</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Money</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">money</span> <span class="operator">=</span> <span class="number">100000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread1</span> <span class="keyword">extends</span>  <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(Money.money == <span class="number">100000</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;结婚基金已经不是十万了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread2</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">10</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Money.money = <span class="number">90000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-synchronized解决"><a href="#3-synchronized解决" class="headerlink" title="3 synchronized解决"></a>3 synchronized解决</h3><p><strong>synchronized解决 :</strong> </p>
+<p>​    1 ，线程获得锁</p>
+<p>​    2 ，清空变量副本</p>
+<p>​    3 ，拷贝共享变量最新的值到变量副本中</p>
+<p>​    4 ，执行代码</p>
+<p>​    5 ，将修改后变量副本中的值赋值给共享数据</p>
+<p>​    6 ，释放锁</p>
+<p><strong>代码实现 :</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyThread1</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread1</span>();</span><br><span class="line">        t1.setName(<span class="string">&quot;小路同学&quot;</span>);</span><br><span class="line">        t1.start();</span><br><span class="line"></span><br><span class="line">        <span class="type">MyThread2</span> <span class="variable">t2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread2</span>();</span><br><span class="line">        t2.setName(<span class="string">&quot;小皮同学&quot;</span>);</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Money</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">Object</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">money</span> <span class="operator">=</span> <span class="number">100000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread1</span> <span class="keyword">extends</span>  <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Money.lock)&#123;</span><br><span class="line">                <span class="keyword">if</span>(Money.money != <span class="number">100000</span>)&#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;结婚基金已经不是十万了&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.myvolatile2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread2</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (Money.lock) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">10</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Money.money = <span class="number">90000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-原子性"><a href="#4-原子性" class="headerlink" title="4 原子性"></a>4 原子性</h3><p><strong>概述 :</strong> 所谓的原子性是指在一次操作或者多次操作中，要么所有的操作全部都得到了执行并且不会受到任何因素的干扰而中断，要么所有的操作都不执行，多个操作是一个不可以分割的整体。</p>
+<p><strong>代码实现 :</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.threadatom;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AtomDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyAtomThread</span> <span class="variable">atom</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyAtomThread</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(atom).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyAtomThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">//送冰淇淋的数量</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//1,从共享数据中读取数据到本线程栈中.</span></span><br><span class="line">            <span class="comment">//2,修改本线程栈中变量副本的值</span></span><br><span class="line">            <span class="comment">//3,会把本线程栈中变量副本的值赋值给共享数据.</span></span><br><span class="line">            count++;</span><br><span class="line">            System.out.println(<span class="string">&quot;已经送了&quot;</span> + count + <span class="string">&quot;个冰淇淋&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果：</strong></p>
+<blockquote>
+<p>已经送了1个冰淇淋<br>已经送了5个冰淇淋<br>已经送了7个冰淇淋<br>已经送了8个冰淇淋</p>
+<p>…</p>
+<p>已经送了9997个冰淇淋<br>已经送了9998个冰淇淋<br>已经送了9999个冰淇淋</p>
+</blockquote>
+<p><strong>代码总结 :</strong> count++ 不是一个原子性操作, 他在执行的过程中,有可能被其他线程打断</p>
+<h3 id="5-volatile关键字不能保证原子性"><a href="#5-volatile关键字不能保证原子性" class="headerlink" title="5 volatile关键字不能保证原子性"></a>5 volatile关键字不能保证原子性</h3><p>解决方案 : 我们可以给count++操作添加锁，那么count++操作就是临界区中的代码，临界区中的代码一次只能被一个线程去执行，所以count++就变成了原子操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.threadatom2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AtomDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyAtomThread</span> <span class="variable">atom</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyAtomThread</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(atom).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyAtomThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">//送冰淇淋的数量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">Object</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//1,从共享数据中读取数据到本线程栈中.</span></span><br><span class="line">            <span class="comment">//2,修改本线程栈中变量副本的值</span></span><br><span class="line">            <span class="comment">//3,会把本线程栈中变量副本的值赋值给共享数据.</span></span><br><span class="line">            <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                count++;</span><br><span class="line">                System.out.println(<span class="string">&quot;已经送了&quot;</span> + count + <span class="string">&quot;个冰淇淋&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行结果：</strong></p>
+<blockquote>
+<p>已经送了1个冰淇淋<br>已经送了2个冰淇淋<br>已经送了3个冰淇淋</p>
+<p>…</p>
+<p>已经送了9997个冰淇淋<br>已经送了9998个冰淇淋<br>已经送了9999个冰淇淋<br>已经送了10000个冰淇淋</p>
+</blockquote>
+<h3 id="6-原子性-Atomic包"><a href="#6-原子性-Atomic包" class="headerlink" title="6 原子性_Atomic包"></a>6 原子性_Atomic包</h3><p>概述：java从JDK1.5开始提供了java.util.concurrent.atomic包(简称Atomic包)，这个包中的原子操作类提供了一种用法简单，性能高效，线程安全地更新一个变量的方式。因为变</p>
+<p>量的类型有很多种，所以在Atomic包里一共提供了13个类，属于4种类型的原子更新方式，分别是原子更新基本类型、原子更新数组、原子更新引用和原子更新属性(字段)。本次我们只讲解</p>
+<p>使用原子的方式更新基本类型，使用原子的方式更新基本类型Atomic包提供了以下3个类：</p>
+<p>AtomicBoolean： 原子更新布尔类型</p>
+<p>AtomicInteger：   原子更新整型</p>
+<p>AtomicLong：    原子更新长整型</p>
+<p>以上3个类提供的方法几乎一模一样，所以本节仅以AtomicInteger为例进行讲解，AtomicInteger的常用方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">AtomicInteger</span><span class="params">()</span>：	   			    初始化一个默认值为<span class="number">0</span>的原子型Integer</span><br><span class="line"><span class="keyword">public</span> <span class="title function_">AtomicInteger</span><span class="params">(<span class="type">int</span> initialValue)</span>：  初始化一个指定值的原子型Integer</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">get</span><span class="params">()</span>:   			 				获取值</span><br><span class="line"><span class="type">int</span> <span class="title function_">getAndIncrement</span><span class="params">()</span>:      			 以原子方式将当前值加<span class="number">1</span>，注意，这里返回的是自增前的值。</span><br><span class="line"><span class="type">int</span> <span class="title function_">incrementAndGet</span><span class="params">()</span>:     				 以原子方式将当前值加<span class="number">1</span>，注意，这里返回的是自增后的值。</span><br><span class="line"><span class="type">int</span> <span class="title function_">addAndGet</span><span class="params">(<span class="type">int</span> data)</span>:				 以原子方式将输入的数值与实例中的值（AtomicInteger里的value）相加，并返回结果。</span><br><span class="line"><span class="type">int</span> <span class="title function_">getAndSet</span><span class="params">(<span class="type">int</span> value)</span>:   			 以原子方式设置为newValue的值，并返回旧值。</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码实现 :</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.threadatom3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyAtomIntergerDemo1</span> &#123;</span><br><span class="line"><span class="comment">//    public AtomicInteger()：	               初始化一个默认值为0的原子型Integer</span></span><br><span class="line"><span class="comment">//    public AtomicInteger(int initialValue)： 初始化一个指定值的原子型Integer</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">AtomicInteger</span> <span class="variable">ac</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>();</span><br><span class="line">        System.out.println(ac);</span><br><span class="line"></span><br><span class="line">        <span class="type">AtomicInteger</span> <span class="variable">ac2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>(<span class="number">10</span>);</span><br><span class="line">        System.out.println(ac2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.threadatom3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyAtomIntergerDemo2</span> &#123;</span><br><span class="line"><span class="comment">//    int get():   		 		获取值</span></span><br><span class="line"><span class="comment">//    int getAndIncrement():     以原子方式将当前值加1，注意，这里返回的是自增前的值。</span></span><br><span class="line"><span class="comment">//    int incrementAndGet():     以原子方式将当前值加1，注意，这里返回的是自增后的值。</span></span><br><span class="line"><span class="comment">//    int addAndGet(int data):	 以原子方式将参数与对象中的值相加，并返回结果。</span></span><br><span class="line"><span class="comment">//    int getAndSet(int value):  以原子方式设置为newValue的值，并返回旧值。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="comment">//        AtomicInteger ac1 = new AtomicInteger(10);</span></span><br><span class="line"><span class="comment">//        System.out.println(ac1.get());</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        AtomicInteger ac2 = new AtomicInteger(10);</span></span><br><span class="line"><span class="comment">//        int andIncrement = ac2.getAndIncrement();</span></span><br><span class="line"><span class="comment">//        System.out.println(andIncrement);</span></span><br><span class="line"><span class="comment">//        System.out.println(ac2.get());</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        AtomicInteger ac3 = new AtomicInteger(10);</span></span><br><span class="line"><span class="comment">//        int i = ac3.incrementAndGet();</span></span><br><span class="line"><span class="comment">//        System.out.println(i);//自增后的值</span></span><br><span class="line"><span class="comment">//        System.out.println(ac3.get());</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        AtomicInteger ac4 = new AtomicInteger(10);</span></span><br><span class="line"><span class="comment">//        int i = ac4.addAndGet(20);</span></span><br><span class="line"><span class="comment">//        System.out.println(i);</span></span><br><span class="line"><span class="comment">//        System.out.println(ac4.get());</span></span><br><span class="line"></span><br><span class="line">        <span class="type">AtomicInteger</span> <span class="variable">ac5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>(<span class="number">100</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">andSet</span> <span class="operator">=</span> ac5.getAndSet(<span class="number">20</span>);</span><br><span class="line">        System.out.println(andSet);</span><br><span class="line">        System.out.println(ac5.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-AtomicInteger-内存解析"><a href="#7-AtomicInteger-内存解析" class="headerlink" title="7 AtomicInteger-内存解析"></a>7 AtomicInteger-内存解析</h3><p><strong>AtomicInteger原理 :</strong> 自旋锁  + CAS 算法</p>
+<p><strong>CAS算法：</strong></p>
+<p>​    有3个操作数（内存值V， 旧的预期值A，要修改的值B）</p>
+<p>​    当旧的预期值A &#x3D;&#x3D; 内存值   此时修改成功，将V改为B                 </p>
+<p>​    当旧的预期值A！&#x3D;内存值   此时修改失败，不做任何操作                 </p>
+<p>​    并重新获取现在的最新值（这个重新获取的动作就是自旋）</p>
+<h3 id="8-AtomicInteger-源码解析"><a href="#8-AtomicInteger-源码解析" class="headerlink" title="8 AtomicInteger-源码解析"></a>8 AtomicInteger-源码解析</h3><p><strong>代码实现 :</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.threadatom4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AtomDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyAtomThread</span> <span class="variable">atom</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyAtomThread</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(atom).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jia.threadatom4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyAtomThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="comment">//private volatile int count = 0; //送冰淇淋的数量</span></span><br><span class="line">    <span class="comment">//private Object lock = new Object();</span></span><br><span class="line">    <span class="type">AtomicInteger</span> <span class="variable">ac</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//1,从共享数据中读取数据到本线程栈中.</span></span><br><span class="line">            <span class="comment">//2,修改本线程栈中变量副本的值</span></span><br><span class="line">            <span class="comment">//3,会把本线程栈中变量副本的值赋值给共享数据.</span></span><br><span class="line">            <span class="comment">//synchronized (lock) &#123;</span></span><br><span class="line"><span class="comment">//                count++;</span></span><br><span class="line"><span class="comment">//                ac++;</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> ac.incrementAndGet();</span><br><span class="line">            System.out.println(<span class="string">&quot;已经送了&quot;</span> + count + <span class="string">&quot;个冰淇淋&quot;</span>);</span><br><span class="line">           <span class="comment">// &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>源码解析 :</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先自增，然后获取自增后的结果</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">incrementAndGet</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//+ 1 自增后的结果</span></span><br><span class="line">        <span class="comment">//this 就表示当前的atomicInteger（值）</span></span><br><span class="line">        <span class="comment">//1    自增一次</span></span><br><span class="line">        <span class="keyword">return</span> U.getAndAddInt(<span class="built_in">this</span>, VALUE, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">getAndAddInt</span><span class="params">(Object o, <span class="type">long</span> offset, <span class="type">int</span> delta)</span> &#123;</span><br><span class="line">        <span class="comment">//v 旧值</span></span><br><span class="line">        <span class="type">int</span> v;</span><br><span class="line">        <span class="comment">//自旋的过程</span></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="comment">//不断的获取旧值</span></span><br><span class="line">            v = getIntVolatile(o, offset);</span><br><span class="line">            <span class="comment">//如果这个方法的返回值为false，那么继续自旋</span></span><br><span class="line">            <span class="comment">//如果这个方法的返回值为true，那么自旋结束</span></span><br><span class="line">            <span class="comment">//o 表示的就是内存值</span></span><br><span class="line">            <span class="comment">//v 旧值</span></span><br><span class="line">            <span class="comment">//v + delta 修改后的值</span></span><br><span class="line">        &#125; <span class="keyword">while</span> (!weakCompareAndSetInt(o, offset, v, v + delta));</span><br><span class="line">            <span class="comment">//作用：比较内存中的值，旧值是否相等，如果相等就把修改后的值写到内存中，返回true。表示修改成功。</span></span><br><span class="line">            <span class="comment">//                                 如果不相等，无法把修改后的值写到内存中，返回false。表示修改失败。</span></span><br><span class="line">            <span class="comment">//如果修改失败，那么继续自旋。</span></span><br><span class="line">        <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="9-悲观锁和乐观锁"><a href="#9-悲观锁和乐观锁" class="headerlink" title="9 悲观锁和乐观锁"></a>9 悲观锁和乐观锁</h3><p><strong>synchronized和CAS的区别 :</strong> </p>
+<p><strong>相同点：</strong>在多线程情况下，都可以保证共享数据的安全性。</p>
+<p><strong>不同点：</strong>synchronized总是从最坏的角度出发，认为每次获取数据的时候，别人都有可能修改。所以在每                       次操作共享数据之前，都会上锁。（悲观锁）</p>
+<p>​    cas是从乐观的角度出发，假设每次获取数据别人都不会修改，所以不会上锁。只不过在修改共享数据的时候，会检查一下，别人有没有修改过这个数据。</p>
+<p>​    如果别人修改过，那么我再次获取现在最新的值。            </p>
+<p>​     如果别人没有修改过，那么我现在直接修改共享数据的值.(乐观锁）</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/05/Java_23_%E7%BA%BF%E7%A8%8B%E6%B1%A0/" rel="prev" title="线程池">
+      <i class="fa fa-chevron-left"></i> 线程池
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/09/Java_25_%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="next" title="并发工具类">
+      并发工具类 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">1 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-volatile%E8%A7%A3%E5%86%B3"><span class="nav-number">2.</span> <span class="nav-text">2 volatile解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-synchronized%E8%A7%A3%E5%86%B3"><span class="nav-number">3.</span> <span class="nav-text">3 synchronized解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">4 原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-volatile%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8D%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">5 volatile关键字不能保证原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%8E%9F%E5%AD%90%E6%80%A7-Atomic%E5%8C%85"><span class="nav-number">6.</span> <span class="nav-text">6 原子性_Atomic包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-AtomicInteger-%E5%86%85%E5%AD%98%E8%A7%A3%E6%9E%90"><span class="nav-number">7.</span> <span class="nav-text">7 AtomicInteger-内存解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-AtomicInteger-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="nav-number">8.</span> <span class="nav-text">8 AtomicInteger-源码解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E6%82%B2%E8%A7%82%E9%94%81%E5%92%8C%E4%B9%90%E8%A7%82%E9%94%81"><span class="nav-number">9.</span> <span class="nav-text">9 悲观锁和乐观锁</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="与或非"
+      src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
+  <p class="site-author-name" itemprop="name">与或非</p>
+  <div class="site-description" itemprop="description">个人成长记录与分享</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:jljing299@qq.com" title="E-Mail → mailto:jljing299@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      常看文章
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://daijing.online/2022/02/07/Vue_1_Vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="https:&#x2F;&#x2F;daijing.online&#x2F;2022&#x2F;02&#x2F;07&#x2F;Vue_1_Vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4&#x2F;" rel="noopener" target="_blank">Vue快速入门以及常用指令</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://daijing.online/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" title="https:&#x2F;&#x2F;daijing.online&#x2F;2020&#x2F;11&#x2F;28&#x2F;Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&#x2F;" rel="noopener" target="_blank">Linux命令大全</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">与或非</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">141k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:08</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
