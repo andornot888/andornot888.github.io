@@ -239,7 +239,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>560</span>
+              <span>559</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -271,7 +271,7 @@
 </tr>
 <tr>
 <td align="center"><strong>邮箱：</strong></td>
-<td><a href="mailto:&#x6a;&#108;&#106;&#105;&#110;&#103;&#x32;&#57;&#x39;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x6a;&#108;&#106;&#105;&#110;&#103;&#x32;&#57;&#x39;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#106;&#108;&#x6a;&#105;&#110;&#103;&#50;&#x39;&#57;&#x40;&#113;&#x71;&#46;&#x63;&#111;&#109;">&#106;&#108;&#x6a;&#105;&#110;&#103;&#50;&#x39;&#57;&#x40;&#113;&#x71;&#46;&#x63;&#111;&#109;</a></td>
 </tr>
 <tr>
 <td align="center"><strong>求职意向：</strong></td>
@@ -866,7 +866,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -885,7 +885,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <table>
+          <span id="more"></span>
+
+<table>
 <thead>
 <tr>
 <th align="left">函数</th>
@@ -896,30 +898,160 @@
 <tbody><tr>
 <td align="left">ASCII(s)</td>
 <td align="left">返回字符串 s 的第一个字符的 ASCII 码。</td>
-<td align="left">返回 CustomerName 字段第一个字母的 ASCII 码：<code>SELECT ASCII(CustomerName) AS NumCodeOfFirstChar FROM Customers;</code></td>
+<td align="left"><code>SELECT ASCII(&quot;www.daijing.com&quot;);</code><br />&gt;119</td>
 </tr>
 <tr>
 <td align="left">CHAR_LENGTH(s)</td>
 <td align="left">返回字符串 s 的字符数</td>
-<td align="left">返回字符串 RUNOOB 的字符数<code>SELECT CHAR_LENGTH(&quot;RUNOOB&quot;) AS LengthOfString;</code></td>
+<td align="left"><code>SELECT CHAR_LENGTH(&quot;daijing&quot;);</code><br />&gt;7</td>
 </tr>
 <tr>
 <td align="left">CHARACTER_LENGTH(s)</td>
 <td align="left">返回字符串 s 的字符数</td>
-<td align="left">返回字符串 RUNOOB 的字符数<code>SELECT CHARACTER_LENGTH(&quot;RUNOOB&quot;) AS LengthOfString;</code></td>
+<td align="left"><code>SELECT CHARACTER_LENGTH(&quot;daijing&quot;);</code><br />&gt;7</td>
 </tr>
 <tr>
 <td align="left">CONCAT(s1,s2…sn)</td>
 <td align="left">字符串 s1,s2 等多个字符串合并为一个字符串</td>
-<td align="left">合并多个字符串<code>SELECT CONCAT(&quot;SQL &quot;, &quot;Runoob &quot;, &quot;Gooogle &quot;, &quot;Facebook&quot;) AS ConcatenatedString;</code>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/18/MySQL_9_MySQL%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<td align="left"><code>SELECT CONCAT(&quot;www&quot;,&quot;daijing&quot;,&quot;com&quot;);</code><br />&gt;wwwdaijingcom</td>
+</tr>
+<tr>
+<td align="left">CONCAT_WS(x, s1,s2…sn)</td>
+<td align="left">同 CONCAT(s1,s2,…) 函数，但是每个字符串之间要加上 x，x 可以是分隔符</td>
+<td align="left"><code>SELECT CONCAT_WS(&quot;.&quot;,&quot;www&quot;,&quot;daijing&quot;,&quot;com&quot;);</code><br />&gt;<a target="_blank" rel="noopener" href="http://www.daijing.com/">www.daijing.com</a></td>
+</tr>
+<tr>
+<td align="left">FIELD(s,s1,s2…)</td>
+<td align="left">返回第一个字符串 s 在字符串列表(s1,s2…)中的位置</td>
+<td align="left">返回字符串 c 在列表值中的位置：<code>SELECT FIELD(&quot;c&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;);</code></td>
+</tr>
+<tr>
+<td align="left">FIND_IN_SET(s1,s2)</td>
+<td align="left">返回在字符串s2中与s1匹配的字符串的位置</td>
+<td align="left">返回字符串 c 在指定字符串中的位置：<code>SELECT FIND_IN_SET(&quot;c&quot;, &quot;a,b,c,d,e&quot;);</code></td>
+</tr>
+<tr>
+<td align="left">FORMAT(x,n)</td>
+<td align="left">函数可以将数字 x 进行格式化 “#,###.##”, 将 x 保留到小数点后 n 位，最后一位四舍五入。</td>
+<td align="left">格式化数字 “#,###.##” 形式：<code>SELECT FORMAT(250500.5634, 2);     -- 输出 250,500.56</code></td>
+</tr>
+<tr>
+<td align="left">INSERT(s1,x,len,s2)</td>
+<td align="left">字符串 s2 替换 s1 的 x 位置开始长度为 len 的字符串</td>
+<td align="left">从字符串第一个位置开始的 6 个字符替换为 runoob：<code>SELECT INSERT(&quot;google.com&quot;, 1, 6, &quot;runoob&quot;);  -- 输出：runoob.com</code></td>
+</tr>
+<tr>
+<td align="left">LOCATE(s1,s)</td>
+<td align="left">从字符串 s 中获取 s1 的开始位置</td>
+<td align="left">获取 b 在字符串 abc 中的位置：<code>SELECT LOCATE(&#39;st&#39;,&#39;myteststring&#39;);  -- 5</code>返回字符串 abc 中 b 的位置：<code>SELECT LOCATE(&#39;b&#39;, &#39;abc&#39;) -- 2</code></td>
+</tr>
+<tr>
+<td align="left">LCASE(s)</td>
+<td align="left">将字符串 s 的所有字母变成小写字母</td>
+<td align="left">字符串 RUNOOB 转换为小写：<code>SELECT LCASE(&#39;RUNOOB&#39;) -- runoob</code></td>
+</tr>
+<tr>
+<td align="left">LEFT(s,n)</td>
+<td align="left">返回字符串 s 的前 n 个字符</td>
+<td align="left">返回字符串 runoob 中的前两个字符：<code>SELECT LEFT(&#39;runoob&#39;,2) -- ru</code></td>
+</tr>
+<tr>
+<td align="left">LOWER(s)</td>
+<td align="left">将字符串 s 的所有字母变成小写字母</td>
+<td align="left">字符串 RUNOOB 转换为小写：<code>SELECT LOWER(&#39;RUNOOB&#39;) -- runoob</code></td>
+</tr>
+<tr>
+<td align="left">LPAD(s1,len,s2)</td>
+<td align="left">在字符串 s1 的开始处填充字符串 s2，使字符串长度达到 len</td>
+<td align="left">将字符串 xx 填充到 abc 字符串的开始处：<code>SELECT LPAD(&#39;abc&#39;,5,&#39;xx&#39;) -- xxabc</code></td>
+</tr>
+<tr>
+<td align="left">LTRIM(s)</td>
+<td align="left">去掉字符串 s 开始处的空格</td>
+<td align="left">去掉字符串 RUNOOB开始处的空格：<code>SELECT LTRIM(&quot;    RUNOOB&quot;) AS LeftTrimmedString;-- RUNOOB</code></td>
+</tr>
+<tr>
+<td align="left">MID(s,n,len)</td>
+<td align="left">从字符串 s 的 n 位置截取长度为 len 的子字符串，同 SUBSTRING(s,n,len)</td>
+<td align="left">从字符串 RUNOOB 中的第 2 个位置截取 3个 字符：<code>SELECT MID(&quot;RUNOOB&quot;, 2, 3) AS ExtractString; -- UNO</code></td>
+</tr>
+<tr>
+<td align="left">POSITION(s1 IN s)</td>
+<td align="left">从字符串 s 中获取 s1 的开始位置</td>
+<td align="left">返回字符串 abc 中 b 的位置：<code>SELECT POSITION(&#39;b&#39; in &#39;abc&#39;) -- 2</code></td>
+</tr>
+<tr>
+<td align="left">REPEAT(s,n)</td>
+<td align="left">将字符串 s 重复 n 次</td>
+<td align="left">将字符串 runoob 重复三次：<code>SELECT REPEAT(&#39;runoob&#39;,3) -- runoobrunoobrunoob</code></td>
+</tr>
+<tr>
+<td align="left">REPLACE(s,s1,s2)</td>
+<td align="left">将字符串 s2 替代字符串 s 中的字符串 s1</td>
+<td align="left">将字符串 abc 中的字符 a 替换为字符 x：<code>SELECT REPLACE(&#39;abc&#39;,&#39;a&#39;,&#39;x&#39;) --xbc</code></td>
+</tr>
+<tr>
+<td align="left">REVERSE(s)</td>
+<td align="left">将字符串s的顺序反过来</td>
+<td align="left">将字符串 abc 的顺序反过来：<code>SELECT REVERSE(&#39;abc&#39;) -- cba</code></td>
+</tr>
+<tr>
+<td align="left">RIGHT(s,n)</td>
+<td align="left">返回字符串 s 的后 n 个字符</td>
+<td align="left">返回字符串 runoob 的后两个字符：<code>SELECT RIGHT(&#39;runoob&#39;,2) -- ob</code></td>
+</tr>
+<tr>
+<td align="left">RPAD(s1,len,s2)</td>
+<td align="left">在字符串 s1 的结尾处添加字符串 s2，使字符串的长度达到 len</td>
+<td align="left">将字符串 xx 填充到 abc 字符串的结尾处：<code>SELECT RPAD(&#39;abc&#39;,5,&#39;xx&#39;) -- abcxx</code></td>
+</tr>
+<tr>
+<td align="left">RTRIM(s)</td>
+<td align="left">去掉字符串 s 结尾处的空格</td>
+<td align="left">去掉字符串 RUNOOB 的末尾空格：<code>SELECT RTRIM(&quot;RUNOOB     &quot;) AS RightTrimmedString;   -- RUNOOB</code></td>
+</tr>
+<tr>
+<td align="left">SPACE(n)</td>
+<td align="left">返回 n 个空格</td>
+<td align="left">返回 10 个空格：<code>SELECT SPACE(10);</code></td>
+</tr>
+<tr>
+<td align="left">STRCMP(s1,s2)</td>
+<td align="left">比较字符串 s1 和 s2，如果 s1 与 s2 相等返回 0 ，如果 s1&gt;s2 返回 1，如果 s1&lt;s2 返回 -1</td>
+<td align="left">比较字符串：<code>SELECT STRCMP(&quot;runoob&quot;, &quot;runoob&quot;);  -- 0</code></td>
+</tr>
+<tr>
+<td align="left">SUBSTR(s, start, length)</td>
+<td align="left">从字符串 s 的 start 位置截取长度为 length 的子字符串</td>
+<td align="left">从字符串 RUNOOB 中的第 2 个位置截取 3个 字符：<code>SELECT SUBSTR(&quot;RUNOOB&quot;, 2, 3) AS ExtractString; -- UNO</code></td>
+</tr>
+<tr>
+<td align="left">SUBSTRING(s, start, length)</td>
+<td align="left">从字符串 s 的 start 位置截取长度为 length 的子字符串</td>
+<td align="left">从字符串 RUNOOB 中的第 2 个位置截取 3个 字符：<code>SELECT SUBSTRING(&quot;RUNOOB&quot;, 2, 3) AS ExtractString; -- UNO</code></td>
+</tr>
+<tr>
+<td align="left">SUBSTRING_INDEX(s, delimiter, number)</td>
+<td align="left">返回从字符串 s 的第 number 个出现的分隔符 delimiter 之后的子串。 如果 number 是正数，返回第 number 个字符左边的字符串。 如果 number 是负数，返回第(number 的绝对值(从右边数))个字符右边的字符串。</td>
+<td align="left"><code>SELECT SUBSTRING_INDEX(&#39;a*b&#39;,&#39;*&#39;,1) -- a SELECT SUBSTRING_INDEX(&#39;a*b&#39;,&#39;*&#39;,-1)  -- b SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(&#39;a*b*c*d*e&#39;,&#39;*&#39;,3),&#39;*&#39;,-1)  -- c</code></td>
+</tr>
+<tr>
+<td align="left">TRIM(s)</td>
+<td align="left">去掉字符串 s 开始和结尾处的空格</td>
+<td align="left">去掉字符串 RUNOOB 的首尾空格：<code>SELECT TRIM(&#39;    RUNOOB    &#39;) AS TrimmedString;</code></td>
+</tr>
+<tr>
+<td align="left">UCASE(s)</td>
+<td align="left">将字符串转换为大写</td>
+<td align="left">将字符串 runoob 转换为大写：<code>SELECT UCASE(&quot;runoob&quot;); -- RUNOOB</code></td>
+</tr>
+<tr>
+<td align="left">UPPER(s)</td>
+<td align="left">将字符串转换为大写</td>
+<td align="left">将字符串 runoob 转换为大写：<code>SELECT UPPER(&quot;runoob&quot;); -- RUNOOB</code></td>
+</tr>
+</tbody></table>
+
       
     </div>
 
