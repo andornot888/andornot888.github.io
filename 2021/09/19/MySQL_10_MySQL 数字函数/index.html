@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://gitee.com/andornot888/andornot_images/raw/master//imgs/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://gitee.com/andornot888/andornot_images/raw/master//imgs/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="MySQL 函数 ➖ 数字函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 数字函数">
+<meta property="og:url" content="http://example.com/2021/09/19/MySQL_10_MySQL%20%E6%95%B0%E5%AD%97%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="与或非&#39;s Blog">
+<meta property="og:description" content="MySQL 函数 ➖ 数字函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-18T07:16:21.831Z">
+<meta property="article:author" content="与或非">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/09/19/MySQL_10_MySQL%20%E6%95%B0%E5%AD%97%E5%87%BD%E6%95%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MySQL 数字函数 | 与或非's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">与或非's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/19/MySQL_10_MySQL%20%E6%95%B0%E5%AD%97%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL 数字函数
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-19 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-19T00:00:00+08:00">2021-09-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>MySQL 函数 ➖ 数字函数</p>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">描述</th>
+<th align="left">实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ABS(x)</td>
+<td align="left">返回 x 的绝对值</td>
+<td align="left">返回 -1 的绝对值：<code>SELECT ABS(-1) -- 返回1</code></td>
+</tr>
+<tr>
+<td align="left">ACOS(x)</td>
+<td align="left">求 x 的反余弦值（单位为弧度），x 为一个数值</td>
+<td align="left"><code>SELECT ACOS(0.25);</code></td>
+</tr>
+<tr>
+<td align="left">ASIN(x)</td>
+<td align="left">求反正弦值（单位为弧度），x 为一个数值</td>
+<td align="left"><code>SELECT ASIN(0.25);</code></td>
+</tr>
+<tr>
+<td align="left">ATAN(x)</td>
+<td align="left">求反正切值（单位为弧度），x 为一个数值</td>
+<td align="left"><code>SELECT ATAN(2.5);</code></td>
+</tr>
+<tr>
+<td align="left">ATAN2(n, m)</td>
+<td align="left">求反正切值（单位为弧度）</td>
+<td align="left"><code>SELECT ATAN2(-0.8, 2);</code></td>
+</tr>
+<tr>
+<td align="left">AVG(expression)</td>
+<td align="left">返回一个表达式的平均值，expression 是一个字段</td>
+<td align="left">返回 Products 表中Price 字段的平均值：<code>SELECT AVG(Price) AS AveragePrice FROM Products;</code></td>
+</tr>
+<tr>
+<td align="left">CEIL(x)</td>
+<td align="left">返回大于或等于 x 的最小整数</td>
+<td align="left"><code>SELECT CEIL(1.5) -- 返回2</code></td>
+</tr>
+<tr>
+<td align="left">CEILING(x)</td>
+<td align="left">返回大于或等于 x 的最小整数</td>
+<td align="left"><code>SELECT CEILING(1.5); -- 返回2</code></td>
+</tr>
+<tr>
+<td align="left">COS(x)</td>
+<td align="left">求余弦值(参数是弧度)</td>
+<td align="left"><code>SELECT COS(2);</code></td>
+</tr>
+<tr>
+<td align="left">COT(x)</td>
+<td align="left">求余切值(参数是弧度)</td>
+<td align="left"><code>SELECT COT(6);</code></td>
+</tr>
+<tr>
+<td align="left">COUNT(expression)</td>
+<td align="left">返回查询的记录总数，expression 参数是一个字段或者 * 号</td>
+<td align="left">返回 Products 表中 products 字段总共有多少条记录：<code>SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;</code></td>
+</tr>
+<tr>
+<td align="left">DEGREES(x)</td>
+<td align="left">将弧度转换为角度</td>
+<td align="left"><code>SELECT DEGREES(3.1415926535898) -- 180</code></td>
+</tr>
+<tr>
+<td align="left">n DIV m</td>
+<td align="left">整除，n 为被除数，m 为除数</td>
+<td align="left">计算 10 除于 5：<code>SELECT 10 DIV 5;  -- 2</code></td>
+</tr>
+<tr>
+<td align="left">EXP(x)</td>
+<td align="left">返回 e 的 x 次方</td>
+<td align="left">计算 e 的三次方：<code>SELECT EXP(3) -- 20.085536923188</code></td>
+</tr>
+<tr>
+<td align="left">FLOOR(x)</td>
+<td align="left">返回小于或等于 x 的最大整数</td>
+<td align="left">小于或等于 1.5 的整数：<code>SELECT FLOOR(1.5) -- 返回1</code></td>
+</tr>
+<tr>
+<td align="left">GREATEST(expr1, expr2, expr3, …)</td>
+<td align="left">返回列表中的最大值</td>
+<td align="left">返回以下数字列表中的最大值：<code>SELECT GREATEST(3, 12, 34, 8, 25); -- 34</code>返回以下字符串列表中的最大值：<code>SELECT GREATEST(&quot;Google&quot;, &quot;Runoob&quot;, &quot;Apple&quot;);   -- Runoob</code></td>
+</tr>
+<tr>
+<td align="left">LEAST(expr1, expr2, expr3, …)</td>
+<td align="left">返回列表中的最小值</td>
+<td align="left">返回以下数字列表中的最小值：<code>SELECT LEAST(3, 12, 34, 8, 25); -- 3</code>返回以下字符串列表中的最小值：<code>SELECT LEAST(&quot;Google&quot;, &quot;Runoob&quot;, &quot;Apple&quot;);   -- Apple</code></td>
+</tr>
+<tr>
+<td align="left">LN</td>
+<td align="left">返回数字的自然对数，以 e 为底。</td>
+<td align="left">返回 2 的自然对数：<code>SELECT LN(2);  -- 0.6931471805599453</code></td>
+</tr>
+<tr>
+<td align="left">LOG(x) 或 LOG(base, x)</td>
+<td align="left">返回自然对数(以 e 为底的对数)，如果带有 base 参数，则 base 为指定带底数。</td>
+<td align="left"><code>SELECT LOG(20.085536923188) -- 3 SELECT LOG(2, 4); -- 2</code></td>
+</tr>
+<tr>
+<td align="left">LOG10(x)</td>
+<td align="left">返回以 10 为底的对数</td>
+<td align="left"><code>SELECT LOG10(100) -- 2</code></td>
+</tr>
+<tr>
+<td align="left">LOG2(x)</td>
+<td align="left">返回以 2 为底的对数</td>
+<td align="left">返回以 2 为底 6 的对数：<code>SELECT LOG2(6);  -- 2.584962500721156</code></td>
+</tr>
+<tr>
+<td align="left">MAX(expression)</td>
+<td align="left">返回字段 expression 中的最大值</td>
+<td align="left">返回数据表 Products 中字段 Price 的最大值：<code>SELECT MAX(Price) AS LargestPrice FROM Products;</code></td>
+</tr>
+<tr>
+<td align="left">MIN(expression)</td>
+<td align="left">返回字段 expression 中的最小值</td>
+<td align="left">返回数据表 Products 中字段 Price 的最小值：<code>SELECT MIN(Price) AS MinPrice FROM Products;</code></td>
+</tr>
+<tr>
+<td align="left">MOD(x,y)</td>
+<td align="left">返回 x 除以 y 以后的余数</td>
+<td align="left">5 除于 2 的余数：<code>SELECT MOD(5,2) -- 1</code></td>
+</tr>
+<tr>
+<td align="left">PI()</td>
+<td align="left">返回圆周率(3.141593）</td>
+<td align="left"><code>SELECT PI() --3.141593</code></td>
+</tr>
+<tr>
+<td align="left">POW(x,y)</td>
+<td align="left">返回 x 的 y 次方</td>
+<td align="left">2 的 3 次方：<code>SELECT POW(2,3) -- 8</code></td>
+</tr>
+<tr>
+<td align="left">POWER(x,y)</td>
+<td align="left">返回 x 的 y 次方</td>
+<td align="left">2 的 3 次方：<code>SELECT POWER(2,3) -- 8</code></td>
+</tr>
+<tr>
+<td align="left">RADIANS(x)</td>
+<td align="left">将角度转换为弧度</td>
+<td align="left">180 度转换为弧度：<code>SELECT RADIANS(180) -- 3.1415926535898</code></td>
+</tr>
+<tr>
+<td align="left">RAND()</td>
+<td align="left">返回 0 到 1 的随机数</td>
+<td align="left"><code>SELECT RAND() --0.93099315644334</code></td>
+</tr>
+<tr>
+<td align="left">ROUND(x)</td>
+<td align="left">返回离 x 最近的整数</td>
+<td align="left"><code>SELECT ROUND(1.23456) --1</code></td>
+</tr>
+<tr>
+<td align="left">SIGN(x)</td>
+<td align="left">返回 x 的符号，x 是负数、0、正数分别返回 -1、0 和 1</td>
+<td align="left"><code>SELECT SIGN(-10) -- (-1)</code></td>
+</tr>
+<tr>
+<td align="left">SIN(x)</td>
+<td align="left">求正弦值(参数是弧度)</td>
+<td align="left"><code>SELECT SIN(RADIANS(30)) -- 0.5</code></td>
+</tr>
+<tr>
+<td align="left">SQRT(x)</td>
+<td align="left">返回x的平方根</td>
+<td align="left">25 的平方根：<code>SELECT SQRT(25) -- 5</code></td>
+</tr>
+<tr>
+<td align="left">SUM(expression)</td>
+<td align="left">返回指定字段的总和</td>
+<td align="left">计算 OrderDetails 表中字段 Quantity 的总和：<code>SELECT SUM(Quantity) AS TotalItemsOrdered FROM OrderDetails;</code></td>
+</tr>
+<tr>
+<td align="left">TAN(x)</td>
+<td align="left">求正切值(参数是弧度)</td>
+<td align="left"><code>SELECT TAN(1.75);  -- -5.52037992250933</code></td>
+</tr>
+<tr>
+<td align="left">TRUNCATE(x,y)</td>
+<td align="left">返回数值 x 保留到小数点后 y 位的值（与 ROUND 最大的区别是不会进行四舍五入）</td>
+<td align="left"><code>SELECT TRUNCATE(1.23456,3) -- 1.234</code></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/18/MySQL_9_MySQL%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" rel="prev" title="MySQL 字符串函数">
+      <i class="fa fa-chevron-left"></i> MySQL 字符串函数
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/20/MySQL_11_MySQL%20%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0/" rel="next" title="MySQL 日期函数">
+      MySQL 日期函数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="与或非"
+      src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
+  <p class="site-author-name" itemprop="name">与或非</p>
+  <div class="site-description" itemprop="description">个人成长记录与分享</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:jljing299@qq.com" title="E-Mail → mailto:jljing299@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      常看文章
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://daijing.online/2022/02/07/Vue_1_Vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="https:&#x2F;&#x2F;daijing.online&#x2F;2022&#x2F;02&#x2F;07&#x2F;Vue_1_Vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4&#x2F;" rel="noopener" target="_blank">Vue快速入门以及常用指令</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://daijing.online/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" title="https:&#x2F;&#x2F;daijing.online&#x2F;2020&#x2F;11&#x2F;28&#x2F;Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&#x2F;" rel="noopener" target="_blank">Linux命令大全</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">与或非</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">301k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:34</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
