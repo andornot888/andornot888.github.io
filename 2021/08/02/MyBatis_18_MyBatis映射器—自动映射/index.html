@@ -20,21 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="来自朋友面试华为的题，在leetcode上原题为外观数列38. 外观数列 - 力扣（LeetCode） (leetcode-cn.com)。">
+  <meta name="description" content="正如你在前面一节看到的，在简单的场景下，MyBatis 可以为你自动映射查询结果。但如果遇到复杂的场景，你需要构建一个结果映射。 但是在本节中，你将看到，你可以混合使用这两种策略。让我们深入了解一下自动映射是怎样工作的。 当自动映射查询结果时，MyBatis 会获取结果中返回的列名并在 Java 类中查找相同名字的属性（忽略大小写）。 这意味着如果发现了 ID 列和 id 属性，MyBatis 会">
 <meta property="og:type" content="article">
-<meta property="og:title" content="外观数列">
-<meta property="og:url" content="http://example.com/2022/01/19/Interview_1_CountandSay/index.html">
+<meta property="og:title" content="MyBatis映射器—自动映射">
+<meta property="og:url" content="http://example.com/2021/08/02/MyBatis_18_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E8%87%AA%E5%8A%A8%E6%98%A0%E5%B0%84/index.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
-<meta property="og:description" content="来自朋友面试华为的题，在leetcode上原题为外观数列38. 外观数列 - 力扣（LeetCode） (leetcode-cn.com)。">
+<meta property="og:description" content="正如你在前面一节看到的，在简单的场景下，MyBatis 可以为你自动映射查询结果。但如果遇到复杂的场景，你需要构建一个结果映射。 但是在本节中，你将看到，你可以混合使用这两种策略。让我们深入了解一下自动映射是怎样工作的。 当自动映射查询结果时，MyBatis 会获取结果中返回的列名并在 Java 类中查找相同名字的属性（忽略大小写）。 这意味着如果发现了 ID 列和 id 属性，MyBatis 会">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-23T05:22:09.585Z">
+<meta property="article:published_time" content="2021-08-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-21T08:23:02.244Z">
 <meta property="article:author" content="与或非">
-<meta property="article:tag" content="Interview">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/01/19/Interview_1_CountandSay/">
+<link rel="canonical" href="http://example.com/2021/08/02/MyBatis_18_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E8%87%AA%E5%8A%A8%E6%98%A0%E5%B0%84/">
 
 
 <script id="page-configurations">
@@ -47,7 +46,7 @@
   };
 </script>
 
-  <title>外观数列 | 与或非's Blog</title>
+  <title>MyBatis映射器—自动映射 | 与或非's Blog</title>
   
 
 
@@ -195,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/19/Interview_1_CountandSay/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/02/MyBatis_18_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E8%87%AA%E5%8A%A8%E6%98%A0%E5%B0%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
@@ -208,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          外观数列
+          MyBatis映射器—自动映射
         </h1>
 
         <div class="post-meta">
@@ -219,7 +218,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-01-19 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-19T00:00:00+08:00">2022-01-19</time>
+              <time title="创建时间：2021-08-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-08-02T00:00:00+08:00">2021-08-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,8 +230,7 @@
                 </span>
             </span>
             <span class="post-meta-item">
-                <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
-                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -240,7 +238,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -259,31 +257,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>来自朋友面试华为的题，在leetcode上原题为外观数列<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-and-say/">38. 外观数列 - 力扣（LeetCode） (leetcode-cn.com)</a>。</p>
+        <p>正如你在前面一节看到的，在简单的场景下，MyBatis 可以为你自动映射查询结果。但如果遇到复杂的场景，你需要构建一个结果映射。 但是在本节中，你将看到，你可以混合使用这两种策略。让我们深入了解一下自动映射是怎样工作的。</p>
+<p>当自动映射查询结果时，MyBatis 会获取结果中返回的列名并在 Java 类中查找相同名字的属性（忽略大小写）。 这意味着如果发现了 <em>ID</em> 列和 <em>id</em> 属性，MyBatis 会将列 <em>ID</em> 的值赋给 <em>id</em> 属性。</p>
 <span id="more"></span>
 
-<p>有一个数列A[n]，从A[0]开始每一项都是一个数字，数列中A[n+1]都是A[n]的描述，其中A[0]&#x3D;1。<br>规则如下：</p>
-<blockquote>
-<p> A[0]:1</p>
-<p> A[1]:11 含义其中A[0]&#x3D;1是1个1 即11</p>
-<p> 表示A[0]从左到右连续出现了1次1</p>
-<p> A[2]:21 含义其中A[1]&#x3D;11是2个1 即21</p>
-<p> 表示A[1]从左到右连续出现了2次1</p>
-<p> A[3]:1211 含义其中A[2]从左到右是由一个2和一个1组成 即1211</p>
-<p> 表示A[2]从左到右连续出现了一次2又连续出现了一次1</p>
-<p> A[4]:111221  含义A[3]&#x3D;1211 从左到右是由一个1和一个2两个1 即111221</p>
-<p> 表示A[3]从左到右连续出现了一次1又连续出现了一次2又连续出现了2次1</p>
-</blockquote>
-<p>我的题解：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">A</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">       Map&lt;Integer, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       map.put(<span class="number">0</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line">       map.put(<span class="number">1</span>,<span class="string">&quot;11&quot;</span>);</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">2</span>; j &lt;= n; j++) &#123;</span><br><span class="line">           <span class="type">char</span>[] chars = map.get(j-<span class="number">1</span>).toCharArray();</span><br><span class="line">           <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">           <span class="type">String</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">           <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; chars.length; i++) &#123;</span><br><span class="line">               <span class="keyword">if</span> (i==chars.length-<span class="number">1</span> &amp;&amp; chars[i] == chars[i-<span class="number">1</span>])&#123;</span><br><span class="line">                   num++;</span><br><span class="line">                   temp = temp + num + chars[i-<span class="number">1</span>];</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span> <span class="keyword">if</span> (chars[i] == chars[i-<span class="number">1</span>])&#123;</span><br><span class="line">                   num++;</span><br><span class="line">                   <span class="keyword">continue</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i==chars.length-<span class="number">1</span> &amp;&amp; chars[i] != chars[i-<span class="number">1</span>])&#123;</span><br><span class="line">                   temp = temp + num + chars[i-<span class="number">1</span>];</span><br><span class="line">                   num=<span class="number">1</span>;</span><br><span class="line">                   temp = temp + num + chars[i];</span><br><span class="line">               &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                   temp = temp + num + chars[i-<span class="number">1</span>];</span><br><span class="line">                   num=<span class="number">1</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           map.put(j,temp);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> map.get(n);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>通常数据库列使用大写字母组成的单词命名，单词间用下划线分隔；而 Java 属性一般遵循驼峰命名法约定。为了在这两种命名方式之间启用自动映射，需要将 <code>mapUnderscoreToCamelCase</code> 设置为 true。</p>
+<p>甚至在提供了结果映射后，自动映射也能工作。在这种情况下，对于每一个结果映射，在 ResultSet 出现的列，如果没有设置手动映射，将被自动映射。在自动映射处理完毕后，再处理手动映射。 在下面的例子中，<em>id</em> 和 <em>userName</em> 列将被自动映射，<em>hashed_password</em> 列将根据配置进行映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUsers&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;userResultMap&quot;</span>&gt;</span></span><br><span class="line">  select</span><br><span class="line">    user_id             as &quot;id&quot;,</span><br><span class="line">    user_name           as &quot;userName&quot;,</span><br><span class="line">    hashed_password</span><br><span class="line">  from some_table</span><br><span class="line">  where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;userResultMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;password&quot;</span> <span class="attr">column</span>=<span class="string">&quot;hashed_password&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<hr>
-<p>看完力扣原题题解后，发现使用<code>StringBuilder </code>代替<code>String</code>进行拼接时，效率可以提高很多，两者区别可以看这一篇<a target="_blank" rel="noopener" href="https://daijing.online/2021/01/20/Java_1_String%E3%80%81StringBuffer%E5%92%8CStringBuilder/">String、StringBuffer和StringBuilder的区别 | 与或非’s Blog (daijing.online)</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">countAndSay</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">Map&lt;Integer, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">       map.put(<span class="number">0</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line">       map.put(<span class="number">1</span>,<span class="string">&quot;11&quot;</span>);</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">2</span>; j &lt;= n; j++) &#123;</span><br><span class="line">           <span class="type">char</span>[] chars = map.get(j-<span class="number">1</span>).toCharArray();</span><br><span class="line">           <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">           <span class="type">StringBuilder</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">           <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; chars.length; i++) &#123;</span><br><span class="line">               <span class="keyword">if</span> (i==chars.length-<span class="number">1</span> &amp;&amp; chars[i] == chars[i-<span class="number">1</span>])&#123;</span><br><span class="line">                   num++;</span><br><span class="line">                   temp.append(num).append(chars[i-<span class="number">1</span>]);</span><br><span class="line">                  <span class="comment">// temp = temp + num + chars[i-1];</span></span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span> <span class="keyword">if</span> (chars[i] == chars[i-<span class="number">1</span>])&#123;</span><br><span class="line">                   num++;</span><br><span class="line">                   <span class="keyword">continue</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i==chars.length-<span class="number">1</span> &amp;&amp; chars[i] != chars[i-<span class="number">1</span>])&#123;</span><br><span class="line">                   temp.append(num).append(chars[i-<span class="number">1</span>]);</span><br><span class="line">                   <span class="comment">//temp = temp + num + chars[i-1];</span></span><br><span class="line">                   num=<span class="number">1</span>;</span><br><span class="line">                   temp.append(num).append(chars[i]);</span><br><span class="line">                   <span class="comment">//temp = temp + num + chars[i];</span></span><br><span class="line">               &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                   temp.append(num).append(chars[i-<span class="number">1</span>]);</span><br><span class="line">                  <span class="comment">// temp = temp + num + chars[i-1];</span></span><br><span class="line">                   num=<span class="number">1</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           map.put(j,temp.toString());</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> map.get(n);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>有三种自动映射等级：</p>
+<ul>
+<li><code>NONE</code> - 禁用自动映射。仅对手动映射的属性进行映射。</li>
+<li><code>PARTIAL</code> - 对除在内部定义了嵌套结果映射（也就是连接的属性）以外的属性进行映射</li>
+<li><code>FULL</code> - 自动映射所有属性。</li>
+</ul>
+<p>默认值是 <code>PARTIAL</code>，这是有原因的。当对连接查询的结果使用 <code>FULL</code> 时，连接查询会在同一行中获取多个不同实体的数据，因此可能导致非预期的映射。 下面的例子将展示这种风险：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectBlog&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;blogResult&quot;</span>&gt;</span></span><br><span class="line">  select</span><br><span class="line">    B.id,</span><br><span class="line">    B.title,</span><br><span class="line">    A.username,</span><br><span class="line">  from Blog B left outer join Author A on B.author_id = A.id</span><br><span class="line">  where B.id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;blogResult&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Blog&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">&quot;author&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;authorResult&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;authorResult&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Author&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;username&quot;</span> <span class="attr">column</span>=<span class="string">&quot;author_username&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>在该结果映射中，<em>Blog</em> 和 <em>Author</em> 均将被自动映射。但是注意 <em>Author</em> 有一个 <em>id</em> 属性，在 ResultSet 中也有一个名为 <em>id</em> 的列，所以 Author 的 id 将填入 Blog 的 id，这可不是你期望的行为。 所以，要谨慎使用 <code>FULL</code>。</p>
+<p>无论设置的自动映射等级是哪种，你都可以通过在结果映射上设置 <code>autoMapping</code> 属性来为指定的结果映射设置启用&#x2F;禁用自动映射。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;userResultMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;User&quot;</span> <span class="attr">autoMapping</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;password&quot;</span> <span class="attr">column</span>=<span class="string">&quot;hashed_password&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-
-<p>另外还有偷懒解法，就是直接打表，执行效率最高</p>
 
     </div>
 
@@ -293,8 +287,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
-              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
           </div>
 
         
@@ -303,12 +296,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/11/28/MySQL_13_Java%E4%B8%AD%E7%9A%84substring%E5%92%8CSQL%E4%B8%ADsubstr%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="Java中的substring和SQL中substr的区别">
-      <i class="fa fa-chevron-left"></i> Java中的substring和SQL中substr的区别
+    <a href="/2021/08/01/MyBatis_17_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BB%93%E6%9E%9C%E6%98%A0%E5%B0%84/" rel="prev" title="MyBatis映射器—结果映射">
+      <i class="fa fa-chevron-left"></i> MyBatis映射器—结果映射
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/01/28/jQuery_1_prop()%20%E5%92%8C%20attr()%20%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="prop() 和 attr() 的区别">
-      prop() 和 attr() 的区别 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/03/MyBatis_19_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BC%93%E5%AD%98/" rel="next" title="MyBatis映射器—缓存">
+      MyBatis映射器—缓存 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -383,14 +376,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -450,12 +443,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">185k</span>
+    <span title="站点总字数">227k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:48</span>
+    <span title="站点阅读时长">3:26</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
