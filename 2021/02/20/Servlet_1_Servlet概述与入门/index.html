@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://gitee.com/andornot888/andornot_images/raw/master//imgs/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://gitee.com/andornot888/andornot_images/raw/master//imgs/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="通过阅读API，我们得到如下信息： 第一：Servlet是一个运行在web服务端的java小程序 第二：它可以用于接收和响应客户端的请求 第三：要想实现Servlet功能，可以实现Servlet接口，继承GenericServlet或者HttpServlet 第四：每次请求都会执行service方法 第五：Servlet还支持配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet概述与入门">
+<meta property="og:url" content="http://example.com/2021/02/20/Servlet_1_Servlet%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="与或非&#39;s Blog">
+<meta property="og:description" content="通过阅读API，我们得到如下信息： 第一：Servlet是一个运行在web服务端的java小程序 第二：它可以用于接收和响应客户端的请求 第三：要想实现Servlet功能，可以实现Servlet接口，继承GenericServlet或者HttpServlet 第四：每次请求都会执行service方法 第五：Servlet还支持配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_1.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_2.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_3.jpg">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_4.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_6.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_5.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_7.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_8.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_9.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_10.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_11.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_12.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_13.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_14.png">
+<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_15.png">
+<meta property="article:published_time" content="2021-02-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-25T07:49:21.918Z">
+<meta property="article:author" content="与或非">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Servlet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_1.png">
+
+<link rel="canonical" href="http://example.com/2021/02/20/Servlet_1_Servlet%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%85%A5%E9%97%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Servlet概述与入门 | 与或非's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">与或非's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/20/Servlet_1_Servlet%E6%A6%82%E8%BF%B0%E4%B8%8E%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Servlet概述与入门
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-02-20T00:00:00+08:00">2021-02-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+                <a href="/tags/Servlet/" rel="tag"><i class="fa fa-tag"></i> Servlet</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>通过阅读API，我们得到如下信息：</p>
+<p>第一：Servlet是一个运行在web服务端的java小程序</p>
+<p>第二：它可以用于接收和响应客户端的请求</p>
+<p>第三：要想实现Servlet功能，可以实现Servlet接口，继承GenericServlet或者HttpServlet</p>
+<p>第四：每次请求都会执行service方法</p>
+<p>第五：Servlet还支持配置</p>
+<span id="more"></span>
+
+<p>具体请看下图：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_1.png"/>
+
+
+
+<h2 id="1-Servlet入门"><a href="#1-Servlet入门" class="headerlink" title="1 Servlet入门"></a>1 Servlet入门</h2><h3 id="1-1-Servlet编码步骤"><a href="#1-1-Servlet编码步骤" class="headerlink" title="1.1 Servlet编码步骤"></a>1.1 Servlet编码步骤</h3><h4 id="1）编码步骤"><a href="#1）编码步骤" class="headerlink" title="1）编码步骤"></a>1）编码步骤</h4><p><strong>第一步：前期准备-创建JavaWeb工程</strong></p>
+<p><strong>第二步：编写一个普通类继承GenericServlet并重写service方法</strong></p>
+<p><strong>第三步：在web.xml配置Servlet</strong></p>
+<h4 id="2）测试"><a href="#2）测试" class="headerlink" title="2）测试"></a>2）测试</h4><p><strong>在Tomcat中部署项目</strong></p>
+<p><strong>在浏览器访问Servlet</strong></p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_2.png"/>
+
+
+
+<h3 id="1-2-Servlet执行过程分析"><a href="#1-2-Servlet执行过程分析" class="headerlink" title="1.2 Servlet执行过程分析"></a>1.2 Servlet执行过程分析</h3><p>我们通过浏览器发送请求，请求首先到达Tomcat服务器，由服务器解析请求URL，然后在部署的应用列表中找到我们的应用。接下来，在我们的应用中找应用里的web.xml配置文件，在web.xml中找到FirstServlet的配置，找到后执行service方法，最后由FirstServlet响应客户浏览器。整个过程如下图所示：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_3.jpg"/>
+
+<p>一句话总结执行过程：</p>
+<p>浏览器——&gt;Tomcat服务器——&gt;我们的应用——&gt;应用中的web.xml——&gt;FirstServlet——&gt;响应浏览器</p>
+<h3 id="1-3-Servlet类视图"><a href="#1-3-Servlet类视图" class="headerlink" title="1.3 Servlet类视图"></a>1.3 Servlet类视图</h3><p>在《Tomcat和Http协议》这天课程和刚才的入门案例中，我们都定义了自己的Servlet，实现的方式都是选择继承GenericServlet，在Servlet的API介绍中，它提出了我们除了继承GenericServlet外还可以继承HttpServlet，通过查阅servlet的类视图，我们看到GenericServlet还有一个子类HttpServlet。同时，在service方法中还有参数ServletRequest和ServletResponse，它们的关系如下图所示：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_4.png"/>
+
+<h3 id="1-4-Servlet编写方式"><a href="#1-4-Servlet编写方式" class="headerlink" title="1.4 Servlet编写方式"></a>1.4 Servlet编写方式</h3><h4 id="1）编写方式说明"><a href="#1）编写方式说明" class="headerlink" title="1）编写方式说明"></a>1）编写方式说明</h4><p>我们在实现Servlet功能时，可以选择以下三种方式：</p>
+<p>第一种：实现Servlet接口，接口中的方法必须全部实现。</p>
+<p>​              使用此种方式，表示接口中的所有方法在需求方面都有重写的必要。此种方式支持最大程度的自定义。</p>
+<p>第二种：继承GenericServlet，service方法必须重写，其他方可根据需求，选择性重写。</p>
+<p>​              使用此种方式，表示只在接收和响应客户端请求这方面有重写的需求，而其他方法可根据实际需求选择性重写，使我们的开发Servlet变得简单。但是，此种方式是和HTTP协议无关的。</p>
+<p>第三种：继承HttpServlet，它是javax.servlet.http包下的一个抽象类，是GenericServlet的子类。<b><font color='red'>如果我们选择继承HttpServlet时，只需要重写doGet和doPost方法，不要覆盖service方法。</font></b></p>
+<p>​                使用此种方式，表示我们的请求和响应需要和HTTP协议相关。也就是说，我们是通过HTTP协议来访问的。那么每次请求和响应都符合HTTP协议的规范。请求的方式就是HTTP协议所支持的方式（目前我们只知道GET和POST，而实际HTTP协议支持7种请求方式，GET POST PUT DELETE TRACE OPTIONS HEAD )。</p>
+<h4 id="2）HttpServlet的使用细节"><a href="#2）HttpServlet的使用细节" class="headerlink" title="2）HttpServlet的使用细节"></a>2）HttpServlet的使用细节</h4><p><strong>第一步：在入门案例的工程中创建一个Servlet继承HttpServlet</strong></p>
+<p><font color='red'>注意：不要重写任何方法</font>，如下图所示：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_6.png"/>
+
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_5.png"/>
+
+
+
+<p><strong>第二步：部署项目并测试访问</strong></p>
+<p>当我们在地址栏输入ServletDemo2的访问URL时，出现了访问错误，状态码是405。提示信息是：方法不允许。</p>
+<p><strong>第三步：分析原因</strong> </p>
+<p>得出HttpServlet的使用结论：</p>
+<p>​     <b><font color='red'>我们继承了HttpServlet，需要重写里面的doGet和doPost方法来接收get方式和post方式的请求。</font></b></p>
+<p>为了实现代码的可重用性，我们只需要在doGet或者doPost方法中一个里面提供具体功能即可，而另外的那个方法只需要调用提供了功能的方法。</p>
+<h2 id="2-Servlet使用细节"><a href="#2-Servlet使用细节" class="headerlink" title="2 Servlet使用细节"></a>2 Servlet使用细节</h2><h3 id="2-1-Servlet的生命周期"><a href="#2-1-Servlet的生命周期" class="headerlink" title="2.1 Servlet的生命周期"></a>2.1 Servlet的生命周期</h3><p>对象的生命周期，就是对象从生到死的过程，即：出生——活着——死亡。用更偏向 于开发的官方说法就是对象创建到销毁的过程。</p>
+<p>出生：请求第一次到达Servlet时，对象就创建出来，并且初始化成功。只出生一次，就放到内存中。</p>
+<p>活着：服务器提供服务的整个过程中，该对象一直存在，每次只是执行service方法。</p>
+<p>死亡：当服务停止时，或者服务器宕机时，对象消亡。</p>
+<p>通过分析Servlet的生命周期我们发现，它的实例化和初始化只会在请求第一次到达Servlet时执行，而销毁只会在Tomcat服务器停止时执行，由此我们得出一个结论，Servlet对象只会创建一次，销毁一次。所以，Servlet对象只有一个实例。如果一个对象实例在应用中是唯一的存在，那么我们就说它是单实例的，即运用了<font color='red'>单例模式</font>。</p>
+<h3 id="2-2-Servlet的线程安全"><a href="#2-2-Servlet的线程安全" class="headerlink" title="2.2 Servlet的线程安全"></a>2.2 Servlet的线程安全</h3><p>由于Servlet运用了单例模式，即整个应用中只有一个实例对象，所以我们需要分析这个唯一的实例中的类成员是否线程安全。接下来，我们来看下面的的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 演示Servlet的线程安全问题：</span></span><br><span class="line"><span class="comment"> *    示例需求：</span></span><br><span class="line"><span class="comment"> *       模拟网上看书的翻页功能。</span></span><br><span class="line"><span class="comment"> *       （类似的有浏览商品的翻页，浏览论坛帖子的翻页）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Company</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ServletDemo4</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 我们讨论的是类成员的线程安全问题，所以要定义一个类成员</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">//定义浏览书籍的页码，都是从第一页开始的</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">currentPage</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 真正翻页看书的功能</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> req</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">//1.获取当前要看的书名（此处我们今天先来用以下，明天来着重讲解请求和响应对象）</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">bookName</span> <span class="operator">=</span> req.getParameter(<span class="string">&quot;bookName&quot;</span>);</span><br><span class="line">        <span class="comment">//2.输出书名和当前页码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;您看的是：&quot;</span>+bookName+<span class="string">&quot;，当前页码是：&quot;</span>+currentPage);</span><br><span class="line">        <span class="comment">//3.执行翻页</span></span><br><span class="line">        currentPage++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个模拟在网上看书的示例，我们在Servlet中记录了当前要看的页码，理想状态下，用户每次请求都来看自己该看的页码。启动服务，测试一下：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_7.png"/>
+
+<p>通过上面的测试我们发现，在Servlet中定义了类成员之后，多个浏览器都会共享类成员的数据。其实每一个浏览器端发送请求，就代表是一个线程，那么多个浏览器就是多个线程，所以测试的结果说明了多个线程会共享Servlet类成员中的数据，其中任何一个线程修改了数据，都会影响其他线程。因此，我们可以认为Servlet它不是线程安全的。</p>
+<p>分析产生这个问题的根本原因，<font color='red'>其实就是因为Servlet是单例，单例对象的类成员只会随类实例化时初始化一次，之后的操作都是改变，而不会重新初始化</font>。</p>
+<p>解决这个问题也非常简单，就是在Servlet中定义类成员要慎重。如果类成员是共用的，并且只会在初始化时赋值，其余时间都是获取的话，那么是没问题。如果类成员并非共用，或者每次使用都有可能对其赋值，那么就要考虑线程安全问题了，把它定义到doGet或者doPost方法里面去就可以了。</p>
+<h3 id="2-3-Servlet的注意事项"><a href="#2-3-Servlet的注意事项" class="headerlink" title="2.3 Servlet的注意事项"></a>2.3 Servlet的注意事项</h3><h4 id="1）映射Servlet的细节"><a href="#1）映射Servlet的细节" class="headerlink" title="1）映射Servlet的细节"></a>1）映射Servlet的细节</h4><p>Servlet支持三种映射方式，以达到灵活配置的目的。</p>
+<p>首先编写一个Servlet，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 演示Servlet的映射方式</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Company</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ServletDemo5</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * doGet方法输出一句话</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> req</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ServletDemo5接收到了请求&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用doGet方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> req</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一种：指名道姓的方式</strong></p>
+<p>​               此种方式，只有和映射配置一模一样时，Servlet才会接收和响应来自客户端的请求。</p>
+<p>​               例如：映射为：&#x2F;servletDemo5</p>
+<p>​                           访问URL：<a target="_blank" rel="noopener" href="http://localhost:8585/servlet_demo/servletDemo5">http://localhost:8585/servlet_demo/servletDemo5</a></p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_8.png"/>
+
+<p><strong>第二种：&#x2F;开头+通配符的方式</strong></p>
+<p>​               此种方式，只要符合目录结构即可，不用考虑结尾是什么。</p>
+<p>​                例如：映射为：&#x2F;servlet&#x2F;*</p>
+<p>​                            访问URL：<a target="_blank" rel="noopener" href="http://localhost:8585/servlet/itheima">http://localhost:8585/servlet/itheima</a></p>
+<p>​                                               <a target="_blank" rel="noopener" href="http://localhost:8585/servlet/itcast.do">http://localhost:8585/servlet/itcast.do</a></p>
+<p>​                            这两个URL都可以。因为用的*，表示&#x2F;servlet&#x2F;后面的内容是什么都可以。</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_9.png"/>
+
+<p><strong>第三种：通配符+固定格式结尾</strong></p>
+<p>​                此种方式，只要符合固定结尾格式即可，其前面的访问URI无须关心（注意协议，主机和端口必须正确）</p>
+<p>​                例如：映射为：*.do</p>
+<p>​                            访问URL：<a target="_blank" rel="noopener" href="http://localhost:8585/servlet/itcast.do">http://localhost:8585/servlet/itcast.do</a></p>
+<p>​                                                <a target="_blank" rel="noopener" href="http://localhost:8585/itheima.do">http://localhost:8585/itheima.do</a></p>
+<p>​                            这两个URL都可以方法。因为都是以.do作为结尾，而前面用*号通配符配置的映射，所有无须关心。</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_10.png"/>
+
+<p>通过测试我们发现，Servlet支持多种配置方式，但是由此也引出了一个问题，当有两个及以上的Servlet映射都符合请求URL时，由谁来响应呢？注意：HTTP协议的特征是一请求一响应的规则。那么有一个请求，必然有且只有一个响应。所以，我们接下来明确一下，多种映射规则的优先级。</p>
+<p>先说结论：指名道姓的方式优先级最高，带有通配符的映射方式，有&#x2F;的比没&#x2F;的优先级高</p>
+<p>所以，我们前面讲解的三种映射方式的优先级为：第一种&gt;第二种&gt;第三种。</p>
+<p>演示代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 它和ServletDemo5组合演示Servlet的访问优先级问题</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Company</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ServletDemo6</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * doGet方法输出一句话</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> req</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ServletDemo6接收到了请求&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用doGet方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> req</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置ServletDemo6--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo6<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.itheima.web.servlet.ServletDemo6<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo6<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_11.png"/>
+
+<h4 id="2）多路径映射Servlet"><a href="#2）多路径映射Servlet" class="headerlink" title="2）多路径映射Servlet"></a>2）多路径映射Servlet</h4><p>上一小节我们讲解了Servlet的多种映射方式，这一小节我们来介绍一下，一个Servlet的多种路径配置的支持。</p>
+<p>它其实就是给一个Servlet配置多个访问映射，从而可以根据不同请求URL实现不同的功能。</p>
+<p>首先，创建一个Servlet：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 演示Servlet的多路径映射</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Company</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ServletDemo7</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据不同的请求URL，做不同的处理规则</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> req</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">//1.获取当前请求的URI</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">uri</span> <span class="operator">=</span> req.getRequestURI();</span><br><span class="line">        uri = uri.substring(uri.lastIndexOf(<span class="string">&quot;/&quot;</span>),uri.length());</span><br><span class="line">        <span class="comment">//2.判断是1号请求还是2号请求</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&quot;/servletDemo7&quot;</span>.equals(uri))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ServletDemo7执行1号请求的业务逻辑：商品单价7折显示&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;/demo7&quot;</span>.equals(uri))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ServletDemo7执行2号请求的业务逻辑：商品单价8折显示&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;ServletDemo7执行基本业务逻辑：商品单价原价显示&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用doGet方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> req</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> resp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        doGet(req,resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来，在web.xml配置Servlet：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置ServletDemo7--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo7<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.itheima.web.servlet.ServletDemo7<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--映射路径1--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo7<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/demo7<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--映射路径2--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo7<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/servletDemo7<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--映射路径3--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo7<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/servlet/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，启动服务测试运行结果：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_12.png"/>
+
+<h4 id="3）启动时创建Servlet"><a href="#3）启动时创建Servlet" class="headerlink" title="3）启动时创建Servlet"></a>3）启动时创建Servlet</h4><p>我们前面讲解了Servlet的生命周期，Servlet的创建默认情况下是请求第一次到达Servlet时创建的。但是我们都知道，Servlet是单例的，也就是说在应用中只有唯一的一个实例，所以在Tomcat启动加载应用的时候就创建也是一个很好的选择。那么两者有什么区别呢？</p>
+<ul>
+<li>第一种：应用加载时创建Servlet，它的优势是在服务器启动时，就把需要的对象都创建完成了，从而在使用的时候减少了创建对象的时间，提高了首次执行的效率。它的弊端也同样明显，因为在应用加载时就创建了Servlet对象，因此，导致内存中充斥着大量用不上的Servlet对象，造成了内存的浪费。</li>
+<li>第二种：请求第一次访问是创建Servlet，它的优势就是减少了对服务器内存的浪费，因为那些一直没有被访问过的Servlet对象都没有创建，因此也提高了服务器的启动时间。而它的弊端就是，如果有一些要在应用加载时就做的初始化操作，它都没法完成，从而要考虑其他技术实现。</li>
+</ul>
+<p>通过上面的描述，相信同学们都能分析得出何时采用第一种方式，何时采用第二种方式。就是当需要在应用加载就要完成一些工作时，就需要选择第一种方式。当有很多Servlet的使用时机并不确定是，就选择第二种方式。</p>
+<p>在web.xml中是支持对Servlet的创建时机进行配置的，配置的方式如下：我们就以ServletDemo3为例。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置ServletDemo3--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo3<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.itheima.web.servlet.ServletDemo3<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--配置Servlet的创建顺序，当配置此标签时，Servlet就会改为应用加载时创建</span></span><br><span class="line"><span class="comment">        配置项的取值只能是正整数（包括0），数值越小，表明创建的优先级越高</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>servletDemo3<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/servletDemo3<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_13.png"/>
+
+<h4 id="4）默认Servlet"><a href="#4）默认Servlet" class="headerlink" title="4）默认Servlet"></a>4）默认Servlet</h4><p>默认Servlet是由服务器提供的一个Servlet，它配置在Tomcat的conf目录下的web.xml中。如下图所示：</p>
+<img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_14.png"/>
+
+<p>它的映射路径是<b><font color='red'><code>&lt;url-pattern&gt;/&lt;url-pattern&gt;</code></font></b>，我们在发送请求时，首先会在我们应用中的web.xml中查找映射配置，找到就执行，这块没有问题。但是当找不到对应的Servlet路径时，就去找默认的Servlet，由默认Servlet处理。所以，一切都是Servlet。</p>
+<h3 id="3-Servlet关系总图"><a href="#3-Servlet关系总图" class="headerlink" title="3 Servlet关系总图"></a>3 Servlet关系总图</h3><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/servlet1_15.png"/>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/Servlet/" rel="tag"><i class="fa fa-tag"></i> Servlet</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/19/HTTP_1_HTTP%E5%8D%8F%E8%AE%AE/" rel="prev" title="HTTP协议">
+      <i class="fa fa-chevron-left"></i> HTTP协议
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/06/Spring_%E6%96%AD%E8%A8%80%E5%B7%A5%E5%85%B7%E7%B1%BB/" rel="next" title="断言工具类">
+      断言工具类 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Servlet%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">1 Servlet入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Servlet%E7%BC%96%E7%A0%81%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Servlet编码步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%89%E7%BC%96%E7%A0%81%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.1.</span> <span class="nav-text">1）编码步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%89%E6%B5%8B%E8%AF%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">2）测试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Servlet%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Servlet执行过程分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Servlet%E7%B1%BB%E8%A7%86%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Servlet类视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Servlet%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Servlet编写方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%89%E7%BC%96%E5%86%99%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E"><span class="nav-number">1.4.1.</span> <span class="nav-text">1）编写方式说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%89HttpServlet%E7%9A%84%E4%BD%BF%E7%94%A8%E7%BB%86%E8%8A%82"><span class="nav-number">1.4.2.</span> <span class="nav-text">2）HttpServlet的使用细节</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Servlet%E4%BD%BF%E7%94%A8%E7%BB%86%E8%8A%82"><span class="nav-number">2.</span> <span class="nav-text">2 Servlet使用细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Servlet%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Servlet的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Servlet%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Servlet的线程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Servlet%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Servlet的注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%89%E6%98%A0%E5%B0%84Servlet%E7%9A%84%E7%BB%86%E8%8A%82"><span class="nav-number">2.3.1.</span> <span class="nav-text">1）映射Servlet的细节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%89%E5%A4%9A%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84Servlet"><span class="nav-number">2.3.2.</span> <span class="nav-text">2）多路径映射Servlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%EF%BC%89%E5%90%AF%E5%8A%A8%E6%97%B6%E5%88%9B%E5%BB%BAServlet"><span class="nav-number">2.3.3.</span> <span class="nav-text">3）启动时创建Servlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%EF%BC%89%E9%BB%98%E8%AE%A4Servlet"><span class="nav-number">2.3.4.</span> <span class="nav-text">4）默认Servlet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Servlet%E5%85%B3%E7%B3%BB%E6%80%BB%E5%9B%BE"><span class="nav-number">2.4.</span> <span class="nav-text">3 Servlet关系总图</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="与或非"
+      src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/blog_logo.jpg">
+  <p class="site-author-name" itemprop="name">与或非</p>
+  <div class="site-description" itemprop="description">个人成长记录与分享</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:jljing299@qq.com" title="E-Mail → mailto:jljing299@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      常看文章
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://daijing.online/2022/02/07/Vue_1_Vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="https:&#x2F;&#x2F;daijing.online&#x2F;2022&#x2F;02&#x2F;07&#x2F;Vue_1_Vue%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4&#x2F;" rel="noopener" target="_blank">Vue快速入门以及常用指令</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://daijing.online/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" title="https:&#x2F;&#x2F;daijing.online&#x2F;2020&#x2F;11&#x2F;28&#x2F;Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&#x2F;" rel="noopener" target="_blank">Linux命令大全</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">与或非</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">285k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:19</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
