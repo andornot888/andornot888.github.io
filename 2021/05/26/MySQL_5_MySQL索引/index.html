@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="与或非&#39;s Blog">
 <meta property="og:description" content="1.索引的概念 MySQL数据库中的索引：是帮助MySQL高效获取数据的一种数据结构！所以，索引的本质就是数据结构。  在表数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式指向数据， 这样就可以在这些数据结构上实现高级查找算法，这种数据结构就是索引。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/MySQL5_1.png">
-<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/MySQL5_2.png">
-<meta property="og:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/MySQL5_3.png">
+<meta property="og:image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/MySQL5_1.png">
+<meta property="og:image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/MySQL5_2.png">
+<meta property="og:image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/MySQL5_3.png">
 <meta property="article:published_time" content="2021-05-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-23T05:20:18.202Z">
+<meta property="article:modified_time" content="2022-03-28T01:26:52.331Z">
 <meta property="article:author" content="与或非">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/andornot888/andornot_images/raw/master//imgs/MySQL5_1.png">
+<meta name="twitter:image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/MySQL5_1.png">
 
 <link rel="canonical" href="https://daijing.online/2021/05/26/MySQL_5_MySQL%E7%B4%A2%E5%BC%95/">
 
@@ -201,7 +201,7 @@
     <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/05/26/MySQL_5_MySQL%E7%B4%A2%E5%BC%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/blog_logo.jpg">
+      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
       <meta itemprop="name" content="与或非">
       <meta itemprop="description" content="个人成长记录与分享">
     </span>
@@ -275,7 +275,7 @@
 <li><p>举例，无索引和有索引的查找原理</p>
 </li>
 </ul>
-<p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/MySQL5_1.png" alt="04"></p>
+<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/MySQL5_1.png" alt="04"></p>
 <h3 id="2-索引的分类"><a href="#2-索引的分类" class="headerlink" title="2.索引的分类"></a>2.索引的分类</h3><ul>
 <li>功能分类 <ul>
 <li>普通索引： 最基本的索引，它没有任何限制。</li>
@@ -334,7 +334,7 @@
 </ul>
 <h4 id="5-2BTree"><a href="#5-2BTree" class="headerlink" title="5.2BTree"></a>5.2BTree</h4><ul>
 <li><p>BTree结构的数据可以让系统高效的找到数据所在的磁盘块。为了描述BTree，首先定义一条记录为一个二元组[key, data] ，key为记录的键值，对应表中的主键值，data为一行记录中除主键外的数据。对于不同的记录，key值互不相同。BTree中的每个节点根据实际情况可以包含大量的关键字信息和分支，如下图所示为一个3阶的BTree： </p>
-<p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/MySQL5_2.png" alt="05"></p>
+<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/MySQL5_2.png" alt="05"></p>
 </li>
 <li><p>根据图中结构显示，每个节点占用一个盘块的磁盘空间，一个节点上有两个升序排序的关键字和三个指向子树根节点的指针，指针存储的是子节点所在磁盘块的地址。两个关键词划分成的三个范围域对应三个指针指向的子树的数据的范围域。以根节点为例，关键字为17和35，P1指针指向的子树的数据范围为小于17，P2指针指向的子树的数据范围为17~35，P3指针指向的子树的数据范围为大于35。</p>
 </li>
@@ -353,7 +353,7 @@
 </li>
 <li>将上一节中的BTree优化，由于B+Tree的非叶子节点只存储键值信息，假设每个磁盘块能存储4个键值及指针信息，则变成B+Tree后其结构如下图所示：</li>
 </ul>
-<p><img src="https://gitee.com/andornot888/andornot_images/raw/master//imgs/MySQL5_3.png" alt="06"></p>
+<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/MySQL5_3.png" alt="06"></p>
 <p>通常在B+Tree上有两个头指针，一个指向根节点，另一个指向关键字最小的叶子节点，而且所有叶子节点（即数据节点）之间是一种链式环结构。因此可以对B+Tree进行两种查找运算：</p>
 <ul>
 <li>【有范围】对于主键的范围查找和分页查找</li>
@@ -479,7 +479,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="与或非"
-      src="/images/blog_logo.jpg">
+      src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
   <p class="site-author-name" itemprop="name">与或非</p>
   <div class="site-description" itemprop="description">个人成长记录与分享</div>
 </div>
