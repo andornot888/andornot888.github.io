@@ -1111,7 +1111,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2020/12/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2020/12/16/Java_13_%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E6%89%A9%E5%B1%95%E5%90%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
@@ -1125,7 +1125,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">String类lastIndexOf() 方法</a>
+            <a href="/2020/12/16/Java_13_%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E6%89%A9%E5%B1%95%E5%90%8D/" class="post-title-link" itemprop="url">去除文件名的扩展名</a>
         </h2>
 
         <div class="post-meta">
@@ -1149,7 +1149,7 @@
             </span>
             <span class="post-meta-item">
                 <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-                <a href="/tags/API/" rel="tag"><i class="fa fa-tag"></i> API</a>
+                <a href="/tags/Tools/" rel="tag"><i class="fa fa-tag"></i> Tools</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -1157,14 +1157,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
+              <span>364</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -1176,16 +1176,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>lastIndexOf() 方法有以下四种形式：</p>
-<ul>
-<li><strong>public int lastIndexOf(int ch):</strong> 返回指定字符在此字符串中最后一次出现处的索引，如果此字符串中没有这样的字符，则返回 -1。</li>
-<li><strong>public int lastIndexOf(int ch, int fromIndex):</strong> 返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索，如果此字符串中没有这样的字符，则返回 -1。</li>
-<li><strong>public int lastIndexOf(String str):</strong> 返回指定子字符串在此字符串中最右边出现处的索引，如果此字符串中没有这样的字符，则返回 -1。</li>
-<li><strong>public int lastIndexOf(String str, int fromIndex):</strong> 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索，如果此字符串中没有这样的字符，则返回 -1。</li>
-</ul>
+          <p>在最后一个点，去除文件名的扩展名。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">removeExtension</span><span class="params">(String fname)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">pos</span> <span class="operator">=</span> fname.lastIndexOf(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos &gt; -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> fname.substring(<span class="number">0</span>, pos);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> fname;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/12/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/#more" rel="contents">
+              <a class="btn" href="/2020/12/16/Java_13_%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E6%89%A9%E5%B1%95%E5%90%8D/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1289,7 +1284,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
