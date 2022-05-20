@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>js编码和解码URI</title>
-      <link href="/2022/04/26/JavaScript_1_decodeURIComponent/"/>
-      <url>/2022/04/26/JavaScript_1_decodeURIComponent/</url>
+      <title>获取url参数值</title>
+      <link href="/2022/04/26/JavaScript_2_getUrlParam/"/>
+      <url>/2022/04/26/JavaScript_2_getUrlParam/</url>
       
-        <content type="html"><![CDATA[<table><thead><tr><th align="left">函数</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">decodeURI()</td><td align="left">解码某个编码的 URI。</td></tr><tr><td align="left">decodeURIComponent()</td><td align="left">解码一个编码的 URI 组件。</td></tr><tr><td align="left">encodeURI()</td><td align="left">把字符串编码为 URI。</td></tr><tr><td align="left">encodeURIComponent()</td><td align="left">把字符串编码为 URI 组件。</td></tr></tbody></table><p>在js中encodeURI()不会对”:”,”&#x2F;“等特殊含义的ASCII进行编码，同样也不会解码。</p><p>所以可以认为js中的解码decodeComponent()才是和java代码中的URLEncoder.encode()对应;</p><span id="more"></span><ul><li>使用 decodeURI() 对一个编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">encodeURI</span>(uri)+ <span class="string">&quot;&lt;br&gt;&quot;</span>); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURI</span>(uri));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my%20test.php?name=st%C3%A5le&amp;car=saab</span><br><span class="line">my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure><ul><li>使用 decodeURIComponent() 对编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;https://www.runoob.com/my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="keyword">var</span> uri_encode=<span class="built_in">encodeURIComponent</span>(uri); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(uri_encode); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURIComponent</span>(uri_encode));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https%3A%2F%2Fwww.runoob.com%2Fmy%20test.php%3Fname%3Dst%C3%A5le%26car%3Dsaab</span><br><span class="line">https://www.runoob.com/my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p> js获取取url参数值</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">function</span> <span class="title function_">getUrlParam</span>(<span class="params">name</span>) &#123;</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;(^|&amp;)&quot;</span> + name + <span class="string">&quot;=([^&amp;]*)(&amp;|$)&quot;</span>); <span class="comment">//构造一个含有目标参数的正则表达式对象</span></span><br><span class="line">        <span class="keyword">var</span> r = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>.<span class="title function_">substr</span>(<span class="number">1</span>).<span class="title function_">match</span>(reg); <span class="comment">//匹配目标参数</span></span><br><span class="line">        <span class="keyword">if</span> (r != <span class="literal">null</span>) <span class="keyword">return</span> <span class="built_in">decodeURI</span>(r[<span class="number">2</span>]); </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">//返回参数值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><span id="more"></span><p><a href="https://daijing.online/2022/04/26/JavaScript_1_decodeURIComponent/">js编码和解码URI | 与或非’s Blog (daijing.online)</a></p>]]></content>
       
       
       <categories>
@@ -31,11 +31,11 @@
     
     
     <entry>
-      <title>获取url参数值</title>
-      <link href="/2022/04/26/JavaScript_2_getUrlParam/"/>
-      <url>/2022/04/26/JavaScript_2_getUrlParam/</url>
+      <title>js编码和解码URI</title>
+      <link href="/2022/04/26/JavaScript_1_decodeURIComponent/"/>
+      <url>/2022/04/26/JavaScript_1_decodeURIComponent/</url>
       
-        <content type="html"><![CDATA[<p> js获取取url参数值</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">function</span> <span class="title function_">getUrlParam</span>(<span class="params">name</span>) &#123;</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;(^|&amp;)&quot;</span> + name + <span class="string">&quot;=([^&amp;]*)(&amp;|$)&quot;</span>); <span class="comment">//构造一个含有目标参数的正则表达式对象</span></span><br><span class="line">        <span class="keyword">var</span> r = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>.<span class="title function_">substr</span>(<span class="number">1</span>).<span class="title function_">match</span>(reg); <span class="comment">//匹配目标参数</span></span><br><span class="line">        <span class="keyword">if</span> (r != <span class="literal">null</span>) <span class="keyword">return</span> <span class="built_in">decodeURI</span>(r[<span class="number">2</span>]); </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">//返回参数值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><span id="more"></span><p><a href="https://daijing.online/2022/04/26/JavaScript_1_decodeURIComponent/">js编码和解码URI | 与或非’s Blog (daijing.online)</a></p>]]></content>
+        <content type="html"><![CDATA[<table><thead><tr><th align="left">函数</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">decodeURI()</td><td align="left">解码某个编码的 URI。</td></tr><tr><td align="left">decodeURIComponent()</td><td align="left">解码一个编码的 URI 组件。</td></tr><tr><td align="left">encodeURI()</td><td align="left">把字符串编码为 URI。</td></tr><tr><td align="left">encodeURIComponent()</td><td align="left">把字符串编码为 URI 组件。</td></tr></tbody></table><p>在js中encodeURI()不会对”:”,”&#x2F;“等特殊含义的ASCII进行编码，同样也不会解码。</p><p>所以可以认为js中的解码decodeComponent()才是和java代码中的URLEncoder.encode()对应;</p><span id="more"></span><ul><li>使用 decodeURI() 对一个编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">encodeURI</span>(uri)+ <span class="string">&quot;&lt;br&gt;&quot;</span>); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURI</span>(uri));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my%20test.php?name=st%C3%A5le&amp;car=saab</span><br><span class="line">my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure><ul><li>使用 decodeURIComponent() 对编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;https://www.runoob.com/my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="keyword">var</span> uri_encode=<span class="built_in">encodeURIComponent</span>(uri); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(uri_encode); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURIComponent</span>(uri_encode));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https%3A%2F%2Fwww.runoob.com%2Fmy%20test.php%3Fname%3Dst%C3%A5le%26car%3Dsaab</span><br><span class="line">https://www.runoob.com/my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -164,7 +164,7 @@
       <link href="/2022/03/15/resume/"/>
       <url>/2022/03/15/resume/</url>
       
-        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#106;&#x6c;&#x6a;&#x69;&#110;&#x67;&#50;&#57;&#57;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#106;&#x6c;&#x6a;&#x69;&#110;&#x67;&#50;&#57;&#57;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
+        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#x6a;&#x6c;&#x6a;&#105;&#110;&#103;&#x32;&#x39;&#x39;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#x6a;&#x6c;&#x6a;&#105;&#110;&#103;&#x32;&#x39;&#x39;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
       
       
       <categories>
@@ -177,6 +177,195 @@
         <tags>
             
             <tag> 个人简历 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_9/"/>
+      <url>/2022/03/09/zuo_9/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法课 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（八）——前缀树、不基于比较的排序（计数排序、基数排序）、排序算法的稳定性</title>
+      <link href="/2022/03/08/zuo_8/"/>
+      <url>/2022/03/08/zuo_8/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>前缀树</p><p>计数排序</p><p>基数排序</p><p>排序算法的稳定性</p><span id="more"></span><p>题目：</p><p>前缀树实现</p><p>计数排序</p><p>基数排序</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法课 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（七）——和堆有关的面试题、加强堆结构</title>
+      <link href="/2022/03/07/zuo_7/"/>
+      <url>/2022/03/07/zuo_7/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>线段最大重合问题</p><p>加强堆的实现</p><span id="more"></span><p>题目：</p><p>给定很多线段，每个线段都有两个数[start, end]，<br>表示线段开始位置和结束位置，左右都是闭区间<br>规定：<br>1）线段的开始和结束位置一定都是整数值<br>2）线段重合区域的长度必须&gt;&#x3D;1<br>返回线段最多重合区域中，包含了几条线段</p><p>加强堆的实现、注意点解析</p><p>做一个加强堆的题目，给定一个整型数组，int[] arr；和一个布尔类型数组，boolean[] op<br>两个数组一定等长，假设长度为N，arr[i]表示客户编号，op[i]表示客户操作<br>arr&#x3D; [3,3,1,2,1,2,5…<br>op &#x3D; [T,T,T,T,F,T,F…<br>依次表示：<br>3用户购买了一件商品<br>3用户购买了一件商品<br>1用户购买了一件商品<br>2用户购买了一件商品<br>1用户退货了一件商品<br>2用户购买了一件商品<br>5用户退货了一件商品…<br>一对arr[i]和op[i]就代表一个事件：<br>用户号为arr[i]，op[i] &#x3D;&#x3D; T就代表这个用户购买了一件商品<br>op[i] &#x3D;&#x3D; F就代表这个用户退货了一件商品<br>现在你作为电商平台负责人，你想在每一个事件到来的时候，<br>都给购买次数最多的前K名用户颁奖。<br>所以每个事件发生后，你都需要一个得奖名单（得奖区）。<br>得奖系统的规则：<br>1，如果某个用户购买商品数为0，但是又发生了退货事件，<br>     则认为该事件无效，得奖名单和上一个事件发生后一致，例子中的5用户<br>2，某用户发生购买商品事件，购买商品数+1，发生退货事件，购买商品数-1<br>3，每次都是最多K个用户得奖，K也为传入的参数<br>      如果根据全部规则，得奖人数确实不够K个，那就以不够的情况输出结果<br>4，得奖系统分为得奖区和候选区，任何用户只要购买数&gt;0，<br>      一定在这两个区域中的一个<br>5，购买数最大的前K名用户进入得奖区，<br>      在最初时如果得奖区没有到达K个用户，那么新来的用户直接进入得奖区<br>6，如果购买数不足以进入得奖区的用户，进入候选区<br>7，如果候选区购买数最多的用户，已经足以进入得奖区，<br>     该用户就会替换得奖区中购买数最少的用户（大于才能替换），<br>     如果得奖区中购买数最少的用户有多个，就替换最早进入得奖区的用户<br>     如果候选区中购买数最多的用户有多个，机会会给最早进入候选区的用户<br>8，候选区和得奖区是两套时间，<br>     因用户只会在其中一个区域，所以只会有一个区域的时间，另一个没有<br>     从得奖区出来进入候选区的用户，得奖区时间删除，<br>     进入候选区的时间就是当前事件的时间（可以理解为arr[i]和op[i]中的i）<br>     从候选区出来进入得奖区的用户，候选区时间删除，<br>     进入得奖区的时间就是当前事件的时间（可以理解为arr[i]和op[i]中的i）<br>9，如果某用户购买数&#x3D;&#x3D;0，不管在哪个区域都离开，区域时间删除，<br>     离开是指彻底离开，哪个区域也不会找到该用户<br>     如果下次该用户又发生购买行为，产生&gt;0的购买数，<br>     会再次根据之前规则回到某个区域中，进入区域的时间重记<br>请遍历arr数组和op数组，遍历每一步输出一个得奖名单<br>public List&lt;List<Integer>&gt;  topK (int[] arr, boolean[] op, int k)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法课 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（六）——比较器、堆结构、堆排序</title>
+      <link href="/2022/03/06/zuo_6/"/>
+      <url>/2022/03/06/zuo_6/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>比较器</p><p>堆结构</p><p>堆排序</p><p>建立大根堆的两种方式，从上到下、从下到上，及其复杂度分析</p><span id="more"></span><p>题目：</p><p>比较器使用的code展示</p><p>堆结构的实现</p><p>堆排序的实现</p><p>已知一个几乎有序的数组。几乎有序是指，如果把数组排好顺序的话，每个元素移动的距离一定不超过k<br>k相对于数组长度来说是比较小的。请选择一个合适的排序策略，对这个数组进行排序。 </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法课 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（五）——归并排序面试题(续)、快速排序</title>
+      <link href="/2022/03/05/zuo_5/"/>
+      <url>/2022/03/05/zuo_5/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>再来一个归并排序面试题</p><p>荷兰国旗问题</p><p>快速排序1.0</p><p>快速排序2.0</p><p>快速排序3.0</p><span id="more"></span><p>题目：</p><p>给定一个数组arr，两个整数lower和upper，<br>返回arr中有多少个子数组的累加和在[lower,upper]范围上<br>Leetcode题目：<a href="https://leetcode.com/problems/count-of-range-sum/">https://leetcode.com/problems/count-of-range-sum/</a></p><p>荷兰国旗问题的实现</p><p>快速排序从1.0到3.0的实现</p><p>快速排序的递归实现和非递归实现</p><p>code附加，双向链表进行快速排序的code实现</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法课 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四）——归并排序及其常见面试题</title>
+      <link href="/2022/03/04/zuo_4/"/>
+      <url>/2022/03/04/zuo_4/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>归并排序</p><span id="more"></span><p>题目：</p><p>归并排序的递归和非递归实现</p><p>在一个数组中，一个数左边比它小的数的总和，叫该数的小和<br>所有数的小和累加起来，叫数组小和<br>例子： [1,3,4,2,5]<br>1左边比1小的数：没有<br>3左边比3小的数：1<br>4左边比4小的数：1、3<br>2左边比2小的数：1<br>5左边比5小的数：1、3、4、 2<br>所以数组的小和为1+1+3+1+1+3+4+2&#x3D;16<br>给定一个数组arr，求数组小和</p><p>在一个数组中，任何一个前面的数a，和任何一个后面的数b，如果(a,b)是降序的，就称为降序对<br>给定一个数组arr，求数组的降序对总数量</p><p>在一个数组中，对于任何一个数num，求有多少个(后面的数*2)依然&lt;num，返回总个数<br>比如：[3,1,7,0,2]<br>3的后面有：1，0<br>1的后面有：0<br>7的后面有：0，2<br>0的后面没有<br>2的后面没有<br>所以总共有5个</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法课 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三）——单双链表、栈和队列、递归和Master公式、哈希表和有序表的使用和性能</title>
+      <link href="/2022/03/03/zuo_3/"/>
+      <url>/2022/03/03/zuo_3/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>单链表、双链表</p><p>栈、队列</p><p>递归的物理实质</p><p>评估递归复杂度的Master公式</p><p>哈希表的使用和性能</p><p>有序表的使用和性能</p><span id="more"></span><p>题目：</p><p>反转单链表、反转双链表</p><p>在链表中删除指定值的所有节点</p><p>用双链表实现栈和队列</p><p>用环形数组实现栈和队列</p><p>实现有getMin功能的栈</p><p>两个栈实现队列</p><p>两个队列实现栈</p><p>用递归行为得到数组中的最大值，并用master公式来估计时间复杂度</p><p>哈希表和有序表使用的code展示</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法课 </tag>
             
         </tags>
       
@@ -361,9 +550,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> SpringMVC </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
