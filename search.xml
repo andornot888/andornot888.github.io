@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>js编码和解码URI</title>
+      <link href="/2022/04/26/JavaScript_1_decodeURIComponent/"/>
+      <url>/2022/04/26/JavaScript_1_decodeURIComponent/</url>
+      
+        <content type="html"><![CDATA[<table><thead><tr><th align="left">函数</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">decodeURI()</td><td align="left">解码某个编码的 URI。</td></tr><tr><td align="left">decodeURIComponent()</td><td align="left">解码一个编码的 URI 组件。</td></tr><tr><td align="left">encodeURI()</td><td align="left">把字符串编码为 URI。</td></tr><tr><td align="left">encodeURIComponent()</td><td align="left">把字符串编码为 URI 组件。</td></tr></tbody></table><p>在js中encodeURI()不会对”:”,”&#x2F;“等特殊含义的ASCII进行编码，同样也不会解码。</p><p>所以可以认为js中的解码decodeComponent()才是和java代码中的URLEncoder.encode()对应;</p><span id="more"></span><ul><li>使用 decodeURI() 对一个编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">encodeURI</span>(uri)+ <span class="string">&quot;&lt;br&gt;&quot;</span>); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURI</span>(uri));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my%20test.php?name=st%C3%A5le&amp;car=saab</span><br><span class="line">my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure><ul><li>使用 decodeURIComponent() 对编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;https://www.runoob.com/my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="keyword">var</span> uri_encode=<span class="built_in">encodeURIComponent</span>(uri); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(uri_encode); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURIComponent</span>(uri_encode));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https%3A%2F%2Fwww.runoob.com%2Fmy%20test.php%3Fname%3Dst%C3%A5le%26car%3Dsaab</span><br><span class="line">https://www.runoob.com/my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Tools </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>获取url参数值</title>
       <link href="/2022/04/26/JavaScript_2_getUrlParam/"/>
       <url>/2022/04/26/JavaScript_2_getUrlParam/</url>
@@ -31,25 +58,23 @@
     
     
     <entry>
-      <title>js编码和解码URI</title>
-      <link href="/2022/04/26/JavaScript_1_decodeURIComponent/"/>
-      <url>/2022/04/26/JavaScript_1_decodeURIComponent/</url>
+      <title>根据身份证号提取省份、出生日期、年龄、性别</title>
+      <link href="/2022/04/25/MySQL_16_%E6%A0%B9%E6%8D%AE%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%B7%E6%8F%90%E5%8F%96%E7%9C%81%E4%BB%BD%E3%80%81%E5%87%BA%E7%94%9F%E6%97%A5%E6%9C%9F%E3%80%81%E5%B9%B4%E9%BE%84%E3%80%81%E6%80%A7%E5%88%AB/"/>
+      <url>/2022/04/25/MySQL_16_%E6%A0%B9%E6%8D%AE%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%B7%E6%8F%90%E5%8F%96%E7%9C%81%E4%BB%BD%E3%80%81%E5%87%BA%E7%94%9F%E6%97%A5%E6%9C%9F%E3%80%81%E5%B9%B4%E9%BE%84%E3%80%81%E6%80%A7%E5%88%AB/</url>
       
-        <content type="html"><![CDATA[<table><thead><tr><th align="left">函数</th><th align="left">描述</th></tr></thead><tbody><tr><td align="left">decodeURI()</td><td align="left">解码某个编码的 URI。</td></tr><tr><td align="left">decodeURIComponent()</td><td align="left">解码一个编码的 URI 组件。</td></tr><tr><td align="left">encodeURI()</td><td align="left">把字符串编码为 URI。</td></tr><tr><td align="left">encodeURIComponent()</td><td align="left">把字符串编码为 URI 组件。</td></tr></tbody></table><p>在js中encodeURI()不会对”:”,”&#x2F;“等特殊含义的ASCII进行编码，同样也不会解码。</p><p>所以可以认为js中的解码decodeComponent()才是和java代码中的URLEncoder.encode()对应;</p><span id="more"></span><ul><li>使用 decodeURI() 对一个编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">encodeURI</span>(uri)+ <span class="string">&quot;&lt;br&gt;&quot;</span>); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURI</span>(uri));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my%20test.php?name=st%C3%A5le&amp;car=saab</span><br><span class="line">my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure><ul><li>使用 decodeURIComponent() 对编码后的 URI 进行解码：</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uri=<span class="string">&quot;https://www.runoob.com/my test.php?name=ståle&amp;car=saab&quot;</span>; </span><br><span class="line"><span class="keyword">var</span> uri_encode=<span class="built_in">encodeURIComponent</span>(uri); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(uri_encode); </span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURIComponent</span>(uri_encode));</span><br></pre></td></tr></table></figure><p>以上实例输出结果:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https%3A%2F%2Fwww.runoob.com%2Fmy%20test.php%3Fname%3Dst%C3%A5le%26car%3Dsaab</span><br><span class="line">https://www.runoob.com/my test.php?name=ståle&amp;car=saab</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>sql语句——根据身份证号提取省份、出生日期、年龄、性别。</p><p>原表：</p><p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql16_1.png" alt="img"></p><span id="more"></span><p>sql语句：</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">left</span>(cardid,<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;11&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;北京市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;12&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;天津市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;13&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;河北省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;14&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;山西省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;15&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;内蒙古自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;21&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;辽宁省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;22&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;吉林省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;23&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;黑龙江省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;31&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;上海市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;32&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;江苏省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;33&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;浙江省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;34&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;安徽省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;35&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;福建省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;36&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;江西省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;37&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;山东省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;41&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;河南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;42&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;湖北省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;43&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;湖南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;44&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;广东省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;45&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;广西壮族自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;46&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;海南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;50&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;重庆市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;51&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;四川省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;52&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;贵州省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;53&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;云南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;54&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;西藏自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;61&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;陕西省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;62&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;甘肃省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;63&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;青海省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;64&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;宁夏回族自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;65&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;新疆维吾尔自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;71&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;台湾省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;81&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;香港特别行政区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;82&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;澳门特别行政区&#x27;</span></span><br><span class="line">  <span class="keyword">else</span> <span class="string">&#x27;未知&#x27;</span></span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">AS</span> 地域 ,  </span><br><span class="line">  <span class="built_in">cast</span>(<span class="built_in">substring</span>(cardid,<span class="number">7</span>,<span class="number">8</span>) <span class="keyword">as</span> <span class="type">date</span>) <span class="keyword">as</span> 出生日期,</span><br><span class="line">  <span class="keyword">year</span>(curdate())<span class="operator">-</span>if(length(cardid)<span class="operator">=</span><span class="number">18</span>,<span class="built_in">substring</span>(cardid,<span class="number">7</span>,<span class="number">4</span>),</span><br><span class="line">                     if(length(cardid)<span class="operator">=</span><span class="number">15</span>,concat(<span class="string">&#x27;19&#x27;</span>,<span class="built_in">substring</span>(cardid,<span class="number">7</span>,<span class="number">2</span>)),<span class="keyword">null</span>)) <span class="keyword">as</span> 年龄,</span><br><span class="line">  <span class="keyword">case</span> if(length(cardid)<span class="operator">=</span><span class="number">18</span>, <span class="built_in">cast</span>(<span class="built_in">substring</span>(cardid,<span class="number">17</span>,<span class="number">1</span>) <span class="keyword">as</span> UNSIGNED)<span class="operator">%</span><span class="number">2</span>, if(length(cardid)<span class="operator">=</span><span class="number">15</span>,<span class="built_in">cast</span>(<span class="built_in">substring</span>(cardid,<span class="number">15</span>,<span class="number">1</span>) <span class="keyword">as</span> UNSIGNED)<span class="operator">%</span><span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">  <span class="keyword">when</span> <span class="number">1</span> <span class="keyword">then</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="number">0</span> <span class="keyword">then</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line">  <span class="keyword">else</span> <span class="string">&#x27;未知&#x27;</span></span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">AS</span> 性别</span><br><span class="line">  <span class="keyword">FROM</span> id;</span><br></pre></td></tr></table></figure><p>返回结果：</p><p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql16_2.png" alt="img"></p>]]></content>
       
       
       <categories>
           
-          <category> 前端 </category>
+          <category> 后端 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Tools </tag>
-            
-            <tag> JavaScript </tag>
+            <tag> MySQL </tag>
             
         </tags>
       
@@ -85,23 +110,403 @@
     
     
     <entry>
-      <title>根据身份证号提取省份、出生日期、年龄、性别</title>
-      <link href="/2022/04/06/MySQL_16_%E6%A0%B9%E6%8D%AE%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%B7%E6%8F%90%E5%8F%96%E7%9C%81%E4%BB%BD%E3%80%81%E5%87%BA%E7%94%9F%E6%97%A5%E6%9C%9F%E3%80%81%E5%B9%B4%E9%BE%84%E3%80%81%E6%80%A7%E5%88%AB/"/>
-      <url>/2022/04/06/MySQL_16_%E6%A0%B9%E6%8D%AE%E8%BA%AB%E4%BB%BD%E8%AF%81%E5%8F%B7%E6%8F%90%E5%8F%96%E7%9C%81%E4%BB%BD%E3%80%81%E5%87%BA%E7%94%9F%E6%97%A5%E6%9C%9F%E3%80%81%E5%B9%B4%E9%BE%84%E3%80%81%E6%80%A7%E5%88%AB/</url>
+      <title>算法数据结构体系学习班（四十七）——动态规划猜法中和外部信息简化的相关问题（下）、最大网络流算法之Dinic算法</title>
+      <link href="/2022/04/16/zuo_system_study47/"/>
+      <url>/2022/04/16/zuo_system_study47/</url>
       
-        <content type="html"><![CDATA[<p>sql语句——根据身份证号提取省份、出生日期、年龄、性别。</p><p>原表：</p><p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql16_1.png" alt="img"></p><span id="more"></span><p>sql语句：</p> <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="keyword">case</span> <span class="keyword">left</span>(cardid,<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;11&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;北京市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;12&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;天津市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;13&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;河北省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;14&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;山西省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;15&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;内蒙古自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;21&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;辽宁省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;22&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;吉林省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;23&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;黑龙江省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;31&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;上海市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;32&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;江苏省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;33&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;浙江省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;34&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;安徽省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;35&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;福建省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;36&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;江西省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;37&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;山东省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;41&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;河南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;42&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;湖北省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;43&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;湖南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;44&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;广东省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;45&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;广西壮族自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;46&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;海南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;50&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;重庆市&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;51&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;四川省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;52&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;贵州省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;53&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;云南省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;54&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;西藏自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;61&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;陕西省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;62&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;甘肃省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;63&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;青海省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;64&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;宁夏回族自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;65&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;新疆维吾尔自治区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;71&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;台湾省&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;81&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;香港特别行政区&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="string">&#x27;82&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;澳门特别行政区&#x27;</span></span><br><span class="line">  <span class="keyword">else</span> <span class="string">&#x27;未知&#x27;</span></span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">AS</span> 地域 ,  </span><br><span class="line">  <span class="built_in">cast</span>(<span class="built_in">substring</span>(cardid,<span class="number">7</span>,<span class="number">8</span>) <span class="keyword">as</span> <span class="type">date</span>) <span class="keyword">as</span> 出生日期,</span><br><span class="line">  <span class="keyword">year</span>(curdate())<span class="operator">-</span>if(length(cardid)<span class="operator">=</span><span class="number">18</span>,<span class="built_in">substring</span>(cardid,<span class="number">7</span>,<span class="number">4</span>),</span><br><span class="line">                     if(length(cardid)<span class="operator">=</span><span class="number">15</span>,concat(<span class="string">&#x27;19&#x27;</span>,<span class="built_in">substring</span>(cardid,<span class="number">7</span>,<span class="number">2</span>)),<span class="keyword">null</span>)) <span class="keyword">as</span> 年龄,</span><br><span class="line">  <span class="keyword">case</span> if(length(cardid)<span class="operator">=</span><span class="number">18</span>, <span class="built_in">cast</span>(<span class="built_in">substring</span>(cardid,<span class="number">17</span>,<span class="number">1</span>) <span class="keyword">as</span> UNSIGNED)<span class="operator">%</span><span class="number">2</span>, if(length(cardid)<span class="operator">=</span><span class="number">15</span>,<span class="built_in">cast</span>(<span class="built_in">substring</span>(cardid,<span class="number">15</span>,<span class="number">1</span>) <span class="keyword">as</span> UNSIGNED)<span class="operator">%</span><span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line">  <span class="keyword">when</span> <span class="number">1</span> <span class="keyword">then</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line">  <span class="keyword">when</span> <span class="number">0</span> <span class="keyword">then</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line">  <span class="keyword">else</span> <span class="string">&#x27;未知&#x27;</span></span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">AS</span> 性别</span><br><span class="line">  <span class="keyword">FROM</span> id;</span><br></pre></td></tr></table></figure><p>返回结果：</p><p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql16_2.png" alt="img"></p>]]></content>
+        <content type="html"><![CDATA[<p>内容：</p><p>进一步解决带有”外部信息简化”特征的动态规划</p><p>Dinic算法</p><span id="more"></span><p>题目：</p><p>有台奇怪的打印机有以下两个特殊要求：<br>打印机每次只能打印由同一个字符组成的序列。<br>每次可以在任意起始和结束位置打印新字符，并且会覆盖掉原来已有的字符。<br>给你一个字符串s，你的任务是计算这个打印机打印它需要的最少打印次数。<br>Leetcode题目：<a href="https://leetcode.com/problems/strange-printer/">https://leetcode.com/problems/strange-printer/</a></p><p>整型数组arr长度为n(3 &lt;&#x3D; n &lt;&#x3D; 10^4)，最初每个数字是&lt;&#x3D;200的正数且满足如下条件：</p><ol><li>0位置的要求：arr[0]&lt;&#x3D;arr[1] </li><li>n-1位置的要求：arr[n-1]&lt;&#x3D;arr[n-2]</li><li>中间i位置的要求：arr[i]&lt;&#x3D;max(arr[i-1],arr[i+1])<br>但是在arr有些数字丢失了，比如k位置的数字之前是正数，丢失之后k位置的数字为0<br>请你根据上述条件，计算可能有多少种不同的arr可以满足以上条件<br>比如 [6,0,9] 只有还原成 [6,9,9]满足全部三个条件，所以返回1，即[6,9,9]达标</li></ol><p>Dinic算法详解<br>测试链接：<a href="https://lightoj.com/problem/internet-bandwidth">https://lightoj.com/problem/internet-bandwidth</a></p>]]></content>
       
       
       <categories>
           
-          <category> 后端 </category>
+          <category> 课程笔记 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> MySQL </tag>
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四十六）——动态规划猜法中和外部信息简化的相关问题（上）、哈夫曼树</title>
+      <link href="/2022/04/15/zuo_system_study46/"/>
+      <url>/2022/04/15/zuo_system_study46/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>以18节做总纲</p><p>有些动态规划面试题，需要很好的设计参数，这种设计方式都有”外部信息简化”的特征</p><p>哈夫曼树</p><span id="more"></span><p>题目：</p><p>有n个气球，编号为0到n-1，每个气球上都标有一个数字，这些数字存在数组nums中<br>现在要求你戳破所有的气球。戳破第i个气球，你可以获得nums[i - 1] * nums[i] * nums[i + 1] 枚硬币<br>这里的i-1和i+1代表和i相邻的、没有被戳爆的！两个气球的序号<br>如果i-1或i+1超出了数组的边界，那么就当它是一个数字为1的气球<br>求所能获得硬币的最大数量<br>Leetcode题目：<a href="https://leetcode.com/problems/burst-balloons/">https://leetcode.com/problems/burst-balloons/</a></p><p>给出一些不同颜色的盒子，盒子的颜色由数字表示，即不同的数字表示不同的颜色，你将经过若干轮操作去去掉盒子<br>直到所有的盒子都去掉为止，每一轮你可以移除具有相同颜色的连续k个盒子（k &gt;&#x3D; 1）<br>这样一轮之后你将得到 k * k 个积分，当你将所有盒子都去掉之后，求你能获得的最大积分和<br>Leetcode题目：<a href="https://leetcode.com/problems/remove-boxes/">https://leetcode.com/problems/remove-boxes/</a></p><p>如果一个字符相邻的位置没有相同字符，那么这个位置的字符出现不能被消掉<br>比如:”ab”，其中a和b都不能被消掉<br>如果一个字符相邻的位置有相同字符，就可以一起消掉<br>比如:”abbbc”，中间一串的b是可以被消掉的，消除之后剩下”ac”<br>某些字符如果消掉了，剩下的字符认为重新靠在一起<br>给定一个字符串，你可以决定每一步消除的顺序，目标是请尽可能多的消掉字符，返回最少的剩余字符数量<br>比如：”aacca”, 如果先消掉最左侧的”aa”，那么将剩下”cca”，然后把”cc”消掉，剩下的”a”将无法再消除，返回1<br>但是如果先消掉中间的”cc”，那么将剩下”aaa”，最后都消掉就一个字符也不剩了，返回0，这才是最优解。<br>再比如：”baaccabb”，<br>如果先消除最左侧的两个a，剩下”bccabb”，如果再消除最左侧的两个c，剩下”babb”，最后消除最右侧的两个b，剩下”ba”无法再消除，返回2<br>而最优策略是：<br>如果先消除中间的两个c，剩下”baaabb”，如果再消除中间的三个a，剩下”bbb”，最后消除三个b，不留下任何字符，返回0，这才是最优解</p><p>给定一个数组arr，和一个正数M，返回在arr的子数组在长度不超过M的情况下，最大的累加和</p><p>哈夫曼树的实现</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四十五）——后缀数组解决的面试题</title>
+      <link href="/2022/04/14/zuo_system_study45/"/>
+      <url>/2022/04/14/zuo_system_study45/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>通过题目进一步熟悉DC3算法</p><p>通过DC3算法得到height数组</p><span id="more"></span><p>题目：</p><p>给定两个字符串str1和str2，想把str2整体插入到str1中的某个位置，形成最大的字典序，返回字典序最大的结果</p><p>给两个长度分别为M和N的整型数组nums1和nums2，其中每个值都不大于9，再给定一个正数K。 你可以在nums1和nums2中挑选数字，要求一共挑选K个，并且要从左到右挑。返回所有可能的结果中，代表最大数字的结果</p><p>最长公共子串问题是面试常见题目之一，假设str1长度N，str2长度M<br>一般在面试场上回答出O(N<em>M)的解法已经是比较优秀了<br>因为得到O(N</em>M)的解法，就已经需要用到动态规划了<br>但其实这个问题的最优解是O(N+M)，需要用到后缀数组+height数组<br>课上将对本题解法代码进行详解</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四十四）——DC3生成后缀数组详解</title>
+      <link href="/2022/04/13/zuo_system_study44/"/>
+      <url>/2022/04/13/zuo_system_study44/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>后缀数组</p><p>介绍用DC3算法生成后缀数组的流程</p><span id="more"></span><p>题目：</p><p>给你一个字符串 s，找出它的所有子串并按字典序排列，返回排在最后的那个子串<br>Leetcode题目：<a href="https://leetcode.com/problems/last-substring-in-lexicographical-order/">https://leetcode.com/problems/last-substring-in-lexicographical-order/</a></p><p>DC3算法的实现（完全根据论文描述）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四十三）——状态压缩的动态规划</title>
+      <link href="/2022/04/12/zuo_system_study43/"/>
+      <url>/2022/04/12/zuo_system_study43/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>动态规划的状态压缩技巧</p><span id="more"></span><p>题目：</p><p>在”100 game”这个游戏中，两名玩家轮流选择从1到10的任意整数，累计整数和<br>先使得累计整数和达到或超过100的玩家，即为胜者，如果我们将游戏规则改为 “玩家不能重复使用整数” 呢？<br>例如，两个玩家可以轮流从公共整数池中抽取从1到15的整数（不放回），直到累计整数和 &gt;&#x3D; 100<br>给定一个整数 maxChoosableInteger （整数池中可选择的最大数）和另一个整数 desiredTotal（累计和）<br>判断先出手的玩家是否能稳赢（假设两位玩家游戏时都表现最佳）<br>你可以假设 maxChoosableInteger 不会大于 20， desiredTotal 不会大于 300。<br>Leetcode题目：<a href="https://leetcode.com/problems/can-i-win/">https://leetcode.com/problems/can-i-win/</a></p><p>TSP问题<br>有N个城市，任何两个城市之间的都有距离，任何一座城市到自己的距离都为0<br>所有点到点的距离都存在一个N*N的二维数组matrix里，也就是整张图由邻接矩阵表示<br>现要求一旅行商从k城市出发必须经过每一个城市且只在一个城市逗留一次，最后回到出发的k城<br>参数给定一个matrix，给定k。返回总距离最短的路的距离</p><p>铺砖问题（最优解其实是轮廓线dp，但是这个解法对大厂刷题来说比较难，掌握课上的解法即可）<br>你有无限的1<em>2的砖块，要铺满M</em>N的区域，<br>不同的铺法有多少种?</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四十二）——四边形不等式技巧（下）</title>
+      <link href="/2022/04/11/zuo_system_study42/"/>
+      <url>/2022/04/11/zuo_system_study42/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>继续熟悉四边形不等式</p><p>展示好的尝试是最关键的</p><span id="more"></span><p>题目：</p><p>一条直线上有居民点，邮局只能建在居民点上<br>给定一个有序正数数组arr，每个值表示 居民点的一维坐标，再给定一个正数 num，表示邮局数量<br>选择num个居民点建立num个邮局，使所有的居民点到最近邮局的总距离最短，返回最短的总距离<br>arr&#x3D;[1,2,3,4,5,1000]，num&#x3D;2<br>第一个邮局建立在3位置，第二个邮局建立在1000位置<br>那么1位置到邮局的距离为2，2位置到邮局距离为1，3位置到邮局的距离为0，4位置到邮局的距离为1，5位置到邮局的距离为2<br>1000位置到邮局的距离为0<br>这种方案下的总距离为6，其他任何方案的总距离都不会比该方案的总距离更短，所以返回6</p><p>一座大楼有0<del>N层，地面算作第0层，最高的一层为第N层<br>已知棋子从第0层掉落肯定不会摔碎，从第i层掉落可能会摔碎，也可能不会摔碎(1≤i≤N)<br>给定整数N作为楼层数，再给定整数K作为棋子数<br>返回如果想找到棋子不会摔碎的最高层数，即使在最差的情况下扔的最少次数<br>一次只能扔一个棋子<br>N&#x3D;10，K&#x3D;1<br>返回10<br>因为只有1棵棋子，所以不得不从第1层开始一直试到第10层<br>在最差的情况下，即第10层是不会摔坏的最高层，最少也要扔10次<br>N&#x3D;3，K&#x3D;2<br>返回2<br>先在2层扔1棵棋子，如果碎了试第1层，如果没碎试第3层<br>N&#x3D;105，K&#x3D;2<br>返回14<br>第一个棋子先在14层扔，碎了则用仅存的一个棋子试1</del>13<br>若没碎，第一个棋子继续在27层扔，碎了则用仅存的一个棋子试15<del>26<br>若没碎，第一个棋子继续在39层扔，碎了则用仅存的一个棋子试28</del>38<br>若没碎，第一个棋子继续在50层扔，碎了则用仅存的一个棋子试40<del>49<br>若没碎，第一个棋子继续在60层扔，碎了则用仅存的一个棋子试51</del>59<br>若没碎，第一个棋子继续在69层扔，碎了则用仅存的一个棋子试61<del>68<br>若没碎，第一个棋子继续在77层扔，碎了则用仅存的一个棋子试70</del>76<br>若没碎，第一个棋子继续在84层扔，碎了则用仅存的一个棋子试78<del>83<br>若没碎，第一个棋子继续在90层扔，碎了则用仅存的一个棋子试85</del>89<br>若没碎，第一个棋子继续在95层扔，碎了则用仅存的一个棋子试91<del>94<br>若没碎，第一个棋子继续在99层扔，碎了则用仅存的一个棋子试96</del>98<br>若没碎，第一个棋子继续在102层扔，碎了则用仅存的一个棋子试100、101<br>若没碎，第一个棋子继续在104层扔，碎了则用仅存的一个棋子试103<br>若没碎，第一个棋子继续在105层扔，若到这一步还没碎，那么105便是结果</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四十一）——四边形不等式技巧（上）</title>
+      <link href="/2022/04/10/zuo_system_study41/"/>
+      <url>/2022/04/10/zuo_system_study41/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>区间划分问题中的划分点不回退现象</p><p>四边形不等式技巧特征<br>1，两个可变参数的区间划分问题<br>2，每个格子有枚举行为<br>3，当两个可变参数固定一个，另一个参数和答案之间存在单调性关系<br>4，而且两组单调关系是反向的：(升 升，降 降)  (升 降，降 升)<br>5，能否获得指导枚举优化的位置对：上+右，或者，左+下</p><p>四边形不等式技巧注意点<br>1，不要证明！用对数器验证！<br>2，枚举的时候面对最优答案相等的时候怎么处理？用对数器都试试！<br>3，可以把时间复杂度降低一阶<br>O(N^3) -&gt; O(N^2)<br>O(N^2 * M) -&gt; O(N * M)<br>O(N * M^2) -&gt; O(N * M)<br>4，四边形不等式有些时候是最优解，有些时候不是<br>不是的原因：尝试思路，在根儿上不够好</p><span id="more"></span><p>题目：</p><p>给定一个非负数组arr，长度为N，<br>那么有N-1种方案可以把arr切成左右两部分<br>每一种方案都有，min{左部分累加和，右部分累加和}<br>求这么多方案中，min{左部分累加和，右部分累加和}的最大值是多少？<br>整个过程要求时间复杂度O(N)</p><p>把题目一中提到的，min{左部分累加和，右部分累加和}，定义为S(N-1)，也就是说：<br>S(N-1)：在arr[0…N-1]范围上，做最优划分所得到的min{左部分累加和，右部分累加和}的最大值<br>现在要求返回一个长度为N的s数组，<br>s[i] &#x3D;在arr[0…i]范围上，做最优划分所得到的min{左部分累加和，右部分累加和}的最大值<br>得到整个s数组的过程，做到时间复杂度O(N)</p><p>摆放着n堆石子。现要将石子有次序地合并成一堆，规定每次只能选相邻的2堆石子合并成新的一堆<br>并将新的一堆石子数记为该次合并的得分，求出将n堆石子合并成一堆的最小得分（或最大得分）合并方案</p><p>给定一个整型数组 arr，数组中的每个值都为正数，表示完成一幅画作需要的时间，再给定一个整数num<br>表示画匠的数量，每个画匠只能画连在一起的画作<br>所有的画家并行工作，返回完成所有的画作需要的最少时间<br>arr&#x3D;[3,1,4]，num&#x3D;2。<br>最好的分配方式为第一个画匠画3和1，所需时间为4<br>第二个画匠画4，所需时间为4<br>所以返回4<br>arr&#x3D;[1,1,1,4,3]，num&#x3D;3<br>最好的分配方式为第一个画匠画前三个1，所需时间为3<br>第二个画匠画4，所需时间为4<br>第三个画匠画3，所需时间为3<br>返回4</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（四十）——子数组达到规定累加和的最大长度系列问题、矩阵处理技巧题</title>
+      <link href="/2022/04/09/zuo_system_study40/"/>
+      <url>/2022/04/09/zuo_system_study40/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>修正了39节卡特兰数讲解时的一个小错误</p><p>熟悉子数组达到规定累加和的三个模型（正、有正有负有0、累加和&lt;&#x3D;K）</p><p>矩阵处理技巧的宏观调度coding技巧</p><span id="more"></span><p>题目：</p><p>给定一个正整数组成的无序数组arr，给定一个正整数值K，找到arr的所有子数组里，哪个子数组的累加和等于K<br>并且是长度最大的，返回其长度</p><p>给定一个整数组成的无序数组arr，值可能正、可能负、可能0，给定一个整数值K<br>找到arr的所有子数组里，哪个子数组的累加和等于K，并且是长度最大的，返回其长度</p><p>给定一个整数组成的无序数组arr，值可能正、可能负、可能0，给定一个整数值K<br>找到arr的所有子数组里，哪个子数组的累加和&lt;&#x3D;K，并且是长度最大的，返回其长度</p><p>给定一个数组arr，给定一个值v，求子数组平均值小于等于v的最长子数组长度</p><p>给定一个正方形矩阵matrix，原地调整成顺时针90度转动的样子</p><p>给定一个正方形或者长方形矩阵matrix，实现转圈打印</p><p>给定一个正方形或者长方形矩阵matrix，实现zigzag打印</p><p>转圈打印星号*问题</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十九）——根据数据量猜解法（续）、分治技巧、卡特兰数</title>
+      <link href="/2022/04/08/zuo_system_study39/"/>
+      <url>/2022/04/08/zuo_system_study39/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>继续熟悉根据数据量猜解法</p><p>讲解分治法</p><p>讲解卡特兰数（课上证明的时候有小错，在40节开始处修正了）</p><span id="more"></span><p>题目：</p><p>给定一个非负数组arr，和一个正数m，返回arr的所有子序列中累加和%m之后的最大值</p><p>牛牛家里一共有n袋零食, 第i袋零食体积为v[i]，背包容量为w，牛牛想知道在总体积不超过背包容量的情况下,<br>一共有多少种零食放法，体积为0也算一种放法<br>1 &lt;&#x3D; n &lt;&#x3D; 30, 1 &lt;&#x3D; w &lt;&#x3D; 2 * 10^9，v[I] (0 &lt;&#x3D; v[i] &lt;&#x3D; 10^9）</p><p>假设给你N个0，和N个1，你必须用全部数字拼序列，返回有多少个序列满足任何前缀串，1的数量都不少于0的数量</p><p>有N个二叉树节点，每个节点彼此之间无任何差别，返回由N个二叉树节点，组成的不同结构数量是多少？</p><p>题目补充：    arr中的值可能为正，可能为负，可能为0，自由选择arr中的数字，能不能累加得到sum（多种做法）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十八）——根据对数器找规律、根据数据量猜解法</title>
+      <link href="/2022/04/07/zuo_system_study38/"/>
+      <url>/2022/04/07/zuo_system_study38/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>讲解对数器找规律的解题技巧</p><p>讲解根据数据量猜解法的技巧<br>1）C&#x2F;C++，1秒处理的指令条数为10的8次方<br>2）Java等语言，1~4秒处理的指令条数为10的8次方<br>3）这里就有大量的分析提示了</p><span id="more"></span><p>题目：</p><p>小虎去买苹果，商店只提供两种类型的塑料袋，每种类型都有任意数量<br>1）能装下6个苹果的袋子<br>2）能装下8个苹果的袋子<br>小虎可以自由使用两种袋子来装苹果，但是小虎有强迫症，他要求自己使用的袋子数量必须最少，<br>且使用的每个袋子必须装满，给定一个正整数N，返回至少使用多少袋子。如果N无法让使用的每个袋子必须装满，返回-1</p><p>给定一个正整数N，表示有N份青草统一堆放在仓库里，有一只牛和一只羊，牛先吃，羊后吃，它俩轮流吃草<br>不管是牛还是羊，每一轮能吃的草量必须是：1，4，16，64…(4的某次方)<br>谁最先把草吃完，谁获胜，假设牛和羊都绝顶聪明，都想赢，都会做出理性的决定。根据唯一的参数N，返回谁会赢</p><p>定义一种数：可以表示成若干（数量&gt;1）连续正数和的数<br>比如，5&#x3D;2+3，5就是这样的数；12&#x3D;3+4+5，12就是这样的数<br>2&#x3D;1+1，2不是这样的数，因为等号右边不是连续正数<br>给定一个参数N，返回是不是可以表示成若干连续正数和的数</p><p>int[] d，d[i]：i号怪兽的能力<br>int[] p，p[i]：i号怪兽要求的钱<br>开始时你的能力是0，你的目标是从0号怪兽开始，通过所有的怪兽。<br>如果你当前的能力，小于i号怪兽的能力，你必须付出p[i]的钱，贿赂这个怪兽，然后怪兽就会加入你<br>他的能力直接累加到你的能力上；如果你当前的能力，大于等于i号怪兽的能力<br>你可以选择直接通过，你的能力并不会下降，你也可以选择贿赂这个怪兽，然后怪兽就会加入你<br>他的能力直接累加到你的能力上<br>返回通过所有的怪兽，需要花的最小钱数<br>（课上会给出不同的数据量描述）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十七）——有序表（下）</title>
+      <link href="/2022/04/06/zuo_system_study37/"/>
+      <url>/2022/04/06/zuo_system_study37/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>讲解有序表相关的面试题</p><p>讲解改写有序表的题目核心点</p><span id="more"></span><p>题目：</p><p>给定一个数组arr，和两个整数a和b（a&lt;&#x3D;b）。求arr中有多少个子数组，累加和在[a,b]这个范围上。返回达标的子数组数量</p><p>有一个滑动窗口：<br>1）L是滑动窗口最左位置、R是滑动窗口最右位置，一开始LR都在数组左侧<br>2）任何一步都可能R往右动，表示某个数进了窗口<br>3）任何一步都可能L往右动，表示某个数出了窗口<br>想知道每一个窗口状态的中位数</p><p>设计一个结构包含如下两个方法：<br>void add(int index, int num)：把num加入到index位置<br>int get(int index) ：取出index位置的值<br>void remove(int index) ：把index位置上的值删除<br>要求三个方法时间复杂度O(logN)</p><p>假设有打乱顺序的一群人站成一个队列，数组people表示队列中一些人的属性（不一定按顺序）<br>每个people[i]&#x3D;[hi, ki]表示第i个人的身高为hi，前面正好有ki个身高大于或等于hi的人<br>请你重新构造并返回输入数组people所表示的队列，返回的队列应该格式化为数组queue<br>其中queue[j]&#x3D;[hj, kj]是队列中第j个人的属性（queue[0] 是排在队列前面的人）。<br>Leetcode题目：<a href="https://leetcode.com/problems/queue-reconstruction-by-height/">https://leetcode.com/problems/queue-reconstruction-by-height/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十六）——有序表（中）</title>
+      <link href="/2022/04/05/zuo_system_study36/"/>
+      <url>/2022/04/05/zuo_system_study36/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>size-balanced-tree详解</p><p>skiplist详解</p><p>聊聊红黑树</p><span id="more"></span><p>题目：</p><p>size-balanced-tree实现</p><p>skiplist实现</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十五）——有序表（上）</title>
+      <link href="/2022/04/04/zuo_system_study35/"/>
+      <url>/2022/04/04/zuo_system_study35/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>平衡搜索二叉树</p><p>左旋</p><p>右旋</p><p>AVL树的节点违规4种类型（LL，LR，RL，RR）</p><span id="more"></span><p>题目：</p><p>AVL树的实现</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十四）——资源限制类题目的解题套路</title>
+      <link href="/2022/04/03/zuo_system_study34/"/>
+      <url>/2022/04/03/zuo_system_study34/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>布隆过滤器用于集合的建立与查询，并可以节省大量空间<br>一致性哈希解决数据服务器的负载管理问题<br>利用并查集结构做岛问题的并行计算<br>哈希函数可以把数据按照种类均匀分流<br>位图解决某一范围上数字的出现情况，并可以节省大量空间<br>利用分段统计思想、并进一步节省大量空间<br>利用堆、外排序来做多个处理单元的结果合并</p><span id="more"></span><p>题目：</p><p>32位无符号整数的范围是0~4,294,967,295，<br>现在有一个正好包含40亿个无符号整数的文件，<br>可以使用最多1GB的内存，怎么找到出现次数最多的数？</p><p>32位无符号整数的范围是0~4,294,967,295，现在有一个正好包含40亿个无符号整数的文件，<br>所以在整个范围中必然存在没出现过的数，可以使用最多1GB的内存，怎么找到所有未出现过的数？<br>进阶：内存限制为 3KB，但是只用找到一个没出现过的数即可</p><p>有一个包含100亿个URL的大文件，假设每个URL占用64B，请找出其中所有重复的URL<br>补充：某搜索公司一天的用户搜索词汇是海量的(百亿数据量)，请设计一种求出每天热门Top100词汇的可行办法</p><p>32位无符号整数的范围是0~4294967295，现在有40亿个无符号整数，可以使用最多1GB的内存，找出所有出现了两次的数</p><p>32位无符号整数的范围是0~4294967295，现在有40亿个无符号整数，可以使用最多3K的内存，怎么找到这40亿个整数的中位数？</p><p>32位无符号整数的范围是0~4294967295，有一个10G大小的文件，每一行都装着这种类型的数字，<br>整个文件是无序的，给你5G的内存空间，请你输出一个10G大小的文件，就是原文件所有数字排序的结果</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十三）——与哈希函数有关的结构</title>
+      <link href="/2022/04/02/zuo_system_study33/"/>
+      <url>/2022/04/02/zuo_system_study33/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>哈希函数</p><p>哈希函数的应用</p><p>布隆过滤器</p><p>一致性哈希</p><span id="more"></span><p>题目：</p><p>原理讲述为主，面试只会聊设计，所以本节无题目</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -135,6 +540,33 @@
     
     
     <entry>
+      <title>算法数据结构体系学习班（三十二）——IndexTree、AC自动机</title>
+      <link href="/2022/04/01/zuo_system_study32/"/>
+      <url>/2022/04/01/zuo_system_study32/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>IndexTree<br>1）支持区间查询<br>2）没有线段树那么强，但是非常容易改成一维、二维、三维的结构<br>3）只支持单点更新</p><p>AC自动机<br>解决在一个大字符串中，找到多个候选字符串的问题<br>1）把所有匹配串生成一棵前缀树<br>2）前缀树节点增加fail指针<br>3）fail指针的含义：如果必须以当前字符结尾，当前形成的路径是str，剩下哪一个字符串的前缀和str的后缀<br>   拥有最大的匹配长度。fail指针就指向那个字符串的最后一个字符所对应的节点（迷不迷？听讲述！）</p><span id="more"></span><p>题目：</p><p>IndexTree在一维数组和二维数组上的实现</p><p>AC自动机的实现</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>左外连接、右外连接、全连接以及内连接</title>
       <link href="/2022/03/31/MySQL_15_%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%85%A8%E8%BF%9E%E6%8E%A5%E4%BB%A5%E5%8F%8A%E5%86%85%E8%BF%9E%E6%8E%A5/"/>
       <url>/2022/03/31/MySQL_15_%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%85%A8%E8%BF%9E%E6%8E%A5%E4%BB%A5%E5%8F%8A%E5%86%85%E8%BF%9E%E6%8E%A5/</url>
@@ -152,6 +584,276 @@
         <tags>
             
             <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十一）——线段树</title>
+      <link href="/2022/03/31/zuo_system_study31/"/>
+      <url>/2022/03/31/zuo_system_study31/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>线段树是一种支持范围整体修改和范围整体查询的数据结构</p><p>线段树解决的问题范畴：大范围信息可以只由左、右两侧信息加工出，而不必遍历左右两个子范围的具体状况</p><span id="more"></span><p>题目：</p><p>给定一个数组arr，用户希望你实现如下三个方法<br>1）void add(int L, int R, int V) :  让数组arr[L…R]上每个数都加上V<br>2）void update(int L, int R, int V) :  让数组arr[L…R]上每个数都变成V<br>3）int sum(int L, int R) :让返回arr[L…R]这个范围整体的累加和<br>怎么让这三个方法，时间复杂度都是O(logN)</p><p>想象一下标准的俄罗斯方块游戏，X轴是积木最终下落到底的轴线<br>下面是这个游戏的简化版：<br>1）只会下落正方形积木<br>2）[a,b] -&gt; 代表一个边长为b的正方形积木，积木左边缘沿着X &#x3D; a这条线从上方掉落<br>3）认为整个X轴都可能接住积木，也就是说简化版游戏是没有整体的左右边界的<br>4）没有整体的左右边界，所以简化版游戏不会消除积木，因为不会有哪一层被填满。<br>给定一个N*2的二维数组matrix，可以代表N个积木依次掉落，<br>返回每一次掉落之后的最大高度<br>Leetcode题目：<a href="https://leetcode.com/problems/falling-squares/">https://leetcode.com/problems/falling-squares/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（三十）——二叉树的Morris遍历</title>
+      <link href="/2022/03/30/zuo_system_study30/"/>
+      <url>/2022/03/30/zuo_system_study30/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>二叉树之前的遍历方式有空间浪费的问题</p><p>Morris遍历时间复杂度O(N)，额外空间复杂度O(1)，通过利用原树中大量空闲指针的方式，达到节省空间的目的</p><p>假设来到当前节点cur，开始时cur来到头节点位置<br>1）如果cur没有左孩子，cur向右移动(cur &#x3D; cur.right)<br>2）如果cur有左孩子，找到左子树上最右的节点mostRight：<br>    a.如果mostRight的右指针指向空，让其指向cur，<br>    然后cur向左移动(cur &#x3D; cur.left)<br>    b.如果mostRight的右指针指向cur，让其指向null，<br>    然后cur向右移动(cur &#x3D; cur.right)<br>3）cur为空时遍历停止</p><p>Morris遍历实现二叉树的先序、中序、后序遍历</p><span id="more"></span><p>题目：</p><p>Morris遍历的实现</p><p>给定一棵二叉树的头节点head，求以head为头的树中，最小深度是多少？</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十九）——在无序数组中找到第K小的数、蓄水池算法</title>
+      <link href="/2022/03/29/zuo_system_study29/"/>
+      <url>/2022/03/29/zuo_system_study29/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>时间复杂度O(N)可以解决在无序数组中找到第K小的数，这个经典的面试题</p><p>改写快排的partition方法</p><p>bfprt算法</p><p>蓄水池算法</p><span id="more"></span><p>题目：</p><p>在无序数组中找到第K小的数（改写快排+bfprt）</p><p>设计在无序数组中收集最大的前K个数字的算法（根据不同的三个时间复杂度，设计三个算法）<br>给定一个无序数组arr中，长度为N，给定一个正数k，返回top k个最大的数<br>不同时间复杂度三个方法：<br>1）O(N<em>logN)<br>2）O(N + K</em>logN)<br>3）O(n + k*logk)</p><p>蓄水池算法实现<br>假设有一个源源吐出不同球的机器，<br>只有装下10个球的袋子，每一个吐出的球，要么放入袋子，要么永远扔掉<br>如何做到机器吐出每一个球之后，所有吐出的球都等概率被放进袋子里</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十八）——Manacher算法</title>
+      <link href="/2022/03/28/zuo_system_study28/"/>
+      <url>/2022/03/28/zuo_system_study28/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>Manacher算法</p><p>和Manacher算法相关的面试题</p><span id="more"></span><p>题目：</p><p>Manacher算法实现</p><p>给定一个字符串str，只能在str的后面添加字符，想让str整体变成回文串，返回至少要添加几个字符</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十七）——KMP算法</title>
+      <link href="/2022/03/27/zuo_system_study27/"/>
+      <url>/2022/03/27/zuo_system_study27/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>KMP算法</p><p>和KMP算法相关的面试题</p><span id="more"></span><p>题目：</p><p>KMP算法实现</p><p>给定两棵二叉树的头节点head1和head2，返回head1中是否有某个子树的结构和head2完全一样</p><p>判断str1和str2是否互为旋转字符串</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十六）——单调栈相关的题目（续）、斐波那契数列的矩阵快速幂模型</title>
+      <link href="/2022/03/26/zuo_system_study26/"/>
+      <url>/2022/03/26/zuo_system_study26/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>再讲一个单调栈相关的面试题</p><p>斐波那契数列的矩阵快速幂模型详解</p><span id="more"></span><p>题目：</p><p>给定一个数组arr，返回所有子数组最小值的累加和</p><p>斐波那契数列矩阵乘法方式的实现</p><p>台阶方法数问题<br>一个人可以一次往上迈1个台阶，也可以迈2个台阶，返回迈上N级台阶的方法数</p><p>奶牛生小牛问题<br>第一年农场有1只成熟的母牛A，往后的每年：<br>1）每一只成熟的母牛都会生一只母牛<br>2）每一只新出生的母牛都在出生的第三年成熟<br>3）每一只母牛永远不会死<br>返回N年后牛的数量</p><p>给定一个数N，想象只由0和1两种字符，组成的所有长度为N的字符串<br>如果某个字符串，任何0字符的左边都有1紧挨着，认为这个字符串达标<br>返回有多少达标的字符串</p><p>用1<em>2的瓷砖，把N</em>2的区域填满，返回铺瓷砖的方法数</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十五）——单调栈</title>
+      <link href="/2022/03/25/zuo_system_study25/"/>
+      <url>/2022/03/25/zuo_system_study25/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>单调栈的原理（无重复数+有重复数）</p><p>用题目来学习单调栈提供的便利性</p><span id="more"></span><p>题目：</p><p>单调栈实现（无重复数+有重复数）</p><p>给定一个只包含正数的数组arr，arr中任何一个子数组sub，<br>一定都可以算出(sub累加和 )* (sub中的最小值)是什么，<br>那么所有子数组中，这个值最大是多少？</p><p>给定一个非负数组arr，代表直方图，返回直方图的最大长方形面积</p><p>给定一个二维数组matrix，其中的值不是0就是1，返回全部由1组成的最大子矩形内部有多少个1（面积）</p><p>给定一个二维数组matrix，其中的值不是0就是1，返回全部由1组成的子矩形数量</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十四）——窗口内最大值或最小值的更新结构</title>
+      <link href="/2022/03/24/zuo_system_study24/"/>
+      <url>/2022/03/24/zuo_system_study24/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>滑动窗口</p><p>窗口内最大值或最小值的更新结构</p><p>用题目来学习窗口内最大值或最小值的更新结构提供的便利性</p><span id="more"></span><p>题目：</p><p>窗口内最大值或最小值更新结构的实现<br>假设一个固定大小为W的窗口，依次划过arr，<br>返回每一次滑出状况的最大值<br>例如，arr &#x3D; [4,3,5,4,3,3,6,7], W &#x3D; 3<br>返回：[5,5,5,4,6,7]</p><p>给定一个整型数组arr，和一个整数num<br>某个arr中的子数组sub，如果想达标，必须满足：sub中最大值 – sub中最小值 &lt;&#x3D; num，<br>返回arr中达标子数组的数量</p><p>加油站的良好出发点问题</p><p>动态规划中利用窗口内最大值或最小值更新结构做优化（难）<br>arr是货币数组，其中的值都是正数。再给定一个正数aim。<br>每个值都认为是一张货币，<br>返回组成aim的最少货币数<br>注意：因为是求最少货币数，所以每一张货币认为是相同或者不同就不重要了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十三）——暴力递归到动态规划（六）</title>
+      <link href="/2022/03/23/zuo_system_study23/"/>
+      <url>/2022/03/23/zuo_system_study23/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>以18节为总纲</p><p>通过面试题进一步强化动态规划的解题套路</p><p>位信息技巧</p><span id="more"></span><p>题目：</p><p>给定一个正数数组arr，<br>请把arr中所有的数分成两个集合，尽量让两个集合的累加和接近<br>返回最接近的情况下，较小集合的累加和</p><p>给定一个正数数组arr，请把arr中所有的数分成两个集合<br>如果arr长度为偶数，两个集合包含数的个数要一样多<br>如果arr长度为奇数，两个集合包含数的个数必须只差一个<br>请尽量让两个集合的累加和接近<br>返回最接近的情况下，较小集合的累加和</p><p>N皇后问题是指在N*N的棋盘上要摆N个皇后，<br>要求任何两个皇后不同行、不同列， 也不在同一条斜线上<br>给定一个整数n，返回n皇后的摆法有多少种。n&#x3D;1，返回1<br>n&#x3D;2或3，2皇后和3皇后问题无论怎么摆都不行，返回0<br>n&#x3D;8，返回92</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十二）——暴力递归到动态规划（五）</title>
+      <link href="/2022/03/22/zuo_system_study22/"/>
+      <url>/2022/03/22/zuo_system_study22/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>以18节为总纲</p><p>通过面试题进一步强化动态规划的解题套路</p><p>斜率优化技巧</p><span id="more"></span><p>题目：</p><p>给定3个参数，N，M，K<br>怪兽有N滴血，等着英雄来砍自己<br>英雄每一次打击，都会让怪兽流失[0<del>M]的血量<br>到底流失多少？每一次在[0</del>M]上等概率的获得一个值<br>求K次打击之后，英雄把怪兽砍死的概率</p><p>arr是面值数组，其中的值都是正数且没有重复。再给定一个正数aim。<br>每个值都认为是一种面值，且认为张数是无限的。<br>返回组成aim的最少货币数</p><p>给定一个正数n，求n的裂开方法数，<br>规定：后面的数不能比前面的数小<br>比如4的裂开方法有：<br>1+1+1+1、1+1+2、1+3、2+2、4<br>5种，所以返回5</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -272,7 +974,7 @@
       <link href="/2022/03/15/resume/"/>
       <url>/2022/03/15/resume/</url>
       
-        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#x6a;&#108;&#x6a;&#105;&#110;&#103;&#50;&#57;&#x39;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#x6a;&#108;&#x6a;&#105;&#110;&#103;&#50;&#57;&#x39;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
+        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#106;&#x6c;&#x6a;&#x69;&#x6e;&#103;&#50;&#57;&#57;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;">&#106;&#x6c;&#x6a;&#x69;&#x6e;&#103;&#50;&#57;&#57;&#x40;&#113;&#x71;&#46;&#99;&#x6f;&#109;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
       
       
       <categories>
@@ -487,708 +1189,6 @@
       <url>/2022/03/09/zuo_system_study16/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>图的表达方式</p><p>图的常见描述</p><p>图的宽度优先遍历</p><p>图的深度优先遍历</p><p>图的拓扑排序</p><p>最小生成树算法Kruskal</p><p>最小生成树算法Prim</p><p>单元最短路径算法Dijkstra</p><span id="more"></span><p>题目：</p><p>图的数据结构抽象</p><p>实现图的宽度优先遍历</p><p>实现图的深度优先遍历</p><p>三种方式实现图的拓扑排序</p><p>用并查集实现Kruskal算法</p><p>用堆实现Prim算法</p><p>实现Dijkstra算法，用加强堆做更好的实现（16节+17节一开始）</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study23/"/>
-      <url>/2022/03/09/zuo_system_study23/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study22/"/>
-      <url>/2022/03/09/zuo_system_study22/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study24/"/>
-      <url>/2022/03/09/zuo_system_study24/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study26/"/>
-      <url>/2022/03/09/zuo_system_study26/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study25/"/>
-      <url>/2022/03/09/zuo_system_study25/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study29/"/>
-      <url>/2022/03/09/zuo_system_study29/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study27/"/>
-      <url>/2022/03/09/zuo_system_study27/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study28/"/>
-      <url>/2022/03/09/zuo_system_study28/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study30/"/>
-      <url>/2022/03/09/zuo_system_study30/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study32/"/>
-      <url>/2022/03/09/zuo_system_study32/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study31/"/>
-      <url>/2022/03/09/zuo_system_study31/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study33/"/>
-      <url>/2022/03/09/zuo_system_study33/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study35/"/>
-      <url>/2022/03/09/zuo_system_study35/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study34/"/>
-      <url>/2022/03/09/zuo_system_study34/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study36/"/>
-      <url>/2022/03/09/zuo_system_study36/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study37/"/>
-      <url>/2022/03/09/zuo_system_study37/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study39/"/>
-      <url>/2022/03/09/zuo_system_study39/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study38/"/>
-      <url>/2022/03/09/zuo_system_study38/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study40/"/>
-      <url>/2022/03/09/zuo_system_study40/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study41/"/>
-      <url>/2022/03/09/zuo_system_study41/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study42/"/>
-      <url>/2022/03/09/zuo_system_study42/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study43/"/>
-      <url>/2022/03/09/zuo_system_study43/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study44/"/>
-      <url>/2022/03/09/zuo_system_study44/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study46/"/>
-      <url>/2022/03/09/zuo_system_study46/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study45/"/>
-      <url>/2022/03/09/zuo_system_study45/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 课程笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 左程云算法数据结构体系学习班 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_system_study47/"/>
-      <url>/2022/03/09/zuo_system_study47/</url>
-      
-        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
       
       
       <categories>
@@ -1887,11 +1887,11 @@
     
     
     <entry>
-      <title>MyBatis映射器——参数</title>
-      <link href="/2021/07/30/MyBatis_15_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%8F%82%E6%95%B0/"/>
-      <url>/2021/07/30/MyBatis_15_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%8F%82%E6%95%B0/</url>
+      <title>MyBatis映射器—字符串替换#{}和${}</title>
+      <link href="/2021/07/30/MyBatis_16_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2#%7B%7D%E5%92%8C$%7B%7D/"/>
+      <url>/2021/07/30/MyBatis_16_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2#%7B%7D%E5%92%8C$%7B%7D/</url>
       
-        <content type="html"><![CDATA[<p>之前见到的所有语句都使用了简单的参数形式。但实际上，参数是 MyBatis 非常强大的元素。对于大多数简单的使用场景，你都不需要使用复杂的参数，比如：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUsers&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  select id, username, password</span><br><span class="line">  from users</span><br><span class="line">  where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure><span id="more"></span><p>上面的这个示例说明了一个非常简单的命名参数映射。鉴于参数类型（parameterType）会被自动设置为 <code>int</code>，这个参数可以随意命名。原始类型或简单数据类型（比如 <code>Integer</code> 和 <code>String</code>）因为没有其它属性，会用它们的值来作为参数。 然而，如果传入一个复杂的对象，行为就会有点不一样了。比如：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  insert into users (id, username, password)</span><br><span class="line">  values (#&#123;id&#125;, #&#123;username&#125;, #&#123;password&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure><p>如果 User 类型的参数对象传递到了语句中，会查找 id、username 和 password 属性，然后将它们的值传入预处理语句的参数中。</p><p>对传递语句参数来说，这种方式真是干脆利落。不过参数映射的功能远不止于此。</p><p>首先，和 MyBatis 的其它部分一样，参数也可以指定一个特殊的数据类型。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;property,javaType=int,jdbcType=NUMERIC&#125;</span><br></pre></td></tr></table></figure><p>和 MyBatis 的其它部分一样，几乎总是可以根据参数对象的类型确定 javaType，除非该对象是一个 <code>HashMap</code>。这个时候，你需要显式指定 <code>javaType</code> 来确保正确的类型处理器（<code>TypeHandler</code>）被使用。</p><p>❗<strong>提示</strong> JDBC 要求，如果一个列允许使用 null 值，并且会使用值为 null 的参数，就必须要指定 JDBC 类型（jdbcType）。阅读 <code>PreparedStatement.setNull()</code>的 JavaDoc 来获取更多信息。</p><p>要更进一步地自定义类型处理方式，可以指定一个特殊的类型处理器类（或别名），比如：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;age,javaType=int,jdbcType=NUMERIC,typeHandler=MyTypeHandler&#125;</span><br></pre></td></tr></table></figure><p>参数的配置好像越来越繁琐了，但实际上，很少需要如此繁琐的配置。</p><p>对于数值类型，还可以设置 <code>numericScale</code> 指定小数点后保留的位数。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;height,javaType=double,jdbcType=NUMERIC,numericScale=2&#125;</span><br></pre></td></tr></table></figure><p>最后，mode 属性允许你指定 <code>IN</code>，<code>OUT</code> 或 <code>INOUT</code> 参数。如果参数的 <code>mode</code> 为 <code>OUT</code> 或 <code>INOUT</code>，将会修改参数对象的属性值，以便作为输出参数返回。 如果 <code>mode</code> 为 <code>OUT</code>（或 <code>INOUT</code>），而且 <code>jdbcType</code> 为 <code>CURSOR</code>（也就是 Oracle 的 REFCURSOR），你必须指定一个 <code>resultMap</code> 引用来将结果集 <code>ResultMap</code> 映射到参数的类型上。要注意这里的 <code>javaType</code> 属性是可选的，如果留空并且 jdbcType 是 <code>CURSOR</code>，它会被自动地被设为 <code>ResultMap</code>。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;department, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=departmentResultMap&#125;</span><br></pre></td></tr></table></figure><p>MyBatis 也支持很多高级的数据类型，比如结构体（structs），但是当使用 out 参数时，你必须显式设置类型的名称。比如（再次提示，在实际中要像这样不能换行）：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;middleInitial, mode=OUT, jdbcType=STRUCT, jdbcTypeName=MY_TYPE, resultMap=departmentResultMap&#125;</span><br></pre></td></tr></table></figure><p>尽管上面这些选项很强大，但大多时候，你只须简单指定属性名，顶多要为可能为空的列指定 <code>jdbcType</code>，其他的事情交给 MyBatis 自己去推断就行了。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#&#123;firstName&#125;</span><br><span class="line">#&#123;middleInitial,jdbcType=VARCHAR&#125;</span><br><span class="line">#&#123;lastName&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>默认情况下，使用 <code>#&#123;&#125;</code> 参数语法时，MyBatis 会创建 <code>PreparedStatement</code> 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样）。 这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在 SQL 语句中直接插入一个不转义的字符串。 比如 ORDER BY 子句，这时候你可以：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY $&#123;columnName&#125;</span><br></pre></td></tr></table></figure><p>这样，MyBatis 就不会修改或转义该字符串了。</p><span id="more"></span><p>当 SQL 语句中的元数据（如表名或列名）是动态生成的时候，字符串替换将会非常有用。 举个例子，如果你想 <code>select</code> 一个表任意一列的数据时，不需要这样写：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from user where id = #&#123;id&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findById</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> <span class="type">long</span> id)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Select(&quot;select * from user where name = #&#123;name&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findByName</span><span class="params">(<span class="meta">@Param(&quot;name&quot;)</span> String name)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Select(&quot;select * from user where email = #&#123;email&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findByEmail</span><span class="params">(<span class="meta">@Param(&quot;email&quot;)</span> String email)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其它的 &quot;findByXxx&quot; 方法</span></span><br></pre></td></tr></table></figure><p>而是可以只写这样一个方法：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from user where $&#123;column&#125; = #&#123;value&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findByColumn</span><span class="params">(<span class="meta">@Param(&quot;column&quot;)</span> String column, <span class="meta">@Param(&quot;value&quot;)</span> String value)</span>;</span><br></pre></td></tr></table></figure><p>其中 <code>$&#123;column&#125;</code> 会被直接替换，而 <code>#&#123;value&#125;</code> 会使用 <code>?</code> 预处理。 这样，就能完成同样的任务：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">User</span> <span class="variable">userOfId1</span> <span class="operator">=</span> userMapper.findByColumn(<span class="string">&quot;id&quot;</span>, <span class="number">1L</span>);</span><br><span class="line"><span class="type">User</span> <span class="variable">userOfNameKid</span> <span class="operator">=</span> userMapper.findByColumn(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;kid&quot;</span>);</span><br><span class="line"><span class="type">User</span> <span class="variable">userOfEmail</span> <span class="operator">=</span> userMapper.findByColumn(<span class="string">&quot;email&quot;</span>, <span class="string">&quot;noone@nowhere.com&quot;</span>);</span><br></pre></td></tr></table></figure><p>这种方式也同样适用于替换表名的情况。</p><p>❗❗❗<strong>提示</strong> 用这种方式接受用户的输入，并用作语句参数是不安全的，会导致潜在的 SQL 注入攻击。因此，要么不允许用户输入这些字段，要么自行转义并检验这些参数。</p>]]></content>
       
       
       <categories>
@@ -1912,11 +1912,11 @@
     
     
     <entry>
-      <title>MyBatis映射器—字符串替换#{}和${}</title>
-      <link href="/2021/07/30/MyBatis_16_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2#%7B%7D%E5%92%8C$%7B%7D/"/>
-      <url>/2021/07/30/MyBatis_16_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2#%7B%7D%E5%92%8C$%7B%7D/</url>
+      <title>MyBatis映射器——参数</title>
+      <link href="/2021/07/30/MyBatis_15_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%8F%82%E6%95%B0/"/>
+      <url>/2021/07/30/MyBatis_15_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%8F%82%E6%95%B0/</url>
       
-        <content type="html"><![CDATA[<p>默认情况下，使用 <code>#&#123;&#125;</code> 参数语法时，MyBatis 会创建 <code>PreparedStatement</code> 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样）。 这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在 SQL 语句中直接插入一个不转义的字符串。 比如 ORDER BY 子句，这时候你可以：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY $&#123;columnName&#125;</span><br></pre></td></tr></table></figure><p>这样，MyBatis 就不会修改或转义该字符串了。</p><span id="more"></span><p>当 SQL 语句中的元数据（如表名或列名）是动态生成的时候，字符串替换将会非常有用。 举个例子，如果你想 <code>select</code> 一个表任意一列的数据时，不需要这样写：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from user where id = #&#123;id&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findById</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> <span class="type">long</span> id)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Select(&quot;select * from user where name = #&#123;name&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findByName</span><span class="params">(<span class="meta">@Param(&quot;name&quot;)</span> String name)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Select(&quot;select * from user where email = #&#123;email&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findByEmail</span><span class="params">(<span class="meta">@Param(&quot;email&quot;)</span> String email)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其它的 &quot;findByXxx&quot; 方法</span></span><br></pre></td></tr></table></figure><p>而是可以只写这样一个方法：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select(&quot;select * from user where $&#123;column&#125; = #&#123;value&#125;&quot;)</span></span><br><span class="line">User <span class="title function_">findByColumn</span><span class="params">(<span class="meta">@Param(&quot;column&quot;)</span> String column, <span class="meta">@Param(&quot;value&quot;)</span> String value)</span>;</span><br></pre></td></tr></table></figure><p>其中 <code>$&#123;column&#125;</code> 会被直接替换，而 <code>#&#123;value&#125;</code> 会使用 <code>?</code> 预处理。 这样，就能完成同样的任务：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">User</span> <span class="variable">userOfId1</span> <span class="operator">=</span> userMapper.findByColumn(<span class="string">&quot;id&quot;</span>, <span class="number">1L</span>);</span><br><span class="line"><span class="type">User</span> <span class="variable">userOfNameKid</span> <span class="operator">=</span> userMapper.findByColumn(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;kid&quot;</span>);</span><br><span class="line"><span class="type">User</span> <span class="variable">userOfEmail</span> <span class="operator">=</span> userMapper.findByColumn(<span class="string">&quot;email&quot;</span>, <span class="string">&quot;noone@nowhere.com&quot;</span>);</span><br></pre></td></tr></table></figure><p>这种方式也同样适用于替换表名的情况。</p><p>❗❗❗<strong>提示</strong> 用这种方式接受用户的输入，并用作语句参数是不安全的，会导致潜在的 SQL 注入攻击。因此，要么不允许用户输入这些字段，要么自行转义并检验这些参数。</p>]]></content>
+        <content type="html"><![CDATA[<p>之前见到的所有语句都使用了简单的参数形式。但实际上，参数是 MyBatis 非常强大的元素。对于大多数简单的使用场景，你都不需要使用复杂的参数，比如：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUsers&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  select id, username, password</span><br><span class="line">  from users</span><br><span class="line">  where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure><span id="more"></span><p>上面的这个示例说明了一个非常简单的命名参数映射。鉴于参数类型（parameterType）会被自动设置为 <code>int</code>，这个参数可以随意命名。原始类型或简单数据类型（比如 <code>Integer</code> 和 <code>String</code>）因为没有其它属性，会用它们的值来作为参数。 然而，如果传入一个复杂的对象，行为就会有点不一样了。比如：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insertUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  insert into users (id, username, password)</span><br><span class="line">  values (#&#123;id&#125;, #&#123;username&#125;, #&#123;password&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure><p>如果 User 类型的参数对象传递到了语句中，会查找 id、username 和 password 属性，然后将它们的值传入预处理语句的参数中。</p><p>对传递语句参数来说，这种方式真是干脆利落。不过参数映射的功能远不止于此。</p><p>首先，和 MyBatis 的其它部分一样，参数也可以指定一个特殊的数据类型。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;property,javaType=int,jdbcType=NUMERIC&#125;</span><br></pre></td></tr></table></figure><p>和 MyBatis 的其它部分一样，几乎总是可以根据参数对象的类型确定 javaType，除非该对象是一个 <code>HashMap</code>。这个时候，你需要显式指定 <code>javaType</code> 来确保正确的类型处理器（<code>TypeHandler</code>）被使用。</p><p>❗<strong>提示</strong> JDBC 要求，如果一个列允许使用 null 值，并且会使用值为 null 的参数，就必须要指定 JDBC 类型（jdbcType）。阅读 <code>PreparedStatement.setNull()</code>的 JavaDoc 来获取更多信息。</p><p>要更进一步地自定义类型处理方式，可以指定一个特殊的类型处理器类（或别名），比如：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;age,javaType=int,jdbcType=NUMERIC,typeHandler=MyTypeHandler&#125;</span><br></pre></td></tr></table></figure><p>参数的配置好像越来越繁琐了，但实际上，很少需要如此繁琐的配置。</p><p>对于数值类型，还可以设置 <code>numericScale</code> 指定小数点后保留的位数。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;height,javaType=double,jdbcType=NUMERIC,numericScale=2&#125;</span><br></pre></td></tr></table></figure><p>最后，mode 属性允许你指定 <code>IN</code>，<code>OUT</code> 或 <code>INOUT</code> 参数。如果参数的 <code>mode</code> 为 <code>OUT</code> 或 <code>INOUT</code>，将会修改参数对象的属性值，以便作为输出参数返回。 如果 <code>mode</code> 为 <code>OUT</code>（或 <code>INOUT</code>），而且 <code>jdbcType</code> 为 <code>CURSOR</code>（也就是 Oracle 的 REFCURSOR），你必须指定一个 <code>resultMap</code> 引用来将结果集 <code>ResultMap</code> 映射到参数的类型上。要注意这里的 <code>javaType</code> 属性是可选的，如果留空并且 jdbcType 是 <code>CURSOR</code>，它会被自动地被设为 <code>ResultMap</code>。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;department, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=departmentResultMap&#125;</span><br></pre></td></tr></table></figure><p>MyBatis 也支持很多高级的数据类型，比如结构体（structs），但是当使用 out 参数时，你必须显式设置类型的名称。比如（再次提示，在实际中要像这样不能换行）：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;middleInitial, mode=OUT, jdbcType=STRUCT, jdbcTypeName=MY_TYPE, resultMap=departmentResultMap&#125;</span><br></pre></td></tr></table></figure><p>尽管上面这些选项很强大，但大多时候，你只须简单指定属性名，顶多要为可能为空的列指定 <code>jdbcType</code>，其他的事情交给 MyBatis 自己去推断就行了。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#&#123;firstName&#125;</span><br><span class="line">#&#123;middleInitial,jdbcType=VARCHAR&#125;</span><br><span class="line">#&#123;lastName&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
