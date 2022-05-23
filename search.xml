@@ -160,11 +160,119 @@
     
     
     <entry>
+      <title>算法数据结构体系学习班（二十一）——暴力递归到动态规划（四）</title>
+      <link href="/2022/03/21/zuo_system_study21/"/>
+      <url>/2022/03/21/zuo_system_study21/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>以18节为总纲</p><p>通过面试题进一步强化动态规划的解题套路</p><span id="more"></span><p>题目：</p><p>给定一个二维数组matrix，一个人必须从左上角出发，最后到达右下角<br>沿途只可以向下或者向右走，沿途的数字都累加就是距离累加和<br>返回最小距离累加和</p><p>arr是货币数组，其中的值都是正数。再给定一个正数aim。<br>每个值都认为是一张货币，<br>即便是值相同的货币也认为每一张都是不同的，<br>返回组成aim的方法数<br>例如：arr &#x3D; {1,1,1}，aim &#x3D; 2<br>第0个和第1个能组成2，第1个和第2个能组成2，第0个和第2个能组成2<br>一共就3种方法，所以返回3</p><p>arr是面值数组，其中的值都是正数且没有重复。再给定一个正数aim。<br>每个值都认为是一种面值，且认为张数是无限的。<br>返回组成aim的方法数<br>例如：arr &#x3D; {1,2}，aim &#x3D; 4<br>方法如下：1+1+1+1、1+1+2、2+2<br>一共就3种方法，所以返回3</p><p>arr是货币数组，其中的值都是正数。再给定一个正数aim。<br>每个值都认为是一张货币，<br>认为值相同的货币没有任何不同，<br>返回组成aim的方法数<br>例如：arr &#x3D; {1,2,1,1,2,1,2}，aim &#x3D; 4<br>方法：1+1+1+1、1+1+2、2+2<br>一共就3种方法，所以返回3</p><p>给定5个参数，N，M，row，col，k<br>表示在N<em>M的区域上，醉汉Bob初始在(row,col)位置<br>Bob一共要迈出k步，且每步都会等概率向上下左右四个方向走一个单位<br>任何时候Bob只要离开N</em>M的区域，就直接死亡<br>返回k步之后，Bob还在N*M的区域的概率</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（二十）——暴力递归到动态规划（三）</title>
+      <link href="/2022/03/20/zuo_system_study20/"/>
+      <url>/2022/03/20/zuo_system_study20/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>以18节为总纲</p><p>通过面试题进一步强化动态规划的解题套路</p><span id="more"></span><p>题目：</p><p>给定一个字符串str，返回这个字符串的最长回文子序列长度<br>比如 ： str &#x3D; “a12b3c43def2ghi1kpm”<br>最长回文子序列是“1234321”或者“123c321”，返回长度7</p><p>请同学们自行搜索或者想象一个象棋的棋盘，<br>然后把整个棋盘放入第一象限，棋盘的最左下角是(0,0)位置<br>那么整个棋盘就是横坐标上9条线、纵坐标上10条线的区域<br>给你三个 参数 x，y，k<br>返回“马”从(0,0)位置出发，必须走k步<br>最后落在(x,y)上的方法数有多少种? </p><p>给定一个数组arr，arr[i]代表第i号咖啡机泡一杯咖啡的时间<br>给定一个正数N，表示N个人等着咖啡机泡咖啡，每台咖啡机只能轮流泡咖啡<br>只有一台咖啡机，一次只能洗一个杯子，时间耗费a，洗完才能洗下一杯<br>每个咖啡杯也可以自己挥发干净，时间耗费b，咖啡杯可以并行挥发<br>假设所有人拿到咖啡之后立刻喝干净，<br>返回从开始等到所有咖啡机变干净的最短时间<br>三个参数：int[] arr、int N，int a、int b</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十九）——暴力递归到动态规划（二）</title>
+      <link href="/2022/03/19/zuo_system_study19/"/>
+      <url>/2022/03/19/zuo_system_study19/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>以18节为总纲</p><p>背包问题</p><p>记忆化搜索的一个很重要的注意点</p><p>通过面试题进一步强化动态规划的解题套路</p><span id="more"></span><p>题目：</p><p>背包问题<br>给定两个长度都为N的数组weights和values，weights[i]和values[i]分别代表 i号物品的重量和价值<br>给定一个正数bag，表示一个载重bag的袋子，装的物品不能超过这个重量<br>返回能装下的最大价值</p><p>规定1和A对应、2和B对应、3和C对应…26和Z对应<br>那么一个数字字符串比如”111”就可以转化为:<br>“AAA”、”KA”和”AK”<br>给定一个只有数字字符组成的字符串str，返回有多少种转化结果 </p><p>给定一个字符串str，给定一个字符串类型的数组arr，出现的字符都是小写英文<br>arr每一个字符串，代表一张贴纸，你可以把单个字符剪开使用，目的是拼出str来<br>返回需要至少多少张贴纸可以完成这个任务<br>例子：str&#x3D; “babac”，arr &#x3D; {“ba”,”c”,”abcd”}<br>ba + ba + c  3  abcd + abcd 2  abcd+ba 2<br>所以返回2</p><p>给定两个字符串str1和str2，<br>返回这两个字符串的最长公共子序列长度<br>比如 ： str1 &#x3D; “a12b3c456d”,str2 &#x3D; “1ef23ghi4j56k”<br>最长公共子序列是“123456”，所以返回长度6</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十七）——用加强堆更好的实现Dijkstra算法、常见的递归</title>
+      <link href="/2022/03/17/zuo_system_study17/"/>
+      <url>/2022/03/17/zuo_system_study17/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>加强堆实现Dijkstra算法</p><p>递归的设计</p><p>常见的递归</p><span id="more"></span><p>题目：</p><p>打印n层汉诺塔从最左边移动到最右边的全部过程（递归+非递归实现）</p><p>打印一个字符串的全部子序列</p><p>打印一个字符串的全部子序列，要求不要出现重复字面值的子序列</p><p>打印一个字符串的全部排列</p><p>打印一个字符串的全部排列，要求不要出现重复的排列</p><p>给定一个栈，请逆序这个栈，不能申请额外的数据结构，只能使用递归函数</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>个人简历</title>
       <link href="/2022/03/15/resume/"/>
       <url>/2022/03/15/resume/</url>
       
-        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#x6a;&#x6c;&#x6a;&#105;&#110;&#103;&#x32;&#x39;&#x39;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#x6a;&#x6c;&#x6a;&#105;&#110;&#103;&#x32;&#x39;&#x39;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
+        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#x6a;&#108;&#x6a;&#105;&#110;&#103;&#50;&#57;&#x39;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#x6a;&#108;&#x6a;&#105;&#110;&#103;&#50;&#57;&#x39;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
       
       
       <categories>
@@ -185,9 +293,225 @@
     
     
     <entry>
+      <title>算法数据结构体系学习班（十五）——并查集相关的常见面试题</title>
+      <link href="/2022/03/15/zuo_system_study15/"/>
+      <url>/2022/03/15/zuo_system_study15/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>通过解答实际出现的面试题来体会并查集的优势、熟悉并查集的使用</p><span id="more"></span><p>题目：</p><p>一群朋友中，有几个不相交的朋友圈<br>Leetcode题目：<a href="https://leetcode.com/problems/friend-circles/">https://leetcode.com/problems/friend-circles/</a></p><p>岛问题（递归解法 + 并查集解法 + 并行解法）<br>给定一个二维数组matrix，里面的值不是1就是0，上、下、左、右相邻的1认为是一片岛，返回matrix中岛的数量</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十四）——贪心算法（续）、并查集</title>
+      <link href="/2022/03/14/zuo_system_study14/"/>
+      <url>/2022/03/14/zuo_system_study14/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>贪心算法继续实战</p><p>并查集详解</p><span id="more"></span><p>题目：</p><p>给定一个字符串str，只由’X’和’.’两种字符构成<br>‘X’表示墙，不能放灯，也不需要点亮；’.’表示居民点，可以放灯，需要点亮<br>如果灯放在i位置，可以让i-1，i和i+1三个位置被点亮<br>返回如果点亮str中所有需要点亮的位置，至少需要几盏灯</p><p>一块金条切成两半，是需要花费和长度数值一样的铜板<br>比如长度为20的金条，不管怎么切都要花费20个铜板，一群人想整分整块金条，怎么分最省铜板?<br>例如，给定数组{10,20,30}，代表一共三个人，整块金条长度为60，金条要分成10，20，30三个部分。<br>如果先把长度60的金条分成10和50，花费60；再把长度50的金条分成20和30，花费50；一共花费110铜板<br>但如果先把长度60的金条分成30和30，花费60；再把长度30金条分成10和20，花费30；一共花费90铜板<br>输入一个数组，返回分割的最小代价</p><p>一些项目要占用一个会议室宣讲，会议室不能同时容纳两个项目的宣讲，给你每一个项目开始的时间和结束的时间<br>你来安排宣讲的日程，要求会议室进行的宣讲的场次最多，返回最多的宣讲场次</p><p>输入正数数组costs、正数数组profits、正数K和正数M<br>costs[i]表示i号项目的花费<br>profits[i]表示i号项目在扣除花费之后还能挣到的钱(利润)<br>K表示你只能串行的最多做k个项目<br>M表示你初始的资金<br>说明：每做完一个项目，马上获得的收益，可以支持你去做下一个项目，不能并行的做项目。<br>输出：最后获得的最大钱数</p><p>并查集的实现</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——二叉树常见面试题和二叉树的递归套路（下）、贪心算法</title>
+      <link href="/2022/03/13/zuo_system_study13/"/>
+      <url>/2022/03/13/zuo_system_study13/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>二叉树递归套路继续实践</p><p>一道贪心算法从头到尾的完整做法</p><p>解决贪心题目的重要技巧，即对数器来验证脑洞</p><p>再次强调对数器的重要性</p><span id="more"></span><p>题目：</p><p>判断二叉树是不是完全二叉树（一般方法解决、递归套路解决）</p><p>给定一棵二叉树的头节点head，返回这颗二叉树中最大的二叉搜索子树的头节点</p><p>给定一棵二叉树的头节点head，和另外两个节点a和b，返回a和b的最低公共祖先</p><p>派对的最大快乐值<br> 员工信息的定义如下:<br>class Employee {<br>    public int happy; &#x2F;&#x2F; 这名员工可以带来的快乐值<br>    List<Employee> subordinates; &#x2F;&#x2F; 这名员工有哪些直接下级<br>}<br>公司的每个员工都符合 Employee 类的描述。整个公司的人员结构可以看作是一棵标准的、 没有环的多叉树<br>树的头节点是公司唯一的老板，除老板之外的每个员工都有唯一的直接上级<br>叶节点是没有任何下属的基层员工(subordinates列表为空)，除基层员工外每个员工都有一个或多个直接下级<br>这个公司现在要办party，你可以决定哪些员工来，哪些员工不来，规则：<br>1.如果某个员工来了，那么这个员工的所有直接下级都不能来<br>2.派对的整体快乐值是所有到场员工快乐值的累加<br>3.你的目标是让派对的整体快乐值尽量大<br>给定一棵多叉树的头节点boss，请返回派对的最大快乐值。</p><p>给定一个由字符串组成的数组strs，必须把所有的字符串拼接起来，返回所有可能的拼接结果中字典序最小的结果</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十二）——二叉树常见面试题和二叉树的递归套路（中）</title>
+      <link href="/2022/03/12/zuo_system_study12/"/>
+      <url>/2022/03/12/zuo_system_study12/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>通过题目来熟悉二叉树的解题技巧</p><p>介绍二叉树的递归套路<br>1）假设以X节点为头，假设可以向X左树和X右树要任何信息<br>2）在上一步的假设下，讨论以X为头节点的树，得到答案的可能性（最重要）<br>3）列出所有可能性后，确定到底需要向左树和右树要什么样的信息<br>4）把左树信息和右树信息求全集，就是任何一棵子树都需要返回的信息S<br>5）递归函数都返回S，每一棵子树都这么要求<br>6）写代码，在代码中考虑如何把左树的信息和右树信息整合出整棵树的信息</p><span id="more"></span><p>判断二叉树是不是搜索二叉树</p><p>判断二叉树是不是平衡二叉树</p><p>判断二叉树是不是满二叉树</p><p>给定一棵二叉树的头节点head，返回这颗二叉树中最大的二叉搜索子树的大小</p><p>给定一棵二叉树的头节点head，任何两个节点之间都存在距离，返回整棵二叉树的最大距离</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十一）——二叉树常见面试题和二叉树的递归套路（上）</title>
+      <link href="/2022/03/11/zuo_system_study11/"/>
+      <url>/2022/03/11/zuo_system_study11/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>通过题目来熟悉二叉树的解题技巧</p><span id="more"></span><p>题目：</p><p>二叉树的按层遍历</p><p>二叉树的序列化和反序列化</p><p>N叉树如何通过二叉树来序列化、并完成反序列化<br>Leetcode题目：<a href="https://leetcode.com/problems/encode-n-ary-tree-to-binary-tree/">https://leetcode.com/problems/encode-n-ary-tree-to-binary-tree/</a></p><p>打印二叉树的函数设计</p><p>求二叉树的最大宽度</p><p>求二叉树某个节点的后继节点<br>二叉树结构如下定义：<br>Class Node {<br>    V value;<br>    Node left;<br>    Node right;<br>    Node parent;<br>}<br>给你二叉树中的某个节点，返回该节点的后继节点 </p><p>折纸问题<br>请把一段纸条竖着放在桌子上，然后从纸条的下边向上方对折1次，压出折痕后展开<br>此时折痕是凹下去的，即折痕突起的方向指向纸条的背面<br>如果从纸条的下边向上方连续对折2次，压出折痕后展开<br>此时有三条折痕，从上到下依次是下折痕、下折痕和上折痕。<br>给定一个输入参数N，代表纸条都从下边向上方连续对折N次<br>请从上到下打印所有折痕的方向。<br>N&#x3D;1时，打印: down<br>N&#x3D;2时，打印: down down up </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十）——链表相关面试题（续）、二叉树的常见遍历</title>
+      <link href="/2022/03/10/zuo_system_study10/"/>
+      <url>/2022/03/10/zuo_system_study10/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>单链表的相交节点系列问题</p><p>一种看似高效其实搞笑的节点删除方式</p><p>二叉树的中序、先序、后序遍历</p><span id="more"></span><p>题目：</p><p>给定两个可能有环也可能无环的单链表，头节点head1和head2<br>请实现一个函数，如果两个链表相交，请返回相交的第一个节点。如果不相交返回null<br>要求如果两个链表长度之和为N，时间复杂度请达到O(N)，额外空间复杂度请达到O(1)</p><p>能不能不给单链表的头节点，只给想要删除的节点，就能做到在链表上把这个点删掉？</p><p>二叉树先序、中序、后序的递归遍历和递归序</p><p>二叉树先序、中序、后序的非递归遍历</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十八）——暴力递归到动态规划（一）</title>
+      <link href="/2022/03/09/zuo_system_study18/"/>
+      <url>/2022/03/09/zuo_system_study18/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>讲述暴力递归和动态规划的关系</p><p>记忆化搜索</p><p>动态规划都可以由暴力递归改进过来，解决动态规划的套路</p><p>常见的尝试模型</p><p>设计尝试过程的原则</p><p>本节是暴力递归到动态规划的总纲（很重要）</p><p>后续的课都是在讲述这一系列的套路</p><span id="more"></span><p>题目：</p><p>假设有排成一行的N个位置记为1<del>N，N一定大于或等于2<br>开始时机器人在其中的M位置上(M一定是1</del>N中的一个)<br>如果机器人来到1位置，那么下一步只能往右来到2位置；<br>如果机器人来到N位置，那么下一步只能往左来到N-1位置；<br>如果机器人来到中间位置，那么下一步可以往左走或者往右走；<br>规定机器人必须走K步，最终能来到P位置(P也是1~N中的一个)的方法有多少种<br>给定四个参数 N、M、K、P，返回方法数</p><p>给定一个整型数组arr，代表数值不同的纸牌排成一条线<br>玩家A和玩家B依次拿走每张纸牌<br>规定玩家A先拿，玩家B后拿<br>但是每个玩家每次只能拿走最左或最右的纸牌<br>玩家A和玩家B都绝顶聪明<br>请返回最后获胜者的分数</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（十六）——图及其与图相关的算法</title>
+      <link href="/2022/03/09/zuo_system_study16/"/>
+      <url>/2022/03/09/zuo_system_study16/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>图的表达方式</p><p>图的常见描述</p><p>图的宽度优先遍历</p><p>图的深度优先遍历</p><p>图的拓扑排序</p><p>最小生成树算法Kruskal</p><p>最小生成树算法Prim</p><p>单元最短路径算法Dijkstra</p><span id="more"></span><p>题目：</p><p>图的数据结构抽象</p><p>实现图的宽度优先遍历</p><p>实现图的深度优先遍历</p><p>三种方式实现图的拓扑排序</p><p>用并查集实现Kruskal算法</p><p>用堆实现Prim算法</p><p>实现Dijkstra算法，用加强堆做更好的实现（16节+17节一开始）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
-      <link href="/2022/03/09/zuo_9/"/>
-      <url>/2022/03/09/zuo_9/</url>
+      <link href="/2022/03/09/zuo_system_study23/"/>
+      <url>/2022/03/09/zuo_system_study23/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
       
@@ -203,7 +527,709 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study22/"/>
+      <url>/2022/03/09/zuo_system_study22/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study24/"/>
+      <url>/2022/03/09/zuo_system_study24/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study26/"/>
+      <url>/2022/03/09/zuo_system_study26/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study25/"/>
+      <url>/2022/03/09/zuo_system_study25/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study29/"/>
+      <url>/2022/03/09/zuo_system_study29/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study27/"/>
+      <url>/2022/03/09/zuo_system_study27/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study28/"/>
+      <url>/2022/03/09/zuo_system_study28/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study30/"/>
+      <url>/2022/03/09/zuo_system_study30/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study32/"/>
+      <url>/2022/03/09/zuo_system_study32/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study31/"/>
+      <url>/2022/03/09/zuo_system_study31/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study33/"/>
+      <url>/2022/03/09/zuo_system_study33/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study35/"/>
+      <url>/2022/03/09/zuo_system_study35/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study34/"/>
+      <url>/2022/03/09/zuo_system_study34/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study36/"/>
+      <url>/2022/03/09/zuo_system_study36/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study37/"/>
+      <url>/2022/03/09/zuo_system_study37/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study39/"/>
+      <url>/2022/03/09/zuo_system_study39/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study38/"/>
+      <url>/2022/03/09/zuo_system_study38/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study40/"/>
+      <url>/2022/03/09/zuo_system_study40/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study41/"/>
+      <url>/2022/03/09/zuo_system_study41/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study42/"/>
+      <url>/2022/03/09/zuo_system_study42/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study43/"/>
+      <url>/2022/03/09/zuo_system_study43/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study44/"/>
+      <url>/2022/03/09/zuo_system_study44/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study46/"/>
+      <url>/2022/03/09/zuo_system_study46/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study45/"/>
+      <url>/2022/03/09/zuo_system_study45/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study47/"/>
+      <url>/2022/03/09/zuo_system_study47/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法数据结构体系学习班（九）——排序算法大总结、链表及其相关面试题</title>
+      <link href="/2022/03/09/zuo_system_study9/"/>
+      <url>/2022/03/09/zuo_system_study9/</url>
+      
+        <content type="html"><![CDATA[<p>内容：</p><p>排序算法总结</p><p>排序算法常见的坑</p><p>工程上对排序的常见改进</p><p>链表面试题的常见技巧</p><span id="more"></span><p>题目：</p><p>输入链表头节点，奇数长度返回中点，偶数长度返回上中点<br>输入链表头节点，奇数长度返回中点，偶数长度返回下中点<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回上中点前一个<br>输入链表头节点，奇数长度返回中点前一个，偶数长度返回下中点前一个</p><p>给定一个单链表的头节点head，请判断该链表是否为回文结构</p><p>给定一个单链表的头节点head，给定一个整数n，将链表按n划分成左边&lt;n、中间&#x3D;&#x3D;n、右边&gt;n</p><p>一种特殊的单链表节点类描述如下<br>class Node {<br>int value;<br>Node next;<br>Node rand;<br>Node(int val) { value &#x3D; val; }<br>}<br>rand指针是单链表节点结构中新增的指针，rand可能指向链表中的任意一个节点，也可能指向null<br>给定一个由Node节点类型组成的无环单链表的头节点head，请实现一个函数完成这个链表的复制<br>返回复制的新链表的头节点，要求时间复杂度O(N)，额外空间复杂度O(1) </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 课程笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -213,8 +1239,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（八）——前缀树、不基于比较的排序（计数排序、基数排序）、排序算法的稳定性</title>
-      <link href="/2022/03/08/zuo_8/"/>
-      <url>/2022/03/08/zuo_8/</url>
+      <link href="/2022/03/08/zuo_system_study8/"/>
+      <url>/2022/03/08/zuo_system_study8/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>前缀树</p><p>计数排序</p><p>基数排序</p><p>排序算法的稳定性</p><span id="more"></span><p>题目：</p><p>前缀树实现</p><p>计数排序</p><p>基数排序</p>]]></content>
       
@@ -230,7 +1256,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -240,8 +1266,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（七）——和堆有关的面试题、加强堆结构</title>
-      <link href="/2022/03/07/zuo_7/"/>
-      <url>/2022/03/07/zuo_7/</url>
+      <link href="/2022/03/07/zuo_system_study7/"/>
+      <url>/2022/03/07/zuo_system_study7/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>线段最大重合问题</p><p>加强堆的实现</p><span id="more"></span><p>题目：</p><p>给定很多线段，每个线段都有两个数[start, end]，<br>表示线段开始位置和结束位置，左右都是闭区间<br>规定：<br>1）线段的开始和结束位置一定都是整数值<br>2）线段重合区域的长度必须&gt;&#x3D;1<br>返回线段最多重合区域中，包含了几条线段</p><p>加强堆的实现、注意点解析</p><p>做一个加强堆的题目，给定一个整型数组，int[] arr；和一个布尔类型数组，boolean[] op<br>两个数组一定等长，假设长度为N，arr[i]表示客户编号，op[i]表示客户操作<br>arr&#x3D; [3,3,1,2,1,2,5…<br>op &#x3D; [T,T,T,T,F,T,F…<br>依次表示：<br>3用户购买了一件商品<br>3用户购买了一件商品<br>1用户购买了一件商品<br>2用户购买了一件商品<br>1用户退货了一件商品<br>2用户购买了一件商品<br>5用户退货了一件商品…<br>一对arr[i]和op[i]就代表一个事件：<br>用户号为arr[i]，op[i] &#x3D;&#x3D; T就代表这个用户购买了一件商品<br>op[i] &#x3D;&#x3D; F就代表这个用户退货了一件商品<br>现在你作为电商平台负责人，你想在每一个事件到来的时候，<br>都给购买次数最多的前K名用户颁奖。<br>所以每个事件发生后，你都需要一个得奖名单（得奖区）。<br>得奖系统的规则：<br>1，如果某个用户购买商品数为0，但是又发生了退货事件，<br>     则认为该事件无效，得奖名单和上一个事件发生后一致，例子中的5用户<br>2，某用户发生购买商品事件，购买商品数+1，发生退货事件，购买商品数-1<br>3，每次都是最多K个用户得奖，K也为传入的参数<br>      如果根据全部规则，得奖人数确实不够K个，那就以不够的情况输出结果<br>4，得奖系统分为得奖区和候选区，任何用户只要购买数&gt;0，<br>      一定在这两个区域中的一个<br>5，购买数最大的前K名用户进入得奖区，<br>      在最初时如果得奖区没有到达K个用户，那么新来的用户直接进入得奖区<br>6，如果购买数不足以进入得奖区的用户，进入候选区<br>7，如果候选区购买数最多的用户，已经足以进入得奖区，<br>     该用户就会替换得奖区中购买数最少的用户（大于才能替换），<br>     如果得奖区中购买数最少的用户有多个，就替换最早进入得奖区的用户<br>     如果候选区中购买数最多的用户有多个，机会会给最早进入候选区的用户<br>8，候选区和得奖区是两套时间，<br>     因用户只会在其中一个区域，所以只会有一个区域的时间，另一个没有<br>     从得奖区出来进入候选区的用户，得奖区时间删除，<br>     进入候选区的时间就是当前事件的时间（可以理解为arr[i]和op[i]中的i）<br>     从候选区出来进入得奖区的用户，候选区时间删除，<br>     进入得奖区的时间就是当前事件的时间（可以理解为arr[i]和op[i]中的i）<br>9，如果某用户购买数&#x3D;&#x3D;0，不管在哪个区域都离开，区域时间删除，<br>     离开是指彻底离开，哪个区域也不会找到该用户<br>     如果下次该用户又发生购买行为，产生&gt;0的购买数，<br>     会再次根据之前规则回到某个区域中，进入区域的时间重记<br>请遍历arr数组和op数组，遍历每一步输出一个得奖名单<br>public List&lt;List<Integer>&gt;  topK (int[] arr, boolean[] op, int k)</p>]]></content>
       
@@ -257,7 +1283,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -267,8 +1293,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（六）——比较器、堆结构、堆排序</title>
-      <link href="/2022/03/06/zuo_6/"/>
-      <url>/2022/03/06/zuo_6/</url>
+      <link href="/2022/03/06/zuo_system_study6/"/>
+      <url>/2022/03/06/zuo_system_study6/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>比较器</p><p>堆结构</p><p>堆排序</p><p>建立大根堆的两种方式，从上到下、从下到上，及其复杂度分析</p><span id="more"></span><p>题目：</p><p>比较器使用的code展示</p><p>堆结构的实现</p><p>堆排序的实现</p><p>已知一个几乎有序的数组。几乎有序是指，如果把数组排好顺序的话，每个元素移动的距离一定不超过k<br>k相对于数组长度来说是比较小的。请选择一个合适的排序策略，对这个数组进行排序。 </p>]]></content>
       
@@ -284,7 +1310,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -294,8 +1320,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（五）——归并排序面试题(续)、快速排序</title>
-      <link href="/2022/03/05/zuo_5/"/>
-      <url>/2022/03/05/zuo_5/</url>
+      <link href="/2022/03/05/zuo_system_study5/"/>
+      <url>/2022/03/05/zuo_system_study5/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>再来一个归并排序面试题</p><p>荷兰国旗问题</p><p>快速排序1.0</p><p>快速排序2.0</p><p>快速排序3.0</p><span id="more"></span><p>题目：</p><p>给定一个数组arr，两个整数lower和upper，<br>返回arr中有多少个子数组的累加和在[lower,upper]范围上<br>Leetcode题目：<a href="https://leetcode.com/problems/count-of-range-sum/">https://leetcode.com/problems/count-of-range-sum/</a></p><p>荷兰国旗问题的实现</p><p>快速排序从1.0到3.0的实现</p><p>快速排序的递归实现和非递归实现</p><p>code附加，双向链表进行快速排序的code实现</p>]]></content>
       
@@ -311,7 +1337,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -321,8 +1347,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（四）——归并排序及其常见面试题</title>
-      <link href="/2022/03/04/zuo_4/"/>
-      <url>/2022/03/04/zuo_4/</url>
+      <link href="/2022/03/04/zuo_system_study4/"/>
+      <url>/2022/03/04/zuo_system_study4/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>归并排序</p><span id="more"></span><p>题目：</p><p>归并排序的递归和非递归实现</p><p>在一个数组中，一个数左边比它小的数的总和，叫该数的小和<br>所有数的小和累加起来，叫数组小和<br>例子： [1,3,4,2,5]<br>1左边比1小的数：没有<br>3左边比3小的数：1<br>4左边比4小的数：1、3<br>2左边比2小的数：1<br>5左边比5小的数：1、3、4、 2<br>所以数组的小和为1+1+3+1+1+3+4+2&#x3D;16<br>给定一个数组arr，求数组小和</p><p>在一个数组中，任何一个前面的数a，和任何一个后面的数b，如果(a,b)是降序的，就称为降序对<br>给定一个数组arr，求数组的降序对总数量</p><p>在一个数组中，对于任何一个数num，求有多少个(后面的数*2)依然&lt;num，返回总个数<br>比如：[3,1,7,0,2]<br>3的后面有：1，0<br>1的后面有：0<br>7的后面有：0，2<br>0的后面没有<br>2的后面没有<br>所以总共有5个</p>]]></content>
       
@@ -338,7 +1364,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -348,8 +1374,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（三）——单双链表、栈和队列、递归和Master公式、哈希表和有序表的使用和性能</title>
-      <link href="/2022/03/03/zuo_3/"/>
-      <url>/2022/03/03/zuo_3/</url>
+      <link href="/2022/03/03/zuo_system_study3/"/>
+      <url>/2022/03/03/zuo_system_study3/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>单链表、双链表</p><p>栈、队列</p><p>递归的物理实质</p><p>评估递归复杂度的Master公式</p><p>哈希表的使用和性能</p><p>有序表的使用和性能</p><span id="more"></span><p>题目：</p><p>反转单链表、反转双链表</p><p>在链表中删除指定值的所有节点</p><p>用双链表实现栈和队列</p><p>用环形数组实现栈和队列</p><p>实现有getMin功能的栈</p><p>两个栈实现队列</p><p>两个队列实现栈</p><p>用递归行为得到数组中的最大值，并用master公式来估计时间复杂度</p><p>哈希表和有序表使用的code展示</p>]]></content>
       
@@ -365,7 +1391,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -375,8 +1401,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（二）——异或运算、进一步认识对数器的重要性</title>
-      <link href="/2022/03/02/zuo_2/"/>
-      <url>/2022/03/02/zuo_2/</url>
+      <link href="/2022/03/02/zuo_system_study2/"/>
+      <url>/2022/03/02/zuo_system_study2/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>异或运算的性质</p><p>异或运算的题目</p><span id="more"></span><p>题目：</p><p>不用额外变量交换两个数的值</p><p>不用额外变量交换数组中两个数的值</p><p>一个数组中有一种数出现了奇数次，其他数都出现了偶数次，怎么找到并打印这种数 </p><p>怎么把一个int类型的数，提取出二进制中最右侧的1来</p><p>一个数组中有两种数出现了奇数次，其他数都出现了偶数次，怎么找到并打印这两种数 </p><p>一个数组中有一种数出现K次，其他数都出现了M次，<br>已知M &gt; 1，K &lt; M，找到出现了K次的数<br>要求额外空间复杂度O(1)，时间复杂度O(N)</p>]]></content>
       
@@ -392,7 +1418,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -402,8 +1428,8 @@
     
     <entry>
       <title>算法数据结构体系学习班（一）——时间复杂度、空间复杂度、对数器和二分法</title>
-      <link href="/2022/03/01/zuo_1/"/>
-      <url>/2022/03/01/zuo_1/</url>
+      <link href="/2022/03/01/zuo_system_study1/"/>
+      <url>/2022/03/01/zuo_system_study1/</url>
       
         <content type="html"><![CDATA[<p>内容：</p><p>评估算法优劣的核心指标</p><p>时间复杂度、空间复杂度、估算方式、意义</p><p>常数时间的操作</p><p>选择排序、冒泡排序、插入排序</p><p>最优解</p><p>对数器</p><p>二分法</p><span id="more"></span><p>题目：</p><p>选择排序及其对数器验证</p><p>冒泡排序及其对数器验证</p><p>插入排序及其对数器验证</p><p>有序数组中找到num</p><p>有序数组中找到&gt;&#x3D;num最左的位置</p><p>有序数组中找到&lt;&#x3D;num最右的位置</p><p>局部最小值问题<br>定义何为局部最小值：<br>arr[0] &lt; arr[1]，0位置是局部最小；<br>arr[N-1] &lt; arr[N-2]，N-1位置是局部最小；<br>arr[i-1] &gt; arr[i] &lt; arr[i+1]，i位置是局部最小；<br>给定一个数组arr，已知任何两个相邻的数都不相等，找到随便一个局部最小位置返回</p>]]></content>
       
@@ -419,7 +1445,7 @@
             
             <tag> 算法 </tag>
             
-            <tag> 左程云算法课 </tag>
+            <tag> 左程云算法数据结构体系学习班 </tag>
             
         </tags>
       
@@ -1486,11 +2512,11 @@
     
     
     <entry>
-      <title>文件、资源、IO 流工具类</title>
-      <link href="/2021/03/19/Spring_%E6%96%87%E4%BB%B6%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81IO%20%E6%B5%81%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-      <url>/2021/03/19/Spring_%E6%96%87%E4%BB%B6%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81IO%20%E6%B5%81%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
+      <title>对象、数组、集合工具类</title>
+      <link href="/2021/03/19/Spring_%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+      <url>/2021/03/19/Spring_%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
       
-        <content type="html"><![CDATA[<h3 id="FileCopyUtils"><a href="#FileCopyUtils" class="headerlink" title="FileCopyUtils"></a>FileCopyUtils</h3><h4 id="1-输入"><a href="#1-输入" class="headerlink" title="1.输入"></a>1.输入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从文件中读入到字节数组中</span></span><br><span class="line"><span class="type">byte</span>[] copyToByteArray(File in)</span><br><span class="line"><span class="comment">// 从输入流中读入到字节数组中</span></span><br><span class="line"><span class="type">byte</span>[] copyToByteArray(InputStream in)</span><br><span class="line"><span class="comment">// 从输入流中读入到字符串中</span></span><br><span class="line">String <span class="title function_">copyToString</span><span class="params">(Reader in)</span></span><br></pre></td></tr></table></figure><span id="more"></span><h4 id="2-输出"><a href="#2-输出" class="headerlink" title="2.输出"></a>2.输出</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从字节数组到文件</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(<span class="type">byte</span>[] in, File out)</span></span><br><span class="line"><span class="comment">// 从文件到文件</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(File in, File out)</span></span><br><span class="line"><span class="comment">// 从字节数组到输出流</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(<span class="type">byte</span>[] in, OutputStream out)</span> </span><br><span class="line"><span class="comment">// 从输入流到输出流</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(InputStream in, OutputStream out)</span> </span><br><span class="line"><span class="comment">// 从输入流到输出流</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(Reader in, Writer out)</span></span><br><span class="line"><span class="comment">// 从字符串到输出流</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(String in, Writer out)</span></span><br></pre></td></tr></table></figure><h3 id="ResourceUtils"><a href="#ResourceUtils" class="headerlink" title="ResourceUtils"></a>ResourceUtils</h3><h4 id="1-从资源路径获取文件"><a href="#1-从资源路径获取文件" class="headerlink" title="1.从资源路径获取文件"></a>1.从资源路径获取文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断字符串是否是一个合法的 URL 字符串。</span></span><br><span class="line"><span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isUrl</span><span class="params">(String resourceLocation)</span></span><br><span class="line"><span class="comment">// 获取 URL</span></span><br><span class="line"><span class="keyword">static</span> URL <span class="title function_">getURL</span><span class="params">(String resourceLocation)</span> </span><br><span class="line"><span class="comment">// 获取文件（在 JAR 包内无法正常使用，需要是一个独立的文件）</span></span><br><span class="line"><span class="keyword">static</span> File <span class="title function_">getFile</span><span class="params">(String resourceLocation)</span></span><br></pre></td></tr></table></figure><h4 id="2-Resource"><a href="#2-Resource" class="headerlink" title="2.Resource"></a>2.Resource</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件系统资源 D:\...</span></span><br><span class="line">FileSystemResource</span><br><span class="line"><span class="comment">// URL 资源，如 file://... http://...</span></span><br><span class="line">UrlResource</span><br><span class="line"><span class="comment">// 类路径下的资源，classpth:...</span></span><br><span class="line">ClassPathResource</span><br><span class="line"><span class="comment">// Web 容器上下文中的资源（jar 包、war 包）</span></span><br><span class="line">ServletContextResource</span><br><span class="line"><span class="comment">// 判断资源是否存在</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">exists</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 从资源中获得 File 对象</span></span><br><span class="line">File <span class="title function_">getFile</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 从资源中获得 URI 对象</span></span><br><span class="line">URI <span class="title function_">getURI</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 从资源中获得 URI 对象</span></span><br><span class="line">URL <span class="title function_">getURL</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 获得资源的 InputStream</span></span><br><span class="line">InputStream <span class="title function_">getInputStream</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 获得资源的描述信息</span></span><br><span class="line">String <span class="title function_">getDescription</span><span class="params">()</span></span><br></pre></td></tr></table></figure><h3 id="StreamUtils"><a href="#StreamUtils" class="headerlink" title="StreamUtils"></a>StreamUtils</h3><h4 id="1-输入-1"><a href="#1-输入-1" class="headerlink" title="1.输入"></a>1.输入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(<span class="type">byte</span>[] in, OutputStream out)</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(InputStream in, OutputStream out)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(String in, Charset charset, OutputStream out)</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">copyRange</span><span class="params">(InputStream in, OutputStream out, <span class="type">long</span> start, <span class="type">long</span> end)</span></span><br></pre></td></tr></table></figure><h4 id="2-输出-1"><a href="#2-输出-1" class="headerlink" title="2.输出"></a>2.输出</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span>[] copyToByteArray(InputStream in)</span><br><span class="line">String <span class="title function_">copyToString</span><span class="params">(InputStream in, Charset charset)</span></span><br><span class="line"><span class="comment">// 舍弃输入流中的内容</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">drain</span><span class="params">(InputStream in)</span> </span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h3 id="ObjectUtils"><a href="#ObjectUtils" class="headerlink" title="ObjectUtils"></a>ObjectUtils</h3><h4 id="1-获取对象的基本信息"><a href="#1-获取对象的基本信息" class="headerlink" title="1.获取对象的基本信息"></a>1.获取对象的基本信息</h4><span id="more"></span><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取对象的类名。参数为 null 时，返回字符串：&quot;null&quot; </span></span><br><span class="line">String <span class="title function_">nullSafeClassName</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 参数为 null 时，返回 0</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">nullSafeHashCode</span><span class="params">(Object object)</span></span><br><span class="line"><span class="comment">// 参数为 null 时，返回字符串：&quot;null&quot;</span></span><br><span class="line">String <span class="title function_">nullSafeToString</span><span class="params">(<span class="type">boolean</span>[] array)</span></span><br><span class="line"><span class="comment">// 获取对象 HashCode（十六进制形式字符串）。参数为 null 时，返回 0 </span></span><br><span class="line">String <span class="title function_">getIdentityHexString</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 获取对象的类名和 HashCode。 参数为 null 时，返回字符串：&quot;&quot; </span></span><br><span class="line">String <span class="title function_">identityToString</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 相当于 toString()方法，但参数为 null 时，返回字符串：&quot;&quot;</span></span><br><span class="line">String <span class="title function_">getDisplayString</span><span class="params">(Object obj)</span></span><br></pre></td></tr></table></figure><h4 id="2-判断工具"><a href="#2-判断工具" class="headerlink" title="2.判断工具"></a>2.判断工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断数组是否为空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Object[] array)</span></span><br><span class="line"><span class="comment">// 判断参数对象是否是数组</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isArray</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 判断数组中是否包含指定元素</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsElement</span><span class="params">(Object[] array, Object element)</span></span><br><span class="line"><span class="comment">// 相等，或同为 null时，返回 true</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">nullSafeEquals</span><span class="params">(Object o1, Object o2)</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">判断参数对象是否为空，判断标准为：</span></span><br><span class="line"><span class="comment">    Optional: Optional.empty()</span></span><br><span class="line"><span class="comment">       Array: length == 0</span></span><br><span class="line"><span class="comment">CharSequence: length == 0</span></span><br><span class="line"><span class="comment">  Collection: Collection.isEmpty()</span></span><br><span class="line"><span class="comment">         Map: Map.isEmpty()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Object obj)</span></span><br></pre></td></tr></table></figure><h4 id="3-其他工具方法"><a href="#3-其他工具方法" class="headerlink" title="3.其他工具方法"></a>3.其他工具方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 向参数数组的末尾追加新元素，并返回一个新数组</span></span><br><span class="line">&lt;A, O <span class="keyword">extends</span> <span class="title class_">A</span>&gt; A[] addObjectToArray(A[] array, O obj)</span><br><span class="line"><span class="comment">// 原生基础类型数组 --&gt; 包装类数组</span></span><br><span class="line">Object[] toObjectArray(Object source)</span><br></pre></td></tr></table></figure><h3 id="StringUtils"><a href="#StringUtils" class="headerlink" title="StringUtils"></a>StringUtils</h3><h4 id="1-字符串判断工具"><a href="#1-字符串判断工具" class="headerlink" title="1.字符串判断工具"></a>1.字符串判断工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断字符串是否为 null，或 &quot;&quot;。注意，包含空白符的字符串为非空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Object str)</span></span><br><span class="line"><span class="comment">// 判断字符串是否是以指定内容结束。忽略大小写</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">endsWithIgnoreCase</span><span class="params">(String str, String suffix)</span></span><br><span class="line"><span class="comment">// 判断字符串是否已指定内容开头。忽略大小写</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">startsWithIgnoreCase</span><span class="params">(String str, String prefix)</span> </span><br><span class="line"><span class="comment">// 是否包含空白符</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 判断字符串非空且长度不为 0，即，Not Empty</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">hasLength</span><span class="params">(CharSequence str)</span></span><br><span class="line"><span class="comment">// 判断字符串是否包含实际内容，即非仅包含空白符，也就是 Not Blank</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">hasText</span><span class="params">(CharSequence str)</span></span><br><span class="line"><span class="comment">// 判断字符串指定索引处是否包含一个子串。</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">substringMatch</span><span class="params">(CharSequence str, <span class="type">int</span> index, CharSequence substring)</span></span><br><span class="line"><span class="comment">// 计算一个字符串中指定子串的出现次数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">countOccurrencesOf</span><span class="params">(String str, String sub)</span></span><br></pre></td></tr></table></figure><h4 id="2-字符串操作工具"><a href="#2-字符串操作工具" class="headerlink" title="2.字符串操作工具"></a>2.字符串操作工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查找并替换指定子串</span></span><br><span class="line">String <span class="title function_">replace</span><span class="params">(String inString, String oldPattern, String newPattern)</span></span><br><span class="line"><span class="comment">// 去除尾部的特定字符</span></span><br><span class="line">String <span class="title function_">trimTrailingCharacter</span><span class="params">(String str, <span class="type">char</span> trailingCharacter)</span> </span><br><span class="line"><span class="comment">// 去除头部的特定字符</span></span><br><span class="line">String <span class="title function_">trimLeadingCharacter</span><span class="params">(String str, <span class="type">char</span> leadingCharacter)</span></span><br><span class="line"><span class="comment">// 去除头部的空白符</span></span><br><span class="line">String <span class="title function_">trimLeadingWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 去除头部的空白符</span></span><br><span class="line">String <span class="title function_">trimTrailingWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 去除头部和尾部的空白符</span></span><br><span class="line">String <span class="title function_">trimWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 删除开头、结尾和中间的空白符</span></span><br><span class="line">String <span class="title function_">trimAllWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 删除指定子串</span></span><br><span class="line">String <span class="title function_">delete</span><span class="params">(String inString, String pattern)</span></span><br><span class="line"><span class="comment">// 删除指定字符（可以是多个）</span></span><br><span class="line">String <span class="title function_">deleteAny</span><span class="params">(String inString, String charsToDelete)</span></span><br><span class="line"><span class="comment">// 对数组的每一项执行 trim() 方法</span></span><br><span class="line">String[] trimArrayElements(String[] array)</span><br><span class="line"><span class="comment">// 将 URL 字符串进行解码</span></span><br><span class="line">String <span class="title function_">uriDecode</span><span class="params">(String source, Charset charset)</span></span><br></pre></td></tr></table></figure><h4 id="3-路径相关工具方法"><a href="#3-路径相关工具方法" class="headerlink" title="3.路径相关工具方法"></a>3.路径相关工具方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解析路径字符串，优化其中的 “..” </span></span><br><span class="line">String <span class="title function_">cleanPath</span><span class="params">(String path)</span></span><br><span class="line"><span class="comment">// 解析路径字符串，解析出文件名部分</span></span><br><span class="line">String <span class="title function_">getFilename</span><span class="params">(String path)</span></span><br><span class="line"><span class="comment">// 解析路径字符串，解析出文件后缀名</span></span><br><span class="line">String <span class="title function_">getFilenameExtension</span><span class="params">(String path)</span></span><br><span class="line"><span class="comment">// 比较两个两个字符串，判断是否是同一个路径。会自动处理路径中的 “..” </span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">pathEquals</span><span class="params">(String path1, String path2)</span></span><br><span class="line"><span class="comment">// 删除文件路径名中的后缀部分</span></span><br><span class="line">String <span class="title function_">stripFilenameExtension</span><span class="params">(String path)</span> </span><br><span class="line"><span class="comment">// 以 “. 作为分隔符，获取其最后一部分</span></span><br><span class="line">String <span class="title function_">unqualify</span><span class="params">(String qualifiedName)</span></span><br><span class="line"><span class="comment">// 以指定字符作为分隔符，获取其最后一部分</span></span><br><span class="line">String <span class="title function_">unqualify</span><span class="params">(String qualifiedName, <span class="type">char</span> separator)</span></span><br></pre></td></tr></table></figure><h3 id="CollectionUtils"><a href="#CollectionUtils" class="headerlink" title="CollectionUtils"></a>CollectionUtils</h3><h4 id="1-集合判断工具"><a href="#1-集合判断工具" class="headerlink" title="1.集合判断工具"></a>1.集合判断工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断 List/Set 是否为空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Collection&lt;?&gt; collection)</span></span><br><span class="line"><span class="comment">// 判断 Map 是否为空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Map&lt;?,?&gt; map)</span></span><br><span class="line"><span class="comment">// 判断 List/Set 中是否包含某个对象</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsInstance</span><span class="params">(Collection&lt;?&gt; collection, Object element)</span></span><br><span class="line"><span class="comment">// 以迭代器的方式，判断 List/Set 中是否包含某个对象</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">contains</span><span class="params">(Iterator&lt;?&gt; iterator, Object element)</span></span><br><span class="line"><span class="comment">// 判断 List/Set 是否包含某些对象中的任意一个</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsAny</span><span class="params">(Collection&lt;?&gt; source, Collection&lt;?&gt; candidates)</span></span><br><span class="line"><span class="comment">// 判断 List/Set 中的每个元素是否唯一。即 List/Set 中不存在重复元素</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">hasUniqueObject</span><span class="params">(Collection&lt;?&gt; collection)</span></span><br></pre></td></tr></table></figure><h4 id="2-集合操作工具"><a href="#2-集合操作工具" class="headerlink" title="2.集合操作工具"></a>2.集合操作工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将 Array 中的元素都添加到 List/Set 中</span></span><br><span class="line">&lt;E&gt; <span class="keyword">void</span> <span class="title function_">mergeArrayIntoCollection</span><span class="params">(Object array, Collection&lt;E&gt; collection)</span>  </span><br><span class="line"><span class="comment">// 将 Properties 中的键值对都添加到 Map 中</span></span><br><span class="line">&lt;K,V&gt; <span class="keyword">void</span> <span class="title function_">mergePropertiesIntoMap</span><span class="params">(Properties props, Map&lt;K,V&gt; map)</span></span><br><span class="line"><span class="comment">// 返回 List 中最后一个元素</span></span><br><span class="line">&lt;T&gt; T <span class="title function_">lastElement</span><span class="params">(List&lt;T&gt; list)</span>  </span><br><span class="line"><span class="comment">// 返回 Set 中最后一个元素</span></span><br><span class="line">&lt;T&gt; T <span class="title function_">lastElement</span><span class="params">(Set&lt;T&gt; set)</span> </span><br><span class="line"><span class="comment">// 返回参数 candidates 中第一个存在于参数 source 中的元素</span></span><br><span class="line">&lt;E&gt; E <span class="title function_">findFirstMatch</span><span class="params">(Collection&lt;?&gt; source, Collection&lt;E&gt; candidates)</span></span><br><span class="line"><span class="comment">// 返回 List/Set 中指定类型的元素。</span></span><br><span class="line">&lt;T&gt; T <span class="title function_">findValueOfType</span><span class="params">(Collection&lt;?&gt; collection, Class&lt;T&gt; type)</span></span><br><span class="line"><span class="comment">// 返回 List/Set 中指定类型的元素。如果第一种类型未找到，则查找第二种类型，以此类推</span></span><br><span class="line">Object <span class="title function_">findValueOfType</span><span class="params">(Collection&lt;?&gt; collection, Class&lt;?&gt;[] types)</span></span><br><span class="line"><span class="comment">// 返回 List/Set 中元素的类型</span></span><br><span class="line">Class&lt;?&gt; findCommonElementType(Collection&lt;?&gt; collection)</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -1515,11 +2541,11 @@
     
     
     <entry>
-      <title>对象、数组、集合工具类</title>
-      <link href="/2021/03/19/Spring_%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-      <url>/2021/03/19/Spring_%E5%AF%B9%E8%B1%A1%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E9%9B%86%E5%90%88%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
+      <title>文件、资源、IO 流工具类</title>
+      <link href="/2021/03/19/Spring_%E6%96%87%E4%BB%B6%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81IO%20%E6%B5%81%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+      <url>/2021/03/19/Spring_%E6%96%87%E4%BB%B6%E3%80%81%E8%B5%84%E6%BA%90%E3%80%81IO%20%E6%B5%81%E5%B7%A5%E5%85%B7%E7%B1%BB/</url>
       
-        <content type="html"><![CDATA[<h3 id="ObjectUtils"><a href="#ObjectUtils" class="headerlink" title="ObjectUtils"></a>ObjectUtils</h3><h4 id="1-获取对象的基本信息"><a href="#1-获取对象的基本信息" class="headerlink" title="1.获取对象的基本信息"></a>1.获取对象的基本信息</h4><span id="more"></span><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取对象的类名。参数为 null 时，返回字符串：&quot;null&quot; </span></span><br><span class="line">String <span class="title function_">nullSafeClassName</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 参数为 null 时，返回 0</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">nullSafeHashCode</span><span class="params">(Object object)</span></span><br><span class="line"><span class="comment">// 参数为 null 时，返回字符串：&quot;null&quot;</span></span><br><span class="line">String <span class="title function_">nullSafeToString</span><span class="params">(<span class="type">boolean</span>[] array)</span></span><br><span class="line"><span class="comment">// 获取对象 HashCode（十六进制形式字符串）。参数为 null 时，返回 0 </span></span><br><span class="line">String <span class="title function_">getIdentityHexString</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 获取对象的类名和 HashCode。 参数为 null 时，返回字符串：&quot;&quot; </span></span><br><span class="line">String <span class="title function_">identityToString</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 相当于 toString()方法，但参数为 null 时，返回字符串：&quot;&quot;</span></span><br><span class="line">String <span class="title function_">getDisplayString</span><span class="params">(Object obj)</span></span><br></pre></td></tr></table></figure><h4 id="2-判断工具"><a href="#2-判断工具" class="headerlink" title="2.判断工具"></a>2.判断工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断数组是否为空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Object[] array)</span></span><br><span class="line"><span class="comment">// 判断参数对象是否是数组</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isArray</span><span class="params">(Object obj)</span></span><br><span class="line"><span class="comment">// 判断数组中是否包含指定元素</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsElement</span><span class="params">(Object[] array, Object element)</span></span><br><span class="line"><span class="comment">// 相等，或同为 null时，返回 true</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">nullSafeEquals</span><span class="params">(Object o1, Object o2)</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">判断参数对象是否为空，判断标准为：</span></span><br><span class="line"><span class="comment">    Optional: Optional.empty()</span></span><br><span class="line"><span class="comment">       Array: length == 0</span></span><br><span class="line"><span class="comment">CharSequence: length == 0</span></span><br><span class="line"><span class="comment">  Collection: Collection.isEmpty()</span></span><br><span class="line"><span class="comment">         Map: Map.isEmpty()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Object obj)</span></span><br></pre></td></tr></table></figure><h4 id="3-其他工具方法"><a href="#3-其他工具方法" class="headerlink" title="3.其他工具方法"></a>3.其他工具方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 向参数数组的末尾追加新元素，并返回一个新数组</span></span><br><span class="line">&lt;A, O <span class="keyword">extends</span> <span class="title class_">A</span>&gt; A[] addObjectToArray(A[] array, O obj)</span><br><span class="line"><span class="comment">// 原生基础类型数组 --&gt; 包装类数组</span></span><br><span class="line">Object[] toObjectArray(Object source)</span><br></pre></td></tr></table></figure><h3 id="StringUtils"><a href="#StringUtils" class="headerlink" title="StringUtils"></a>StringUtils</h3><h4 id="1-字符串判断工具"><a href="#1-字符串判断工具" class="headerlink" title="1.字符串判断工具"></a>1.字符串判断工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断字符串是否为 null，或 &quot;&quot;。注意，包含空白符的字符串为非空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Object str)</span></span><br><span class="line"><span class="comment">// 判断字符串是否是以指定内容结束。忽略大小写</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">endsWithIgnoreCase</span><span class="params">(String str, String suffix)</span></span><br><span class="line"><span class="comment">// 判断字符串是否已指定内容开头。忽略大小写</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">startsWithIgnoreCase</span><span class="params">(String str, String prefix)</span> </span><br><span class="line"><span class="comment">// 是否包含空白符</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 判断字符串非空且长度不为 0，即，Not Empty</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">hasLength</span><span class="params">(CharSequence str)</span></span><br><span class="line"><span class="comment">// 判断字符串是否包含实际内容，即非仅包含空白符，也就是 Not Blank</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">hasText</span><span class="params">(CharSequence str)</span></span><br><span class="line"><span class="comment">// 判断字符串指定索引处是否包含一个子串。</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">substringMatch</span><span class="params">(CharSequence str, <span class="type">int</span> index, CharSequence substring)</span></span><br><span class="line"><span class="comment">// 计算一个字符串中指定子串的出现次数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">countOccurrencesOf</span><span class="params">(String str, String sub)</span></span><br></pre></td></tr></table></figure><h4 id="2-字符串操作工具"><a href="#2-字符串操作工具" class="headerlink" title="2.字符串操作工具"></a>2.字符串操作工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查找并替换指定子串</span></span><br><span class="line">String <span class="title function_">replace</span><span class="params">(String inString, String oldPattern, String newPattern)</span></span><br><span class="line"><span class="comment">// 去除尾部的特定字符</span></span><br><span class="line">String <span class="title function_">trimTrailingCharacter</span><span class="params">(String str, <span class="type">char</span> trailingCharacter)</span> </span><br><span class="line"><span class="comment">// 去除头部的特定字符</span></span><br><span class="line">String <span class="title function_">trimLeadingCharacter</span><span class="params">(String str, <span class="type">char</span> leadingCharacter)</span></span><br><span class="line"><span class="comment">// 去除头部的空白符</span></span><br><span class="line">String <span class="title function_">trimLeadingWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 去除头部的空白符</span></span><br><span class="line">String <span class="title function_">trimTrailingWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 去除头部和尾部的空白符</span></span><br><span class="line">String <span class="title function_">trimWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 删除开头、结尾和中间的空白符</span></span><br><span class="line">String <span class="title function_">trimAllWhitespace</span><span class="params">(String str)</span></span><br><span class="line"><span class="comment">// 删除指定子串</span></span><br><span class="line">String <span class="title function_">delete</span><span class="params">(String inString, String pattern)</span></span><br><span class="line"><span class="comment">// 删除指定字符（可以是多个）</span></span><br><span class="line">String <span class="title function_">deleteAny</span><span class="params">(String inString, String charsToDelete)</span></span><br><span class="line"><span class="comment">// 对数组的每一项执行 trim() 方法</span></span><br><span class="line">String[] trimArrayElements(String[] array)</span><br><span class="line"><span class="comment">// 将 URL 字符串进行解码</span></span><br><span class="line">String <span class="title function_">uriDecode</span><span class="params">(String source, Charset charset)</span></span><br></pre></td></tr></table></figure><h4 id="3-路径相关工具方法"><a href="#3-路径相关工具方法" class="headerlink" title="3.路径相关工具方法"></a>3.路径相关工具方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解析路径字符串，优化其中的 “..” </span></span><br><span class="line">String <span class="title function_">cleanPath</span><span class="params">(String path)</span></span><br><span class="line"><span class="comment">// 解析路径字符串，解析出文件名部分</span></span><br><span class="line">String <span class="title function_">getFilename</span><span class="params">(String path)</span></span><br><span class="line"><span class="comment">// 解析路径字符串，解析出文件后缀名</span></span><br><span class="line">String <span class="title function_">getFilenameExtension</span><span class="params">(String path)</span></span><br><span class="line"><span class="comment">// 比较两个两个字符串，判断是否是同一个路径。会自动处理路径中的 “..” </span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">pathEquals</span><span class="params">(String path1, String path2)</span></span><br><span class="line"><span class="comment">// 删除文件路径名中的后缀部分</span></span><br><span class="line">String <span class="title function_">stripFilenameExtension</span><span class="params">(String path)</span> </span><br><span class="line"><span class="comment">// 以 “. 作为分隔符，获取其最后一部分</span></span><br><span class="line">String <span class="title function_">unqualify</span><span class="params">(String qualifiedName)</span></span><br><span class="line"><span class="comment">// 以指定字符作为分隔符，获取其最后一部分</span></span><br><span class="line">String <span class="title function_">unqualify</span><span class="params">(String qualifiedName, <span class="type">char</span> separator)</span></span><br></pre></td></tr></table></figure><h3 id="CollectionUtils"><a href="#CollectionUtils" class="headerlink" title="CollectionUtils"></a>CollectionUtils</h3><h4 id="1-集合判断工具"><a href="#1-集合判断工具" class="headerlink" title="1.集合判断工具"></a>1.集合判断工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断 List/Set 是否为空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Collection&lt;?&gt; collection)</span></span><br><span class="line"><span class="comment">// 判断 Map 是否为空</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">(Map&lt;?,?&gt; map)</span></span><br><span class="line"><span class="comment">// 判断 List/Set 中是否包含某个对象</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsInstance</span><span class="params">(Collection&lt;?&gt; collection, Object element)</span></span><br><span class="line"><span class="comment">// 以迭代器的方式，判断 List/Set 中是否包含某个对象</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">contains</span><span class="params">(Iterator&lt;?&gt; iterator, Object element)</span></span><br><span class="line"><span class="comment">// 判断 List/Set 是否包含某些对象中的任意一个</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">containsAny</span><span class="params">(Collection&lt;?&gt; source, Collection&lt;?&gt; candidates)</span></span><br><span class="line"><span class="comment">// 判断 List/Set 中的每个元素是否唯一。即 List/Set 中不存在重复元素</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">hasUniqueObject</span><span class="params">(Collection&lt;?&gt; collection)</span></span><br></pre></td></tr></table></figure><h4 id="2-集合操作工具"><a href="#2-集合操作工具" class="headerlink" title="2.集合操作工具"></a>2.集合操作工具</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将 Array 中的元素都添加到 List/Set 中</span></span><br><span class="line">&lt;E&gt; <span class="keyword">void</span> <span class="title function_">mergeArrayIntoCollection</span><span class="params">(Object array, Collection&lt;E&gt; collection)</span>  </span><br><span class="line"><span class="comment">// 将 Properties 中的键值对都添加到 Map 中</span></span><br><span class="line">&lt;K,V&gt; <span class="keyword">void</span> <span class="title function_">mergePropertiesIntoMap</span><span class="params">(Properties props, Map&lt;K,V&gt; map)</span></span><br><span class="line"><span class="comment">// 返回 List 中最后一个元素</span></span><br><span class="line">&lt;T&gt; T <span class="title function_">lastElement</span><span class="params">(List&lt;T&gt; list)</span>  </span><br><span class="line"><span class="comment">// 返回 Set 中最后一个元素</span></span><br><span class="line">&lt;T&gt; T <span class="title function_">lastElement</span><span class="params">(Set&lt;T&gt; set)</span> </span><br><span class="line"><span class="comment">// 返回参数 candidates 中第一个存在于参数 source 中的元素</span></span><br><span class="line">&lt;E&gt; E <span class="title function_">findFirstMatch</span><span class="params">(Collection&lt;?&gt; source, Collection&lt;E&gt; candidates)</span></span><br><span class="line"><span class="comment">// 返回 List/Set 中指定类型的元素。</span></span><br><span class="line">&lt;T&gt; T <span class="title function_">findValueOfType</span><span class="params">(Collection&lt;?&gt; collection, Class&lt;T&gt; type)</span></span><br><span class="line"><span class="comment">// 返回 List/Set 中指定类型的元素。如果第一种类型未找到，则查找第二种类型，以此类推</span></span><br><span class="line">Object <span class="title function_">findValueOfType</span><span class="params">(Collection&lt;?&gt; collection, Class&lt;?&gt;[] types)</span></span><br><span class="line"><span class="comment">// 返回 List/Set 中元素的类型</span></span><br><span class="line">Class&lt;?&gt; findCommonElementType(Collection&lt;?&gt; collection)</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h3 id="FileCopyUtils"><a href="#FileCopyUtils" class="headerlink" title="FileCopyUtils"></a>FileCopyUtils</h3><h4 id="1-输入"><a href="#1-输入" class="headerlink" title="1.输入"></a>1.输入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从文件中读入到字节数组中</span></span><br><span class="line"><span class="type">byte</span>[] copyToByteArray(File in)</span><br><span class="line"><span class="comment">// 从输入流中读入到字节数组中</span></span><br><span class="line"><span class="type">byte</span>[] copyToByteArray(InputStream in)</span><br><span class="line"><span class="comment">// 从输入流中读入到字符串中</span></span><br><span class="line">String <span class="title function_">copyToString</span><span class="params">(Reader in)</span></span><br></pre></td></tr></table></figure><span id="more"></span><h4 id="2-输出"><a href="#2-输出" class="headerlink" title="2.输出"></a>2.输出</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从字节数组到文件</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(<span class="type">byte</span>[] in, File out)</span></span><br><span class="line"><span class="comment">// 从文件到文件</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(File in, File out)</span></span><br><span class="line"><span class="comment">// 从字节数组到输出流</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(<span class="type">byte</span>[] in, OutputStream out)</span> </span><br><span class="line"><span class="comment">// 从输入流到输出流</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(InputStream in, OutputStream out)</span> </span><br><span class="line"><span class="comment">// 从输入流到输出流</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(Reader in, Writer out)</span></span><br><span class="line"><span class="comment">// 从字符串到输出流</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(String in, Writer out)</span></span><br></pre></td></tr></table></figure><h3 id="ResourceUtils"><a href="#ResourceUtils" class="headerlink" title="ResourceUtils"></a>ResourceUtils</h3><h4 id="1-从资源路径获取文件"><a href="#1-从资源路径获取文件" class="headerlink" title="1.从资源路径获取文件"></a>1.从资源路径获取文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断字符串是否是一个合法的 URL 字符串。</span></span><br><span class="line"><span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isUrl</span><span class="params">(String resourceLocation)</span></span><br><span class="line"><span class="comment">// 获取 URL</span></span><br><span class="line"><span class="keyword">static</span> URL <span class="title function_">getURL</span><span class="params">(String resourceLocation)</span> </span><br><span class="line"><span class="comment">// 获取文件（在 JAR 包内无法正常使用，需要是一个独立的文件）</span></span><br><span class="line"><span class="keyword">static</span> File <span class="title function_">getFile</span><span class="params">(String resourceLocation)</span></span><br></pre></td></tr></table></figure><h4 id="2-Resource"><a href="#2-Resource" class="headerlink" title="2.Resource"></a>2.Resource</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件系统资源 D:\...</span></span><br><span class="line">FileSystemResource</span><br><span class="line"><span class="comment">// URL 资源，如 file://... http://...</span></span><br><span class="line">UrlResource</span><br><span class="line"><span class="comment">// 类路径下的资源，classpth:...</span></span><br><span class="line">ClassPathResource</span><br><span class="line"><span class="comment">// Web 容器上下文中的资源（jar 包、war 包）</span></span><br><span class="line">ServletContextResource</span><br><span class="line"><span class="comment">// 判断资源是否存在</span></span><br><span class="line"><span class="type">boolean</span> <span class="title function_">exists</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 从资源中获得 File 对象</span></span><br><span class="line">File <span class="title function_">getFile</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 从资源中获得 URI 对象</span></span><br><span class="line">URI <span class="title function_">getURI</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 从资源中获得 URI 对象</span></span><br><span class="line">URL <span class="title function_">getURL</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 获得资源的 InputStream</span></span><br><span class="line">InputStream <span class="title function_">getInputStream</span><span class="params">()</span></span><br><span class="line"><span class="comment">// 获得资源的描述信息</span></span><br><span class="line">String <span class="title function_">getDescription</span><span class="params">()</span></span><br></pre></td></tr></table></figure><h3 id="StreamUtils"><a href="#StreamUtils" class="headerlink" title="StreamUtils"></a>StreamUtils</h3><h4 id="1-输入-1"><a href="#1-输入-1" class="headerlink" title="1.输入"></a>1.输入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(<span class="type">byte</span>[] in, OutputStream out)</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">copy</span><span class="params">(InputStream in, OutputStream out)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">copy</span><span class="params">(String in, Charset charset, OutputStream out)</span></span><br><span class="line"><span class="type">long</span> <span class="title function_">copyRange</span><span class="params">(InputStream in, OutputStream out, <span class="type">long</span> start, <span class="type">long</span> end)</span></span><br></pre></td></tr></table></figure><h4 id="2-输出-1"><a href="#2-输出-1" class="headerlink" title="2.输出"></a>2.输出</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span>[] copyToByteArray(InputStream in)</span><br><span class="line">String <span class="title function_">copyToString</span><span class="params">(InputStream in, Charset charset)</span></span><br><span class="line"><span class="comment">// 舍弃输入流中的内容</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">drain</span><span class="params">(InputStream in)</span> </span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -2080,11 +3106,11 @@
     
     
     <entry>
-      <title>去除文件名的扩展名</title>
-      <link href="/2020/12/16/Java_13_%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E6%89%A9%E5%B1%95%E5%90%8D/"/>
-      <url>/2020/12/16/Java_13_%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E6%89%A9%E5%B1%95%E5%90%8D/</url>
+      <title>String类lastIndexOf() 方法</title>
+      <link href="/2020/12/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/"/>
+      <url>/2020/12/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/</url>
       
-        <content type="html"><![CDATA[<p>在最后一个点，去除文件名的扩展名。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">removeExtension</span><span class="params">(String fname)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">pos</span> <span class="operator">=</span> fname.lastIndexOf(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos &gt; -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> fname.substring(<span class="number">0</span>, pos);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> fname;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><span id="more"></span><p>例如”demo1.txt” → “demo1”。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       System.out.println(removeExtension(<span class="string">&quot;demo1.txt&quot;</span>));</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>相关文章：<a href="https://daijing.online/2022/02/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/">String类lastIndexOf()方法 | 与或非’s Blog (daijing.online)</a></p>]]></content>
+        <content type="html"><![CDATA[<p>lastIndexOf() 方法有以下四种形式：</p><ul><li><strong>public int lastIndexOf(int ch):</strong> 返回指定字符在此字符串中最后一次出现处的索引，如果此字符串中没有这样的字符，则返回 -1。</li><li><strong>public int lastIndexOf(int ch, int fromIndex):</strong> 返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索，如果此字符串中没有这样的字符，则返回 -1。</li><li><strong>public int lastIndexOf(String str):</strong> 返回指定子字符串在此字符串中最右边出现处的索引，如果此字符串中没有这样的字符，则返回 -1。</li><li><strong>public int lastIndexOf(String str, int fromIndex):</strong> 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索，如果此字符串中没有这样的字符，则返回 -1。</li></ul><span id="more"></span><p><strong>参数</strong></p><ul><li><strong>ch</strong> – 字符。</li><li><strong>fromIndex</strong> – 开始搜索的索引位置。</li><li><strong>str</strong> – 要搜索的子字符串。</li></ul><p><strong>返回值</strong></p><p>指定子字符串在字符串中第一次出现处的索引值。</p><p><strong>实例</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">Str</span> <span class="operator">=</span> <span class="string">&quot;www.daijjing.online&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">SubStr1</span> <span class="operator">=</span> <span class="string">&quot;daijjing&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">SubStr2</span> <span class="operator">=</span> <span class="string">&quot;online&quot;</span>;</span><br><span class="line"></span><br><span class="line">        System.out.print(<span class="string">&quot;查找字符 i 最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println(Str.lastIndexOf( <span class="string">&#x27;i&#x27;</span> ));</span><br><span class="line">        System.out.print(<span class="string">&quot;从第14个位置查找字符 i 最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println(Str.lastIndexOf( <span class="string">&#x27;i&#x27;</span>, <span class="number">14</span> ));</span><br><span class="line">        System.out.print(<span class="string">&quot;子字符串 SubStr1 最后出现的位置:&quot;</span> );</span><br><span class="line">        System.out.println( Str.lastIndexOf( SubStr1 ));</span><br><span class="line">        System.out.print(<span class="string">&quot;从第十五个位置开始搜索子字符串 SubStr1最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println( Str.lastIndexOf( SubStr1, <span class="number">15</span> ));</span><br><span class="line">        System.out.print(<span class="string">&quot;子字符串 SubStr2 最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println(Str.lastIndexOf( SubStr2 ));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上程序执行结果为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查找字符 i 最后出现的位置 :16</span><br><span class="line">从第14个位置查找字符 i 最后出现的位置 :9</span><br><span class="line">子字符串 SubStr1 最后出现的位置:4</span><br><span class="line">从第十五个位置开始搜索子字符串 SubStr1最后出现的位置 :4</span><br><span class="line">子字符串 SubStr2 最后出现的位置 :13</span><br></pre></td></tr></table></figure><p><strong>String 类中的indexof(int ch)方法的形参列表为什么采用int型而不采用char型?</strong></p><p>涉及到了增补字符，因为char型只有65536个字符，不能表示完所有的字符还有一些诸如”火星文”的未知字符，因此用char型来表示是完全不够的,而int类型的范围是- 2 ^ 31 ~2 ^ 31 - 1,足够用来表示已知和未知的字符，并且int跟char海涉及到隐式字符转换，这样用int作为形参不仅没有多费功夫还扩大了indexof的涵盖范围。</p><p>例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Indexof_Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String s=<span class="string">&quot;hello.wor.ld&quot;</span>;</span><br><span class="line">        <span class="comment">//基本字符与增补字符</span></span><br><span class="line">        <span class="comment">//Character.MIN_SUPPLEMENTARY_CODE_POINT   最小的增补字符</span></span><br><span class="line">        System.out.println(   s.indexOf(<span class="number">46</span>)  );  <span class="comment">//indexOf  返回类型位  int   ??为什么用int 不用char 涉及增补字符</span></span><br><span class="line">        System.out.println(   s.indexOf(<span class="string">&#x27;.&#x27;</span>) );   <span class="comment">//隐式字符转换</span></span><br><span class="line"></span><br><span class="line">        System.out.println(  s.lastIndexOf(<span class="string">&#x27;.&#x27;</span>) ); <span class="comment">//从后往前查找  返回的索引还是从0开始</span></span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -2107,11 +3133,11 @@
     
     
     <entry>
-      <title>String类lastIndexOf() 方法</title>
-      <link href="/2020/12/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/"/>
-      <url>/2020/12/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/</url>
+      <title>去除文件名的扩展名</title>
+      <link href="/2020/12/16/Java_13_%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E6%89%A9%E5%B1%95%E5%90%8D/"/>
+      <url>/2020/12/16/Java_13_%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E5%90%8D%E7%9A%84%E6%89%A9%E5%B1%95%E5%90%8D/</url>
       
-        <content type="html"><![CDATA[<p>lastIndexOf() 方法有以下四种形式：</p><ul><li><strong>public int lastIndexOf(int ch):</strong> 返回指定字符在此字符串中最后一次出现处的索引，如果此字符串中没有这样的字符，则返回 -1。</li><li><strong>public int lastIndexOf(int ch, int fromIndex):</strong> 返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索，如果此字符串中没有这样的字符，则返回 -1。</li><li><strong>public int lastIndexOf(String str):</strong> 返回指定子字符串在此字符串中最右边出现处的索引，如果此字符串中没有这样的字符，则返回 -1。</li><li><strong>public int lastIndexOf(String str, int fromIndex):</strong> 返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索，如果此字符串中没有这样的字符，则返回 -1。</li></ul><span id="more"></span><p><strong>参数</strong></p><ul><li><strong>ch</strong> – 字符。</li><li><strong>fromIndex</strong> – 开始搜索的索引位置。</li><li><strong>str</strong> – 要搜索的子字符串。</li></ul><p><strong>返回值</strong></p><p>指定子字符串在字符串中第一次出现处的索引值。</p><p><strong>实例</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">Str</span> <span class="operator">=</span> <span class="string">&quot;www.daijjing.online&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">SubStr1</span> <span class="operator">=</span> <span class="string">&quot;daijjing&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">SubStr2</span> <span class="operator">=</span> <span class="string">&quot;online&quot;</span>;</span><br><span class="line"></span><br><span class="line">        System.out.print(<span class="string">&quot;查找字符 i 最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println(Str.lastIndexOf( <span class="string">&#x27;i&#x27;</span> ));</span><br><span class="line">        System.out.print(<span class="string">&quot;从第14个位置查找字符 i 最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println(Str.lastIndexOf( <span class="string">&#x27;i&#x27;</span>, <span class="number">14</span> ));</span><br><span class="line">        System.out.print(<span class="string">&quot;子字符串 SubStr1 最后出现的位置:&quot;</span> );</span><br><span class="line">        System.out.println( Str.lastIndexOf( SubStr1 ));</span><br><span class="line">        System.out.print(<span class="string">&quot;从第十五个位置开始搜索子字符串 SubStr1最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println( Str.lastIndexOf( SubStr1, <span class="number">15</span> ));</span><br><span class="line">        System.out.print(<span class="string">&quot;子字符串 SubStr2 最后出现的位置 :&quot;</span> );</span><br><span class="line">        System.out.println(Str.lastIndexOf( SubStr2 ));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上程序执行结果为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查找字符 i 最后出现的位置 :16</span><br><span class="line">从第14个位置查找字符 i 最后出现的位置 :9</span><br><span class="line">子字符串 SubStr1 最后出现的位置:4</span><br><span class="line">从第十五个位置开始搜索子字符串 SubStr1最后出现的位置 :4</span><br><span class="line">子字符串 SubStr2 最后出现的位置 :13</span><br></pre></td></tr></table></figure><p><strong>String 类中的indexof(int ch)方法的形参列表为什么采用int型而不采用char型?</strong></p><p>涉及到了增补字符，因为char型只有65536个字符，不能表示完所有的字符还有一些诸如”火星文”的未知字符，因此用char型来表示是完全不够的,而int类型的范围是- 2 ^ 31 ~2 ^ 31 - 1,足够用来表示已知和未知的字符，并且int跟char海涉及到隐式字符转换，这样用int作为形参不仅没有多费功夫还扩大了indexof的涵盖范围。</p><p>例如：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Indexof_Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String s=<span class="string">&quot;hello.wor.ld&quot;</span>;</span><br><span class="line">        <span class="comment">//基本字符与增补字符</span></span><br><span class="line">        <span class="comment">//Character.MIN_SUPPLEMENTARY_CODE_POINT   最小的增补字符</span></span><br><span class="line">        System.out.println(   s.indexOf(<span class="number">46</span>)  );  <span class="comment">//indexOf  返回类型位  int   ??为什么用int 不用char 涉及增补字符</span></span><br><span class="line">        System.out.println(   s.indexOf(<span class="string">&#x27;.&#x27;</span>) );   <span class="comment">//隐式字符转换</span></span><br><span class="line"></span><br><span class="line">        System.out.println(  s.lastIndexOf(<span class="string">&#x27;.&#x27;</span>) ); <span class="comment">//从后往前查找  返回的索引还是从0开始</span></span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>在最后一个点，去除文件名的扩展名。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">removeExtension</span><span class="params">(String fname)</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">pos</span> <span class="operator">=</span> fname.lastIndexOf(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (pos &gt; -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> fname.substring(<span class="number">0</span>, pos);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> fname;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><span id="more"></span><p>例如”demo1.txt” → “demo1”。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       System.out.println(removeExtension(<span class="string">&quot;demo1.txt&quot;</span>));</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>相关文章：<a href="https://daijing.online/2022/02/16/Java_14_String%E7%B1%BBlastIndexOf()%E6%96%B9%E6%B3%95/">String类lastIndexOf()方法 | 与或非’s Blog (daijing.online)</a></p>]]></content>
       
       
       <categories>
