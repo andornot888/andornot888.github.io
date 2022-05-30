@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>MySQL查询字符长度</title>
+      <link href="/2022/05/30/MySQL_17_MySQL%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E9%95%BF%E5%BA%A6/"/>
+      <url>/2022/05/30/MySQL_17_MySQL%E6%9F%A5%E8%AF%A2%E5%AD%97%E7%AC%A6%E9%95%BF%E5%BA%A6/</url>
+      
+        <content type="html"><![CDATA[<p>1、利用length()函数查询，单位是字节，一个汉字是三个字节，数组和字母是一个字节，语法为“length(字符)”；</p><p>2、利用“char_length()”函数查询，单位为字符，汉字、数字和字母都是一个字符单位。</p><span id="more"></span><h3 id="Mysql中length-、char-length-的区别："><a href="#Mysql中length-、char-length-的区别：" class="headerlink" title="Mysql中length()、char_length()的区别："></a>Mysql中length()、char_length()的区别：</h3><ol><li>length()： 单位是字节，utf8编码下,一个汉字三个字节，一个数字或字母一个字节。gbk编码下,一个汉字两个字节，一个数字或字母一个字节。</li><li>char_length()：单位为字符，不管汉字还是数字或者是字母都算是一个字符。</li></ol><h3 id="MySQL5-0-3版本之后varchar类型的变化："><a href="#MySQL5-0-3版本之后varchar类型的变化：" class="headerlink" title="MySQL5.0.3版本之后varchar类型的变化："></a>MySQL5.0.3版本之后varchar类型的变化：</h3><ol><li>MySQL 5.0.3 之前：0–255字节，如：varchar(20)中的20表示字节数，如果存放utf-8编码的话只能放6个汉字。varchar(n)，这里的n表示字节数。</li><li>MySQL 5.0.3 之后：0–65535字节，varchar(20)表示字符数，不管什么编码，既汉字也能放20个。但最多占65532字节（两个字节存放长度，小于255字节用1个字节存放长度），varchar(n)这里的n表示字符数，比如varchar（200），不管是英文还是中文都可以存放200个。其他具体区别，可自行网上查询。</li><li>length()&lt;&gt;char_length()，可以用来检验是否含有中文字符。utf-8编码中判定某个字段为全英文，length(字段) &#x3D; char_length(字段)即可。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>X-Frame-Options配置</title>
+      <link href="/2022/05/21/basic_2_X-Frame-Options%E9%85%8D%E7%BD%AE/"/>
+      <url>/2022/05/21/basic_2_X-Frame-Options%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>直接点击这个链接可以打开访问，内嵌到iframe拒绝请求。</p><p>控制台报错：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Refused to display &#x27;http://10.***.***.155:8001/&#x27; in a frame because it set &#x27;X-Frame-Options&#x27; to &#x27;deny&#x27;.</span><br></pre></td></tr></table></figure><span id="more"></span><h3 id="X-Frame-Options-值有三个："><a href="#X-Frame-Options-值有三个：" class="headerlink" title="X-Frame-Options 值有三个："></a>X-Frame-Options 值有三个：</h3><ol><li>DENY：表示该页面不允许在 frame 中展示，即便是在相同域名的页面中嵌套也不允许。</li><li>SAMEORIGIN ：表示该页面可以在相同域名页面的 frame 中展示。</li><li>ALLOW-FROM <a href="https://daijing.online/">https://daijing.online/</a> ：表示该页面可以在指定来源的 frame 中展示。</li></ol><h3 id="配置Apache："><a href="#配置Apache：" class="headerlink" title="配置Apache："></a>配置Apache：</h3><p>如果是在本地的话，就是在httpd.conf里面配置；如果是linux（ubuntu的话）就是在apache2.conf配置：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size:14px;&quot;</span>&gt;</span>Header always append X-Frame-Options SAMEORIGIN<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="配置Nginx："><a href="#配置Nginx：" class="headerlink" title="配置Nginx："></a>配置Nginx：</h3><p>配置 nginx 发送 X-Frame-Options 响应头，把下面这行添加到 ‘http’, ‘server’ 或者 ‘location’ 的配置中:</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size:14px;&quot;</span>&gt;</span>add_header X-Frame-Options SAMEORIGIN;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="配置IIS："><a href="#配置IIS：" class="headerlink" title="配置IIS："></a>配置IIS：</h3><p>配置 IIS 发送 X-Frame-Options 响应头，添加下面的配置到 Web.config 文件中:</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">httpProtocol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">customHeaders</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">&quot;X-Frame-Options&quot;</span> <span class="attr">value</span>=<span class="string">&quot;SAMEORIGIN&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">customHeaders</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">httpProtocol</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>左外连接、右外连接、全连接以及内连接</title>
       <link href="/2022/04/30/MySQL_15_%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%85%A8%E8%BF%9E%E6%8E%A5%E4%BB%A5%E5%8F%8A%E5%86%85%E8%BF%9E%E6%8E%A5/"/>
       <url>/2022/04/30/MySQL_15_%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5%E3%80%81%E5%85%A8%E8%BF%9E%E6%8E%A5%E4%BB%A5%E5%8F%8A%E5%86%85%E8%BF%9E%E6%8E%A5/</url>
@@ -974,7 +1024,7 @@
       <link href="/2022/03/15/resume/"/>
       <url>/2022/03/15/resume/</url>
       
-        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#106;&#x6c;&#106;&#x69;&#110;&#103;&#50;&#x39;&#57;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#106;&#x6c;&#106;&#x69;&#110;&#103;&#50;&#x39;&#57;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
+        <content type="html"><![CDATA[<table><thead><tr><th align="center">姓名：</th><th>与或非</th></tr></thead><tbody><tr><td align="center"><strong>手机号：</strong></td><td>18438568005</td></tr><tr><td align="center"><strong>邮箱：</strong></td><td><a href="mailto:&#106;&#x6c;&#106;&#x69;&#x6e;&#x67;&#50;&#x39;&#x39;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#106;&#x6c;&#106;&#x69;&#x6e;&#x67;&#50;&#x39;&#x39;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;</a></td></tr><tr><td align="center"><strong>求职意向：</strong></td><td>Java开发工程师</td></tr></tbody></table><span id="more"></span><ul><li><p><strong>教育经历</strong></p></li><li><p><strong>个人技能</strong></p><ol><li><p>熟悉HTML5、JavaScript、jQuery、Ajax等前端技术；了解Vue等前端框架。</p></li><li><p>扎实的Java基础：熟练使用集合、多线程、JDBC等。</p></li><li><p>熟练运用Mysql数据库；了解数据库的优化：索引设置、索引底层数据结构、事务隔离级别等。</p></li><li><p>熟练使用ETL工具Kettle对数据进行抽取、清洗、转换等操作。</p></li><li><p>熟悉使用SpringBoot 快速开发框架；掌握Spring、SpringMVC、MyBatis等技术框架；熟悉Spring的IOC、AOP核心。</p></li><li><p>熟练使用Dubbo、Zookeeper等分布式技术框架；了解SpringCloud微服务框架：Eureka、Consul注册中心等。</p></li><li><p>熟悉Redis中央缓存、应用场景、常用数据类型及指令。</p></li><li><p>熟练使用RocketMQ消息中间件；了解应用解耦、流量削峰等应用场景。</p></li><li><p>熟练使用Linux常见命令：日志排查线上问题等。</p></li><li><p>熟练使用Idea、VSCode开发工具；掌握SVN、Git代码版本控制工具。</p></li></ol></li><li><p><strong>工作经历</strong></p></li><li><p><strong>项目经历</strong></p></li></ul>]]></content>
       
       
       <categories>
@@ -1576,9 +1626,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> SpringMVC </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
