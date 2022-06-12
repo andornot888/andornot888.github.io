@@ -190,7 +190,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/08/03/MyBatis_19_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BC%93%E5%AD%98/">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/04/02/zuo_system_study33/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
@@ -204,7 +204,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/03/MyBatis_19_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BC%93%E5%AD%98/" class="post-title-link" itemprop="url">MyBatis映射器—缓存</a>
+            <a href="/2022/04/02/zuo_system_study33/" class="post-title-link" itemprop="url">算法数据结构体系学习班（三十三）——与哈希函数有关的结构</a>
         </h2>
 
         <div class="post-meta">
@@ -215,14 +215,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-03 00:00:00" itemprop="dateCreated datePublished" datetime="2021-08-03T00:00:00+08:00">2021-08-03</time>
+              <time title="创建时间：2022-04-02 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-02T00:00:00+08:00">2022-04-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 16:25:23" itemprop="dateModified" datetime="2022-03-21T16:25:23+08:00">2022-03-21</time>
+                <time title="修改时间：2022-05-23 14:02:39" itemprop="dateModified" datetime="2022-05-23T14:02:39+08:00">2022-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,11 +230,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
                 </span>
             </span>
             <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -242,408 +243,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>MyBatis 内置了一个强大的事务性查询缓存机制，它可以非常方便地配置和定制。 为了使它更加强大而且易于配置，我们对 MyBatis 3 中的缓存实现进行了许多改进。</p>
-<p>默认情况下，只启用了本地的会话缓存，它仅仅对一个会话中的数据进行缓存。 要启用全局的二级缓存，只需要在你的 SQL 映射文件中添加一行：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cache</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>基本上就是这样。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/03/MyBatis_19_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BC%93%E5%AD%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/08/02/MyBatis_18_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E8%87%AA%E5%8A%A8%E6%98%A0%E5%B0%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/02/MyBatis_18_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E8%87%AA%E5%8A%A8%E6%98%A0%E5%B0%84/" class="post-title-link" itemprop="url">MyBatis映射器—自动映射</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-08-02T00:00:00+08:00">2021-08-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 16:23:02" itemprop="dateModified" datetime="2022-03-21T16:23:02+08:00">2022-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>正如你在前面一节看到的，在简单的场景下，MyBatis 可以为你自动映射查询结果。但如果遇到复杂的场景，你需要构建一个结果映射。 但是在本节中，你将看到，你可以混合使用这两种策略。让我们深入了解一下自动映射是怎样工作的。</p>
-<p>当自动映射查询结果时，MyBatis 会获取结果中返回的列名并在 Java 类中查找相同名字的属性（忽略大小写）。 这意味着如果发现了 <em>ID</em> 列和 <em>id</em> 属性，MyBatis 会将列 <em>ID</em> 的值赋给 <em>id</em> 属性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/02/MyBatis_18_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E8%87%AA%E5%8A%A8%E6%98%A0%E5%B0%84/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/08/01/MyBatis_17_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BB%93%E6%9E%9C%E6%98%A0%E5%B0%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/01/MyBatis_17_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BB%93%E6%9E%9C%E6%98%A0%E5%B0%84/" class="post-title-link" itemprop="url">MyBatis映射器—结果映射</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-08-01T00:00:00+08:00">2021-08-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 15:06:24" itemprop="dateModified" datetime="2022-03-21T15:06:24+08:00">2022-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>26k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>24 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>默认情况下，使用 <code>#&#123;&#125;</code> 参数语法时，MyBatis 会创建 <code>PreparedStatement</code> 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样）。 这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在 SQL 语句中直接插入一个不转义的字符串。 比如 ORDER BY 子句，这时候你可以：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY $&#123;columnName&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样，MyBatis 就不会修改或转义该字符串了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/08/01/MyBatis_17_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E7%BB%93%E6%9E%9C%E6%98%A0%E5%B0%84/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/07/30/MyBatis_15_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%8F%82%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/30/MyBatis_15_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%8F%82%E6%95%B0/" class="post-title-link" itemprop="url">MyBatis映射器——参数</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-30 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-30T00:00:00+08:00">2021-07-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 16:20:09" itemprop="dateModified" datetime="2022-03-21T16:20:09+08:00">2022-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>之前见到的所有语句都使用了简单的参数形式。但实际上，参数是 MyBatis 非常强大的元素。对于大多数简单的使用场景，你都不需要使用复杂的参数，比如：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUsers&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  select id, username, password</span><br><span class="line">  from users</span><br><span class="line">  where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/30/MyBatis_15_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%8F%82%E6%95%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/07/30/MyBatis_16_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2#{}%E5%92%8C${}/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/30/MyBatis_16_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2#%7B%7D%E5%92%8C$%7B%7D/" class="post-title-link" itemprop="url">MyBatis映射器—字符串替换#{}和${}</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-30 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-30T00:00:00+08:00">2021-07-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 14:54:06" itemprop="dateModified" datetime="2022-03-21T14:54:06+08:00">2022-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>49</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -662,13 +262,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>默认情况下，使用 <code>#&#123;&#125;</code> 参数语法时，MyBatis 会创建 <code>PreparedStatement</code> 参数占位符，并通过占位符安全地设置参数（就像使用 ? 一样）。 这样做更安全，更迅速，通常也是首选做法，不过有时你就是想直接在 SQL 语句中直接插入一个不转义的字符串。 比如 ORDER BY 子句，这时候你可以：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORDER BY $&#123;columnName&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样，MyBatis 就不会修改或转义该字符串了。</p>
+          <p>内容：</p>
+<p>哈希函数</p>
+<p>哈希函数的应用</p>
+<p>布隆过滤器</p>
+<p>一致性哈希</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/07/30/MyBatis_16_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9B%BF%E6%8D%A2#%7B%7D%E5%92%8C$%7B%7D/#more" rel="contents">
+              <a class="btn" href="/2022/04/02/zuo_system_study33/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -692,7 +293,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/07/29/MyBatis_14_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94sql/">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/04/01/zuo_system_study32/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
@@ -706,7 +307,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/29/MyBatis_14_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94sql/" class="post-title-link" itemprop="url">MyBatis映射器——sql</a>
+            <a href="/2022/04/01/zuo_system_study32/" class="post-title-link" itemprop="url">算法数据结构体系学习班（三十二）——IndexTree、AC自动机</a>
         </h2>
 
         <div class="post-meta">
@@ -717,14 +318,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-29 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-29T00:00:00+08:00">2021-07-29</time>
+              <time title="创建时间：2022-04-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-01T00:00:00+08:00">2022-04-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 13:41:34" itemprop="dateModified" datetime="2022-03-21T13:41:34+08:00">2022-03-21</time>
+                <time title="修改时间：2022-05-23 14:01:31" itemprop="dateModified" datetime="2022-05-23T14:01:31+08:00">2022-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -732,11 +333,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
                 </span>
             </span>
             <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -744,7 +346,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>252</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -763,11 +365,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这个元素可以用来定义可重用的 SQL 代码片段，以便在其它语句中使用。 参数可以静态地（在加载的时候）确定下来，并且可以在不同的 include 元素中定义不同的参数值。比如：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">&quot;userColumns&quot;</span>&gt;</span> $&#123;alias&#125;.id,$&#123;alias&#125;.username,$&#123;alias&#125;.password <span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <p>内容：</p>
+<p>IndexTree<br>1）支持区间查询<br>2）没有线段树那么强，但是非常容易改成一维、二维、三维的结构<br>3）只支持单点更新</p>
+<p>AC自动机<br>解决在一个大字符串中，找到多个候选字符串的问题<br>1）把所有匹配串生成一棵前缀树<br>2）前缀树节点增加fail指针<br>3）fail指针的含义：如果必须以当前字符结尾，当前形成的路径是str，剩下哪一个字符串的前缀和str的后缀<br>   拥有最大的匹配长度。fail指针就指向那个字符串的最后一个字符所对应的节点（迷不迷？听讲述！）</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/07/29/MyBatis_14_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94sql/#more" rel="contents">
+              <a class="btn" href="/2022/04/01/zuo_system_study32/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -791,7 +394,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/07/29/MyBatis_13_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94insert,%20update%20%E5%92%8C%20delete/">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/31/zuo_system_study31/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
@@ -805,7 +408,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/29/MyBatis_13_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94insert,%20update%20%E5%92%8C%20delete/" class="post-title-link" itemprop="url">MyBatis映射器——insert, update 和 delete</a>
+            <a href="/2022/03/31/zuo_system_study31/" class="post-title-link" itemprop="url">算法数据结构体系学习班（三十一）——线段树</a>
         </h2>
 
         <div class="post-meta">
@@ -816,14 +419,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-29 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-29T00:00:00+08:00">2021-07-29</time>
+              <time title="创建时间：2022-03-31 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-31T00:00:00+08:00">2022-03-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 13:36:40" itemprop="dateModified" datetime="2022-03-21T13:36:40+08:00">2022-03-21</time>
+                <time title="修改时间：2022-05-23 14:00:46" itemprop="dateModified" datetime="2022-05-23T14:00:46+08:00">2022-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -831,11 +434,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
                 </span>
             </span>
             <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -843,216 +447,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>数据变更语句 insert，update 和 delete 的实现非常接近：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;insertAuthor&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">parameterType</span>=<span class="string">&quot;domain.blog.Author&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">flushCache</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">statementType</span>=<span class="string">&quot;PREPARED&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">keyProperty</span>=<span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">keyColumn</span>=<span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">useGeneratedKeys</span>=<span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeout</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;updateAuthor&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">parameterType</span>=<span class="string">&quot;domain.blog.Author&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">flushCache</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">statementType</span>=<span class="string">&quot;PREPARED&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeout</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">delete</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;deleteAuthor&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">parameterType</span>=<span class="string">&quot;domain.blog.Author&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">flushCache</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">statementType</span>=<span class="string">&quot;PREPARED&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">timeout</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/29/MyBatis_13_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94insert,%20update%20%E5%92%8C%20delete/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/07/28/MyBatis_12_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94select/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/28/MyBatis_12_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94select/" class="post-title-link" itemprop="url">MyBatis映射器——select</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-28 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-28T00:00:00+08:00">2021-07-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-21 13:33:14" itemprop="dateModified" datetime="2022-03-21T13:33:14+08:00">2022-03-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>SQL 映射文件只有很少的几个顶级元素（按照应被定义的顺序列出）：</p>
-<ul>
-<li><code>cache</code> – 该命名空间的缓存配置。</li>
-<li><code>cache-ref</code> – 引用其它命名空间的缓存配置。</li>
-<li><code>resultMap</code> – 描述如何从数据库结果集中加载对象，是最复杂也是最强大的元素。</li>
-<li><del><code>parameterMap</code> – 老式风格的参数映射。此元素已被废弃，并可能在将来被移除！请使用行内参数映射。文档中不会介绍此元素。</del></li>
-<li><code>sql</code> – 可被其它语句引用的可重用语句块。</li>
-<li><code>insert</code> – 映射插入语句。</li>
-<li><code>update</code> – 映射更新语句。</li>
-<li><code>delete</code> – 映射删除语句。</li>
-<li><code>select</code> – 映射查询语句。</li>
-</ul>
-<p>下一部分将从语句本身开始来描述每个元素的细节。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/07/28/MyBatis_12_MyBatis%E6%98%A0%E5%B0%84%E5%99%A8%E2%80%94select/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/07/27/MyBatis_11_MyBatis%E9%85%8D%E7%BD%AE%E2%80%94%E6%98%A0%E5%B0%84%E5%99%A8%EF%BC%88mappers%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
-      <meta itemprop="name" content="与或非">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/27/MyBatis_11_MyBatis%E9%85%8D%E7%BD%AE%E2%80%94%E6%98%A0%E5%B0%84%E5%99%A8%EF%BC%88mappers%EF%BC%89/" class="post-title-link" itemprop="url">MyBatis配置—映射器（mappers）</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-27T00:00:00+08:00">2021-07-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-18 17:03:04" itemprop="dateModified" datetime="2022-03-18T17:03:04+08:00">2022-03-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
-            </span>
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>539</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1071,10 +466,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>既然 MyBatis 的行为已经由上述元素配置完了，我们现在就要来定义 SQL 映射语句了。 但首先，我们需要告诉 MyBatis 到哪里去找到这些语句。 在自动查找资源方面，Java 并没有提供一个很好的解决方案，所以最好的办法是直接告诉 MyBatis 到哪里去找映射文件。 你可以使用相对于类路径的资源引用，或完全限定资源定位符（包括 <code>file:///</code> 形式的 URL），或类名和包名等。</p>
+          <p>内容：</p>
+<p>线段树是一种支持范围整体修改和范围整体查询的数据结构</p>
+<p>线段树解决的问题范畴：大范围信息可以只由左、右两侧信息加工出，而不必遍历左右两个子范围的具体状况</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/07/27/MyBatis_11_MyBatis%E9%85%8D%E7%BD%AE%E2%80%94%E6%98%A0%E5%B0%84%E5%99%A8%EF%BC%88mappers%EF%BC%89/#more" rel="contents">
+              <a class="btn" href="/2022/03/31/zuo_system_study31/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1098,7 +495,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/07/26/MyBatis_10_MyBatis%E9%85%8D%E7%BD%AE%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%82%E5%95%86%E6%A0%87%E8%AF%86%EF%BC%88databaseIdProvider%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/30/zuo_system_study30/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
@@ -1112,7 +509,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/26/MyBatis_10_MyBatis%E9%85%8D%E7%BD%AE%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%82%E5%95%86%E6%A0%87%E8%AF%86%EF%BC%88databaseIdProvider%EF%BC%89/" class="post-title-link" itemprop="url">MyBatis配置—数据库厂商标识（databaseIdProvider）</a>
+            <a href="/2022/03/30/zuo_system_study30/" class="post-title-link" itemprop="url">算法数据结构体系学习班（三十）——二叉树的Morris遍历</a>
         </h2>
 
         <div class="post-meta">
@@ -1123,14 +520,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-07-26 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-26T00:00:00+08:00">2021-07-26</time>
+              <time title="创建时间：2022-03-30 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-30T00:00:00+08:00">2022-03-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-18 17:01:08" itemprop="dateModified" datetime="2022-03-18T17:01:08+08:00">2022-03-18</time>
+                <time title="修改时间：2022-05-23 14:00:04" itemprop="dateModified" datetime="2022-05-23T14:00:04+08:00">2022-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1138,11 +535,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
                 </span>
             </span>
             <span class="post-meta-item">
-                <a href="/tags/MyBatis/" rel="tag"><i class="fa fa-tag"></i> MyBatis</a>
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -1150,7 +548,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>379</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1169,11 +567,623 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>MyBatis 可以根据不同的数据库厂商执行不同的语句，这种多厂商的支持是基于映射语句中的 <code>databaseId</code> 属性。 MyBatis 会加载带有匹配当前数据库 <code>databaseId</code> 属性和所有不带 <code>databaseId</code> 属性的语句。 如果同时找到带有 <code>databaseId</code> 和不带 <code>databaseId</code> 的相同语句，则后者会被舍弃。 为支持多厂商特性，只要像下面这样在 mybatis-config.xml 文件中加入 <code>databaseIdProvider</code> 即可：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">databaseIdProvider</span> <span class="attr">type</span>=<span class="string">&quot;DB_VENDOR&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+          <p>内容：</p>
+<p>二叉树之前的遍历方式有空间浪费的问题</p>
+<p>Morris遍历时间复杂度O(N)，额外空间复杂度O(1)，通过利用原树中大量空闲指针的方式，达到节省空间的目的</p>
+<p>假设来到当前节点cur，开始时cur来到头节点位置<br>1）如果cur没有左孩子，cur向右移动(cur &#x3D; cur.right)<br>2）如果cur有左孩子，找到左子树上最右的节点mostRight：<br>    a.如果mostRight的右指针指向空，让其指向cur，<br>    然后cur向左移动(cur &#x3D; cur.left)<br>    b.如果mostRight的右指针指向cur，让其指向null，<br>    然后cur向右移动(cur &#x3D; cur.right)<br>3）cur为空时遍历停止</p>
+<p>Morris遍历实现二叉树的先序、中序、后序遍历</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/07/26/MyBatis_10_MyBatis%E9%85%8D%E7%BD%AE%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%82%E5%95%86%E6%A0%87%E8%AF%86%EF%BC%88databaseIdProvider%EF%BC%89/#more" rel="contents">
+              <a class="btn" href="/2022/03/30/zuo_system_study30/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/29/zuo_system_study29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/29/zuo_system_study29/" class="post-title-link" itemprop="url">算法数据结构体系学习班（二十九）——在无序数组中找到第K小的数、蓄水池算法</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-29 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-29T00:00:00+08:00">2022-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-23 13:59:28" itemprop="dateModified" datetime="2022-05-23T13:59:28+08:00">2022-05-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>307</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>内容：</p>
+<p>时间复杂度O(N)可以解决在无序数组中找到第K小的数，这个经典的面试题</p>
+<p>改写快排的partition方法</p>
+<p>bfprt算法</p>
+<p>蓄水池算法</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/29/zuo_system_study29/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/28/zuo_system_study28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/28/zuo_system_study28/" class="post-title-link" itemprop="url">算法数据结构体系学习班（二十八）——Manacher算法</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-28 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-28T00:00:00+08:00">2022-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-23 13:58:33" itemprop="dateModified" datetime="2022-05-23T13:58:33+08:00">2022-05-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>94</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>内容：</p>
+<p>Manacher算法</p>
+<p>和Manacher算法相关的面试题</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/28/zuo_system_study28/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/27/zuo_system_study27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/27/zuo_system_study27/" class="post-title-link" itemprop="url">算法数据结构体系学习班（二十七）——KMP算法</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-27 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-27T00:00:00+08:00">2022-03-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-23 13:57:57" itemprop="dateModified" datetime="2022-05-23T13:57:57+08:00">2022-05-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>101</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>内容：</p>
+<p>KMP算法</p>
+<p>和KMP算法相关的面试题</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/27/zuo_system_study27/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/26/zuo_system_study26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/26/zuo_system_study26/" class="post-title-link" itemprop="url">算法数据结构体系学习班（二十六）——单调栈相关的题目（续）、斐波那契数列的矩阵快速幂模型</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-26 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-26T00:00:00+08:00">2022-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-23 13:57:10" itemprop="dateModified" datetime="2022-05-23T13:57:10+08:00">2022-05-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>304</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>内容：</p>
+<p>再讲一个单调栈相关的面试题</p>
+<p>斐波那契数列的矩阵快速幂模型详解</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/26/zuo_system_study26/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/25/zuo_system_study25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/25/zuo_system_study25/" class="post-title-link" itemprop="url">算法数据结构体系学习班（二十五）——单调栈</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-25 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-25T00:00:00+08:00">2022-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-23 13:56:17" itemprop="dateModified" datetime="2022-05-23T13:56:17+08:00">2022-05-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>255</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>内容：</p>
+<p>单调栈的原理（无重复数+有重复数）</p>
+<p>用题目来学习单调栈提供的便利性</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/25/zuo_system_study25/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://daijing.online/2022/03/24/zuo_system_study24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/blog_logo.jpg">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/24/zuo_system_study24/" class="post-title-link" itemprop="url">算法数据结构体系学习班（二十四）——窗口内最大值或最小值的更新结构</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-24 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-24T00:00:00+08:00">2022-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-23 13:55:34" itemprop="dateModified" datetime="2022-05-23T13:55:34+08:00">2022-05-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">课程笔记</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+                <a href="/tags/%E5%B7%A6%E7%A8%8B%E4%BA%91%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E5%AD%A6%E4%B9%A0%E7%8F%AD/" rel="tag"><i class="fa fa-tag"></i> 左程云算法数据结构体系学习班</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>372</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>内容：</p>
+<p>滑动窗口</p>
+<p>窗口内最大值或最小值的更新结构</p>
+<p>用题目来学习窗口内最大值或最小值的更新结构提供的便利性</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/24/zuo_system_study24/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1196,7 +1206,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1264,20 +1274,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1331,12 +1341,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">324k</span>
+    <span title="站点总字数">344k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:54</span>
+    <span title="站点阅读时长">5:13</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
