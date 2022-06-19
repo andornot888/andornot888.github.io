@@ -17,13 +17,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"daijing.online","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="既然你已经知道如何配置 MyBatis 以及如何创建映射，是时候来尝点甜头了。MyBatis 的 Java API 就是这个甜头。稍后你将看到，和 JDBC 相比，MyBatis 大幅简化你的代码并力图保持其简洁、容易理解和维护。为了使得 SQL 映射更加优秀，MyBatis 3 引入了许多重要的改进。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MyBatis的Java相关API">
-<meta property="og:url" content="https://daijing.online/2021/08/06/MyBatis_21_MyBatis%E7%9A%84Java%E7%9B%B8%E5%85%B3API/index.html">
+<meta property="og:url" content="https://andornot.top/2021/08/06/MyBatis_21_MyBatis%E7%9A%84Java%E7%9B%B8%E5%85%B3API/index.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
 <meta property="og:description" content="既然你已经知道如何配置 MyBatis 以及如何创建映射，是时候来尝点甜头了。MyBatis 的 Java API 就是这个甜头。稍后你将看到，和 JDBC 相比，MyBatis 大幅简化你的代码并力图保持其简洁、容易理解和维护。为了使得 SQL 映射更加优秀，MyBatis 3 引入了许多重要的改进。">
 <meta property="og:locale" content="zh_CN">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="MyBatis">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://daijing.online/2021/08/06/MyBatis_21_MyBatis%E7%9A%84Java%E7%9B%B8%E5%85%B3API/">
+<link rel="canonical" href="https://andornot.top/2021/08/06/MyBatis_21_MyBatis%E7%9A%84Java%E7%9B%B8%E5%85%B3API/">
 
 
 <script id="page-configurations">
@@ -196,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://daijing.online/2021/08/06/MyBatis_21_MyBatis%E7%9A%84Java%E7%9B%B8%E5%85%B3API/">
+    <link itemprop="mainEntityOfPage" href="https://andornot.top/2021/08/06/MyBatis_21_MyBatis%E7%9A%84Java%E7%9B%B8%E5%85%B3API/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo_head300.png">
@@ -576,8 +576,8 @@
       <i class="fa fa-chevron-left"></i> 动态SQL
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/07/MyBatis_22_SQL%20%E8%AF%AD%E5%8F%A5%E6%9E%84%E5%BB%BA%E5%99%A8/" rel="next" title="SQL 语句构建器">
-      SQL 语句构建器 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/07/MyBatis_23_MyBatis%E6%97%A5%E5%BF%97/" rel="next" title="MyBatis日志">
+      MyBatis日志 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -687,13 +687,13 @@
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="https://andornot.top/2022/03/15/resume/" title="https:&#x2F;&#x2F;andornot.top&#x2F;2022&#x2F;03&#x2F;15&#x2F;resume&#x2F;" rel="noopener" target="_blank">个人简历</a>
+          <a href="https://andornot.top/2022/03/15/resume/" title="https:&#x2F;&#x2F;andornot.top&#x2F;2022&#x2F;03&#x2F;15&#x2F;resume&#x2F;">个人简历</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://andornot.top/tags/%E6%9C%88%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" title="https:&#x2F;&#x2F;andornot.top&#x2F;tags&#x2F;%E6%9C%88%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92&#x2F;" rel="noopener" target="_blank">月度学习计划</a>
+          <a href="https://andornot.top/tags/%E6%9C%88%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/" title="https:&#x2F;&#x2F;andornot.top&#x2F;tags&#x2F;%E6%9C%88%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92&#x2F;">月度学习计划</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://andornot.top/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" title="https:&#x2F;&#x2F;andornot.top&#x2F;2020&#x2F;11&#x2F;28&#x2F;Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&#x2F;" rel="noopener" target="_blank">Linux命令大全</a>
+          <a href="https://andornot.top/2020/11/28/Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" title="https:&#x2F;&#x2F;andornot.top&#x2F;2020&#x2F;11&#x2F;28&#x2F;Linux_1_Linux%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8&#x2F;">Linux命令大全</a>
         </li>
     </ul>
   </div>
