@@ -548,7 +548,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>578</span>
+              <span>577</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -580,7 +580,7 @@
 </tr>
 <tr>
 <td align="center"><strong>邮箱：</strong></td>
-<td><font color='blue'><a href="mailto:&#97;&#110;&#100;&#x6f;&#x72;&#x6e;&#111;&#116;&#116;&#x6f;&#x70;&#64;&#x31;&#x36;&#x33;&#x2e;&#x63;&#x6f;&#109;">&#97;&#110;&#100;&#x6f;&#x72;&#x6e;&#111;&#116;&#116;&#x6f;&#x70;&#64;&#x31;&#x36;&#x33;&#x2e;&#x63;&#x6f;&#109;</a></font></td>
+<td><font color='blue'><a href="mailto:&#97;&#x6e;&#100;&#111;&#114;&#x6e;&#111;&#x74;&#116;&#111;&#112;&#x40;&#x31;&#54;&#x33;&#x2e;&#99;&#x6f;&#109;">&#97;&#x6e;&#100;&#111;&#114;&#x6e;&#111;&#x74;&#116;&#111;&#112;&#x40;&#x31;&#54;&#x33;&#x2e;&#99;&#x6f;&#109;</a></font></td>
 </tr>
 <tr>
 <td align="center"><strong>求职意向：</strong></td>
@@ -918,7 +918,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/07/01/DailyPracticing_4_mergetwosortedlists/">
+    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/07/06/DailyPracticing_8_linked-list-cycle-ii/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo_head300.png">
@@ -932,7 +932,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/07/01/DailyPracticing_4_mergetwosortedlists/" class="post-title-link" itemprop="url">合并两个有序链表</a>
+            <a href="/2022/07/06/DailyPracticing_8_linked-list-cycle-ii/" class="post-title-link" itemprop="url">环形链表II</a>
         </h2>
 
         <div class="post-meta">
@@ -943,14 +943,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-07-01 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-01T00:00:00+08:00">2022-07-01</time>
+              <time title="创建时间：2022-07-06 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-06T00:00:00+08:00">2022-07-06</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-14 11:08:22" itemprop="dateModified" datetime="2022-07-14T11:08:22+08:00">2022-07-14</time>
+                <time title="修改时间：2022-07-18 09:04:05" itemprop="dateModified" datetime="2022-07-18T09:04:05+08:00">2022-07-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -963,8 +963,8 @@
             </span>
             <span class="post-meta-item">
                 <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
-                <a href="/tags/%E9%80%92%E5%BD%92/" rel="tag"><i class="fa fa-tag"></i> 递归</a>
                 <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
+                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 双指针</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -972,7 +972,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>927</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -991,14 +991,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+          <p>给定一个链表的头节点  <code>head</code> ，返回链表开始入环的第一个节点。 如果链表无环，则返回 <code>null</code>。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。</p>
+<p><strong>不允许修改</strong> 链表。</p>
 <p>示例 1：</p>
-<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mergetwosortedlists1.jpg" alt="img" style="zoom:67%;" />
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [1,2,4], l2 = [1,3,4]</span><br><span class="line">输出：[1,1,2,3,4,4]</span><br></pre></td></tr></table></figure>
+<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/linked-list-cycle1.png" alt="img"></p>
+<blockquote>
+<p>输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1<br>输出：返回索引为 1 的链表节点<br>解释：链表中有一个环，其尾部连接到第二个节点。</p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/07/01/DailyPracticing_4_mergetwosortedlists/#more" rel="contents">
+              <a class="btn" href="/2022/07/06/DailyPracticing_8_linked-list-cycle-ii/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1022,7 +1025,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/06/29/DailyPracticing_3_diameterofbinarytree/">
+    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/07/05/DailyPracticing_7_linked-list-cycle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo_head300.png">
@@ -1036,7 +1039,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/06/29/DailyPracticing_3_diameterofbinarytree/" class="post-title-link" itemprop="url">二叉树的直径</a>
+            <a href="/2022/07/05/DailyPracticing_7_linked-list-cycle/" class="post-title-link" itemprop="url">环形链表</a>
         </h2>
 
         <div class="post-meta">
@@ -1047,14 +1050,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-06-29 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-29T00:00:00+08:00">2022-06-29</time>
+              <time title="创建时间：2022-07-05 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-05T00:00:00+08:00">2022-07-05</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-13 15:51:13" itemprop="dateModified" datetime="2022-07-13T15:51:13+08:00">2022-07-13</time>
+                <time title="修改时间：2022-07-17 17:20:51" itemprop="dateModified" datetime="2022-07-17T17:20:51+08:00">2022-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1067,8 +1070,8 @@
             </span>
             <span class="post-meta-item">
                 <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
-                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 二叉树</a>
-                <a href="/tags/%E9%80%92%E5%BD%92/" rel="tag"><i class="fa fa-tag"></i> 递归</a>
+                <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
+                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 双指针</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -1076,7 +1079,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>608</span>
+              <span>914</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1095,18 +1098,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
-<p>示例 :<br>给定二叉树</p>
-<pre><code>      1
-     / \
-    2   3
-   / \     
-  4   5    
-</code></pre>
-<p>返回 3, 它的长度是路径 [4,2,1,3] 或者 [5,2,1,3]。</p>
+          <p>给你一个链表的头节点 head ，判断链表中是否有环。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。</p>
+<p>如果链表中存在环 ，则返回 true 。 否则，返回 false 。</p>
+<p>示例 1：</p>
+<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/linked-list-cycle1.png" alt="img"></p>
+<blockquote>
+<p>输入：head &#x3D; [3,2,0,-4], pos &#x3D; 1<br>输出：true<br>解释：链表中有一个环，其尾部连接到第二个节点。</p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/06/29/DailyPracticing_3_diameterofbinarytree/#more" rel="contents">
+              <a class="btn" href="/2022/07/05/DailyPracticing_7_linked-list-cycle/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1130,7 +1132,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/06/28/DailyPracticing_2_binarytreepreordertraversal/">
+    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/07/03/DailyPracticing_6_middle-of-the-linked-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo_head300.png">
@@ -1144,7 +1146,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/06/28/DailyPracticing_2_binarytreepreordertraversal/" class="post-title-link" itemprop="url">二叉树的前序遍历</a>
+            <a href="/2022/07/03/DailyPracticing_6_middle-of-the-linked-list/" class="post-title-link" itemprop="url">链表的中间结点</a>
         </h2>
 
         <div class="post-meta">
@@ -1155,14 +1157,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-06-28 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-28T00:00:00+08:00">2022-06-28</time>
+              <time title="创建时间：2022-07-03 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-03T00:00:00+08:00">2022-07-03</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-13 15:51:04" itemprop="dateModified" datetime="2022-07-13T15:51:04+08:00">2022-07-13</time>
+                <time title="修改时间：2022-07-17 17:03:52" itemprop="dateModified" datetime="2022-07-17T17:03:52+08:00">2022-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1175,8 +1177,8 @@
             </span>
             <span class="post-meta-item">
                 <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
-                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 二叉树</a>
-                <a href="/tags/%E9%80%92%E5%BD%92/" rel="tag"><i class="fa fa-tag"></i> 递归</a>
+                <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
+                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 双指针</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -1184,7 +1186,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>621</span>
+              <span>727</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1203,14 +1205,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>给你二叉树的根节点 <code>root</code> ，返回它节点值的 <strong>前序</strong> 遍历。</p>
-<p><strong>示例 1：</strong></p>
-<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/binarytreepreordertraversal1.jpg" style="zoom:67%;" />
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [1,null,2,3]</span><br><span class="line">输出：[1,2,3]</span><br></pre></td></tr></table></figure>
+          <p>给定一个头结点为 head 的非空单链表，返回链表的中间结点。</p>
+<p>如果有两个中间结点，则返回第二个中间结点。</p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：[1,2,3,4,5]<br>输出：此列表中的结点 3 (序列化形式：[3,4,5])<br>返回的结点值为 3 。 (测评系统对该结点序列化表述是 [3,4,5])。<br>注意，我们返回了一个 ListNode 类型的对象 ans，这样：<br>ans.val &#x3D; 3, ans.next.val &#x3D; 4, ans.next.next.val &#x3D; 5, 以及 ans.next.next.next &#x3D; NULL.</p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/06/28/DailyPracticing_2_binarytreepreordertraversal/#more" rel="contents">
+              <a class="btn" href="/2022/07/03/DailyPracticing_6_middle-of-the-linked-list/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1234,7 +1237,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/06/27/DailyPracticing_1_maximumdepthofbinarytree/">
+    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/07/02/DailyPracticing_5_remove-nth-node-from-end-of-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo_head300.png">
@@ -1248,7 +1251,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/06/27/DailyPracticing_1_maximumdepthofbinarytree/" class="post-title-link" itemprop="url">二叉树的最大深度</a>
+            <a href="/2022/07/02/DailyPracticing_5_remove-nth-node-from-end-of-list/" class="post-title-link" itemprop="url">删除链表的倒数第 N 个结点</a>
         </h2>
 
         <div class="post-meta">
@@ -1259,14 +1262,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-06-27 00:00:00" itemprop="dateCreated datePublished" datetime="2022-06-27T00:00:00+08:00">2022-06-27</time>
+              <time title="创建时间：2022-07-02 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-02T00:00:00+08:00">2022-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-28 00:04:41" itemprop="dateModified" datetime="2022-06-28T00:04:41+08:00">2022-06-28</time>
+                <time title="修改时间：2022-07-17 16:53:38" itemprop="dateModified" datetime="2022-07-17T16:53:38+08:00">2022-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1279,9 +1282,8 @@
             </span>
             <span class="post-meta-item">
                 <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
-                <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 二叉树</a>
-                <a href="/tags/%E9%80%92%E5%BD%92/" rel="tag"><i class="fa fa-tag"></i> 递归</a>
-                <a href="/tags/DFS/" rel="tag"><i class="fa fa-tag"></i> DFS</a>
+                <a href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
+                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 双指针</a>
             </span>
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -1289,7 +1291,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>418</span>
+              <span>919</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1308,12 +1310,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>给定一个二叉树，找出其最大深度。</p>
-<p>二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
+          <p>给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。</p>
+<p>示例 1：</p>
+<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/remove-nth-node-from-end-of-list1.jpg" alt="img" style="zoom:67%;" />
+
+<blockquote>
+<p>输入：head &#x3D; [1,2,3,4,5], n &#x3D; 2<br>输出：[1,2,3,5]</p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/06/27/DailyPracticing_1_maximumdepthofbinarytree/#more" rel="contents">
+              <a class="btn" href="/2022/07/02/DailyPracticing_5_remove-nth-node-from-end-of-list/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1404,7 +1410,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-count">157</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1417,7 +1423,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1477,12 +1483,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">358k</span>
+    <span title="站点总字数">362k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:26</span>
+    <span title="站点阅读时长">5:29</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
