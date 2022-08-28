@@ -14,10 +14,11 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":"ture","mediumzoom":false,"lazyload":"ture","pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Graphviz由一种被称为DOT语言的图形描述语言 ，与一组可以生成和&#x2F;或处理DOT文件的工具组成：  dot：一个用来将生成的图形转换成多种输出格式的命令行工具。其输出格式包括PostScript，PDF，SVG，PNG，含注解的文本等等。  neato：用于sprint model的生成（在Mac OS版本中称为energy minimized）。  twopi：用于放射状图形的生">
@@ -286,13 +287,13 @@
 <span id="more"></span>
 
 <h4 id="下载地址："><a href="#下载地址：" class="headerlink" title="下载地址："></a>下载地址：</h4><p><a target="_blank" rel="noopener" href="http://www.graphviz.org/download/">Download | Graphviz</a></p>
-<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz1.png" alt="image-20220627145349108" style="zoom: 67%;" />
+<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz1.png" alt="image-20220627145349108" style="zoom: 67%;" />
 
 <h4 id="绘图："><a href="#绘图：" class="headerlink" title="绘图："></a>绘图：</h4><p>在一个文件夹里创建dot文件，并在当前文件夹中打开命令行，编译dot文件：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dot -Tpng -o tree.png tree.dot</span><br></pre></td></tr></table></figure>
 
 <p>然后生成tree.png：</p>
-<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz2.png" alt="image-20220627150409195" style="zoom:80%;" />
+<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz2.png" alt="image-20220627150409195" style="zoom:80%;" />
 
 <p>另外也可以使用VS Code进行编译生成图片。</p>
 <h4 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h4><p>官方文档<a target="_blank" rel="noopener" href="https://graphviz.org/documentation/">Documentation | Graphviz</a>，</p>
@@ -300,11 +301,11 @@
 <p>个人感觉不需要过多学习怎么使用Graphviz，我目前仅用其来画画二叉树等一些数据结构。</p>
 <h4 id="二叉树："><a href="#二叉树：" class="headerlink" title="二叉树："></a>二叉树：</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">graph btree <span class="punctuation">&#123;</span></span><br><span class="line">    graph <span class="punctuation">[</span>nodesep=<span class="number">0.1</span><span class="punctuation">,</span> pad=<span class="number">0.02</span><span class="punctuation">,</span> ranksep=<span class="number">0.5</span><span class="punctuation">]</span>;</span><br><span class="line">    node <span class="punctuation">[</span>shape=circle<span class="punctuation">,</span> style=bold<span class="punctuation">,</span> fontsize=<span class="number">22</span><span class="punctuation">,</span> fontname=Consolas<span class="punctuation">,</span> width=<span class="number">0.8</span><span class="punctuation">,</span> height=<span class="number">0.8</span><span class="punctuation">]</span>;</span><br><span class="line">    edge <span class="punctuation">[</span>style=bold<span class="punctuation">]</span>;</span><br><span class="line">    <span class="number">3</span> -- <span class="number">9</span>;</span><br><span class="line">    <span class="number">3</span> -- <span class="number">20</span>;</span><br><span class="line">    <span class="number">9</span> -- <span class="number">6</span>;</span><br><span class="line">    n1<span class="punctuation">[</span>width=<span class="number">0.1</span><span class="punctuation">,</span> height=<span class="number">0.1</span><span class="punctuation">,</span> shape=point<span class="punctuation">,</span> style=invis<span class="punctuation">]</span>;</span><br><span class="line">    <span class="number">9</span> -- n1<span class="punctuation">[</span>weight=<span class="number">10</span><span class="punctuation">,</span> style=invis<span class="punctuation">]</span>;</span><br><span class="line">    <span class="number">9</span> -- <span class="number">18</span>;</span><br><span class="line">    <span class="number">20</span> -- <span class="number">15</span>;</span><br><span class="line">    n2<span class="punctuation">[</span>width=<span class="number">0.1</span><span class="punctuation">,</span> height=<span class="number">0.1</span><span class="punctuation">,</span> shape=point<span class="punctuation">,</span> style=invis<span class="punctuation">]</span>;</span><br><span class="line">    <span class="number">20</span> -- n2<span class="punctuation">[</span>weight=<span class="number">10</span><span class="punctuation">,</span> style=invis<span class="punctuation">]</span>;</span><br><span class="line">    <span class="number">20</span> -- <span class="number">7</span>;</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz3.svg"></p>
+<p><img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz3.svg"></p>
 <p>B树：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">digraph BTree <span class="punctuation">&#123;</span></span><br><span class="line">    graph <span class="punctuation">[</span>nodesep=<span class="number">0.1</span><span class="punctuation">,</span> pad=<span class="number">0.02</span><span class="punctuation">,</span> ranksep=<span class="number">0.5</span><span class="punctuation">,</span> splines=<span class="keyword">false</span><span class="punctuation">]</span></span><br><span class="line">    node <span class="punctuation">[</span>shape=record<span class="punctuation">,</span> style=bold<span class="punctuation">,</span> fontsize=<span class="number">22</span><span class="punctuation">,</span> fontname=Consolas<span class="punctuation">,</span> width=<span class="number">0.8</span><span class="punctuation">,</span> height=<span class="number">0.8</span><span class="punctuation">]</span></span><br><span class="line">    edge <span class="punctuation">[</span>style=bold<span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">    Root<span class="punctuation">[</span>label=<span class="string">&quot;&#123;M | &#123; &lt;f0&gt; | &lt;f1&gt; &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node1<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;D | G&#125; | &#123;&lt;f0&gt; | &lt;f1&gt; | &lt;f2&gt;&#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node2<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;Q | T&#125; | &#123; &lt;f0&gt; | &lt;f1&gt; | &lt;f2&gt; &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node3<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;A | C&#125; | &#123; &lt;f0&gt; | &lt;f1&gt; | &lt;f2&gt; &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node4<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;E | F&#125; | &#123; &lt;f0&gt; | &lt;f1&gt; | &lt;f2&gt; &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node5<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;H | K | L&#125; | &#123; &lt;f0&gt; | &lt;f1&gt; | &lt;f2&gt; | &lt;f3&gt; &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node6<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;N | P&#125; | &#123; | | &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node7<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;R | S&#125; | &#123; | | &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line">    Node8<span class="punctuation">[</span>label=<span class="string">&quot;&#123;&#123;W | X | Y | Z&#125; | &#123; | | | | &#125;&#125;&quot;</span><span class="punctuation">]</span>;</span><br><span class="line"></span><br><span class="line">    Root <span class="punctuation">:</span> f0 <span class="punctuation">:</span> s -&gt; Node1 <span class="punctuation">:</span> n;</span><br><span class="line">    Root <span class="punctuation">:</span> f1 <span class="punctuation">:</span> s -&gt; Node2 <span class="punctuation">:</span> n;</span><br><span class="line">    Node1 <span class="punctuation">:</span> f0 <span class="punctuation">:</span> s -&gt; Node3 <span class="punctuation">:</span> n;</span><br><span class="line">    Node1 <span class="punctuation">:</span> f1 -&gt; Node4 <span class="punctuation">:</span> n<span class="punctuation">[</span>weight=<span class="number">10</span><span class="punctuation">]</span>;</span><br><span class="line">    Node1 <span class="punctuation">:</span> f2 -&gt; Node5 <span class="punctuation">:</span> n;</span><br><span class="line">    Node2 <span class="punctuation">:</span> f0 -&gt; Node6 <span class="punctuation">:</span> n;</span><br><span class="line">    Node2 <span class="punctuation">:</span> f1 -&gt; Node7 <span class="punctuation">:</span> n<span class="punctuation">[</span>weight=<span class="number">10</span><span class="punctuation">]</span>;</span><br><span class="line">    Node2 <span class="punctuation">:</span> f2 <span class="punctuation">:</span> s -&gt; Node8 <span class="punctuation">:</span> n;</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz5.svg"></p>
+<p><img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/Graphviz5.svg"></p>
 
     </div>
 
@@ -404,7 +405,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -474,12 +475,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">376k</span>
+    <span title="站点总字数">379k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:42</span>
+    <span title="站点阅读时长">5:45</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -499,6 +500,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

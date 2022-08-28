@@ -14,10 +14,11 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":"ture","mediumzoom":false,"lazyload":"ture","pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="LEFT JOIN ：左表返回所有的行，右表没有与左表匹配的行结果为Null。  RIGHT JOIN：右表返回所有的行，左表没有与右表匹配的行结果为Null。  FULL OUTER JOIN ：将包含来自两个表的所有记录，并使用NULL值作为两侧缺失匹配结果。MySQL不支持FULL JOIN，可以使用UNION子句，将LEFT JOIN和RIGHT JOIN的结果集去除重复后合并。  IN">
@@ -337,27 +338,27 @@
 
 <h3 id="LEFT-JOIN"><a href="#LEFT-JOIN" class="headerlink" title="LEFT JOIN"></a>LEFT JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.name,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person</span><br><span class="line">	<span class="keyword">LEFT</span> <span class="keyword">JOIN</span> address <span class="keyword">ON</span> person.id <span class="operator">=</span> address.person_id</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_1.png" alt="image-20220411090541637"></p>
+<p>运行结果：<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_1.png" alt="image-20220411090541637"></p>
 <p>左表返回所有的行，右表没有与左表匹配的行结果为<code>Null</code></p>
 <h3 id="RIGHT-JOIN"><a href="#RIGHT-JOIN" class="headerlink" title="RIGHT JOIN"></a>RIGHT JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.NAME,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person</span><br><span class="line">	<span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> address <span class="keyword">ON</span> person.id <span class="operator">=</span> address.person_id</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_2.png" alt="image-20220411091057358"></p>
+<p>运行结果：<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_2.png" alt="image-20220411091057358"></p>
 <p>右表返回所有的行，左表没有与右表匹配的行结果为<code>Null</code></p>
 <h3 id="FULL-JOIN"><a href="#FULL-JOIN" class="headerlink" title="FULL  JOIN"></a>FULL  JOIN</h3><p>❗❗❗MySQL不支持<code>FULL JOIN</code>，可以使用<strong>UNION</strong>子句，将<code>LEFT JOIN</code>和<code>RIGHT JOIN</code>的结果集去除重复后合并</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">sql</span>:</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.NAME,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person</span><br><span class="line">	<span class="keyword">FULL</span> <span class="keyword">JOIN</span> address <span class="keyword">ON</span> person.id <span class="operator">=</span> address.person_id</span><br><span class="line"></span><br><span class="line">#MySQL:</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.NAME,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person</span><br><span class="line">	<span class="keyword">LEFT</span> <span class="keyword">JOIN</span> address <span class="keyword">ON</span> person.id <span class="operator">=</span> address.person_id </span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.NAME,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person</span><br><span class="line">	<span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> address <span class="keyword">ON</span> person.id <span class="operator">=</span> address.person_id</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_3.png" alt="image-20220411092809542"></p>
+<p>运行结果：<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_3.png" alt="image-20220411092809542"></p>
 <p>将包含来自两个表的所有记录，并使用NULL值作为两侧缺失匹配结果。</p>
 <h3 id="CROSS-JOIN"><a href="#CROSS-JOIN" class="headerlink" title="CROSS JOIN"></a>CROSS JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.NAME,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person</span><br><span class="line">	<span class="keyword">CROSS</span> <span class="keyword">JOIN</span> address</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_4.png" alt="image-20220411095144361"></p>
+<p>运行结果：<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_4.png" alt="image-20220411095144361"></p>
 <p>不带WHERE条件子句，它将会返回被连接的两个表的笛卡尔积，返回结果的行数等于两个表行数的乘积，即3*3&#x3D;9行。</p>
 <h3 id="INNER-JOIN"><a href="#INNER-JOIN" class="headerlink" title="INNER JOIN"></a>INNER JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.NAME,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person</span><br><span class="line">	<span class="keyword">INNER</span> <span class="keyword">JOIN</span> address <span class="keyword">ON</span> person.id <span class="operator">=</span> address.person_id</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>INNER</code>可以省略，等价于：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	person.NAME,</span><br><span class="line">	address.city </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	person,</span><br><span class="line">	address </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	person.id <span class="operator">=</span> address.person_id</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_5.png" alt="image-20220411100256356"></p>
+<p>运行结果：<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql15_5.png" alt="image-20220411100256356"></p>
 <p>内连接也称为等同连接，返回的结果集是两个表中所有相匹配的数据，而舍弃不匹配的数据。</p>
 
     </div>
@@ -377,8 +378,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/26/JavaScript_1_decodeURIComponent/" rel="prev" title="js编码和解码URI">
-      <i class="fa fa-chevron-left"></i> js编码和解码URI
+    <a href="/2022/04/26/JavaScript_2_getUrlParam/" rel="prev" title="获取url参数值">
+      <i class="fa fa-chevron-left"></i> 获取url参数值
     </a></div>
       <div class="post-nav-item">
     <a href="/2022/05/21/basic_2_X-Frame-Options%E9%85%8D%E7%BD%AE/" rel="next" title="X-Frame-Options配置">
@@ -458,7 +459,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -528,12 +529,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">376k</span>
+    <span title="站点总字数">379k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:42</span>
+    <span title="站点阅读时长">5:45</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -553,6 +554,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 

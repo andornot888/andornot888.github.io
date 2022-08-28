@@ -14,10 +14,11 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":"ture","mediumzoom":false,"lazyload":"ture","pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="1、二叉树的前中后序遍历是什么，仅仅是三个顺序不同的 List 吗？ 2、为什么多叉树没有中序遍历？ 3、后序遍历有什么特殊之处？">
@@ -290,7 +291,7 @@
 <p>单链表和数组的遍历可以是迭代的，也可以是递归的，<strong>二叉树这种结构无非就是二叉链表</strong>，由于没办法简单改写成迭代形式，所以一般说二叉树的遍历框架都是指递归的形式。</p>
 <p>你也注意到了，只要是递归形式的遍历，都可以有前序位置和后序位置，分别在递归之前和递归之后。</p>
 <p><strong>所谓前序位置，就是刚进入一个节点（元素）的时候，后序位置就是即将离开一个节点（元素）的时候</strong>，那么进一步，你把代码写在不同位置，代码执行的时机也不同：</p>
-<p><img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/binarytree1_1.png"></p>
+<p><img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/binarytree1_1.png"></p>
 <p><strong>倒序打印</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 递归遍历单链表，倒序打印链表元素 */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">traverse</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    traverse(head.next);</span><br><span class="line">    <span class="comment">// 后序位置</span></span><br><span class="line">    print(head.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -299,7 +300,7 @@
 <p>后序位置的代码在将要离开一个二叉树节点的时候执行；</p>
 <p>中序位置的代码在一个二叉树节点左子树都遍历完，即将开始遍历右子树的时候执行。</p>
 <p>画成图，前中后序三个位置在二叉树上是这样：</p>
-<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/binarytree1_2.jpeg" style="zoom:30%;" />
+<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/binarytree1_2.jpeg" style="zoom:30%;" />
 
 <h4 id="2、为什么多叉树没有中序遍历？"><a href="#2、为什么多叉树没有中序遍历？" class="headerlink" title="2、为什么多叉树没有中序遍历？"></a>2、为什么多叉树没有中序遍历？</h4><p><strong>你可以发现每个节点都有「唯一」属于自己的前中后序位置</strong>，所以我说前中后序遍历是遍历二叉树过程中处理每一个节点的三个特殊时间点。</p>
 <p>这里你也可以理解为什么多叉树没有中序位置，因为二叉树的每个节点只会进行唯一一次左子树切换右子树，而多叉树节点可能有很多子节点，会多次切换子树去遍历，所以多叉树节点没有「唯一」的中序遍历位置。</p>
@@ -307,7 +308,7 @@
 <p>中序位置主要用在 BST 场景中，你完全可以把 BST 的中序遍历认为是遍历有序数组。</p>
 <p>前序位置本身其实没有什么特别的性质，之所以你发现好像很多题都是在前序位置写代码，实际上是因为我们习惯把那些对前中后序位置不敏感的代码写在前序位置罢了。</p>
 <p>你可以发现，前序位置的代码执行是自顶向下的，而后序位置的代码执行是自底向上的：</p>
-<img src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/binarytree1_2.jpeg" style="zoom:30%;" />
+<img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/binarytree1_2.jpeg" style="zoom:30%;" />
 
 <p>这不奇怪，因为本文开头就说了前序位置是刚刚进入节点的时刻，后序位置是即将离开节点的时刻。</p>
 <p><strong>但这里面大有玄妙，意味着前序位置的代码只能从函数参数中获取父节点传递来的数据，而后序位置的代码不仅可以获取参数数据，还可以获取到子树通过函数返回值传递回来的数据</strong>。</p>
@@ -424,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -494,12 +495,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">376k</span>
+    <span title="站点总字数">379k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:42</span>
+    <span title="站点阅读时长">5:45</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -519,6 +520,9 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
