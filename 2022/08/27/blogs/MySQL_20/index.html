@@ -21,22 +21,20 @@
     var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":"ture","mediumzoom":false,"lazyload":"ture","pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="时间戳是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。下面将详细介绍时间戳数据类型的用法，以及针对MySQL 5.5&#x2F;5.6&#x2F;5.7&#x2F;8.0 四个版本来比较差异。">
+  <meta name="description" content="GROUP_CONCAT函数的功能： 　　将group by产生的同一个分组中的值连接起来，返回一个字符串结果。 1group_concat([distinct] 字段名 [order by 排序字段 asc&#x2F;desc] [separator &amp;#x27;分隔符&amp;#x27;])  　　说明： 　　（1）使用distinct可以排除重复值； 　　（2）如果需要对结果中的值进行排序，可以使用order">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL中TIMESTAMP（时间戳）用法详解及版本差异">
-<meta property="og:url" content="https://andornot.top/2022/07/27/blogs/MySQL_20/index.html">
+<meta property="og:title" content="MySQL中GROUP_CONCAT函数">
+<meta property="og:url" content="https://andornot.top/2022/08/27/blogs/MySQL_20/index.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
-<meta property="og:description" content="时间戳是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。下面将详细介绍时间戳数据类型的用法，以及针对MySQL 5.5&#x2F;5.6&#x2F;5.7&#x2F;8.0 四个版本来比较差异。">
+<meta property="og:description" content="GROUP_CONCAT函数的功能： 　　将group by产生的同一个分组中的值连接起来，返回一个字符串结果。 1group_concat([distinct] 字段名 [order by 排序字段 asc&#x2F;desc] [separator &amp;#x27;分隔符&amp;#x27;])  　　说明： 　　（1）使用distinct可以排除重复值； 　　（2）如果需要对结果中的值进行排序，可以使用order">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql19_1.png">
-<meta property="article:published_time" content="2022-07-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-07T07:39:08.850Z">
+<meta property="article:published_time" content="2022-08-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-26T06:56:47.975Z">
 <meta property="article:author" content="与或非">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql19_1.png">
 
-<link rel="canonical" href="https://andornot.top/2022/07/27/blogs/MySQL_20/">
+<link rel="canonical" href="https://andornot.top/2022/08/27/blogs/MySQL_20/">
 
 
 <script id="page-configurations">
@@ -49,7 +47,7 @@
   };
 </script>
 
-  <title>MySQL中TIMESTAMP（时间戳）用法详解及版本差异 | 与或非's Blog</title>
+  <title>MySQL中GROUP_CONCAT函数 | 与或非's Blog</title>
   
 
 
@@ -200,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/07/27/blogs/MySQL_20/">
+    <link itemprop="mainEntityOfPage" href="https://andornot.top/2022/08/27/blogs/MySQL_20/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/logo_head300.png">
@@ -213,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          MySQL中TIMESTAMP（时间戳）用法详解及版本差异
+          MySQL中GROUP_CONCAT函数
         </h1>
 
         <div class="post-meta">
@@ -224,14 +222,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-07-27 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-27T00:00:00+08:00">2022-07-27</time>
+              <time title="创建时间：2022-08-27 00:00:00" itemprop="dateCreated datePublished" datetime="2022-08-27T00:00:00+08:00">2022-08-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-07 15:39:08" itemprop="dateModified" datetime="2022-09-07T15:39:08+08:00">2022-09-07</time>
+                <time title="修改时间：2022-10-26 14:56:47" itemprop="dateModified" datetime="2022-10-26T14:56:47+08:00">2022-10-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,14 +249,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>639</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -270,72 +268,118 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>时间戳是指格林威治时间1970年01月01日00时00分00秒(北京时间1970年01月01日08时00分00秒)起至现在的总秒数。<br>下面将详细介绍时间戳数据类型的用法，以及针对MySQL 5.5&#x2F;5.6&#x2F;5.7&#x2F;8.0 四个版本来比较差异。</p>
+        <p>GROUP_CONCAT函数的功能：</p>
+<p>　　将group by产生的同一个分组中的值连接起来，返回一个字符串结果。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group_concat([<span class="keyword">distinct</span>] 字段名 [<span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">asc</span><span class="operator">/</span><span class="keyword">desc</span>] [separator <span class="string">&#x27;分隔符&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>　　说明：</p>
+<p>　　（1）使用distinct可以排除重复值；</p>
+<p>　　（2）如果需要对结果中的值进行排序，可以使用order by子句；</p>
+<p>　　（3）separator是一个字符串值，默认为逗号。</p>
  <span id="more"></span>
 
-<h2 id="时间戳数据存取"><a href="#时间戳数据存取" class="headerlink" title="时间戳数据存取"></a>时间戳数据存取</h2><p>在MySQL上述四个大版本中，默认时间戳(Timestamp)类型的取值范围为’1970-01-01 00:00:01’ UTC 至’2038-01-19 03:14:07’ UTC，数据精确到秒级别，该取值范围包含约22亿个数值，因此在MySQL内部使用4个字节INT类型来存放时间戳数据：</p>
+<p>举个栗子🌰：</p>
+<p>建表：base_attr_value</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>value_name</th>
+<th>attr_id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>红色</td>
+<td>18</td>
+</tr>
+<tr>
+<td>2</td>
+<td>白色</td>
+<td>18</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8G</td>
+<td>19</td>
+</tr>
+<tr>
+<td>4</td>
+<td>16G</td>
+<td>19</td>
+</tr>
+<tr>
+<td>5</td>
+<td>华为</td>
+<td>20</td>
+</tr>
+<tr>
+<td>6</td>
+<td>联想</td>
+<td>20</td>
+</tr>
+<tr>
+<td>7</td>
+<td>X5</td>
+<td>21</td>
+</tr>
+<tr>
+<td>8</td>
+<td>X6</td>
+<td>21</td>
+</tr>
+<tr>
+<td>9</td>
+<td>X7</td>
+<td>21</td>
+</tr>
+</tbody></table>
 <ul>
-<li>在存储时间戳数据时，先将本地时区时间转换为UTC时区时间，再将UTC时区时间转换为INT格式的毫秒值(使用UNIX_TIMESTAMP函数)，然后存放到数据库中。</li>
-<li>在读取时间戳数据时，先将INT格式的毫秒值转换为UTC时区时间(使用FROM_UNIXTIME函数)，然后再转换为本地时区时间，最后返回给客户端。</li>
+<li><p>将查询出的<code>value_name</code>拼接起来，默认拼接符逗号。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> GROUP_CONCAT(value_name) <span class="keyword">AS</span> value_names <span class="keyword">FROM</span> base_attr_value;  </span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<table>
+<thead>
+<tr>
+<th>value_names</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>红色,白色,8G,16G,华为,联想,X5,X6,X7</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>将查询出的<code>value_name</code>按照<code>attr_id</code>分组后拼接起来，默认拼接符逗号。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> attr_id,GROUP_CONCAT(value_name separator<span class="string">&#x27;|&#x27;</span>) <span class="keyword">AS</span> value_names <span class="keyword">FROM</span> `base_attr_value` <span class="keyword">GROUP</span> <span class="keyword">BY</span> attr_id;</span><br></pre></td></tr></table></figure>
+
+<p>执行结果：</p>
+<table>
+<thead>
+<tr>
+<th>attr_id</th>
+<th>value_names</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>18</td>
+<td>红色|白色</td>
+</tr>
+<tr>
+<td>19</td>
+<td>8G|16G</td>
+</tr>
+<tr>
+<td>20</td>
+<td>华为|联想</td>
+</tr>
+<tr>
+<td>21</td>
+<td>X5|X6|X7</td>
+</tr>
+</tbody></table>
+</li>
 </ul>
-<p>在MySQL 5.6.4及之后版本，可以将时间戳类型数据最高精确微秒(百万分之一秒)，数据类型定义为timestamp(N),N取值范围为0-6，默认为0，如需要精确到毫秒则设置为Timestamp(3)，如需要精确到微秒则设置为timestamp(6)，数据精度提高的代价是其内部存储空间的变大，但仍未改变时间戳类型的最小和最大取值范围。</p>
-<h2 id="时间戳字段定义"><a href="#时间戳字段定义" class="headerlink" title="时间戳字段定义"></a>时间戳字段定义</h2><p>时间戳字段定义主要影响两类操作：</p>
-<ol>
-<li>插入记录时，时间戳字段包含DEFAULT CURRENT_TIMESTAMP，如插入记录时未指定具体时间数据则将该时间戳字段值设置为当前时间</li>
-<li>更新记录时，时间戳字段包含ON UPDATE CURRENT_TIMESTAMP，如更新记录时未指定具体时间数据则将该时间戳字段值设置为当前时间</li>
-</ol>
-<p><strong>⚠注意：</strong> <em>CURRENT_TIMESTAMP表示使用CURRENT_TIMESTAMP()函数来获取当前时间，类似于NOW()函数</em></p>
-<p>根据上面两类操作，时间戳列可以有四张组合定义，其含义分别为：</p>
-<ol>
-<li>当字段定义为timestamp，表示该字段在插入和更新时都不会自动设置为当前时间。</li>
-<li>当字段定义为timestamp DEFAULT CURRENT_TIMESTAMP，表示该字段仅在插入且未指定值时被赋予当前时间，再更新时且未指定值时不做修改。</li>
-<li>当字段定义为timestamp ON UPDATE CURRENT_TIMESTAMP，表示该字段在插入且未指定值时被赋值为”0000-00-00 00:00:00”（5.7&#x2F;5.6）|  “null”（8.0），在更新且未指定值时更新为当前时间。</li>
-<li>当字段定义为timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP，表示该字段在插入或更新时未指定值，则被赋值为当前时间。</li>
-</ol>
-<p><strong>⚠注意：</strong> <em>在MySQL中执行的建表语句和最终表创建语句会存在差异，建议使用SHOW CREATE TABLE TB_XXX获取已创建表的建表语句。</em></p>
-<h2 id="时间戳字段在MySQL各版本的使用差异"><a href="#时间戳字段在MySQL各版本的使用差异" class="headerlink" title="时间戳字段在MySQL各版本的使用差异"></a>时间戳字段在MySQL各版本的使用差异</h2><p><strong>⚠注意：</strong>  <em>MySQL 版本中时间戳字段差异受参数explicit_defaults_for_timestamp的默认值影响，由于参数可能被修改过，下面陈述可能不准确。</em></p>
-<blockquote>
-<p>在MySQL 5.5及之前版本中，仅能对一个时间戳字段定义DEFUALT CURRENT_TIMESTAMP或ON UPDATE CURRENT_TIMESTAMP，但在之后版本中取消了该限制;</p>
-<p>在MySQL 5.6版本中参数explicit_defaults_for_timestamp默认值为1，在MySQL 5.7版本中参数explicit_defaults_for_timestamp默认值为0;</p>
-<p>在MySQL 5.5和MySQL 5.7版本中timestamp类型默认为NOT NULL,在在MySQL 5.6版本中timestamp类型默认为NULL;</p>
-<p>当建表语句中定于c1 timestamp 时，</p>
-<p>在MySQL 5.5中等价于c1 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;</p>
-<p>在MySQL 5.6中等价于c1 timestamp NULL DEFAULT NULL;</p>
-<p>在MySQL 5.7中等价于c1 timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;</p>
-<p>在MySQL 8.0中等价于c1 timestamp NULL DEFAULT NULL;</p>
-<p>当建表语句中c1 timestamp default 0时，</p>
-<p>在MySQL 5.5中等价于c1 timestamp NOT NULL DEFAULT ‘0000-00-00 00:00:00’;<br>在MySQL 5.6中等价于c1 timestamp NULL DEFAULT ‘0000-00-00 00:00:00’;<br>在MySQL 5.7中等价于c1 timestamp NOT NULL DEFAULT ‘0000-00-00 00:00:00’;</p>
-</blockquote>
-<p><strong>⚠注意：</strong> <em>当时间戳列的默认值为’0000-00-00 00:00:00’时，使用“不在时间戳取值范围内”的该默认值并不会产生警告。</em></p>
-<h2 id="时间戳类型引发的异常"><a href="#时间戳类型引发的异常" class="headerlink" title="时间戳类型引发的异常"></a>时间戳类型引发的异常</h2><p>当MySQL参数time_zone&#x3D;system时，查询timestamp字段会调用系统时区做时区转换，而由于系统时区存在全局锁问题，在多并发大数据量访问时会导致线程上下文频繁切换，CPU使用率暴涨，系统响应变慢设置假死。</p>
-<p><strong>解决方法：</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> time_zone <span class="operator">=</span> <span class="string">&#x27;+8:00&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="时间戳类型和时间类型选择"><a href="#时间戳类型和时间类型选择" class="headerlink" title="时间戳类型和时间类型选择"></a>时间戳类型和时间类型选择</h2><p>在部分”数据库指导”文档中，会推荐使用timestamp类型代替datetime字段，其理由是timestamp类型使用4字节，而datetime字段使用8字节，但随着磁盘性能提升和内存成本降低，在实际生产环境中，使用timestamp类型并不会带来太多性能提升，反而可能因timestamp类型的定义和取值范围限制和影响业务使用。</p>
-<p>在MySQL 5.6.4及之后版本，可以将时间戳类型(timestamp)数据最高精确微秒，也同样可以将时间类型(datetime)数据最高精确微秒，时间类型(datetime)同样可以获得timestamp类型相同的效果，如将字段定义为 dt1 DATETIME(3) NOT NULL DEFAULT NOW(3) ON UPDATE NOW(3); 时间类型(datetime)的存取范围’1000-01-01 00:00:00.000000’ 至 ‘9999-12-31 23:59:59.999999’，能更好地存放各时间段的数据。</p>
-<h2 id="时间戳类型使用建议"><a href="#时间戳类型使用建议" class="headerlink" title="时间戳类型使用建议"></a>时间戳类型使用建议</h2><ol>
-<li>在只关心数据最后更新时间的情况下，建议将时间戳列定义为TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP；</li>
-<li>在关心创建时间和更新时间的情况下，建议将更新时间设置为时间戳字段，将创建时间定义为DAETIME 或 TIMESTAMP DEFAULT ‘0000-00-00 00:00:00’，并在插入记录时显式指定创建时间；</li>
-<li>建议在表中只定义单个时间戳列，并显式定义DEFAULT 和 ON UPDATE属性；</li>
-<li>虽然在MySQL中可以对时间戳字段赋值或更新，但建议仅在必要的情况下对时间戳列进行显式插入和更新；</li>
-<li>建议将time_zone参数设置为system外的值，如中国地区服务器设置为’+8:00’；</li>
-<li>建议将MySQL线下测试版本和线上生产版本保持一致。</li>
-</ol>
-<h2 id="Timestamp和datetime的异同"><a href="#Timestamp和datetime的异同" class="headerlink" title="Timestamp和datetime的异同"></a>Timestamp和datetime的异同</h2><p>相同点：</p>
-<ol>
-<li>可自动更新和初始化，默认显示格式相同YYYY-MM-dd HH:mm:ss</li>
-</ol>
-<p>不同点：</p>
-<ol>
-<li>timestamp的时间范围是：‘1970-01-01 00:00:01’ UTC to ‘2038-01-19 03:14:07’ UTC ，自动时区转化，实际存储毫秒数，4字节存储</li>
-<li>datetime的时间范围：‘1000-01-01 00:00:00’ to ‘9999-12-31 23:59:59’ ，不支持时区，8字节存储</li>
-</ol>
-<h2 id="设置timestamp和date的自动更新时间"><a href="#设置timestamp和date的自动更新时间" class="headerlink" title="设置timestamp和date的自动更新时间"></a>设置timestamp和date的自动更新时间</h2><p>当对某条数据进行更新操作时或者插入一条新的数据而没有对date和mydate进行赋值，date和mydate这两个字段会自动默认为当前时间</p>
-<p><strong>2038问题</strong></p>
-<p>当 timestamp 存储的时间大于 ‘2038-01-19 03:14:07’ UTC，mysql就会报错， 因为这是 mysql自身的问题，也就是说 timestamp是有上限的，超过了，自然会报错， 具体原因查看官方文档 ： <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/datetime.html%EF%BC%8C">https://dev.mysql.com/doc/refman/8.0/en/datetime.html，</a> 部分截图如下：</p>
-<p> <img data-src="https://andornotblog.oss-cn-beijing.aliyuncs.com/imgs/mysql19_1.png" alt="img"></p>
 
     </div>
 
@@ -354,12 +398,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/07/15/blogs/DailyPracticing_9_intersection-of-two-linked-lists/" rel="prev" title="相交链表">
-      <i class="fa fa-chevron-left"></i> 相交链表
+    <a href="/2022/08/17/blogs/git_3/" rel="prev" title="Git配置多个SSH-Key">
+      <i class="fa fa-chevron-left"></i> Git配置多个SSH-Key
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/07/27/blogs/MySQL_19/" rel="next" title="MySQL中TIMESTAMP（时间戳）用法详解及版本差异">
-      MySQL中TIMESTAMP（时间戳）用法详解及版本差异 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/09/06/blogs/Java_31/" rel="next" title="常用日期格式的正则表达式">
+      常用日期格式的正则表达式 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -419,7 +463,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E6%95%B0%E6%8D%AE%E5%AD%98%E5%8F%96"><span class="nav-number">1.</span> <span class="nav-text">时间戳数据存取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E5%AD%97%E6%AE%B5%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">时间戳字段定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E5%AD%97%E6%AE%B5%E5%9C%A8MySQL%E5%90%84%E7%89%88%E6%9C%AC%E7%9A%84%E4%BD%BF%E7%94%A8%E5%B7%AE%E5%BC%82"><span class="nav-number">3.</span> <span class="nav-text">时间戳字段在MySQL各版本的使用差异</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E7%B1%BB%E5%9E%8B%E5%BC%95%E5%8F%91%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-number">4.</span> <span class="nav-text">时间戳类型引发的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="nav-number">5.</span> <span class="nav-text">时间戳类型和时间类型选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E7%B1%BB%E5%9E%8B%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="nav-number">6.</span> <span class="nav-text">时间戳类型使用建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Timestamp%E5%92%8Cdatetime%E7%9A%84%E5%BC%82%E5%90%8C"><span class="nav-number">7.</span> <span class="nav-text">Timestamp和datetime的异同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEtimestamp%E5%92%8Cdate%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4"><span class="nav-number">8.</span> <span class="nav-text">设置timestamp和date的自动更新时间</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -505,12 +548,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">361k</span>
+    <span title="站点总字数">358k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:28</span>
+    <span title="站点阅读时长">5:26</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
