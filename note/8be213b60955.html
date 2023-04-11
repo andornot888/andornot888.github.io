@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"andornot.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp","menu_item":"fadeInDown"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="当今社交媒体的兴起让个人网站逐渐失去了其往日的荣耀，但对于一些喜欢写作、分享的人来说，拥有一个独立的博客仍然是非常有吸引力的。Hexo 是一个基于 Node.js 的静态博客生成器，它可以轻松地将你的Markdown格式文章转换成 HTML 文件，并部署到 GitHub Pages 或其他静态托管服务上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="轻松搭建个性化博客，最全Hexo部署教程来袭！">
+<meta property="og:url" content="https://andornot.top/note/8be213b60955.html">
+<meta property="og:site_name" content="与或非&#39;s Blog">
+<meta property="og:description" content="当今社交媒体的兴起让个人网站逐渐失去了其往日的荣耀，但对于一些喜欢写作、分享的人来说，拥有一个独立的博客仍然是非常有吸引力的。Hexo 是一个基于 Node.js 的静态博客生成器，它可以轻松地将你的Markdown格式文章转换成 HTML 文件，并部署到 GitHub Pages 或其他静态托管服务上。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101426398.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101428966.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101434839.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101441982.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101443511.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101453142.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101515955.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101521644.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101640072.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101654220.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101736784.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101606813.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101737189.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304110942395.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111003984.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111153878.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111332245.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111500577.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111348396.png">
+<meta property="article:published_time" content="2023-04-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-04-11T13:30:49.552Z">
+<meta property="article:author" content="与或非">
+<meta property="article:tag" content="博客部署">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101426398.png">
+
+<link rel="canonical" href="https://andornot.top/note/8be213b60955.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>轻松搭建个性化博客，最全Hexo部署教程来袭！ | 与或非's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">与或非's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://andornot.top/note/8be213b60955.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="与或非">
+      <meta itemprop="description" content="个人成长记录与分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="与或非's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          轻松搭建个性化博客，最全Hexo部署教程来袭！
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-10 00:00:00" itemprop="dateCreated datePublished" datetime="2023-04-10T00:00:00+08:00">2023-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-11 21:30:49" itemprop="dateModified" datetime="2023-04-11T21:30:49+08:00">2023-04-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">随笔杂记</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item">
+                <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag"><i class="fa fa-tag"></i> 博客部署</a>
+            </span>
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>13 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>当今社交媒体的兴起让个人网站逐渐失去了其往日的荣耀，但对于一些喜欢写作、分享的人来说，拥有一个独立的博客仍然是非常有吸引力的。Hexo 是一个基于 Node.js 的静态博客生成器，它可以轻松地将你的Markdown格式文章转换成 HTML 文件，并部署到 GitHub Pages 或其他静态托管服务上。</p>
+<span id="more"></span>
+
+<p>接下来我们会先建毛胚房（基础框架），再精装修（优化完善），在搭建过程中一步步学习，并探索自己喜欢的风格，最终建造一座美观舒适的“小房子”。</p>
+<h1 id="Hexo的基本搭建"><a href="#Hexo的基本搭建" class="headerlink" title="Hexo的基本搭建"></a>Hexo的基本搭建</h1><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>安装Hexo前，电脑（此教程是在Windows环境下）需已有以下应用程序：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js (nodejs.org)</a></p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101426398.png" alt="Node.js官网"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git (git-scm.com)</a></p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101428966.png" alt="Git官网"></p>
+</li>
+</ul>
+<p>如果你的电脑已安装上述应用，可以直接进行下一步。</p>
+<p>如果未安装，可以到官方网站选择下载与你电脑操作系统相对应的安装包，安装步骤很简单，一路下一步就可以了。</p>
+<blockquote>
+<p>使用 Node.js 官方安装程序时，请确保勾选 <strong>Add to PATH</strong> 选项（默认已勾选）。</p>
+</blockquote>
+<p>此教程安装使用的版本：</p>
+<ul>
+<li>Node.js 18.15.0</li>
+<li>Git 2.40.0</li>
+</ul>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p><strong>确保上述应用安装完毕后，打开cmd命令行终端。</strong></p>
+<blockquote>
+<p>“cmd”是Windows系统中的命令行终端程序，可以用于执行各种系统命令和批处理脚本。在Windows系统中，打开cmd命令行终端的方法如下：</p>
+<ol>
+<li>按下Win+R键组合，打开“运行”对话框。</li>
+<li>在“运行”对话框中输入“cmd”，按下Enter键或者点击“确定”按钮。</li>
+<li>或者在Windows资源管理器中，打开任意一个目录，并在地址栏中输入“cmd”命令，按下Enter键即可打开命令行终端并自动切换到当前目录。</li>
+</ol>
+<p>在cmd命令行终端中，用户可以输入各种系统命令和参数，进行文件管理、网络操作、进程控制等功能。例如，可以使用dir命令查看当前目录下的所有文件和子目录，使用netstat命令查看网络连接状态，使用tasklist命令查看正在运行的进程列表等等。</p>
+</blockquote>
+<p><strong>使用npm全局安装Hexo，执行命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101434839.png" alt="安装成功后" style="zoom:67%;" />
+
+<h2 id="初始化Hexo"><a href="#初始化Hexo" class="headerlink" title="初始化Hexo"></a>初始化Hexo</h2><ol>
+<li><p><strong>新建空文件夹<code>mybolg</code></strong></p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101441982.png" alt="mybolg文件夹"></p>
+</li>
+<li><p><strong>在地址栏中输入<code>cmd</code>，回车打开命令行终端</strong></p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101443511.png" alt="地址栏输入cmd"></p>
+</li>
+<li><p><strong>在命令行终端执行初始化命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>等待执行完成后，继续执行：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>“npm install”是npm（Node Package Manager）命令中的一种，用于安装当前项目所需要的依赖关系（即所需的各种npm包）。具体含义如下：</p>
+<ul>
+<li>“npm”表示使用npm命令。</li>
+<li>“install”表示安装依赖关系。</li>
+</ul>
+<p>在执行”npm install”命令时，npm会自动从npm仓库下载所需的npm包，并将它们安装到当前项目目录下的node_modules文件夹中。可以在项目根目录下找到一个名为package.json的文件，其中记录了项目需要的所有依赖包及其版本号。如果该文件存在，则npm会根据其中的定义自动安装所有的依赖包；如果不存在，则npm只会安装必要的依赖包以满足当前项目的基本运行需求。</p>
+<p>需要注意的是，使用”npm install”命令时，可以添加不同的参数来指定安装方式和操作方式。例如，可以使用”–save”参数将安装的依赖包信息保存到package.json文件中，方便其他开发人员或机器使用。可以使用”-g”参数进行全局安装，以供任何项目使用。也可以使用”–production”参数仅安装生产环境需要的依赖包，而忽略开发环境需要的依赖包。</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p>上述流程完成后，会看到<code>myblog</code>文件夹中有如下文件：</p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101453142.png" alt="myblog文件夹"></p>
+<p>   <strong>简单介绍一下每个文件的用处：</strong></p>
+<ul>
+<li>node_modules：整个项目的环境依赖。</li>
+<li>source：新建的markdown 文章都保存在这个目录下的_post文件夹下 。</li>
+<li>scaffolds：模版文件夹。模板是指在新建文章<code>hexo new post &#39;title&#39;</code>，文件中默认填充scaffold&#x2F;post.md中的Front-matter内容。</li>
+<li>themes：主题目录</li>
+<li>_config.yml：全局配置文件，很多信息都是在这个文件中配置的，比如网站的名字、副标题、网站描述信息、作者等。</li>
+<li>package.json：应用程序的信息。</li>
+</ul>
+<p>到这里一个毛胚房（最原始的博客模板）其实就搭建好了，在命令行终端中执行命令：</p>
+   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>   <img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101515955.png" alt="执行命令：hexo s"></p>
+<p>   在浏览器中打开<a target="_blank" rel="noopener" href="http://localhost:4000/%EF%BC%8C%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E6%AF%9B%E8%83%9A%E6%88%BF%E7%9A%84%E6%A0%B7%E5%AD%90%E4%BA%86%EF%BC%9A">http://localhost:4000/，就能看到毛胚房的样子了：</a></p>
+<p>   <img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101521644.png" alt="毛胚房"></p>
+<p>是不是很简单？三行命令就能搭建博客！</p>
+<h2 id="写一个简单的博客"><a href="#写一个简单的博客" class="headerlink" title="写一个简单的博客"></a>写一个简单的博客</h2><ol>
+<li><p><strong>在命令行终端中执行命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;demo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101640072.png" alt="执行命令 hexo new &#39;demo&#39;"></p>
+<p>可以看到在<code>D:\blog\mybolg\source\_posts</code>路径下，生成了demo.md文件，“demo”是文件名，同时也是文章的标题，你可以来自己定义。</p>
+<p>当然也可以直接在该路径下新建markdown文件，不过直接新建的markdown文件是空白的，需要自己配置yaml，使用命名创建的文件是根据scaffolds文件夹下的<code>post.md</code>模板生成的。</p>
+</li>
+<li><p><strong>打开<code>demo.md</code>文件，输入你要编辑的内容</strong></p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101654220.png" alt="demo"></p>
+<p>在命令行终端中执行命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中打开<a target="_blank" rel="noopener" href="http://localhost:4000/%EF%BC%8C%E6%9F%A5%E7%9C%8B%E6%96%B0%E5%86%99%E7%9A%84%E6%96%87%E7%AB%A0%EF%BC%9A">http://localhost:4000/，查看新写的文章：</a></p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101736784.png" alt="demo页面"></p>
+</li>
+</ol>
+<p>是不是感觉已经可以写博客了？当然到这里还没结束，毛胚房怎么能住人呢？接下来我们选择NexT的主题来进行一步一步装修。</p>
+<h1 id="配置NexT主题"><a href="#配置NexT主题" class="headerlink" title="配置NexT主题"></a>配置NexT主题</h1><p>NexT 是一款非常流行的 Hexo 主题，具有许多令人印象深刻的功能，其中一些包括：</p>
+<ol>
+<li>支持多种语言和代码高亮</li>
+<li>自适应布局和响应式设计</li>
+<li>支持多种社交媒体链接和评论系统</li>
+<li>可自定义的导航菜单和侧边栏</li>
+<li>基于 Pjax 技术的无刷新页面加载</li>
+<li>可配置的归档、分类和标签页面</li>
+<li>可自定义的关键词和描述标签</li>
+<li>支持 Google Analytics 和站点地图等 SEO 工具</li>
+</ol>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101606813.png" alt="NexT Schemes——四种风格可选"></p>
+<h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><p>进入到<code>themes</code>文件夹下，在命令行终端执行：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next next</span><br></pre></td></tr></table></figure>
+
+<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>在<code>myblog</code>文件夹下打开<code>_config.yml</code>，将<code>theme</code>的值改为<code>next</code>。</p>
+<img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101737189.png" alt="theme配置" style="zoom:67%;" />
+
+<h2 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h2><p>在命令行终端中执行命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>此时即可使用浏览器访问 <code>http://localhost:4000</code>，检查站点是否正确运行。</p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304110942395.png" alt="NexT 主题"></p>
+<p>看起来还是蛮low的，别急一步一步来，接下来先部署到GitHub Pages上之后再做基础配置和功能优化。</p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>本节主要介绍讲博客部署到GitHub Pages，由于某些原因，GitHub 访问会不太稳定，可能需要科学地上网。</p>
+<p>我这里部署的流程是先在GitHub建立两个空仓库：</p>
+<ul>
+<li>一个私有仓库存储博客源代码</li>
+<li>一个公有仓库存储Hexo生成的页面，因为部署GitHub Pages的仓库，免费账号必须权限公有</li>
+</ul>
+<p>官方教程使用的是一个公有仓库部署到GitHub Pages，源代码在主分支，生成的静态页面文件在会放在储存库中的 <code>gh-pages</code> 分支，这样源代码免费账号必须设置权限公有，但是部署操作会简单。如果你想按这种方式部署，可以参考官方文档<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/github-pages">在 GitHub Pages 上部署 Hexo | Hexo</a>。</p>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><p>下面介绍我的部署流程：</p>
+<ol>
+<li><p>登录<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>账号，点击右上角 “+” ，选择 “New repository”。</p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111003984.png" alt="GitHub"></p>
+</li>
+<li><p>输入仓库名 “myblog”，因为这个仓库是要存储博客的源代码，建议设置私有权限，其他的选项不用处理，点击下面的 ”create repository“。</p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111153878.png" alt="new repository"></p>
+</li>
+<li><p>回到本地 <code>myblog</code>文件夹下，打开命令行终端，执行命令初始化本地 Git 仓库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加文件并提交更改：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Initial commit&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将当前 Git 仓库的默认分支从原来的分支名（通常为 master）更改为 main：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与远程 Git 仓库关联，<remote_repo_url>要换成你自己的仓库地址：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &lt;remote_repo_url&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111332245.png" alt="新建仓库地址"></p>
+</li>
+<li><p>将本地 Git 仓库中的代码推送到远程 Git 仓库中：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录你的<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>账户，打开<code>myblog</code>仓库会看到本地仓库的文件已经推送到了你的远程GitHub仓库里面。</p>
+</li>
+<li><p>按照第1、2步再创建一个仓库：</p>
+<ul>
+<li>仓库权限：Public</li>
+<li>仓库命名格式：&lt;你的 GitHub 用户名&gt;.github.io</li>
+</ul>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111500577.png" alt="公共仓库名"></p>
+</li>
+<li><p>打开命令行终端，生成SSH 密钥对：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;blog_deploy_key&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>输入命令，需要多次回车。</p>
+</li>
+<li><p>打开C盘用户文件夹，找到<code>.shh</code>文件夹，里面<code>id_rsa</code> 是私钥，<code>id_rsa_pub</code>是公钥，可以用记事本打开查看。</p>
+<p>请注意，私钥应始终保持机密，并妥善保管。</p>
+</li>
+<li><p>将公钥（<code>id_rsa_pub</code>里的全部内容）复制，打开GitHub仓库<code>&lt;你的 GitHub 用户名&gt;.github.io</code>：</p>
+<ul>
+<li><p>找到<code>Settings</code>页面，并选择“Deploy keys”或“SSH keys”选项卡。</p>
+</li>
+<li><p>单击“Add deploy key”按钮，然后将公钥的内容粘贴到<code>Key</code>文本框中。</p>
+</li>
+<li><p>Title填写：blog_deploy_key</p>
+</li>
+<li><p>勾选<code>Allow write access</code></p>
+</li>
+</ul>
+</li>
+<li><p>将私钥（<code>id_rsa</code>里的全部内容）复制，打开GitHub仓库<code>myblog</code>：</p>
+<ul>
+<li>找到<code>Settings</code>页面，并选择“Secrets and variables”下的“Actions”选项卡。</li>
+<li>单击“New repository secret”按钮，然后将私钥的内容粘贴到<code>Secret</code>文本框中。</li>
+<li>Name填写：ACTIONS_DEPLOY_KEY</li>
+</ul>
+</li>
+<li><p>点击<code>Actions</code>，去创建一个<code>pages.yml</code>文件：</p>
+<p><img src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111348396.png" alt="set up a workflow yourself"></p>
+</li>
+<li><p>接着将以下内容复制进去。</p>
+<p>注意：</p>
+<ul>
+<li><p>文件名称改为<code>pages.yml</code></p>
+</li>
+<li><p>&#96;&#96;node-version<code>改为你自己的版本，我的版本是</code>18.15.0&#96;</p>
+</li>
+<li><p><code>external_repository</code>改为你自己的<code>用户名/仓库名</code>：</p>
+<p><code>&lt;你的 GitHub 用户名&gt;/&lt;你的 GitHub 用户名&gt;.github.io</code></p>
+</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">18.15</span><span class="number">.0</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;18.15.0&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.OS</span> <span class="string">&#125;&#125;-npm-cache</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">deploy_key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.ACTIONS_DEPLOY_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">external_repository:</span> <span class="string">andornottop/andornottop.github.io</span></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">main</span>  <span class="comment"># default: gh-pages</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>点击<code>Start commit</code>，进行<code>Commit new file</code>。</p>
+</li>
+<li><p>在<code>&lt;你的 GitHub 用户名&gt;.github.io</code>仓库中找到<code>Settings</code>页面的<code>Pages</code>选项，选择<code>main</code>分支后保存，网站的 URL 将在 GitHub Pages 页面中显示。</p>
+</li>
+</ol>
+<p>后续每次在自己电脑上写完博客后，只需将新写的Markdown文件推送到<code>myblog</code>仓库就能自动部署了：</p>
+<p>提交并推送更改到Git存储库的命令如下：</p>
+<ol>
+<li>首先使用 <code>git add</code> 命令将更改添加到暂存区。示例：<code>git add blog.md</code></li>
+<li>然后使用 <code>git commit</code> 命令将更改提交到本地存储库。示例：<code>git commit -m &quot;Commit message&quot;</code></li>
+<li>最后，使用 <code>git push</code> 命令将更改推送到远程存储库。示例：<code>git push origin main</code></li>
+</ol>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li>Hexo官方文档 ：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
+<li>NexT官方文档：<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag"><i class="fa fa-tag"></i> 博客部署</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/070d4b97bee9.html" rel="prev" title="Spring Cloud —— Sleuth+Zipkin实现链路追踪">
+      <i class="fa fa-chevron-left"></i> Spring Cloud —— Sleuth+Zipkin实现链路追踪
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/uncategorized/ea5984f30e9d.html" rel="next" title="demo">
+      demo <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">Hexo的基本搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%89%8D%E6%8F%90"><span class="nav-number">1.1.</span> <span class="nav-text">安装前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">1.2.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96Hexo"><span class="nav-number">1.3.</span> <span class="nav-text">初始化Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.4.</span> <span class="nav-text">写一个简单的博客</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AENexT%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">配置NexT主题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">下载主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E4%B8%BB%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%BB%E9%A2%98"><span class="nav-number">2.3.</span> <span class="nav-text">验证主题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">3.</span> <span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">3.1.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">部署流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">5.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">与或非</p>
+  <div class="site-description" itemprop="description">个人成长记录与分享</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">与或非</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">334k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">13:56</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
