@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>轻松搭建个性化博客，最全Hexo部署教程来袭！</title>
+    <url>/blog/8be213b60955.html</url>
+    <content><![CDATA[<p>当今社交媒体的兴起让个人网站逐渐失去了其往日的荣耀，但对于一些喜欢写作、分享的人来说，拥有一个独立的博客仍然是非常有吸引力的。Hexo 是一个基于 Node.js 的静态博客生成器，它可以轻松地将你的Markdown格式文章转换成 HTML 文件，并部署到 GitHub Pages 或其他静态托管服务上。</p>
+<span id="more"></span>
+
+<p>接下来我们会先建毛胚房（基础框架），再精装修（优化完善），在搭建过程中一步步学习，并探索自己喜欢的风格，最终建造一座美观舒适的“小房子”。</p>
+<h1 id="Hexo的基本搭建"><a href="#Hexo的基本搭建" class="headerlink" title="Hexo的基本搭建"></a>Hexo的基本搭建</h1><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>安装Hexo前，电脑（此教程是在Windows环境下）需已有以下应用程序：</p>
+<ul>
+<li><p><a href="https://nodejs.org/">Node.js (nodejs.org)</a></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101426398.png" alt="Node.js官网"></p>
+</li>
+<li><p><a href="https://git-scm.com/download/win">Git (git-scm.com)</a></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101428966.png" alt="Git官网"></p>
+</li>
+</ul>
+<p>如果你的电脑已安装上述应用，可以直接进行下一步。</p>
+<p>如果未安装，可以到官方网站选择下载与你电脑操作系统相对应的安装包，安装步骤很简单，一路下一步就可以了。</p>
+<div class="note warning"><p>使用 Node.js 官方安装程序时，请确保勾选 <strong>Add to PATH</strong> 选项（默认已勾选）。</p>
+</div>
+
+<p>此教程安装使用的版本：</p>
+<ul>
+<li>Node.js 18.15.0</li>
+<li>Git 2.40.0</li>
+</ul>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p><strong>确保上述应用安装完毕后，打开cmd命令行终端。</strong></p>
+<details class="note primary"><summary><p>点击查看cmd命令行终端介绍</p>
+</summary>
+<p>“cmd”是Windows系统中的命令行终端程序，可以用于执行各种系统命令和批处理脚本。在Windows系统中，打开cmd命令行终端的方法如下：</p>
+<ol>
+<li>按下Win+R键组合，打开“运行”对话框。</li>
+<li>在“运行”对话框中输入“cmd”，按下Enter键或者点击“确定”按钮。</li>
+<li>或者在Windows资源管理器中，打开任意一个目录，并在地址栏中输入“cmd”命令，按下Enter键即可打开命令行终端并自动切换到当前目录。</li>
+</ol>
+<p>在cmd命令行终端中，用户可以输入各种系统命令和参数，进行文件管理、网络操作、进程控制等功能。例如，可以使用dir命令查看当前目录下的所有文件和子目录，使用netstat命令查看网络连接状态，使用tasklist命令查看正在运行的进程列表等等。</p>
+
+</details>
+
+<p><strong>使用npm全局安装Hexo，执行命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101434839.png" alt="安装成功后" style="zoom:67%;" />
+
+<h2 id="初始化Hexo"><a href="#初始化Hexo" class="headerlink" title="初始化Hexo"></a>初始化Hexo</h2><ol>
+<li><p><strong>新建空文件夹<code>mybolg</code></strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101441982.png" alt="mybolg文件夹"></p>
+</li>
+<li><p><strong>在地址栏中输入<code>cmd</code>，回车打开命令行终端</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101443511.png" alt="地址栏输入cmd"></p>
+</li>
+<li><p><strong>在命令行终端执行初始化命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>等待执行完成后，继续执行：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<details class="note primary"><summary><p>点击查看”npm install”命令介绍</p>
+</summary>
+<p>“npm install”是npm（Node Package Manager）命令中的一种，用于安装当前项目所需要的依赖关系（即所需的各种npm包）。具体含义如下：</p>
+<ul>
+<li>“npm”表示使用npm命令。</li>
+<li>“install”表示安装依赖关系。</li>
+</ul>
+<p>在执行”npm install”命令时，npm会自动从npm仓库下载所需的npm包，并将它们安装到当前项目目录下的node_modules文件夹中。可以在项目根目录下找到一个名为package.json的文件，其中记录了项目需要的所有依赖包及其版本号。如果该文件存在，则npm会根据其中的定义自动安装所有的依赖包；如果不存在，则npm只会安装必要的依赖包以满足当前项目的基本运行需求。</p>
+<p>需要注意的是，使用”npm install”命令时，可以添加不同的参数来指定安装方式和操作方式。例如，可以使用”–save”参数将安装的依赖包信息保存到package.json文件中，方便其他开发人员或机器使用。可以使用”-g”参数进行全局安装，以供任何项目使用。也可以使用”–production”参数仅安装生产环境需要的依赖包，而忽略开发环境需要的依赖包。</p>
+
+</details></li>
+</ol>
+<hr>
+<p>上述流程完成后，会看到<code>myblog</code>文件夹中有如下文件：</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101453142.png" alt="myblog文件夹"></p>
+<p>   <strong>简单介绍一下每个文件的用处：</strong></p>
+<ul>
+<li>node_modules：整个项目的环境依赖。</li>
+<li>source：新建的markdown 文章都保存在这个目录下的_post文件夹下 。</li>
+<li>scaffolds：模版文件夹。模板是指在新建文章<code>hexo new post &#39;title&#39;</code>，文件中默认填充scaffold&#x2F;post.md中的Front-matter内容。</li>
+<li>themes：主题目录</li>
+<li>_config.yml：全局配置文件，很多信息都是在这个文件中配置的，比如网站的名字、副标题、网站描述信息、作者等。</li>
+<li>package.json：应用程序的信息。</li>
+</ul>
+<p>到这里一个毛胚房（最原始的博客模板）其实就搭建好了，在命令行终端中执行命令：</p>
+   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>   <img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101515955.png" alt="执行命令：hexo s"></p>
+<p>   在浏览器中打开<a href="http://localhost:4000/%EF%BC%8C%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E6%AF%9B%E8%83%9A%E6%88%BF%E7%9A%84%E6%A0%B7%E5%AD%90%E4%BA%86%EF%BC%9A">http://localhost:4000/，就能看到毛胚房的样子了：</a></p>
+<p>   <img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101521644.png" alt="毛胚房"></p>
+<p>是不是很简单？三行命令就能搭建博客！</p>
+<h2 id="写一个简单的博客"><a href="#写一个简单的博客" class="headerlink" title="写一个简单的博客"></a>写一个简单的博客</h2><ol>
+<li><p><strong>在命令行终端中执行命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;demo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101640072.png" alt="执行命令 hexo new &#39;demo&#39;"></p>
+<p>可以看到在<code>D:\blog\mybolg\source\_posts</code>路径下，生成了demo.md文件，“demo”是文件名，同时也是文章的标题，你可以来自己定义。</p>
+<p>当然也可以直接在该路径下新建markdown文件，不过直接新建的markdown文件是空白的，需要自己配置yaml，使用命名创建的文件是根据scaffolds文件夹下的<code>post.md</code>模板生成的。</p>
+</li>
+<li><p><strong>打开<code>demo.md</code>文件，输入你要编辑的内容</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101654220.png" alt="demo"></p>
+<p>在命令行终端中执行命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中打开<a href="http://localhost:4000/%EF%BC%8C%E6%9F%A5%E7%9C%8B%E6%96%B0%E5%86%99%E7%9A%84%E6%96%87%E7%AB%A0%EF%BC%9A">http://localhost:4000/，查看新写的文章：</a></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101736784.png" alt="demo页面"></p>
+</li>
+</ol>
+<h2 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h2><h3 id="新建关于页面"><a href="#新建关于页面" class="headerlink" title="新建关于页面"></a>新建关于页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;about&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>mybolg\source\about</code>路径下会生成一个<code>index.md</code>文件，你可以在里面填写自己的一些自我介绍。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304120939512.png" alt="关于"></p>
+<h3 id="新建标签页面"><a href="#新建标签页面" class="headerlink" title="新建标签页面"></a>新建标签页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>mybolg\source\tags</code>路径下会生成一个<code>index.md</code>文件，不用填写内容，会有插件自动生成。</p>
+<p>文件内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2023-04-12 09:39:44</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="新建分类页面"><a href="#新建分类页面" class="headerlink" title="新建分类页面"></a>新建分类页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;categories&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>mybolg\source\categories</code>路径下会生成一个<code>index.md</code>文件，不用填写内容，会有插件自动生成。</p>
+<p>文件内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">分类</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2023-04-12 09:39:56</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;categories&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><h3 id="站点信息"><a href="#站点信息" class="headerlink" title="站点信息"></a>站点信息</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#网站标题</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">与或非&#x27;s</span> <span class="string">Blog</span></span><br><span class="line"><span class="comment">#网站副标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#网站描述</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">个人成长记录与分享</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="comment">#作者</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">与或非</span></span><br><span class="line"><span class="comment">#语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="comment">#网站时区</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="URL信息"><a href="#URL信息" class="headerlink" title="URL信息"></a>URL信息</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://andornot.top</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">&#x27;:category/:hash.html&#x27;</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>url：配置你的<code>https://+你的公有仓库</code>，比如<code>https://andornottop.github.io/</code>，如果自己有域名就配置自己域名。</p>
+</li>
+<li><p>permalink：文章的 <a href="https://hexo.io/zh-cn/docs/permalinks">永久链接</a> 格式，默认值<code>:year/:month/:day/:title/</code>，我这里改为<code>:category/:hash.html</code>。因为原来的格式分级太多，且用了<code>:title</code>，当<code>:title</code>为中文时不太方便。<code>:category</code>可以在<code>category_map</code>做中英文映射处理，<code>:hash</code>为文件名（与 <code>:title</code> 相同）和日期的 SHA1 哈希值（12位16进制数）。</p>
+<p><code>category_map</code>映射配置例子：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">default_category:</span> <span class="string">uncategorized</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line">  <span class="string">随笔杂记:</span> <span class="string">note</span></span><br><span class="line">  <span class="string">计算机基础知识:</span> <span class="string">base</span></span><br><span class="line">  <span class="string">Java相关知识:</span> <span class="string">java</span></span><br><span class="line">  <span class="string">Java开发框架:</span> <span class="string">framework</span></span><br><span class="line">  <span class="string">数据库:</span> <span class="string">database</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<p>是不是感觉已经可以写博客了？当然到这里还没结束，毛胚房怎么能住人呢？接下来我们选择NexT的主题来进行一步一步装修。</p>
+<h1 id="配置NexT主题"><a href="#配置NexT主题" class="headerlink" title="配置NexT主题"></a>配置NexT主题</h1><p>NexT 是一款非常流行的 Hexo 主题，具有许多令人印象深刻的功能，其中一些包括：</p>
+<ol>
+<li>支持多种语言和代码高亮</li>
+<li>自适应布局和响应式设计</li>
+<li>支持多种社交媒体链接和评论系统</li>
+<li>可自定义的导航菜单和侧边栏</li>
+<li>基于 Pjax 技术的无刷新页面加载</li>
+<li>可配置的归档、分类和标签页面</li>
+<li>可自定义的关键词和描述标签</li>
+<li>支持 Google Analytics 和站点地图等 SEO 工具</li>
+</ol>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101606813.png" alt="NexT Schemes——四种风格可选"></p>
+<h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><p>进入到<code>themes</code>文件夹下，在命令行终端执行：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next next</span><br></pre></td></tr></table></figure>
+
+<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>在<code>myblog</code>文件夹下打开<code>_config.yml</code>，将<code>theme</code>的值改为<code>next</code>。</p>
+<img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101737189.png" alt="theme配置" style="zoom:67%;" />
+
+<h2 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h2><p>在命令行终端中执行命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>此时即可使用浏览器访问 <code>http://localhost:4000</code>，检查站点是否正确运行。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304121019664.png" alt="NexT 主题"></p>
+<h2 id="配置主题插件"><a href="#配置主题插件" class="headerlink" title="配置主题插件"></a>配置主题插件</h2><p>在<code>mybolg\themes\next</code>文件夹找到<code>_config.yml</code>配置文件，复制一份重命名为<code>_config.next.yml</code>，然后将<code>_config.next.yml</code>移动到<code>mybolg</code>文件夹下，NexT主题相关配置就在<code>_config.next.yml</code>修改。</p>
+<div class="note warning"><p>不建议在<code>mybolg\themes\next</code>文件夹下的文件中直接修改内容，因为修改后日后更新主题可能会把已修改的文件覆盖。</p>
+<p>Hexo 在合并主题配置时，Hexo 配置文件中的 <code>theme_config</code> 的优先级最高，其次是 <code>_config.[theme].yml</code> 文件，最后是位于主题目录下的 <code>_config.yml</code> 文件。</p>
+</div>
+
+<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><p>NexT主题有四种Scheme可以选择，也可以开启暗黑模式：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Scheme Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Dark Mode</span></span><br><span class="line"><span class="attr">darkmode:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Site-Information-Settings"><a href="#Site-Information-Settings" class="headerlink" title="Site Information Settings"></a>Site Information Settings</h3><h4 id="设置图标"><a href="#设置图标" class="headerlink" title="设置图标"></a>设置图标</h4><p>可以将图标文件放到<code>mybolg\source\images</code>文件夹下</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo_and.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /manifest.json</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置许可"><a href="#设置许可" class="headerlink" title="设置许可"></a>设置许可</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Creative Commons 4.0 International License.</span></span><br><span class="line"><span class="comment"># See: https://creativecommons.org/about/cclicenses/</span></span><br><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="comment"># Available values: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="comment"># Available values: big | small</span></span><br><span class="line">  <span class="attr">size:</span> <span class="string">small</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># You can set a language value if you prefer a translated version of CC license, e.g. deed.zh</span></span><br><span class="line">  <span class="comment"># CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置菜单"><a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Usage: `Key: /link/ || icon`</span></span><br><span class="line"><span class="comment"># Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-sensitive.</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.</span></span><br><span class="line"><span class="comment"># External url should start with http:// or https://</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable / Disable menu icons / item badges.</span></span><br><span class="line"><span class="attr">menu_settings:</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">badges:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>另外也支持次级菜单，配置参考<a href="https://theme-next.js.org/docs/theme-settings/#Configuring-Menu-Items">Theme Settings | NexT (theme-next.js.org)</a></p>
+<h4 id="配置头像"><a href="#配置头像" class="headerlink" title="配置头像"></a>配置头像</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="comment">#/images/avatar.gif</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be displayed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="侧边栏社交链接"><a href="#侧边栏社交链接" class="headerlink" title="侧边栏社交链接"></a>侧边栏社交链接</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Social Links</span></span><br><span class="line"><span class="comment"># Usage: `Key: permalink || icon`</span></span><br><span class="line"><span class="comment"># Key is the link label showing to end users.</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.</span></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/andornottop</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:andornottop@163.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="comment">#Weibo: https://weibo.com/yourname || fab fa-weibo</span></span><br><span class="line">  <span class="comment">#Twitter: https://twitter.com/yourname || fab fa-twitter</span></span><br><span class="line">  <span class="comment">#FB Page: https://www.facebook.com/yourname || fab fa-facebook</span></span><br><span class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span></span><br><span class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || fab fa-youtube</span></span><br><span class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || fab fa-instagram</span></span><br><span class="line">  <span class="comment">#Skype: skype:yourname?call|chat || fab fa-skype</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social_icons:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">icons_only:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">transition:</span> <span class="literal">false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>以上是一些我个人的配置，仅供参考，更加详细的配置的文档请参考<a href="https://theme-next.js.org/docs/theme-settings/">Theme Settings | NexT (theme-next.js.org)</a></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><div class="note info"><p>本节主要介绍讲博客部署到GitHub Pages，由于某些原因，GitHub 访问会不太稳定，可能需要科学地上网。</p>
+</div>
+
+<p>我这里部署的流程是先在GitHub建立两个空仓库：</p>
+<ul>
+<li>一个私有仓库存储博客源代码</li>
+<li>一个公有仓库存储Hexo生成的页面，因为部署GitHub Pages的仓库，免费账号必须权限公有</li>
+</ul>
+<p>官方教程使用的是一个公有仓库部署到GitHub Pages，源代码在主分支，生成的静态页面文件在会放在储存库中的 <code>gh-pages</code> 分支，这样源代码免费账号必须设置权限公有，但是部署操作会简单。如果你想按这种方式部署，可以参考官方文档<a href="https://hexo.io/zh-cn/docs/github-pages">在 GitHub Pages 上部署 Hexo | Hexo</a>。</p>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><p>下面介绍我的部署流程：</p>
+<ol>
+<li><p><strong>登录<a href="https://github.com/">GitHub</a>账号，点击右上角 “+” ，选择 “New repository”。</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111003984.png" alt="GitHub"></p>
+</li>
+<li><p><strong>输入仓库名 “myblog”，因为这个仓库是要存储博客的源代码，建议设置私有权限，其他的选项不用处理，点击下面的 ”create repository“。</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111153878.png" alt="new repository"></p>
+</li>
+<li><p><strong>回到本地 <code>myblog</code>文件夹下，打开命令行终端，执行命令初始化本地 Git 仓库：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>添加文件并提交更改：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Initial commit&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>将当前 Git 仓库的默认分支从原来的分支名（通常为 master）更改为 main：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>与远程 Git 仓库关联，<remote_repo_url>要换成你自己的仓库地址：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;remote_repo_url&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111332245.png" alt="新建仓库地址"></p>
+</li>
+<li><p><strong>将本地 Git 仓库中的代码推送到远程 Git 仓库中：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>登录你的<a href="https://github.com/">GitHub</a>账户，打开<code>myblog</code>仓库会看到本地仓库的文件已经推送到了你的远程GitHub仓库里面。</strong></p>
+</li>
+<li><p><strong>按照第1、2步再创建一个仓库：</strong></p>
+<ul>
+<li>仓库权限：Public</li>
+<li>仓库命名格式：&lt;你的 GitHub 用户名&gt;.github.io</li>
+</ul>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111500577.png" alt="公共仓库名"></p>
+</li>
+<li><p><strong>打开命令行终端，生成SSH 密钥对</strong>：</p>
+</li>
+</ol>
+<p>  输入命令<code>ssh-keygen -t rsa -b 4096 -C &quot;blog_deploy_key&quot;</code>，需要多次回车。</p>
+<ol start="11">
+<li><p><strong>打开C盘用户文件夹，找到<code>.shh</code>文件夹，里面<code>id_rsa</code> 是私钥，<code>id_rsa_pub</code>是公钥，可以用记事本打开查看。</strong></p>
+<p>请注意，私钥应始终保持机密，并妥善保管。</p>
+</li>
+<li><p><strong>将公钥（<code>id_rsa_pub</code>里的全部内容）复制，打开GitHub仓库<code>&lt;你的 GitHub 用户名&gt;.github.io</code>：</strong></p>
+<ul>
+<li><p>找到<code>Settings</code>页面，并选择“Deploy keys”或“SSH keys”选项卡。</p>
+</li>
+<li><p>单击“Add deploy key”按钮，然后将公钥的内容粘贴到<code>Key</code>文本框中。</p>
+</li>
+<li><p>Title填写：blog_deploy_key</p>
+</li>
+<li><p>勾选<code>Allow write access</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>将私钥（<code>id_rsa</code>里的全部内容）复制，打开GitHub仓库<code>myblog</code>：</strong></p>
+<ul>
+<li>找到<code>Settings</code>页面，并选择“Secrets and variables”下的“Actions”选项卡。</li>
+<li>单击“New repository secret”按钮，然后将私钥的内容粘贴到<code>Secret</code>文本框中。</li>
+<li>Name填写：ACTIONS_DEPLOY_KEY</li>
+</ul>
+</li>
+<li><p><strong>点击<code>Actions</code>，去创建一个<code>pages.yml</code>文件：</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111348396.png" alt="set up a workflow yourself"></p>
+</li>
+<li><p><strong>接着将以下内容复制进去，并按要求改动内容：</strong></p>
+<ul>
+<li><p>文件名称改为<code>pages.yml</code></p>
+</li>
+<li><p><code>external_repository</code>改为你自己的<code>用户名/仓库名</code>：</p>
+<p><code>&lt;你的 GitHub 用户名&gt;/&lt;你的 GitHub 用户名&gt;.github.io</code></p>
+</li>
+<li><p>安装主题时保留主题目录中的 <code>.git</code> 文件夹以方便更新，GitHub Actions 对子模块的处理有点问题。所以需要在 Workflow 文件中用 <code>with</code> 标注出你使用的子模块。</p>
+<div class="note info"><p>在部署时这里踩了大坑，官方文档中未提及子模块的问题，导致生成的静态文件是空白的，无意间看到这位老哥的博客<a href="https://www.cnblogs.com/Helium-Air/p/15646484.html">使用 GitHub Actions 部署 Hexo 博客 - 智子酱 - 博客园 (cnblogs.com)</a>帮了大忙</p>
+</div></li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 主题文件夹</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">theme</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">next-theme/hexo-theme-next</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">master</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">themes/next</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">18.15</span><span class="number">.0</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;18.15.0&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">~/.npm</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.os</span> <span class="string">&#125;&#125;-node-$&#123;&#123;</span> <span class="string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.os &#125;&#125;-node-</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span> <span class="string">npm</span> <span class="string">ci</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">deploy_key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.ACTIONS_DEPLOY_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">external_repository:</span> <span class="string">andornottop/andornottop.github.io</span></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">main</span>  <span class="comment"># default: gh-pages</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>点击<code>Start commit</code>，进行<code>Commit new file</code>。</p>
+</li>
+<li><p>在<code>&lt;你的 GitHub 用户名&gt;.github.io</code>仓库中找到<code>Settings</code>页面的<code>Pages</code>选项，选择<code>main</code>分支后保存，网站的 URL 将在 GitHub Pages 页面中显示。</p>
+</li>
+</ol>
+<hr>
+<p>后续每次在自己电脑上写完博客后，只需将新写的Markdown文件推送到<code>myblog</code>仓库就能自动部署了：</p>
+<p>提交并推送更改到Git存储库的命令如下：</p>
+<ol>
+<li>首先使用 <code>git add</code> 命令将更改添加到暂存区。示例：<code>git add blog.md</code></li>
+<li>然后使用 <code>git commit</code> 命令将更改提交到本地存储库。示例：<code>git commit -m &quot;Commit message&quot;</code></li>
+<li>最后，使用 <code>git push</code> 命令将更改推送到远程存储库。示例：<code>git push origin main</code></li>
+</ol>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h2 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h2><p>详细配置介绍<a href="https://theme-next.js.org/docs/tag-plugins/">Tag Plugins | NexT (theme-next.js.org)</a></p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>引导标识插件配置：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Note tag (bootstrap callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># Note tag style values:</span></span><br><span class="line">  <span class="comment">#  - simple    bootstrap callout old alert style. Default.</span></span><br><span class="line">  <span class="comment">#  - modern    bootstrap callout new (v2-v3) alert style.</span></span><br><span class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></span><br><span class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></span><br><span class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note danger %&#125;</span><br><span class="line"></span><br><span class="line">使用 Node.js 官方安装程序时，请确保勾选 **Add to PATH** 选项（默认已勾选）。</span><br><span class="line"></span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304121420015.png" alt="示例"></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li>Hexo官方文档 ：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
+<li>NexT官方文档：<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>博客部署</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+</search>
