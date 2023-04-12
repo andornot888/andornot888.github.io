@@ -301,6 +301,8 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note danger %&#125;</span><br><span class="line"></span><br><span class="line">使用 Node.js 官方安装程序时，请确保勾选 **Add to PATH** 选项（默认已勾选）。</span><br><span class="line"></span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304121420015.png" alt="示例"></p>
+<h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><p>在<code>mybolg\source</code>文件夹下，新建<code>CNAME</code>文件，注意不要有后缀，打开将你的域名填进去即可。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304122009679.png" alt="CNAME"></p>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li>Hexo官方文档 ：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
 <li>NexT官方文档：<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></li>
