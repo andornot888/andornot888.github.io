@@ -7,7 +7,7 @@
 <span id="more"></span>
 
 <p>接下来我们会先建毛胚房（基础框架），再精装修（优化完善），在搭建过程中一步步学习，并探索自己喜欢的风格，最终建造一座美观舒适的“小房子”。</p>
-<h1 id="Hexo的基本搭建"><a href="#Hexo的基本搭建" class="headerlink" title="Hexo的基本搭建"></a>Hexo的基本搭建</h1><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>安装Hexo前，电脑（此教程是在Windows环境下）需已有以下应用程序：</p>
+<h1 id="Hexo的基本搭建"><a href="#Hexo的基本搭建" class="headerlink" title="Hexo的基本搭建"></a>Hexo的基本搭建</h1><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>安装Hexo前，需要有一个GitHub账号，电脑（此教程是在Windows环境下）需已有以下应用程序：</p>
 <ul>
 <li><p><a href="https://nodejs.org/">Node.js (nodejs.org)</a></p>
 <p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101426398.png" alt="Node.js官网"></p>
