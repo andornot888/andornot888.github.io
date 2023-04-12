@@ -288,7 +288,8 @@
 <p>后续每次在自己电脑上写完博客后，只需将新写的Markdown文件推送到<code>myblog</code>仓库就能自动部署了：</p>
 <p>提交并推送更改到Git存储库的命令如下：</p>
 <ol>
-<li>首先使用 <code>git add</code> 命令将更改添加到暂存区。示例：<code>git add blog.md</code></li>
+<li>先使用 <code>git pull</code> 命令拉取远程仓库的更改。示例：<code>git pull origin main</code></li>
+<li>再使用 <code>git add</code> 命令将更改添加到暂存区。示例：<code>git add .</code></li>
 <li>然后使用 <code>git commit</code> 命令将更改提交到本地存储库。示例：<code>git commit -m &quot;Commit message&quot;</code></li>
 <li>最后，使用 <code>git push</code> 命令将更改推送到远程存储库。示例：<code>git push origin main</code></li>
 </ol>
