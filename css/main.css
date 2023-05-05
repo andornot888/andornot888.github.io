@@ -1673,6 +1673,11 @@ pre code {
   .post-body video {
     margin-bottom: 10px !important;
   }
+  .post-body .image-caption,
+  .post-body img + figcaption,
+  .post-body .fancybox + figcaption {
+    margin: -5px auto 15px !important;
+  }
   .post-body .note {
     margin-bottom: 10px !important;
     padding: 10px !important;
@@ -2168,7 +2173,12 @@ pre code {
   font-size: 0.875em;
   margin-top: 1em;
   padding-top: 1em;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.social-like a {
+  border-bottom: none;
 }
 .reward-container {
   margin: 1em 0 0;
@@ -2789,7 +2799,7 @@ header.header {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #730371;
+  background: #ffff94;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
