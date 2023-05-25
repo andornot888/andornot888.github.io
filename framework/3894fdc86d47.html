@@ -20,25 +20,45 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"andornot.top","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="个人成长记录与分享">
+    <meta name="description" content="基础Spring是什么？一句话概括：Spring 是一个轻量级、非入侵式的控制反转 (IOC) 和面向切面(AOP) 的框架。 2002年，一位知名的软件工程师和企业家Rod Johnson（罗德·约翰逊）首次发布了轻量级的Java开发框架Spring，随后渐渐崛起，并淘汰了 EJB 这个传统的重装骑兵。  到了现在，企业级开发的标配基本就是 Spring5 + Spring Boot 2 +">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="与或非&#39;s Blog">
-<meta property="og:url" content="https://andornot.top/index.html">
+<meta property="og:title" content="Spring 相关面试题">
+<meta property="og:url" content="https://andornot.top/framework/3894fdc86d47.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
-<meta property="og:description" content="个人成长记录与分享">
+<meta property="og:description" content="基础Spring是什么？一句话概括：Spring 是一个轻量级、非入侵式的控制反转 (IOC) 和面向切面(AOP) 的框架。 2002年，一位知名的软件工程师和企业家Rod Johnson（罗德·约翰逊）首次发布了轻量级的Java开发框架Spring，随后渐渐崛起，并淘汰了 EJB 这个传统的重装骑兵。  到了现在，企业级开发的标配基本就是 Spring5 + Spring Boot 2 +">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305242237603.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305242242176.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305242245391.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305242312545.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305242313147.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305242314566.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251053099.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251122032.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251211711.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251214333.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251216988.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251219781.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251222415.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251228002.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251237060.png">
+<meta property="article:published_time" content="2022-08-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-25T04:39:19.624Z">
 <meta property="article:author" content="与或非">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="面试宝典">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305242237603.png">
 
 
-<link rel="canonical" href="https://andornot.top/">
+<link rel="canonical" href="https://andornot.top/framework/3894fdc86d47.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://andornot.top/framework/3894fdc86d47.html","path":"framework/3894fdc86d47.html","title":"Spring 相关面试题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>与或非's Blog</title>
+<title>Spring 相关面试题 | 与或非's Blog</title>
   
 
 
@@ -71,7 +91,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">与或非's Blog</h1>
+      <p class="site-title">与或非's Blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -124,7 +144,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -137,6 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">Spring是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E6%80%A7%EF%BC%88%E4%BC%98%E7%82%B9%EF%BC%89%E5%91%A2%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">Spring有哪些特性（优点）呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A8%A1%E5%9D%97%E5%91%A2%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">Spring有哪些模块呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">Spring有哪些常用注解呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E4%B8%AD%E5%BA%94%E7%94%A8%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%91%A2%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">Spring 中应用了哪些设计模式呢？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC"><span class="nav-number">2.</span> <span class="nav-text">IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AFIOC%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AFDI"><span class="nav-number">2.1.</span> <span class="nav-text">说一说什么是IOC？什么是DI?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%BD%E7%AE%80%E5%8D%95%E8%AF%B4%E4%B8%80%E4%B8%8BSpring-IOC%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6%E5%90%97"><span class="nav-number">2.2.</span> <span class="nav-text">能简单说一下Spring IOC的实现机制吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4BeanFactory%E5%92%8CApplicantContext"><span class="nav-number">2.3.</span> <span class="nav-text">说说BeanFactory和ApplicantContext?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E7%9F%A5%E9%81%93Spring%E5%AE%B9%E5%99%A8%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5%E4%BC%9A%E5%B9%B2%E4%BB%80%E4%B9%88%E5%90%97%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">你知道Spring容器启动阶段会干什么吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%BD%E8%AF%B4%E4%B8%80%E4%B8%8BSpring-Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%90%97%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">能说一下Spring Bean生命周期吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BE%9D%E8%B5%96%E5%AE%9A%E4%B9%89%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">Bean定义和依赖定义有哪些方式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">有哪些依赖注入的方法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E6%9C%89%E5%93%AA%E4%BA%9B%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">Spring有哪些自动装配的方式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E4%B8%AD%E7%9A%84-Bean-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">2.9.</span> <span class="nav-text">Spring 中的 Bean 的作用域有哪些**?**</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E4%B8%AD%E7%9A%84%E5%8D%95%E4%BE%8B-Bean-%E4%BC%9A%E5%AD%98%E5%9C%A8%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E5%90%97%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">Spring 中的单例 Bean 会存在线程安全问题吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%EF%BC%9F"><span class="nav-number">2.11.</span> <span class="nav-text">什么是循环依赖？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%A3Spring%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="nav-number">2.12.</span> <span class="nav-text">那Spring怎么解决循环依赖的呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autowired%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-number">2.13.</span> <span class="nav-text">@Autowired的实现原理？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">3.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4%E4%BB%80%E4%B9%88%E6%98%AFAOP%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">说说什么是AOP？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">AOP有哪些核心概念？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP%E6%9C%89%E5%93%AA%E4%BA%9B%E7%8E%AF%E7%BB%95%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">AOP有哪些环绕方式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E5%B9%B3%E6%97%B6%E6%9C%89%E7%94%A8%E5%88%B0AOP%E5%90%97%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">说说你平时有用到AOP吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4JDK-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%92%8C-CGLIB-%E4%BB%A3%E7%90%86-%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">说说JDK 动态代理和 CGLIB 代理 ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4Spring-AOP-%E5%92%8C-AspectJ-AOP-%E5%8C%BA%E5%88%AB"><span class="nav-number">3.6.</span> <span class="nav-text">说说Spring AOP 和 AspectJ AOP 区别**?**</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1"><span class="nav-number">4.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%A7%8D%E7%B1%BB%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">Spring 事务的种类？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%EF%BC%9F"><span class="nav-number">4.2.</span> <span class="nav-text">Spring 的事务隔离级别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E7%9A%84%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-number">4.3.</span> <span class="nav-text">Spring 的事务传播机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="nav-number">4.4.</span> <span class="nav-text">声明式事务实现原理了解吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E5%A4%B1%E6%95%88%EF%BC%9F"><span class="nav-number">4.5.</span> <span class="nav-text">声明式事务在哪些情况下会失效？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC"><span class="nav-number">5.</span> <span class="nav-text">MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-MVC-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%EF%BC%9F"><span class="nav-number">5.1.</span> <span class="nav-text">Spring MVC 的核心组件？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-MVC-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="nav-number">5.2.</span> <span class="nav-text">Spring MVC 的工作流程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMVC-Restful%E9%A3%8E%E6%A0%BC%E7%9A%84%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%B5%81%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="nav-number">5.3.</span> <span class="nav-text">SpringMVC Restful风格的接口的流程是什么样的呢？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">6.</span> <span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BSpringBoot%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="nav-number">6.1.</span> <span class="nav-text">介绍一下SpringBoot，有哪些优点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E5%8E%9F%E7%90%86%E4%BA%86%E8%A7%A3%E5%90%97"><span class="nav-number">6.2.</span> <span class="nav-text">SpringBoot自动配置原理了解吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AASpringBoot-Srarter"><span class="nav-number">6.3.</span> <span class="nav-text">如何自定义一个SpringBoot Srarter?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Springboot-%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-number">6.4.</span> <span class="nav-text">Springboot 启动原理？</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -189,428 +210,17 @@
 
     </div>
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/framework/94c19ee73f8c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo_head300.png">
-      <meta itemprop="name" content="与或非">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 与或非's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/framework/94c19ee73f8c.html" class="post-title-link" itemprop="url">从零开始学习MyBatis</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-12 00:00:00" itemprop="dateCreated datePublished" datetime="2023-05-12T00:00:00+08:00">2023-05-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/framework/" itemprop="url" rel="index"><span itemprop="name">开发框架</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>27k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1:38</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li><del>MyBatis的概念和作用，MyBatis与ORM框架的区别。</del></li>
-<li><del>MyBatis的配置文件和映射文件的作用和格式。</del></li>
-<li><del>MyBatis的对象关系映射（ORM）机制，以及SQL语句和Java对象之间的转换。</del></li>
-<li><del>MyBatis的常用注解和XML配置方式，包括@Select、@Insert、@Update、@Delete等注解。</del></li>
-<li><del>MyBatis的动态SQL语句和条件查询，包括if、choose、where、foreach等标签。</del></li>
-<li><del>MyBatis的连接池和事务管理机制，以及如何配置和使用。</del></li>
-<li>MyBatis的一级缓存和二级缓存的作用和实现方法。</li>
-<li>MyBatis的插件机制，以及如何编写和使用插件。</li>
-<li>MyBatis的高级特性，如批量操作、延迟加载、分页查询等。</li>
-<li>MyBatis的整合Spring框架的方法和注意事项。</li>
-</ol>
-<p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/framework/94c19ee73f8c.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/java/200e79a7ab3c.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo_head300.png">
-      <meta itemprop="name" content="与或非">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 与或非's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/java/200e79a7ab3c.html" class="post-title-link" itemprop="url">详解JDBC：Java操作关系型数据库的标准API</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-05 00:00:00" itemprop="dateCreated datePublished" datetime="2023-05-05T00:00:00+08:00">2023-05-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Java数据库连接（Java DataBase Connectivity，简称JDBC）是Java语言中用于操作关系型数据库的API。它允许Java程序与多种不同类型的数据库进行交互，从而保证了Java应用程序的可移植性和协作性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/java/200e79a7ab3c.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/devops/2f5987d952d3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo_head300.png">
-      <meta itemprop="name" content="与或非">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 与或非's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/devops/2f5987d952d3.html" class="post-title-link" itemprop="url">深入了解 Git 的工作原理及其常见用法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-16 00:00:00" itemprop="dateCreated datePublished" datetime="2023-04-16T00:00:00+08:00">2023-04-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/devops/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>17 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>当今软件开发领域中，版本控制系统是不可或缺的一环。Git 是目前最流行的分布式版本控制系统之一。它被广泛应用于许多项目中，以便于管理和跟踪代码变更。在本文中，我们将深入了解 Git 的工作原理及其常见用法。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/devops/2f5987d952d3.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://andornot.top/blog/8be213b60955.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/logo_head300.png">
-      <meta itemprop="name" content="与或非">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="与或非's Blog">
-      <meta itemprop="description" content="个人成长记录与分享">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 与或非's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/8be213b60955.html" class="post-title-link" itemprop="url">轻松搭建个性化博客，最全Hexo部署教程来袭！</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-04-10 00:00:00" itemprop="dateCreated datePublished" datetime="2023-04-10T00:00:00+08:00">2023-04-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">博客部署</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.4k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>16 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>当今社交媒体的兴起让个人网站逐渐失去了其往日的荣耀，但对于一些喜欢写作、分享的人来说，拥有一个独立的博客仍然是非常有吸引力的。Hexo 是一个基于 Node.js 的静态博客生成器，它可以轻松地将你的Markdown格式文章转换成 HTML 文件，并部署到 GitHub Pages 或其他静态托管服务上。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/blog/8be213b60955.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://andornot.top/framework/3894fdc86d47.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -624,13 +234,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 与或非's Blog">
+      <meta itemprop="name" content="Spring 相关面试题 | 与或非's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/framework/3894fdc86d47.html" class="post-title-link" itemprop="url">Spring 相关面试题</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Spring 相关面试题
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -676,8 +286,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
+    <div class="post-body" itemprop="articleBody"><span id="more"></span>
 
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="Spring是什么？"><a href="#Spring是什么？" class="headerlink" title="Spring是什么？"></a>Spring是什么？</h2><p>一句话概括：<strong>Spring 是一个轻量级、非入侵式的控制反转 (IOC) 和面向切面(AOP) 的框架。</strong></p>
 <p>2002年，一位知名的软件工程师和企业家Rod Johnson（罗德·约翰逊）首次发布了轻量级的Java开发框架Spring，随后渐渐崛起，并淘汰了 EJB 这个传统的重装骑兵。</p>
@@ -1103,7 +712,6 @@
 <p>SpringBoot 启动大致流程如下 ：</p>
 <p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305251237060.png"></p>
 
-      
     </div>
 
     
@@ -1111,11 +719,43 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>与或非
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://andornot.top/framework/3894fdc86d47.html" title="Spring 相关面试题">https://andornot.top/framework/3894fdc86d47.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8/" rel="tag"><i class="fa fa-tag"></i> 面试宝典</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/8be213b60955.html" rel="prev" title="轻松搭建个性化博客，最全Hexo部署教程来袭！">
+                  <i class="fa fa-chevron-left"></i> 轻松搭建个性化博客，最全Hexo部署教程来袭！
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
+
 
 
 
@@ -1207,7 +847,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://andornot.top/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":"faltruese","home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://andornot.top/framework/3894fdc86d47.html"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
