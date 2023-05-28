@@ -22,33 +22,33 @@
 
     <meta name="description" content="基础什么是内连接、外连接、交叉连接、笛卡尔积呢？ 内连接（inner join）：取得两张表中满足存在连接匹配关系的记录。  外连接（outer join）：不只取得两张表中满足存在连接匹配关系的记录，还包括某张表（或两张表）中不满足匹配关系的记录。  交叉连接（cross join）：显示两张表所有记录一一对应，没有匹配关系进行筛选，它是笛卡尔积在SQL中的实现，如果A表有m行，B表有n行，那么">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="mysql">
+<meta property="og:title" content="MySQL">
 <meta property="og:url" content="https://andornot.top/way/database/mysql/index.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
 <meta property="og:description" content="基础什么是内连接、外连接、交叉连接、笛卡尔积呢？ 内连接（inner join）：取得两张表中满足存在连接匹配关系的记录。  外连接（outer join）：不只取得两张表中满足存在连接匹配关系的记录，还包括某张表（或两张表）中不满足匹配关系的记录。  交叉连接（cross join）：显示两张表所有记录一一对应，没有匹配关系进行筛选，它是笛卡尔积在SQL中的实现，如果A表有m行，B表有n行，那么">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://andornot.top/pics/index.assets/202305252134303.png">
-<meta property="og:image" content="https://andornot.top/pics/index.assets/202305252136420.png">
-<meta property="og:image" content="https://andornot.top/pics/index.assets/202305252218961.png">
-<meta property="og:image" content="https://andornot.top/pics/index.assets/202305252222310.png">
-<meta property="og:image" content="https://andornot.top/pics/index.assets/202305252259379.png">
-<meta property="og:image" content="https://andornot.top/pics/index.assets/202305252308485.png">
-<meta property="og:image" content="https://andornot.top/pics/index.assets/202305271933035.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252134303.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252136420.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252218961.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252222310.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252259379.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252308485.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305271933035.png">
 <meta property="article:published_time" content="2023-04-12T14:33:52.000Z">
-<meta property="article:modified_time" content="2023-05-28T06:45:16.771Z">
+<meta property="article:modified_time" content="2023-05-28T15:12:44.984Z">
 <meta property="article:author" content="与或非">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://andornot.top/pics/index.assets/202305252134303.png">
+<meta name="twitter:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252134303.png">
 
 
 <link rel="canonical" href="https://andornot.top/way/database/mysql/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://andornot.top/way/database/mysql/index.html","path":"way/database/mysql/index.html","title":"mysql"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://andornot.top/way/database/mysql/index.html","path":"way/database/mysql/index.html","title":"MySQL"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>mysql | 与或非's Blog
+<title>MySQL | 与或非's Blog
 </title>
   
 
@@ -163,18 +163,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -249,7 +249,7 @@
     
     <div class="post-block" lang="zh-CN"><header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">mysql
+<h1 class="post-title" itemprop="name headline">MySQL
 </h1>
 
 <div class="post-meta-container">
@@ -311,7 +311,7 @@
 </ul>
 <p>日常的设计，对于长度相对固定的字符串，可以使用char，对于长度不确定的，使用</p>
 <p>varchar更合适一些。</p>
-<h2 id="一条SQL查询语句的执行顺序？"><a href="#一条SQL查询语句的执行顺序？" class="headerlink" title="一条SQL查询语句的执行顺序？"></a>一条<strong>SQL</strong>查询语句的执行顺序？</h2><p><img data-src="/pics/index.assets/202305252134303.png"></p>
+<h2 id="一条SQL查询语句的执行顺序？"><a href="#一条SQL查询语句的执行顺序？" class="headerlink" title="一条SQL查询语句的执行顺序？"></a>一条<strong>SQL</strong>查询语句的执行顺序？</h2><p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252134303.png"></p>
 <p><strong>1.</strong> FROM ：对FROM子句中的左表<left_table>和右表<right_table>执行笛卡儿积（Cartesianproduct），产生虚拟表VT1</p>
 <p><strong>2.</strong> ON ：对虚拟表VT1应用ON筛选，只有那些符合<join_condition>的行才被插入虚拟表VT2中</p>
 <p><strong>3.</strong> JOIN ：如果指定了OUTER JOIN（如LEFT OUTER JOIN、RIGHT OUTER JOIN），那么保留表中未匹配的行作为外部行添加到虚拟表VT2中，产生虚拟表VT3。如果FROM子句包含两个以上表，则对上一个连接生成的结果表VT3和下一个表重复执行步骤1）～步骤3），直到处理完所有的表为止</p>
@@ -323,7 +323,7 @@
 <p><strong>9.</strong> DISTINCT ：去除重复数据，产生虚拟表VT9</p>
 <p><strong>10.</strong> ORDER BY ：将虚拟表VT9中的记录按照<order_by_list>进行排序操作，产生虚拟表VT10。11）</p>
 <p><strong>11.</strong> LIMIT ：取出指定行的记录，产生虚拟表VT11，并返回给查询用户</p>
-<h1 id="数据库架构"><a href="#数据库架构" class="headerlink" title="数据库架构"></a>数据库架构</h1><h2 id="说说-MySQL-的基础架构"><a href="#说说-MySQL-的基础架构" class="headerlink" title="说说 MySQL 的基础架构"></a>说说 <strong>MySQL</strong> 的基础架构</h2><p><img data-src="/pics/index.assets/202305252136420.png"></p>
+<h1 id="数据库架构"><a href="#数据库架构" class="headerlink" title="数据库架构"></a>数据库架构</h1><h2 id="说说-MySQL-的基础架构"><a href="#说说-MySQL-的基础架构" class="headerlink" title="说说 MySQL 的基础架构"></a>说说 <strong>MySQL</strong> 的基础架构</h2><p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252136420.png"></p>
 <p>MySQL逻辑架构图主要分三层：</p>
 <ul>
 <li><p>客户端：最上层的服务并不是MySQL所独有的，大多数基于网络的客户端&#x2F;服务器的工具或者服务都有类似的架构。比如连接处理、授权认证、安全等等。</p>
@@ -377,7 +377,7 @@
 </li>
 </ul>
 <h2 id="一条更新语句怎么执行的了解吗？"><a href="#一条更新语句怎么执行的了解吗？" class="headerlink" title="一条更新语句怎么执行的了解吗？"></a>一条更新语句怎么执行的了解吗？</h2><p>更新语句的执行是Server层和引擎层配合完成，数据除了要写入表中，还要记录相应的日志。</p>
-<p><img data-src="/pics/index.assets/202305252218961.png"></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252218961.png"></p>
 <p><strong>1.</strong> 执行器先找引擎获取ID&#x3D;2这一行。ID是主键，存储引擎检索数据，找到这一行。如果ID&#x3D;2这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回。</p>
 <p><strong>2.</strong> 执行器拿到引擎给的行数据，把这个值加上1，比如原来是N，现在就是N+1，得到新的一行数据，再调用引擎接口写入这行新数据。</p>
 <p><strong>3.</strong> 引擎将这行新数据更新到内存中，同时将这个更新操作记录到redo log里面，此时redo log处于prepare状态。然后告知执行器执行完成了，随时可以提交事务。</p>
@@ -392,7 +392,7 @@
 </li>
 </ul>
 <h2 id="有哪些方式优化慢SQL？"><a href="#有哪些方式优化慢SQL？" class="headerlink" title="有哪些方式优化慢SQL？"></a>有哪些方式优化慢<strong>SQL</strong>？</h2><p>慢SQL的优化，主要从两个方面考虑，SQL语句本身的优化，以及数据库设计的优化。</p>
-<p><img data-src="/pics/index.assets/202305252222310.png"></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252222310.png"></p>
 <ul>
 <li><p><strong>避免不必要的列</strong></p>
 <p>这个是老生常谈，但还是经常会出的情况，SQL查询的时候，应该只查询需要的列，而不要包含额外的列，像 slect * 这种写法应该尽量避免。</p>
@@ -477,7 +477,7 @@
 </ul>
 <h2 id="怎么看执行计划（explain），如何理解其中各个字段的含义？"><a href="#怎么看执行计划（explain），如何理解其中各个字段的含义？" class="headerlink" title="怎么看执行计划（explain），如何理解其中各个字段的含义？"></a>怎么看执行计划（<strong>explain</strong>），如何理解其中各个字段的含义？</h2><p>explain是sql优化的利器，除了优化慢sql，平时的sql编写，也应该先explain，查看一下执行计划，看看是否还有优化的空间。</p>
 <p>直接在 select 语句之前增加 explain 关键字，就会返回执行计划的信息。</p>
-<p><img data-src="/pics/index.assets/202305252259379.png"></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252259379.png"></p>
 <p><strong>1.</strong> <strong>id</strong> 列：MySQL会为每个select语句分配一个唯一的id值</p>
 <p><strong>2.</strong> <strong>select_type</strong> 列，查询的类型，根据关联、union、子查询等等分类，常见的查询类型有SIMPLE、PRIMARY。</p>
 <p><strong>3.</strong> <strong>table</strong> 列：表示 explain 的一行正在访问哪个表。</p>
@@ -530,7 +530,7 @@
 </li>
 </ul>
 <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="能简单说一下索引的分类吗？"><a href="#能简单说一下索引的分类吗？" class="headerlink" title="能简单说一下索引的分类吗？"></a>能简单说一下索引的分类吗？</h2><p>从三个不同维度对索引分类：</p>
-<p><img data-src="/pics/index.assets/202305252308485.png"></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305252308485.png"></p>
 <p>例如从基本使用使用的角度来讲：</p>
 <ul>
 <li>主键索引: InnoDB主键是默认的索引，数据列不允许重复，不允许为NULL，一</li>
@@ -613,7 +613,7 @@
 </ul>
 <h2 id="回表了解吗？"><a href="#回表了解吗？" class="headerlink" title="回表了解吗？"></a>回表了解吗？</h2><p>在InnoDB存储引擎里，利用辅助索引查询，先通过辅助索引找到主键索引的键值，再通过主键值查出主键索引里面没有符合要求的数据，它比基于主键索引的查询多扫描了一棵索引树，这个过程就叫回表。</p>
 <h2 id="覆盖索引了解吗？"><a href="#覆盖索引了解吗？" class="headerlink" title="覆盖索引了解吗？"></a>覆盖索引了解吗？</h2><p>在辅助索引里面，不管是单列索引还是联合索引，如果 select 的数据列只用辅助索引中就能够取得，不用去查主键索引，这时候使用的索引就叫做覆盖索引，避免了回表。</p>
-<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><h2 id="MySQL中有哪几种锁，列举一下？"><a href="#MySQL中有哪几种锁，列举一下？" class="headerlink" title="MySQL中有哪几种锁，列举一下？"></a><strong>MySQL</strong>中有哪几种锁，列举一下？</h2><p><img data-src="/pics/index.assets/202305271933035.png"></p>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><h2 id="MySQL中有哪几种锁，列举一下？"><a href="#MySQL中有哪几种锁，列举一下？" class="headerlink" title="MySQL中有哪几种锁，列举一下？"></a><strong>MySQL</strong>中有哪几种锁，列举一下？</h2><p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305271933035.png"></p>
 <p>如果按锁粒度划分，有以下3种：</p>
 <ul>
 <li><p>表锁： 开销小，加锁快；锁定力度大，发生锁冲突概率高，并发度最低；不会出现死锁。</p>
@@ -802,13 +802,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">58k</span>
+    <span title="站点总字数">38k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:31</span>
+    <span title="站点阅读时长">2:17</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动

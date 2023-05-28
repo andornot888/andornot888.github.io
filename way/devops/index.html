@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"andornot.top","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="个人成长记录与分享">
+    <meta name="description" content="DockerDocker是一种开源的容器化平台，它可以将应用程序及其依赖项打包成一个独立的Docker容器，可以很方便的在不同的服务器上部署运行，作用就是一句话：Docker解决了运行环境不一致所带来的问题，可以有效地防止开发、测试、运维互相扯皮。 常用命令 docker run：启动一个容器，如果镜像不存在则从Docker Hub上下载。 docker ps：列出当前正在运行的容器。 docke">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Devops">
 <meta property="og:url" content="https://andornot.top/way/devops/index.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
-<meta property="og:description" content="个人成长记录与分享">
+<meta property="og:description" content="DockerDocker是一种开源的容器化平台，它可以将应用程序及其依赖项打包成一个独立的Docker容器，可以很方便的在不同的服务器上部署运行，作用就是一句话：Docker解决了运行环境不一致所带来的问题，可以有效地防止开发、测试、运维互相扯皮。 常用命令 docker run：启动一个容器，如果镜像不存在则从Docker Hub上下载。 docker ps：列出当前正在运行的容器。 docke">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-12T13:55:43.000Z">
-<meta property="article:modified_time" content="2023-05-28T06:45:16.771Z">
+<meta property="article:modified_time" content="2023-05-28T15:12:44.984Z">
 <meta property="article:author" content="与或非">
 <meta name="twitter:card" content="summary">
 
@@ -127,7 +127,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -140,6 +140,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K8S"><span class="nav-number">2.</span> <span class="nav-text">K8S</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-1"><span class="nav-number">2.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-lua"><span class="nav-number">3.</span> <span class="nav-text">Redis+lua</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JWT"><span class="nav-number">4.</span> <span class="nav-text">JWT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Schedule%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-number">5.</span> <span class="nav-text">Spring Schedule定时任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CompletableFuture%E5%BC%82%E6%AD%A5%E7%BC%96%E6%8E%92"><span class="nav-number">6.</span> <span class="nav-text">CompletableFuture异步编排</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">概念</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Seata%E4%B8%AD%E7%9A%84TCC%E4%BA%8B%E5%8A%A1"><span class="nav-number">7.</span> <span class="nav-text">Seata中的TCC事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Seata%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">7.1.</span> <span class="nav-text">Seata是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E5%9C%A8Seata%E4%B8%AD%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="nav-number">7.2.</span> <span class="nav-text">一个分布式事务在Seata中的执行流程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Seata%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">7.3.</span> <span class="nav-text">Seata的工作原理是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Seata%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8"><span class="nav-number">7.4.</span> <span class="nav-text">Seata怎么使用</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -154,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -241,7 +242,174 @@
       
       
       <div class="post-body">
-          
+          <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p>Docker是一种开源的容器化平台，它可以将应用程序及其依赖项打包成一个独立的Docker容器，可以很方便的在不同的服务器上部署运行，作用就是一句话：Docker解决了运行环境不一致所带来的问题，可以有效地防止开发、测试、运维互相扯皮。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
+<li><code>docker run</code>：启动一个容器，如果镜像不存在则从Docker Hub上下载。</li>
+<li><code>docker ps</code>：列出当前正在运行的容器。</li>
+<li><code>docker stop</code>：停止一个容器。</li>
+<li><code>docker rm</code>：删除一个容器。</li>
+<li><code>docker images</code>：列出本地镜像。</li>
+<li><code>docker pull</code>：下载一个镜像。</li>
+<li><code>docker push</code>：将一个镜像上传到Docker Hub。</li>
+<li><code>docker exec</code>：在运行的容器中执行命令。</li>
+</ol>
+<h1 id="K8S"><a href="#K8S" class="headerlink" title="K8S"></a>K8S</h1><h2 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
+<li><code>kubectl create</code>：创建一个资源。</li>
+<li><code>kubectl get</code>：获取资源的状态。</li>
+<li><code>kubectl apply</code>：更新或创建资源。</li>
+<li><code>kubectl delete</code>：删除资源。</li>
+<li><code>kubectl describe</code>：显示资源的详细信息。</li>
+<li><code>kubectl logs</code>：获取Pod的日志。</li>
+<li><code>kubectl exec</code>：在Pod中执行命令。</li>
+<li><code>kubectl scale</code>：扩展或缩小Deployment的副本数量。</li>
+</ol>
+<h1 id="Redis-lua"><a href="#Redis-lua" class="headerlink" title="Redis+lua"></a>Redis+lua</h1><p>可以使用Redis和Lua脚本来实现防止重复提交攻击的功能，具体步骤如下：</p>
+<ol>
+<li>客户端在提交请求前，先向Redis中查询是否已经存在相同的请求，如果存在则直接返回重复提交的错误提示。</li>
+<li>如果Redis中不存在该请求，则将该请求的唯一标识作为key，设置一个过期时间，并将其保存在Redis中。这里的唯一标识可以是请求的URL、请求的参数组合、或者是一个由多个参数计算得出的hash值等。</li>
+<li>为了避免在高并发情况下，多个客户端同时设置同一个key的情况，可以使用Redis提供的setnx（SET if Not eXists）指令，确保只有第一个请求才能成功设置该key。</li>
+<li>为了避免客户端异常退出或崩溃等情况导致锁无法释放，可以使用Redis提供的expire命令设置过期时间，确保在一定时间后自动释放该锁。</li>
+<li>在Redis中保存的key的命名方式需要有一定的规则，避免和其他key产生冲突。</li>
+<li>使用Lua脚本来实现以上的操作，可以确保在Redis执行脚本期间，不会有其他客户端干扰其中的操作。</li>
+</ol>
+<p>下面是一个简单的示例代码，实现了使用Redis和Lua脚本防止重复提交攻击的功能：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 判断key是否存在，如果存在则返回1，否则设置key，并设置过期时间，返回0</span></span><br><span class="line"><span class="keyword">if</span> redis.call(<span class="string">&quot;exists&quot;</span>, KEYS[<span class="number">1</span>]) == <span class="number">1</span> <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    redis.call(<span class="string">&quot;set&quot;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">1</span>], <span class="string">&quot;ex&quot;</span>, ARGV[<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>在使用时，客户端只需要调用Redis提供的eval命令来执行以上的Lua脚本，并传入需要设置的key、value以及过期时间即可。如果返回值为1，则说明该请求已经存在，需要提示用户重复提交；如果返回值为0，则说明该请求是新的请求，可以继续处理。</p>
+<h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><p>JWT（JSON Web Token）是一种基于 Token 的认证授权机制，是一种轻量级的、跨语言的认证方式。JWT将用户信息加密后存储在 Token 中，在用户请求服务时，客户端将 Token 作为请求头或参数发送到服务端，服务端通过验证 Token 来进行认证授权。</p>
+<p>JWT由三部分组成，分别是 Header、Payload、Signature，它们使用点号”.”分隔开。具体格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Base64UrlEncode(Header)&#125;.&#123;Base64UrlEncode(Payload)&#125;.&#123;Signature&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，Header是一个JSON对象，包含加密算法和类型等信息。Payload是一个JSON对象，存储用户的一些基本信息，如用户ID、角色等信息。Signature则是用于验证Token是否被篡改的签名，由Header、Payload以及一个密钥共同生成。</p>
+<p>JWT的认证流程如下：</p>
+<ol>
+<li>用户使用用户名和密码向服务端发送请求。</li>
+<li>服务端验证用户信息，如果验证成功，将用户ID等信息加密生成JWT。</li>
+<li>服务端将JWT作为响应返回给客户端，客户端将JWT保存在本地。</li>
+<li>客户端在后续请求中将JWT作为请求头或参数发送给服务端。</li>
+<li>服务端验证JWT的合法性和有效期，如果验证通过，继续处理请求；否则返回未授权的错误信息。</li>
+</ol>
+<p>JWT的优点如下：</p>
+<ol>
+<li>轻量级、跨语言。JWT是一种轻量级的认证方式，不需要在服务端保存用户信息，因此可以很方便地跨语言使用。</li>
+<li>安全性高。由于JWT是基于Token的，因此不会在服务端保存用户信息，也不需要在客户端保存敏感信息，因此安全性相对较高。</li>
+<li>可扩展性强。由于JWT使用JSON格式存储用户信息，因此可以很方便地扩展其他信息。</li>
+<li>无状态性。JWT是无状态的，服务端不需要保存任何状态信息，可以很方便地进行负载均衡。</li>
+</ol>
+<p>JWT的缺点如下：</p>
+<ol>
+<li>存在安全隐患。如果密钥泄露，那么攻击者可以伪造Token，并进行恶意操作。</li>
+<li>Token大小较大。由于Token中需要携带用户信息和签名等信息，因此相对于其他认证方式，Token的大小较大，可能会导致网络传输开销较大。</li>
+</ol>
+<p>综上所述，JWT是一种安全性高、可扩展性强的认证方式，适合于轻量级的跨语言应用场景。</p>
+<h1 id="Spring-Schedule定时任务"><a href="#Spring-Schedule定时任务" class="headerlink" title="Spring Schedule定时任务"></a>Spring Schedule定时任务</h1><p>Spring Schedule是Spring框架提供的一种定时任务调度框架，可以轻松地创建和管理各种类型的定时任务。Spring Schedule提供了很多功能，包括简单的定时任务、定时任务调度、任务超时控制等等。</p>
+<p>在Spring中，使用Spring Schedule创建定时任务非常简单，只需要遵循以下步骤：</p>
+<ol>
+<li>在Spring的配置文件中配置定时任务。可以使用注解或XML方式配置。</li>
+<li>创建一个带有@Scheduled注解的方法，该方法将被定期执行。</li>
+<li>在定时任务方法上设置执行周期，包括定时任务执行的间隔时间、执行时间、任务延迟等。</li>
+</ol>
+<p>下面是一个简单的Spring Schedule定时任务的例子，使用注解方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyTask</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Scheduled(fixedRate = 1000)</span> <span class="comment">// 每隔1秒执行一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doTask</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 执行任务逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码使用@Scheduled注解表示这个方法是一个定时任务，并且使用fixedRate属性设置了每隔1秒执行一次。可以使用cron表达式指定任务的执行时间，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyTask</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Scheduled(cron = &quot;0 0/1 * * * ?&quot;)</span> <span class="comment">// 每分钟执行一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doTask</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 执行任务逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，使用了cron表达式来指定定时任务的执行时间。cron表达式是一种灵活的语法，可以指定具体的执行时间，比如每分钟、每小时、每天等。</p>
+<p>Spring Schedule还提供了其他很多定时任务的属性，可以控制任务的延迟、执行顺序、异常处理等。Spring Schedule还支持任务超时控制，可以设置任务的超时时间，并在任务超时后进行处理。</p>
+<p>总之，Spring Schedule是一种简单、灵活、功能丰富的定时任务调度框架，非常适合Java开发人员创建和管理各种类型的定时任务。</p>
+<h1 id="CompletableFuture异步编排"><a href="#CompletableFuture异步编排" class="headerlink" title="CompletableFuture异步编排"></a>CompletableFuture异步编排</h1><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>CompletableFuture是JDK1.8里面引入的一个异步回调类，就是说当前使用异步线程去执行一个任务时候，我们希望在这个任务结束以后，触发一个后续的动作，而CompletableFuture就可以实现这样的功能。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">举个简单的例子：在一个批量支付的业务逻辑里面，涉及到查询订单，支付和发送邮件通知这三个逻辑，那么这三个逻辑是按照顺序，同步去实现的，也就是说先查询订单，查询到以后再针对这个订单发起支付，支付成功以后再发送邮件通知，而这种设计方式会导致这个方法的执行效率会比较慢。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以，在这里我们可以直接使用CompletableFuture，也就是说我们可以把查询到订单的逻辑，放在一个异步线程里面去处理，然后基于CompletableFuture 一个事件回调机制，我们可以配置查询订单，结束之后的一个触发支付的一个动作，支付结束之后再自动触发邮件通知，从而极大的去提升这个业务场景的处理性能。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>CompletableFuture提供了5种不同方式，把多个异步任务组成一个具有先后关系的任务链，然后基于事件来驱动任务链的一个执行。</p>
+</li>
+<li><p>第一种是thenCombine, 把2个任务组合在一起，当2个任务都执行结束以后，触发某个事件的回调，</p>
+</li>
+<li><p>第二种是thenCompose,它同样是把2个任务组合在一起，那么这2个任务是串行执行的，也就是说第一个任务执行结束以后，自动去触发执行第二个任务，</p>
+</li>
+<li><p>第三种thenAccept，它是第一个任务执行结束以后，触发第二个任务，并且第一个任务的执行结果，作为第二个任务的一个参数，这个方法是纯粹的接受上一个任务的执行结果，不返回任何新的计算值。</p>
+</li>
+<li><p>第四种是thenApply和thenAccept一样，它是一种具有返回值的一个方法；</p>
+</li>
+<li><p>第五种是thenRun,就是说第一个任务执行完成以后，触发执行一个实现Runnable接口的一个任务，</p>
+</li>
+<li><p>最后我认为CompletableFuture，弥补了原本Future的一个不足，使得程序可以在非阻塞的状态下，去完成异步的一个回调机制。</p>
+</li>
+</ul>
+<h1 id="Seata中的TCC事务"><a href="#Seata中的TCC事务" class="headerlink" title="Seata中的TCC事务"></a>Seata中的TCC事务</h1><p>Seata是一个分布式事务解决方案，它支持多种事务模式，其中之一就是TCC（Try-Confirm-Cancel）事务模式。</p>
+<p>TCC事务模式是一种基于预留资源的分布式事务处理方式，将整个事务分为三个步骤：尝试(Try)、确认(Confirm)和撤销(Cancel)。在TCC事务模式中，每个步骤都对应一个方法。这些方法可以是本地方法，也可以是远程方法，它们通过执行来进行预留和释放资源。</p>
+<p>在TCC事务模式中，事务管理器首先执行“尝试”步骤，以预留所有参与者的资源。如果所有步骤都成功，则执行“确认”步骤来提交整个事务。如果任何一个步骤失败，事务管理器将执行“撤销”步骤来回滚整个事务，并释放所有已经预留的资源。</p>
+<p>Seata的TCC事务模式提供了一个注解式编程模型，可以在业务方法中添加相关注解，以使用TCC事务模式。同时，Seata还提供了可扩展的TCC事务协调器接口，允许开发人员实现自定义的TCC事务协调器，以满足不同的业务需求。</p>
+<h2 id="Seata是什么"><a href="#Seata是什么" class="headerlink" title="Seata是什么"></a>Seata是什么</h2><p>Seata是一个开源的分布式事务解决方案，它旨在解决分布式系统下的事务问题。Seata提供了高可用性、高性能和易扩展的分布式事务解决方案，适用于微服务架构下的分布式事务场景。</p>
+<p>Seata包括三个核心组件：</p>
+<ol>
+<li>Transaction Coordinator (TC) - 事务协调器：负责协调全局事务的启动、提交和回滚等操作，是Seata中的核心组件。</li>
+<li>Transaction Manager (TM) - 事务管理器：负责本地事务的管理和协调，与业务代码集成。</li>
+<li>Resource Manager (RM) - 资源管理器：负责管理分支事务，如数据库、消息队列、缓存等资源的事务操作。</li>
+</ol>
+<p>在Seata的架构中，应用程序通过Seata的Client端来访问TC，从而实现全局事务的控制。当应用程序调用业务代码时，TM会对业务代码进行增强，将业务代码包装在本地事务中，并协调各个RM参与全局事务的分支事务。</p>
+<p>Seata支持多种分布式事务模式，如 AT、TCC、SAGA 等。它还提供了与多种编程语言和框架集成的支持，如 Java、Spring、Dubbo、Hystrix、Feign 等。此外，Seata还支持容器化部署和云原生架构。</p>
+<p>总之，Seata是一个非常强大和流行的分布式事务解决方案，可以帮助开发者解决分布式事务的问题，提高系统的可靠性和性能。</p>
+<h2 id="一个分布式事务在Seata中的执行流程："><a href="#一个分布式事务在Seata中的执行流程：" class="headerlink" title="一个分布式事务在Seata中的执行流程："></a>一个分布式事务在Seata中的执行流程：</h2><ol>
+<li>TM 向 TC 申请开启一个全局事务，全局事务创建成功并生成一个全局唯一的 XID。</li>
+<li>XID 在微服务调用链路的上下文中传播。</li>
+<li>RM 向 TC 注册分支事务，接着执行这个分支事务并提交（重点：RM在第一阶段就已经执行了本地事务的提交&#x2F;回滚），最后将执行结果汇报给TC。</li>
+<li>TM 根据 TC 中所有的分支事务的执行情况，发起全局提交或回滚决议。</li>
+<li>TC 调度 XID 下管辖的全部分支事务完成提交或回滚请求。</li>
+</ol>
+<h2 id="Seata的工作原理是什么"><a href="#Seata的工作原理是什么" class="headerlink" title="Seata的工作原理是什么"></a>Seata的工作原理是什么</h2><p>Seata的工作原理如下：</p>
+<ol>
+<li>事务发起方向 Seata Server 发起全局事务，Seata Server 生成全局事务ID。</li>
+<li>事务参与方在本地事务完成后，向 Seata Server 发起注册分支事务请求，包括本地事务ID和全局事务ID。</li>
+<li>Seata Server 记录全局事务和分支事务的关系，以及各分支事务的状态信息。</li>
+<li>分支事务向 Seata Server 汇报本地事务执行结果。</li>
+<li>当所有分支事务都成功执行并向 Seata Server 汇报时，Seata Server 发起针对全局事务的提交请求。</li>
+<li>Seata Server 将提交请求发送给所有分支事务，各分支事务收到请求后执行本地事务的提交操作。</li>
+<li>当所有分支事务都提交成功后，Seata Server 向事务发起方发送全局事务提交成功的响应。</li>
+<li>如果有任何一个分支事务执行失败，Seata Server 发起针对全局事务的回滚请求。</li>
+<li>Seata Server 将回滚请求发送给所有分支事务，各分支事务收到请求后执行本地事务的回滚操作。</li>
+<li>当所有分支事务都回滚成功后，Seata Server 向事务发起方发送全局事务回滚成功的响应。</li>
+</ol>
+<p>总的来说，Seata 通过在分支事务和全局事务之间建立映射关系，以及在 Seata Server 上协调和管理各个分支事务的状态，来实现分布式事务的一致性。</p>
+<h2 id="Seata怎么使用"><a href="#Seata怎么使用" class="headerlink" title="Seata怎么使用"></a>Seata怎么使用</h2><ol>
+<li>下载Seata</li>
+</ol>
+<p>可以从Seata的官网（<a target="_blank" rel="noopener" href="https://seata.io/zh-cn/%EF%BC%89%E4%B8%8B%E8%BD%BDSeata%E7%9A%84%E5%8F%91%E8%A1%8C%E7%89%88%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%BB%8ESeata%E7%9A%84Github%E4%BB%93%E5%BA%93%EF%BC%88https://github.com/seata/seata%EF%BC%89%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%9A%84%E4%BB%A3%E7%A0%81%E3%80%82">https://seata.io/zh-cn/）下载Seata的发行版，也可以从Seata的Github仓库（https://github.com/seata/seata）获取最新的代码。</a></p>
+<ol start="2">
+<li>配置Seata</li>
+</ol>
+<p>Seata的配置主要包括全局配置和各个组件的配置，具体配置可以参考Seata的官方文档。在配置中，需要指定TC、TM和RM的地址和端口等信息，以及各种事务模式的相关配置。</p>
+<ol start="3">
+<li>引入Seata依赖</li>
+</ol>
+<p>如果是使用Java语言开发，可以通过Maven或Gradle等构建工具引入Seata的依赖，例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.seata<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>seata-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;seata.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>集成Seata</li>
+</ol>
+<p>Seata提供了与多种框架和组件的集成支持，如Spring、Dubbo、MyBatis、RocketMQ等，具体集成方式可以参考Seata的官方文档。</p>
+<p>以Spring Boot框架为例，需要在启动类上添加注解<code>@EnableAutoDataSourceProxy</code>，以开启数据源代理；并在application.yml或application.properties文件中配置Seata的相关信息，例如：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">seata:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">application-id:</span> <span class="string">seata-demo</span></span><br><span class="line">  <span class="attr">tx-service-group:</span> <span class="string">my_tx_group</span></span><br><span class="line">  <span class="attr">service:</span></span><br><span class="line">    <span class="attr">vgroup-mapping:</span></span><br><span class="line">      <span class="attr">my_tx_group:</span> <span class="string">default</span></span><br><span class="line">    <span class="attr">group-id:</span> <span class="string">default</span></span><br><span class="line">    <span class="attr">enable-degrade:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">disable-global-transaction:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>编写业务代码</li>
+</ol>
+<p>在业务代码中，需要使用Seata提供的API，将本地事务注册到全局事务中，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GlobalTransactional(timeoutMills = 300000, name = &quot;demo-tx&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doBusiness</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// do some business logic</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，通过<code>@GlobalTransactional</code>注解将doBusiness方法注册到全局事务中，指定了事务的超时时间和事务名称。</p>
+<ol start="6">
+<li>启动Seata</li>
+</ol>
+<p>在所有的配置和代码编写完成后，可以启动Seata的各个组件，如TC、TM和RM等，以及应用程序本身。</p>
+<p>总之，使用Seata的过程中，需要进行配置、引入依赖、集成Seata、编写业务代码和启动Seata等步骤，同时需要了解Seata的各种配置和API，以便正确地使用分布式事务的功能。</p>
+
       </div>
       
       
@@ -276,13 +444,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">58k</span>
+    <span title="站点总字数">38k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:31</span>
+    <span title="站点阅读时长">2:17</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
