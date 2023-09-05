@@ -16,21 +16,33 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.css" integrity="sha256-RvRHGSuWAxZpXKV9lLDt2e+rZ+btzn48Wp4ueS3NZKs=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"andornot.top","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"andornot.top","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="常见集合集合相关类和接口都在java.util中，主要分为3种：List（列表）、Map（映射）、Set(集)。  其中 Collection 是集合 List 、 Set 的父接口，它主要有两个子接口：  List ：存储的元素有序，可重复。  Set ：存储的元素无序，不可重复。   Map 是另外的接口，是键值对映射结构的集合。 ListArrayList和LinkedList的区别是什么？">
+    <meta name="description" content="集合相关类和接口都在java.util中，主要分为3种：List（列表）、Map（映射）、Set(集)。  其中 Collection 是集合 List 、 Set 的父接口，它主要有两个子接口：  List ：存储的元素有序，可重复。  Set ：存储的元素无序，不可重复。   Map 是另外的接口，是键值对映射结构的集合。 ListArrayList和LinkedList的区别是什么？它们的时">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="集合">
 <meta property="og:url" content="https://andornot.top/way/java/collection/index.html">
 <meta property="og:site_name" content="与或非&#39;s Blog">
-<meta property="og:description" content="常见集合集合相关类和接口都在java.util中，主要分为3种：List（列表）、Map（映射）、Set(集)。  其中 Collection 是集合 List 、 Set 的父接口，它主要有两个子接口：  List ：存储的元素有序，可重复。  Set ：存储的元素无序，不可重复。   Map 是另外的接口，是键值对映射结构的集合。 ListArrayList和LinkedList的区别是什么？">
+<meta property="og:description" content="集合相关类和接口都在java.util中，主要分为3种：List（列表）、Map（映射）、Set(集)。  其中 Collection 是集合 List 、 Set 的父接口，它主要有两个子接口：  List ：存储的元素有序，可重复。  Set ：存储的元素无序，不可重复。   Map 是另外的接口，是键值对映射结构的集合。 ListArrayList和LinkedList的区别是什么？它们的时">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202306121506925.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848477.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848827.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848571.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848514.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849843.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849926.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849072.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849663.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849052.png">
 <meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202305302223995.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849984.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849568.png">
+<meta property="og:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849615.png">
 <meta property="article:published_time" content="2023-04-12T13:54:35.000Z">
-<meta property="article:modified_time" content="2023-07-19T15:39:39.492Z">
+<meta property="article:modified_time" content="2023-09-05T14:57:28.220Z">
 <meta property="article:author" content="与或非">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202306121506925.png">
@@ -143,7 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%9B%86%E5%90%88"><span class="nav-number">1.</span> <span class="nav-text">常见集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList%E5%92%8CLinkedList%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">ArrayList的扩容机制了解吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList%E6%80%8E%E4%B9%88%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E7%9F%A5%E9%81%93%E5%90%97%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8transient%E4%BF%AE%E9%A5%B0%E6%95%B0%E7%BB%84%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">ArrayList怎么序列化的知道吗？ 为什么用transient修饰数组？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%A4%B1%E8%B4%A5-fail-fast-%E5%92%8C%E5%AE%89%E5%85%A8%E5%A4%B1%E8%B4%A5-fail-safe-%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">快速失败**(fail-fast)和安全失败(fail-safe)**了解吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0ArrayList%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">有哪几种实现ArrayList线程安全的方法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CopyOnWriteArrayList%E4%BA%86%E8%A7%A3%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">CopyOnWriteArrayList了解多少？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">HashMap底层原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">3.2.</span> <span class="nav-text">HashMap的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">3.3.</span> <span class="nav-text">红黑树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap%E5%92%8CConcurrentHashMap%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FConcurrentHashMap%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%81%8D%E5%8E%86%E4%B8%80%E4%B8%AAHashMap%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">如何遍历一个HashMap？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet%E5%92%8CTreeSet%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E4%BB%AC%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%85%83%E7%B4%A0%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7%E7%9A%84%EF%BC%9F"><span class="nav-number">3.6.</span> <span class="nav-text">HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">3.7.</span> <span class="nav-text">Collections工具类有哪些常用的方法？它们的作用是什么？</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#List"><span class="nav-number">1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList%E5%92%8CLinkedList%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">ArrayList的扩容机制了解吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList%E6%80%8E%E4%B9%88%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E7%9F%A5%E9%81%93%E5%90%97%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8transient%E4%BF%AE%E9%A5%B0%E6%95%B0%E7%BB%84%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">ArrayList怎么序列化的知道吗？ 为什么用transient修饰数组？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%A4%B1%E8%B4%A5-fail-fast-%E5%92%8C%E5%AE%89%E5%85%A8%E5%A4%B1%E8%B4%A5-fail-safe-%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">快速失败**(fail-fast)和安全失败(fail-safe)**了解吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0ArrayList%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">有哪几种实现ArrayList线程安全的方法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CopyOnWriteArrayList%E4%BA%86%E8%A7%A3%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">1.6.</span> <span class="nav-text">CopyOnWriteArrayList了解多少？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%BD%E8%AF%B4%E4%B8%80%E4%B8%8BHashMap%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%90%97%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">能说一下HashMap的数据结构吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="nav-number">2.2.</span> <span class="nav-text">红黑树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%81%8D%E5%8E%86%E4%B8%80%E4%B8%AAHashMap%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">如何遍历一个HashMap？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E7%9A%84put%E6%B5%81%E7%A8%8B%E7%9F%A5%E9%81%93%E5%90%97%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">HashMap的put流程知道吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E7%9A%84%E5%93%88%E5%B8%8C-x2F-%E6%89%B0%E5%8A%A8%E5%87%BD%E6%95%B0%E6%98%AF%E6%80%8E%E4%B9%88%E8%AE%BE%E8%AE%A1%E7%9A%84"><span class="nav-number">2.5.</span> <span class="nav-text">HashMap的哈希**&#x2F;**扰动函数是怎么设计的?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%93%88%E5%B8%8C-x2F-%E6%89%B0%E5%8A%A8%E5%87%BD%E6%95%B0%E8%83%BD%E9%99%8Dhash-%E7%A2%B0%E6%92%9E%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">为什么哈希**&#x2F;扰动函数能降hash**碰撞？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E6%80%8E%E4%B9%88%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">HashMap怎么查找元素的呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88HashMap%E7%9A%84%E5%AE%B9%E9%87%8F%E6%98%AF2%E7%9A%84%E5%80%8D%E6%95%B0%E5%91%A2%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">为什么HashMap的容量是2的倍数呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%AE%B9%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%91%A2%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E6%89%A9%E5%AE%B9%E5%9B%A0%E5%AD%90%E6%98%AF0-75%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">扩容在什么时候呢？为什么扩容因子是0.75？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">2.10.</span> <span class="nav-text">HashMap的扩容机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk1-8%E5%AF%B9HashMap%E4%B8%BB%E8%A6%81%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96%E5%91%A2%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.11.</span> <span class="nav-text">jdk1.8对HashMap主要做了哪些优化呢？为什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E4%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.12.</span> <span class="nav-text">HashMap 是线程安全的吗？多线程下会有什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9E%E6%B3%95%E8%83%BD%E8%A7%A3%E5%86%B3HashMap%E7%BA%BF%E7%A8%8B%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%91%A2%EF%BC%9F"><span class="nav-number">2.13.</span> <span class="nav-text">有什么办法能解决HashMap线程不安全的问题呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E5%92%8CConcurrentHashMap%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FConcurrentHashMap%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">2.14.</span> <span class="nav-text">HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap%E5%86%85%E9%83%A8%E8%8A%82%E7%82%B9%E6%98%AF%E6%9C%89%E5%BA%8F%E7%9A%84%E5%90%97%EF%BC%9F"><span class="nav-number">2.15.</span> <span class="nav-text">HashMap内部节点是有序的吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B2%E8%AE%B2-LinkedHashMap-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E7%9A%84%EF%BC%9F"><span class="nav-number">2.16.</span> <span class="nav-text">讲讲 LinkedHashMap 怎么实现有序的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B2%E8%AE%B2-TreeMap-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E6%9C%89%E5%BA%8F%E7%9A%84%EF%BC%9F"><span class="nav-number">2.17.</span> <span class="nav-text">讲讲 TreeMap 怎么实现有序的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B2%E8%AE%B2HashSet%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">讲讲HashSet的底层实现？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashSet%E5%92%8CTreeSet%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%AE%83%E4%BB%AC%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%85%83%E7%B4%A0%E7%9A%84%E5%94%AF%E4%B8%80%E6%80%A7%E7%9A%84%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collections%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">Collections工具类有哪些常用的方法？它们的作用是什么？</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -264,7 +276,7 @@
       
       
       <div class="post-body">
-          <h2 id="常见集合"><a href="#常见集合" class="headerlink" title="常见集合"></a>常见集合</h2><p>集合相关类和接口都在java.util中，主要分为3种：List（列表）、Map（映射）、Set(集)。</p>
+          <p>集合相关类和接口都在java.util中，主要分为3种：List（列表）、Map（映射）、Set(集)。</p>
 <p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202306121506925.png"></p>
 <p>其中 Collection 是集合 List 、 Set 的父接口，它主要有两个子接口：</p>
 <ul>
@@ -274,7 +286,7 @@
 </li>
 </ul>
 <p>Map 是另外的接口，是键值对映射结构的集合。</p>
-<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？"><a href="#ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？" class="headerlink" title="ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？"></a>ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？</h3><p>ArrayList和LinkedList都是List接口的实现类，ArrayList是基于数组实现的，而LinkedList是基于双向链表实现的。</p>
+<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><h2 id="ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？"><a href="#ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？" class="headerlink" title="ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？"></a>ArrayList和LinkedList的区别是什么？它们的时间复杂度是怎样的？</h2><p>ArrayList和LinkedList都是List接口的实现类，ArrayList是基于数组实现的，而LinkedList是基于双向链表实现的。</p>
 <ul>
 <li><strong>插入和删除是否受元素位置的影响</strong>：<ul>
 <li><code>ArrayList</code> 采用数组存储，所以插入和删除元素的时间复杂度受元素位置的影响。 比如：执行<code>add(E e)</code>方法的时候， <code>ArrayList</code> 会默认在将指定的元素追加到此列表的末尾，这种情况时间复杂度就是 O(1)。但是如果要在指定位置 i 插入和删除元素的话（<code>add(int index, E element)</code>）时间复杂度就为 O(n-i)。因为在进行上述操作的时候集合中第 i 和第 i 个元素之后的(n-i)个元素都要执行向后位&#x2F;向前移一位的操作。</li>
@@ -286,9 +298,9 @@
 </ul>
 <p>我们在项目中一般是不会使用到 <code>LinkedList</code> 的，需要用到 <code>LinkedList</code> 的场景几乎都可以使用 <code>ArrayList</code> 来代替，并且，性能通常会更好！就连 <code>LinkedList</code> 的作者约书亚 · 布洛克（Josh Bloch）自己都说从来不会使用 <code>LinkedList</code> 。</p>
 <p>另外，不要下意识地认为 <code>LinkedList</code> 作为链表就最适合元素增删的场景。我在上面也说了，<code>LinkedList</code> 仅仅在头尾插入或者删除元素的时候时间复杂度近似 O(1)，其他情况增删元素的时间复杂度都是 O(n) 。</p>
-<h3 id="ArrayList的扩容机制了解吗？"><a href="#ArrayList的扩容机制了解吗？" class="headerlink" title="ArrayList的扩容机制了解吗？"></a><strong>ArrayList</strong>的扩容机制了解吗？</h3><p>ArrayList是基于数组的集合，数组的容量是在定义的时候确定的，如果数组满了，再插入，就会数组溢出。所以在插入时候，会先检查是否需要扩容，如果当前容量+1超过数组长度，就会进行扩容。</p>
+<h2 id="ArrayList的扩容机制了解吗？"><a href="#ArrayList的扩容机制了解吗？" class="headerlink" title="ArrayList的扩容机制了解吗？"></a><strong>ArrayList</strong>的扩容机制了解吗？</h2><p>ArrayList是基于数组的集合，数组的容量是在定义的时候确定的，如果数组满了，再插入，就会数组溢出。所以在插入时候，会先检查是否需要扩容，如果当前容量+1超过数组长度，就会进行扩容。</p>
 <p>ArrayList的扩容是创建一个<strong>1.5</strong>倍的新数组，然后把原数组的值拷贝过去。</p>
-<h3 id="ArrayList怎么序列化的知道吗？-为什么用transient修饰数组？"><a href="#ArrayList怎么序列化的知道吗？-为什么用transient修饰数组？" class="headerlink" title="ArrayList怎么序列化的知道吗？ 为什么用transient修饰数组？"></a><strong>ArrayList</strong>怎么序列化的知道吗？ 为什么用<strong>transient</strong>修饰数组？</h3><p>ArrayList的序列化不太一样，它使用 transient 修饰存储元素的 elementData 的数组， transient 关键字的作用是让被修饰的成员属性不被序列化。</p>
+<h2 id="ArrayList怎么序列化的知道吗？-为什么用transient修饰数组？"><a href="#ArrayList怎么序列化的知道吗？-为什么用transient修饰数组？" class="headerlink" title="ArrayList怎么序列化的知道吗？ 为什么用transient修饰数组？"></a><strong>ArrayList</strong>怎么序列化的知道吗？ 为什么用<strong>transient</strong>修饰数组？</h2><p>ArrayList的序列化不太一样，它使用 transient 修饰存储元素的 elementData 的数组， transient 关键字的作用是让被修饰的成员属性不被序列化。</p>
 <ul>
 <li><p>为什么最<strong>ArrayList</strong>不直接序列化元素数组呢？</p>
 <p>出于效率的考虑，数组可能长度100，但实际只用了50，剩下的50不用其实不用序列化，这样可以提高序列化和反序列化的效率，还可以节省内存空间。</p>
@@ -297,7 +309,7 @@
 <p>ArrayList通过两个方法<strong>readObject</strong>、<strong>writeObject</strong>自定义序列化和反序列化策略，实际直接使用两个流 ObjectOutputStream 和 ObjectInputStream 来进行序列化和反序列化。</p>
 </li>
 </ul>
-<h3 id="快速失败-fail-fast-和安全失败-fail-safe-了解吗？"><a href="#快速失败-fail-fast-和安全失败-fail-safe-了解吗？" class="headerlink" title="快速失败**(fail-fast)和安全失败(fail-safe)**了解吗？"></a>快速失败**(fail-fast)<strong>和安全失败</strong>(fail-safe)**了解吗？</h3><p>快速失败（<strong>fail—fast</strong>）：快速失败是Java集合的一种错误检测机制</p>
+<h2 id="快速失败-fail-fast-和安全失败-fail-safe-了解吗？"><a href="#快速失败-fail-fast-和安全失败-fail-safe-了解吗？" class="headerlink" title="快速失败**(fail-fast)和安全失败(fail-safe)**了解吗？"></a>快速失败**(fail-fast)<strong>和安全失败</strong>(fail-safe)**了解吗？</h2><p>快速失败（<strong>fail—fast</strong>）：快速失败是Java集合的一种错误检测机制</p>
 <ul>
 <li>在用迭代器遍历一个集合对象时，如果线程A遍历过程中，线程B对集合对象的内容进行了修改（增加、删除、修改），则会抛出ConcurrentModificationException。</li>
 <li>原理：迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个modCount 变量。集合在被遍历期间如果内容发生变化，就会改变 modCount的值。每当迭代器使用hashNext()&#x2F;next()遍历下一个元素之前，都会检测modCount变量是否为expectedmodCount值，是的话就返回遍历；否则抛出异常，终止遍历。</li>
@@ -311,7 +323,7 @@
 <li>缺点：基于拷贝内容的优点是避免了Concurrent Modification Exception，但同样地，迭代器并不能访问到修改后的内容，即：迭代器遍历的是开始遍历那一刻拿到的集合拷贝，在遍历期间原集合发生的修改迭代器是不知道的。</li>
 <li>场景：java.util.concurrent包下的容器都是安全失败，可以在多线程下并发使用，并发修改，比如CopyOnWriteArrayList类。</li>
 </ul>
-<h3 id="有哪几种实现ArrayList线程安全的方法？"><a href="#有哪几种实现ArrayList线程安全的方法？" class="headerlink" title="有哪几种实现ArrayList线程安全的方法？"></a>有哪几种实现<strong>ArrayList</strong>线程安全的方法？</h3><p>fail-fast是一种可能触发的机制，实际上，ArrayList的线程安全仍然没有保证，一般，保证ArrayList的线程安全可以通过这些方案：</p>
+<h2 id="有哪几种实现ArrayList线程安全的方法？"><a href="#有哪几种实现ArrayList线程安全的方法？" class="headerlink" title="有哪几种实现ArrayList线程安全的方法？"></a>有哪几种实现<strong>ArrayList</strong>线程安全的方法？</h2><p>fail-fast是一种可能触发的机制，实际上，ArrayList的线程安全仍然没有保证，一般，保证ArrayList的线程安全可以通过这些方案：</p>
 <ul>
 <li><p>使用 Vector 代替 ArrayList。（不推荐，Vector是一个历史遗留类）</p>
 </li>
@@ -322,18 +334,25 @@
 <li><p>在使用 ArrayList 时，应用程序通过同步机制去控制 ArrayList 的读写。</p>
 </li>
 </ul>
-<h3 id="CopyOnWriteArrayList了解多少？"><a href="#CopyOnWriteArrayList了解多少？" class="headerlink" title="CopyOnWriteArrayList了解多少？"></a><strong>CopyOnWriteArrayList</strong>了解多少？</h3><p>CopyOnWriteArrayList就是线程安全版本的ArrayList。</p>
+<h2 id="CopyOnWriteArrayList了解多少？"><a href="#CopyOnWriteArrayList了解多少？" class="headerlink" title="CopyOnWriteArrayList了解多少？"></a><strong>CopyOnWriteArrayList</strong>了解多少？</h2><p>CopyOnWriteArrayList就是线程安全版本的ArrayList。</p>
 <p>它的名字叫 CopyOnWrite ——写时复制，已经明示了它的原理。</p>
 <p>CopyOnWriteArrayList采用了一种读写分离的并发策略。CopyOnWriteArrayList容器允许并发读，读操作是无锁的，性能较高。至于写操作，比如向容器中添加一个元素，则首先将当前容器复制一份，然后在新副本上执行写操作，结束之后再将原容器的引用指向新容器。</p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="HashMap底层原理"><a href="#HashMap底层原理" class="headerlink" title="HashMap底层原理"></a>HashMap底层原理</h3><p>当我们向 HashMap 中插入一个键值对时，HashMap 会算出key的hash值，到数组中寻址，找到一个位置，把key-value对放进数组。</p>
-<p>如果 HashMap 中存在多个key的 hash值相同，即它们在数组中应该存放在同一个位置，这时会将它们存放在同一个链表中。如果链表长度较长，可能会导致查询效率下降。为了解决这个问题，JDK8 中的 HashMap 实现引入了红黑树。链表查询的时间复杂度O（n），红黑树查询的时间复杂度O（logn）。</p>
-<p>当链表长度大于阈值（默认为 8）时，会首先调用 <code>treeifyBin()</code>方法。这个方法会根据 HashMap 数组长度来决定是否转换为红黑树。只有当数组长度大于或者等于 64 的情况下，才会执行转换红黑树操作，以减少搜索时间。否则，就是只是执行 <code>resize()</code> 方法对数组扩容。</p>
-<h3 id="HashMap的扩容机制"><a href="#HashMap的扩容机制" class="headerlink" title="HashMap的扩容机制"></a>HashMap的扩容机制</h3><p>HashMap 扩容是指在已有的数组容量不足以存储更多键值对时，HashMap 会创建一个新的更大的数组，并将已有的键值对重新分配到新数组中的过程。</p>
-<p>HashMap 扩容的触发条件是当已有的键值对数量大于数组容量与负载因子的乘积时，HashMap 将进行扩容操作。负载因子是指已有键值对数量与数组容量的比值，如果负载因子大于设定的负载因子阈值，那么就会触发扩容操作。</p>
-<p>在扩容时，HashMap 首先会创建一个新的数组，该数组的容量是原数组的两倍。然后将原数组中的每个非空链表中的所有键值对重新计算其在新数组中的位置，并将其存放在对应位置的链表中。这个过程称为 rehashing。</p>
-<p>在 rehashing 过程中，由于键值对重新散列后可能会被分配到不同的链表中，这会导致一些查询操作变得复杂。为了尽可能减少这种情况的发生，HashMap 的实现会将数组的容量设置为 2 的幂次方，这样就能够保证所有键的散列位置都能够被正确计算。</p>
-<p>需要注意的是，HashMap 扩容是一个耗时的操作，因为它需要重新计算键值对在新数组中的位置，并且需要将键值对从旧链表转移到新链表中。因此，为了提高性能，我们需要在初始化 HashMap 时，给定一个合适的初始容量和负载因子，以避免频繁的扩容操作。</p>
-<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p>红黑树（Red-Black Tree）是一种自平衡的二叉查找树，它可以保证在最坏情况下，基本的动态操作（插入、删除、查找）都可以在 O(log n) 时间内完成，是一种高效的数据结构。红黑树的名字来自于每个节点被标记为红色或黑色，以满足特定的约束。</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><h2 id="能说一下HashMap的数据结构吗？"><a href="#能说一下HashMap的数据结构吗？" class="headerlink" title="能说一下HashMap的数据结构吗？"></a>能说一下<strong>HashMap</strong>的数据结构吗？</h2><p>JDK1.7的数据结构是 <strong>数组</strong> + <strong>链表</strong> </p>
+<p>JDK1.8的数据结构是 <strong>数组</strong> + <strong>链表</strong> + <strong>红黑树</strong> 。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848477.png" alt="image-20230724163253682"></p>
+<p>其中，桶数组是用来存储数据元素，链表是用来解决冲突，红黑树是为了提高查询的效率。</p>
+<ul>
+<li><p>数据元素通过映射关系，也就是散列函数，映射到桶数组对应索引的位置</p>
+</li>
+<li><p>如果发生冲突，从冲突的位置拉一个链表，插入冲突的元素</p>
+</li>
+<li><p>如果链表长度&gt;8&amp;数组大小&gt;&#x3D;64，链表转为红黑树</p>
+</li>
+<li><p>如果红黑树节点个数&lt;6 ，转为链表</p>
+</li>
+</ul>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p>红黑树（Red-Black Tree）是一种自平衡的二叉查找树，它可以保证在最坏情况下，基本的动态操作（插入、删除、查找）都可以在 O(log n) 时间内完成，是一种高效的数据结构。红黑树的名字来自于每个节点被标记为红色或黑色，以满足特定的约束。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848827.png" alt="image-20230724163439159"></p>
 <p>红黑树的约束条件如下：</p>
 <ol>
 <li>每个节点要么是红色，要么是黑色。</li>
@@ -345,7 +364,134 @@
 <p>这些约束条件保证了红黑树的平衡性和搜索效率。通过这些约束条件，红黑树可以保证在最坏情况下，查找、插入和删除的时间复杂度都是 O(log n)。</p>
 <p>红黑树的插入和删除操作会涉及到颜色变化和旋转操作，旋转操作有两种类型：左旋和右旋。左旋是将一个节点的右子树移到该节点的位置，而右旋是将一个节点的左子树移到该节点的位置。这些操作的具体实现可以根据红黑树的性质进行推导和实现。</p>
 <p>总之，红黑树是一种自平衡的二叉查找树，通过颜色标记和旋转操作来保持树的平衡性和搜索效率。红黑树常用于各种编程语言和库的实现中，例如C++ STL的set和map容器，Java集合框架中的TreeMap和TreeSet，以及Linux内核中的进程调度和文件系统实现等。</p>
-<h3 id="HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？"><a href="#HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？" class="headerlink" title="HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？"></a>HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？</h3><p>HashMap和ConcurrentHashMap都是Map接口的实现类，HashMap是非线程安全的，ConcurrentHashMap是线程安全的。</p>
+<h2 id="如何遍历一个HashMap？"><a href="#如何遍历一个HashMap？" class="headerlink" title="如何遍历一个HashMap？"></a>如何遍历一个HashMap？</h2><p>遍历HashMap有以下几种方法：</p>
+<ul>
+<li>迭代器（Iterator）遍历：使用Map接口中的entrySet()方法获取到一个Set集合，然后使用迭代器遍历Set集合中的每个元素，再使用Map.Entry的getKey()和getValue()方法获取键值对。代码示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line"><span class="comment">// 添加元素到HashMap中</span></span><br><span class="line">Iterator&lt;Map.Entry&lt;String, String&gt;&gt; iterator = map.entrySet().iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    Map.Entry&lt;String, String&gt; entry = iterator.next();</span><br><span class="line">    <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> entry.getValue();</span><br><span class="line">    <span class="comment">// 处理键值对</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>for-each循环遍历：使用Map接口中的keySet()方法获取到一个Set集合，然后使用for-each循环遍历Set集合中的每个元素，再使用Map的get()方法获取键对应的值。代码示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line"><span class="comment">// 添加元素到HashMap中</span></span><br><span class="line"><span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">    <span class="comment">// 处理键值对</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java 8中的Stream API遍历：使用Map接口中的entrySet()方法获取到一个Set集合，然后使用Java 8中的Stream API遍历Set集合中的每个元素，再使用Map.Entry的getKey()和getValue()方法获取键值对。代码示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line"><span class="comment">// 添加元素到HashMap中</span></span><br><span class="line">map.entrySet().stream().forEach(entry -&gt; &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> entry.getValue();</span><br><span class="line">    <span class="comment">// 处理键值对</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>无论采用何种方式遍历，遍历时需要注意：HashMap是无序的，不能保证元素的顺序。</p>
+<h2 id="HashMap的put流程知道吗？"><a href="#HashMap的put流程知道吗？" class="headerlink" title="HashMap的put流程知道吗？"></a><strong>HashMap</strong>的<strong>put</strong>流程知道吗？</h2><p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848571.png" alt="image-20230724163749796"></p>
+<ol>
+<li><p>当我们向 HashMap 中插入一个键值对时，首先会进行哈希值的扰动，算出一个新的hash值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">hash</span><span class="params">(Object key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="literal">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断tab是否为空或者长度为0，如果是就进行扩容操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((tab = table) == <span class="literal">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            n = (tab = resize()).length;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据哈希值计算下标，如果对应下标正好没有存放数据，则直接插入即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tab[i = (n - <span class="number">1</span>) &amp; hash]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果第一个节点与要插入的键值对匹配，则将其赋值给变量e。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="literal">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                e = p;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果一个节点是树节点，则调用树节点的插入方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="built_in">this</span>, tab, hash, key, value);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>否则就遍历链表，找到链表尾部插入新节点，如果链表长度达到树化阈值，则调用treeifyBin方法将链表转化为红黑树。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 遍历链表查找匹配的节点</span></span><br><span class="line">           <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">binCount</span> <span class="operator">=</span> <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">               <span class="keyword">if</span> ((e = p.next) == <span class="literal">null</span>) &#123;</span><br><span class="line">                   <span class="comment">// 找到链表尾部，插入新节点</span></span><br><span class="line">                   p.next = newNode(hash, key, value, <span class="literal">null</span>);</span><br><span class="line">                   <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                       <span class="comment">// 如果链表长度达到树化阈值，则将链表转化为红黑树</span></span><br><span class="line">                       treeifyBin(tab, hash);</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || (key != <span class="literal">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                   <span class="comment">// 找到匹配的节点，跳出循环</span></span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               p = e;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增加计数器，如果大小超过阈值，则调用resize方法进行扩容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 增加修改计数器</span></span><br><span class="line">   ++modCount;</span><br><span class="line">   <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">       <span class="comment">// 如果大小超过阈值，则进行扩容</span></span><br><span class="line">       resize();</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="HashMap的哈希-x2F-扰动函数是怎么设计的"><a href="#HashMap的哈希-x2F-扰动函数是怎么设计的" class="headerlink" title="HashMap的哈希**&#x2F;**扰动函数是怎么设计的?"></a><strong>HashMap</strong>的哈希**&#x2F;**扰动函数是怎么设计的?</h2><p>HashMap的哈希函数是先拿到 key 的hashcode，是一个32位的int类型的数值，然后让hashcode的高16位和低16位进行异或操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="title function_">hash</span><span class="params">(Object key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="literal">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这么设计是为了降低哈希碰撞的概率。</p>
+<h2 id="为什么哈希-x2F-扰动函数能降hash-碰撞？"><a href="#为什么哈希-x2F-扰动函数能降hash-碰撞？" class="headerlink" title="为什么哈希**&#x2F;扰动函数能降hash**碰撞？"></a>为什么哈希**&#x2F;<strong>扰动函数能降</strong>hash**碰撞？</h2><p>因为 key.hashCode() 函数调用的是 key 键值类型自带的哈希函数，返回 int 型散列值。int 值范围为 <strong>-2147483648~2147483647</strong>，加起来大概 40 亿的映射空间。</p>
+<p>只要哈希函数映射得比较均匀松散，一般应用是很难出现碰撞的。但问题是一个 40亿长度的数组，内存是放不下的。</p>
+<p>假如 HashMap 数组的初始大小才 16，就需要用之前需要对数组的长度取模运算，得到的余数才能用来访问数组下标。</p>
+<p>源码中模运算就是把散列值和数组长度 - 1 做一个 “ 与&amp; “ 操作，位运算比取余 % 运算要快。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bucketIndex = indexFor(hash, table.length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">indexFor</span><span class="params">(<span class="type">int</span> h, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>顺便说一下，这也正好解释了为什么 HashMap 的数组长度要取 2 的整数幂。因为这样（数组长度 - 1）正好相当于一个 “低位掩码”。 <strong>与</strong> 操作的结果就是散列值的高位全部归零，只保留低位值，用来做数组下标访问。以初始长度 16 为例，16-1&#x3D;15。2进制表示是<code> 0000 0000 0000 0000 0000 0000 0000 1111</code> 。和某个散列值做 <strong>与</strong> 操作如下，结果就是截取了最低的四位值。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051848514.png" alt="image-20230725163452481"></p>
+<p>这样是要快捷一些，但是新的问题来了，就算散列值分布再松散，要是只取最后几位的话，碰撞也会很严重。如果散列本身做得不好，分布上成等差数列的漏洞，如果正好让最后几个低位呈现规律性重复，那就更难搞了。</p>
+<p>这时候 <strong>扰动函数</strong> 的价值就体现出来了，看一下扰动函数的示意图：</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849843.png" alt="image-20230725163827064"></p>
+<p>右移 16 位，正好是 32bit 的一半，自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
+<h2 id="HashMap怎么查找元素的呢？"><a href="#HashMap怎么查找元素的呢？" class="headerlink" title="HashMap怎么查找元素的呢？"></a><strong>HashMap</strong>怎么查找元素的呢？</h2><ol>
+<li>使用扰动函数，获取新的哈希值</li>
+<li>计算数组下标，获取节点</li>
+<li>当前节点和key匹配，直接返回</li>
+<li>否则，当前节点是否为树节点，查找红黑树</li>
+<li>否则，遍历链表查找</li>
+</ol>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849926.png" alt="image-20230724175316180"></p>
+<h2 id="为什么HashMap的容量是2的倍数呢？"><a href="#为什么HashMap的容量是2的倍数呢？" class="headerlink" title="为什么HashMap的容量是2的倍数呢？"></a>为什么<strong>HashMap</strong>的容量是<strong>2</strong>的倍数呢？</h2><ul>
+<li><p>第一个原因是为了方便哈希取余：</p>
+<p>将元素放在table数组上面，是用hash值%数组大小定位位置，而HashMap是用hash值&amp;(数组大小-1)，却能和前面达到一样的效果，这就得益于HashMap的大小是2的倍数，2的倍数意味着该数的二进制位只有一位为1，而该数-1就可以得到二进制位上1变成0，后面的0变成1，再通过&amp;运算，就可以得到和%一样的效果，并且位运算比%的效率高得多。</p>
+<p>HashMap的容量是2的n次幂时，(n-1)的2进制也就是1111111***111这样形式的，这样与添加元素的hash值进行位运算时，能够充分的散列，使得添加的元素均匀分布在HashMap的每个位置上，减少hash碰撞。</p>
+</li>
+<li><p>第二个方面是在扩容时，利用扩容后的大小也是2的倍数，将已经产生hash碰撞的元素完美的转移到新的table中去。</p>
+</li>
+</ul>
+<h2 id="扩容在什么时候呢？为什么扩容因子是0-75？"><a href="#扩容在什么时候呢？为什么扩容因子是0-75？" class="headerlink" title="扩容在什么时候呢？为什么扩容因子是0.75？"></a>扩容在什么时候呢？为什么扩容因子是<strong>0.75</strong>？</h2><p>为了减少哈希冲突发生的概率，当当前HashMap的元素个数达到一个临界值的时候，就会触发扩容，把所有元素rehash之后再放在扩容后的容器中，这是一个相当耗时的操作。</p>
+<p>而这个 临界值threshold 就是由加载因子和当前容器的容量大小来确定的，假如采用默认的构造方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">临界值（threshold ）= 默认容量（DEFAULT_INITIAL_CAPACITY） * 默认扩容因子（DEFAULT_LOAD_FACTOR）</span><br></pre></td></tr></table></figure>
+
+<p>那就是大于 16x0.75&#x3D;12 时，就会触发扩容操作。</p>
+<p>那么为什么选择了0.75作为HashMap的默认加载因子呢？</p>
+<p>简单来说，这是对 空间 成本和 时间 成本平衡的考虑。</p>
+<p>我们都知道，HashMap的散列构造方式是Hash取余，负载因子决定元素个数达到多少时候扩容。</p>
+<p>假如我们设的比较大，元素比较多，空位比较少的时候才扩容，那么发生哈希冲突的概率就增加了，查找的时间成本就增加了。</p>
+<p>我们设的比较小的话，元素比较少，空位比较多的时候就扩容了，发生哈希碰撞的概率就降低了，查找时间成本降低，但是就需要更多的空间去存储元素，空间成本就增加了。</p>
+<h2 id="HashMap的扩容机制"><a href="#HashMap的扩容机制" class="headerlink" title="HashMap的扩容机制"></a>HashMap的扩容机制</h2><p>HashMap是基于数组+链表和红黑树实现的，但用于存放key值的桶数组的长度是固定的，由初始化参数确定。</p>
+<p>那么，随着数据的插入数量增加以及负载因子的作用下，就需要扩容来存放更多的数据。而扩容中有一个非常重要的点，就是jdk1.8中的优化操作，可以不需要再重新计算每一个元素的哈希值。</p>
+<p>因为HashMap的初始容量是2的次幂，扩容之后的长度是原来的二倍，新的容量也是2的次幂，所以，元素，要么在原位置，要么在原位置再移动2的次幂。</p>
+<p>看下这张图，n为table的长度，图 a 表示扩容前的key1和key2两种key确定索引的位置，图 b 表示扩容后key1和key2两种key确定索引位置。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849072.png" alt="image-20230725170350269"></p>
+<p>元素在重新计算hash之后，因为n变为2倍，那么n-1的mask范围在高位多1bit(红色)，因此新的index就会发生这样的变化：</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849663.png" alt="image-20230725170411770"></p>
+<p>所以在扩容时，只需要看原来的hash值新增的那一位是0还是1就行了，是0的话索引没变，是1的化变成 原索引+oldCap ，看看如16扩容为32的示意图：</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849052.png" alt="image-20230725170449402"></p>
+<h2 id="jdk1-8对HashMap主要做了哪些优化呢？为什么？"><a href="#jdk1-8对HashMap主要做了哪些优化呢？为什么？" class="headerlink" title="jdk1.8对HashMap主要做了哪些优化呢？为什么？"></a><strong>jdk1.8</strong>对<strong>HashMap</strong>主要做了哪些优化呢？为什么？</h2><p>jdk1.8 的HashMap主要有五点优化：</p>
+<ol>
+<li><p>数据结构：数组 + 链表改成了数组 + 链表或红黑树</p>
+<p>原因 ：发生 hash 冲突，元素会存入链表，链表过长转为红黑树，将时间复杂度由 O(n) 降为 O(logn)</p>
+</li>
+<li><p>链表插入方式：链表的插入方式从头插法改成了尾插法</p>
+<p>简单说就是插入时，如果数组位置上已经有元素，1.7 将新元素放到数组中，原始节点作为新节点的后继节点，1.8 遍历链表，将元素放置到链表的最后。</p>
+<p>原因 ：因为 1.7 头插法扩容时，头插法会使链表发生反转，多线程环境下会产生环。</p>
+</li>
+<li><p>扩容<strong>rehash</strong>：扩容的时候 1.7 需要对原数组中的元素进行重新 hash 定位在新数组的位置，1.8 采用更简单的判断逻辑，不需要重新通过哈希函数计算位置，新的位置不变或索引 + 旧的数组容量大小。</p>
+<p>原因： 提高扩容的效率，更快地扩容。</p>
+</li>
+<li><p>扩容时机：在插入时，1.7 先判断是否需要扩容，再插入，1.8 先进行插入，插入完成再判断是否需要扩容；</p>
+</li>
+<li><p>散列函数：1.7 做了四次移位和四次异或，jdk1.8只做一次。</p>
+<p>原因 ：做 4 次的话，边际效用也不大，改为一次，提升效率。</p>
+</li>
+</ol>
+<h2 id="HashMap-是线程安全的吗？多线程下会有什么问题？"><a href="#HashMap-是线程安全的吗？多线程下会有什么问题？" class="headerlink" title="HashMap 是线程安全的吗？多线程下会有什么问题？"></a><strong>HashMap</strong> 是线程安全的吗？多线程下会有什么问题？</h2><p>HashMap不是线程安全的，可能会发生这些问题：</p>
+<ul>
+<li><p>多线程下扩容死循环。JDK1.7 中的 HashMap 使用头插法插入元素，在多线程的环境下，扩容的时候有可能导致环形链表的出现，形成死循环。因此，JDK1.8使用尾插法插入元素，在扩容时会保持链表元素原本的顺序，不会出现环形链表的问题。</p>
+</li>
+<li><p>多线程的 put 可能导致元素的丢失。多线程同时执行 put 操作，如果计算出来的索引位置是相同的，那会造成前一个 key 被后一个 key 覆盖，从而导致元素的丢失。此问题在 JDK 1.7 和 JDK 1.8 中都存在。</p>
+</li>
+<li><p>put 和 get 并发时，可能导致 get 为 null。线程 1 执行 put 时，因为元素个数超出threshold 而导致 rehash，线程 2 此时执行 get，有可能导致这个问题。这个问题在 JDK 1.7 和 JDK 1.8 中都存在。</p>
+</li>
+</ul>
+<h2 id="有什么办法能解决HashMap线程不安全的问题呢？"><a href="#有什么办法能解决HashMap线程不安全的问题呢？" class="headerlink" title="有什么办法能解决HashMap线程不安全的问题呢？"></a>有什么办法能解决<strong>HashMap</strong>线程不安全的问题呢？</h2><p>Java 中有 HashTable、Collections.synchronizedMap、以及 ConcurrentHashMap 可以实现线程安全的 Map。</p>
+<ul>
+<li><p>HashTable 是直接在操作方法上加 synchronized 关键字，锁住整个table数组，粒度比较大；</p>
+</li>
+<li><p>Collections.synchronizedMap 是使用 Collections 集合工具的内部类，通过传入Map 封装出一个 SynchronizedMap 对象，内部定义了一个对象锁，方法内通过对象锁实现；</p>
+</li>
+<li><p>ConcurrentHashMap 在jdk1.7中使用分段锁，在jdk1.8中使用CAS+synchronized。</p>
+</li>
+</ul>
+<h2 id="HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？"><a href="#HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？" class="headerlink" title="HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？"></a>HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap的线程安全是如何实现的？</h2><p>HashMap和ConcurrentHashMap都是Map接口的实现类，HashMap是非线程安全的，ConcurrentHashMap是线程安全的。</p>
 <ul>
 <li><p><strong>jdk1.7：</strong></p>
 <p>ConcurrentHashMap的线程安全是通过分段锁（Segment）实现的。每个Segment可以看作是一个小的HashMap，不同的Segment之间是相互独立的，因此在多线程的情况下，不同的线程可以同时对不同的Segment进行操作，这样就避免了对整个Map进行加锁，从而提高了并发性能。</p>
@@ -392,30 +538,29 @@
 </li>
 </ul>
 <p>get很简单，和HashMap基本相同，通过key计算位置，table该位置key相同就返回，如果是红黑树按照红黑树获取，否则就遍历链表获取。</p>
-<h3 id="如何遍历一个HashMap？"><a href="#如何遍历一个HashMap？" class="headerlink" title="如何遍历一个HashMap？"></a>如何遍历一个HashMap？</h3><p>遍历HashMap有以下几种方法：</p>
-<ul>
-<li>迭代器（Iterator）遍历：使用Map接口中的entrySet()方法获取到一个Set集合，然后使用迭代器遍历Set集合中的每个元素，再使用Map.Entry的getKey()和getValue()方法获取键值对。代码示例：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line"><span class="comment">// 添加元素到HashMap中</span></span><br><span class="line">Iterator&lt;Map.Entry&lt;String, String&gt;&gt; iterator = map.entrySet().iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    Map.Entry&lt;String, String&gt; entry = iterator.next();</span><br><span class="line">    <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> entry.getValue();</span><br><span class="line">    <span class="comment">// 处理键值对</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HashMap内部节点是有序的吗？"><a href="#HashMap内部节点是有序的吗？" class="headerlink" title="HashMap内部节点是有序的吗？"></a>HashMap内部节点是有序的吗？</h2><p>HashMap是无序的，根据 hash 值随机插入。如果想使用有序的Map，可以使用LinkedHashMap 或者 TreeMap。</p>
+<h2 id="讲讲-LinkedHashMap-怎么实现有序的？"><a href="#讲讲-LinkedHashMap-怎么实现有序的？" class="headerlink" title="讲讲 LinkedHashMap 怎么实现有序的？"></a>讲讲 <strong>LinkedHashMap</strong> 怎么实现有序的？</h2><p>LinkedHashMap维护了一个双向链表，有头尾节点，同时 LinkedHashMap 节点 Entry内部除了继承 HashMap 的 Node 属性，还有 before 和 after 用于标识前置节点和后置节点。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849984.png" alt="image-20230725172038968"></p>
+<p>可以实现按插入的顺序或访问顺序排序。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849568.png" alt="image-20230725172103266"></p>
+<h2 id="讲讲-TreeMap-怎么实现有序的？"><a href="#讲讲-TreeMap-怎么实现有序的？" class="headerlink" title="讲讲 TreeMap 怎么实现有序的？"></a>讲讲 <strong>TreeMap</strong> 怎么实现有序的？</h2><p>TreeMap 是按照 Key 的自然顺序或者 Comprator 的顺序进行排序，内部是通过红黑树来实现。所以要么 key 所属的类实现 Comparable 接口，或者自定义一个实现了Comparator 接口的比较器，传给 TreeMap 用于 key 的比较。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202309051849615.png" alt="image-20230725172207478"></p>
+<h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><h2 id="讲讲HashSet的底层实现？"><a href="#讲讲HashSet的底层实现？" class="headerlink" title="讲讲HashSet的底层实现？"></a>讲讲<strong>HashSet</strong>的底层实现？</h2><p>HashSet 底层就是基于 HashMap 实现的。（ HashSet 的源码⾮常⾮常少，因为除了clone() 、 writeObject() 、 readObject() 是 HashSet⾃⼰不得不实现之外，其他⽅法都是直接调用 HashMap 中的⽅法。</p>
+<p>HashSet的add方法，直接调用HashMap的put方法，将添加的元素作为key，new一个Object作为value，直接调用HashMap的put方法，它会根据返回值是否为空来判断是否插入元素成功。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E e)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>for-each循环遍历：使用Map接口中的keySet()方法获取到一个Set集合，然后使用for-each循环遍历Set集合中的每个元素，再使用Map的get()方法获取键对应的值。代码示例：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line"><span class="comment">// 添加元素到HashMap中</span></span><br><span class="line"><span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">    <span class="comment">// 处理键值对</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而在HashMap的putVal方法中，进行了一系列判断，最后的结果是，只有在key在table数组中不存在的时候，才会返回插入的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (e != <span class="literal">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">            <span class="type">V</span> <span class="variable">oldValue</span> <span class="operator">=</span> e.value;</span><br><span class="line">            <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="literal">null</span>)</span><br><span class="line">                e.value = value;</span><br><span class="line">            afterNodeAccess(e);</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>Java 8中的Stream API遍历：使用Map接口中的entrySet()方法获取到一个Set集合，然后使用Java 8中的Stream API遍历Set集合中的每个元素，再使用Map.Entry的getKey()和getValue()方法获取键值对。代码示例：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;String, String&gt;();</span><br><span class="line"><span class="comment">// 添加元素到HashMap中</span></span><br><span class="line">map.entrySet().stream().forEach(entry -&gt; &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> entry.getValue();</span><br><span class="line">    <span class="comment">// 处理键值对</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>无论采用何种方式遍历，遍历时需要注意：HashMap是无序的，不能保证元素的顺序。</p>
-<h3 id="HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？"><a href="#HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？" class="headerlink" title="HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？"></a>HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？</h3><p>HashSet和TreeSet都是Set接口的实现类，HashSet基于HashMap实现，而TreeSet基于红黑树实现。HashSet通过哈希表保证元素的唯一性，而TreeSet通过比较器或元素的自然顺序保证元素的唯一性。</p>
+
+<h2 id="HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？"><a href="#HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？" class="headerlink" title="HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？"></a>HashSet和TreeSet的区别是什么？它们是如何保证元素的唯一性的？</h2><p>HashSet和TreeSet都是Set接口的实现类，HashSet基于HashMap实现，而TreeSet基于红黑树实现。HashSet通过哈希表保证元素的唯一性，而TreeSet通过比较器或元素的自然顺序保证元素的唯一性。</p>
 <ul>
 <li>HashSet 是基于哈希表实现的，可以用于存储不重复的元素，支持快速的添加、删除和查找操作，但元素并不保证有序。</li>
 <li>TreeSet 是基于红黑树实现的，可以用于存储不重复的元素，并且元素是有序的，支持有序遍历和查找操作，但添加、删除和查找操作的效率较低。</li>
 <li>如果需要存储不重复的元素，并且不需要保证元素的顺序，可以使用 HashSet；如果需要存储不重复的元素，并且需要按照一定的顺序进行遍历和查找操作，可以使用 TreeSet。</li>
 </ul>
-<h3 id="Collections工具类有哪些常用的方法？它们的作用是什么？"><a href="#Collections工具类有哪些常用的方法？它们的作用是什么？" class="headerlink" title="Collections工具类有哪些常用的方法？它们的作用是什么？"></a>Collections工具类有哪些常用的方法？它们的作用是什么？</h3><p>Collections工具类提供了很多静态方法，包括：</p>
+<h2 id="Collections工具类有哪些常用的方法？它们的作用是什么？"><a href="#Collections工具类有哪些常用的方法？它们的作用是什么？" class="headerlink" title="Collections工具类有哪些常用的方法？它们的作用是什么？"></a>Collections工具类有哪些常用的方法？它们的作用是什么？</h2><p>Collections工具类提供了很多静态方法，包括：</p>
 <ul>
 <li>sort(List)：对List进行排序。</li>
 <li>binarySearch(List, Object)：在List中查找指定元素，返回其下标。</li>
@@ -498,8 +643,7 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.20/fancybox/fancybox.umd.js" integrity="sha256-q8XkJ6dj5VwSvzI8+nATCHHQG+Xv/dAZBCgqmu93zOY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
