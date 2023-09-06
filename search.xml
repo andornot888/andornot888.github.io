@@ -1,602 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>基于线性回归模型预测体彩大乐透和排列五开奖号码</title>
-    <url>/python/4c587eb93222.html</url>
-    <content><![CDATA[<p>事先声明：线性回归模型无法预测随机数，本文以学习为主图一乐。</p>
-<p>整体思路：先爬取开奖数据，存储到Excel表格或者数据库中，然后每天爬取最新的一条开奖数据进行更新。取近七次开奖数据（数据量过大预测数据会趋于一个固定值），以期号和开奖时间做特征变量，开奖号码为目标变量创建线性回归模型并拟合数据。最后用最新的期号和开奖时间进行预测开奖号码。</p>
-<span id="more"></span>
-
-<h1 id="爬取数据"><a href="#爬取数据" class="headerlink" title="爬取数据"></a>爬取数据</h1><h2 id="大乐透"><a href="#大乐透" class="headerlink" title="大乐透"></a>大乐透</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">starttime = time.time()</span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">columns = [<span class="string">&#x27;开奖日期&#x27;</span>, <span class="string">&#x27;期号&#x27;</span>, <span class="string">&#x27;前区&#x27;</span>, <span class="string">&#x27;后区&#x27;</span>]</span><br><span class="line">data = collections.OrderedDict()</span><br><span class="line">dates = []</span><br><span class="line">ids = []</span><br><span class="line">front = []</span><br><span class="line">behind = []</span><br><span class="line">pageNos = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    url = <span class="string">&#x27;https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=85&amp;provinceId=0&amp;pageSize=30&amp;isVerify=1&amp;pageNo=&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pageNos)</span><br><span class="line">    </span><br><span class="line">    response = requests.get(url, headers=header)</span><br><span class="line">    content = response.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    js = json.loads(content)</span><br><span class="line">    numbers = js.get(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line">    lists = numbers.get(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> shujudict <span class="keyword">in</span> lists:</span><br><span class="line">        date = shujudict.get(<span class="string">&#x27;lotteryDrawTime&#x27;</span>)</span><br><span class="line">        dates.append(date)</span><br><span class="line">        <span class="built_in">id</span> = shujudict.get(<span class="string">&#x27;lotteryDrawNum&#x27;</span>)</span><br><span class="line">        ids.append(<span class="built_in">id</span>)</span><br><span class="line">        shuju = shujudict.get(<span class="string">&#x27;lotteryDrawResult&#x27;</span>)</span><br><span class="line">        qianqu = shuju[:<span class="number">14</span>]</span><br><span class="line">        houqu = shuju[-<span class="number">5</span>:]</span><br><span class="line">        front.append(qianqu)</span><br><span class="line">        behind.append(houqu)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lists) == <span class="number">30</span>:</span><br><span class="line">        <span class="comment"># 如果lists长度为30就说明还有下一页，继续循环</span></span><br><span class="line">        pageNos += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 否则结束循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">data[<span class="string">&#x27;开奖日期&#x27;</span>] = dates</span><br><span class="line">data[<span class="string">&#x27;期号&#x27;</span>] = ids</span><br><span class="line">data[<span class="string">&#x27;前区&#x27;</span>] = front</span><br><span class="line">data[<span class="string">&#x27;后区&#x27;</span>] = behind</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data, columns=columns)</span><br><span class="line">df.to_excel(<span class="string">&#x27;D:\my\dlt.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line">endtime = time.time()</span><br><span class="line">elapsed_time = endtime - starttime</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;耗时：&quot;</span>, elapsed_time, <span class="string">&quot;秒&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="排列五"><a href="#排列五" class="headerlink" title="排列五"></a>排列五</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">starttime = time.time()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用mysql-connector-python驱动程序连接MySQL数据库</span></span><br><span class="line">cnx = mysql.connector.connect(</span><br><span class="line">    host=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    user=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    password=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database=<span class="string">&#x27;&#x27;</span></span><br><span class="line">)</span><br><span class="line">cursor = cnx.cursor()</span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">columns = [<span class="string">&#x27;期号&#x27;</span>, <span class="string">&#x27;开奖日期&#x27;</span>, <span class="string">&#x27;开奖号码&#x27;</span>, <span class="string">&#x27;中奖注数&#x27;</span>, <span class="string">&#x27;中奖金额（元）&#x27;</span>, <span class="string">&#x27;销售额（元）&#x27;</span>, <span class="string">&#x27;奖池金额（元）&#x27;</span>]</span><br><span class="line">data = collections.OrderedDict()</span><br><span class="line">issueList = []</span><br><span class="line">lotteryDateList = []</span><br><span class="line">lotteryNumList = []</span><br><span class="line">lotteryCountList = []</span><br><span class="line">lotteryMoneyList = []</span><br><span class="line">salesList = []</span><br><span class="line">pondList = []</span><br><span class="line">pageNos = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    url = <span class="string">&#x27;https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=350133&amp;provinceId=0&amp;pageSize=30&amp;isVerify=1&amp;pageNo=&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pageNos)</span><br><span class="line">    </span><br><span class="line">    response = requests.get(url, headers=header)</span><br><span class="line">    content = response.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    js = json.loads(content)</span><br><span class="line">    numbers = js.get(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line">    lists = numbers.get(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">list</span> <span class="keyword">in</span> lists:</span><br><span class="line">        issue = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawNum&#x27;</span>)</span><br><span class="line">        issueList.append(issue)</span><br><span class="line">        lotteryDate = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawTime&#x27;</span>)</span><br><span class="line">        lotteryDateList.append(lotteryDate)</span><br><span class="line">        lotteryNum = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawResult&#x27;</span>)</span><br><span class="line">        lotteryNumList.append(lotteryNum)</span><br><span class="line">        lotteryCount = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeCount&#x27;</span>)</span><br><span class="line">        lotteryCountList.append(lotteryCount)</span><br><span class="line">        lotteryMoney = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeAmount&#x27;</span>)</span><br><span class="line">        lotteryMoneyList.append(lotteryMoney)</span><br><span class="line">        sales = <span class="built_in">list</span>.get(<span class="string">&#x27;totalSaleAmount&#x27;</span>)</span><br><span class="line">        salesList.append(sales)</span><br><span class="line">        pond = <span class="built_in">list</span>.get(<span class="string">&#x27;poolBalanceAfterdraw&#x27;</span>)</span><br><span class="line">        pondList.append(pond)</span><br><span class="line">        sql = <span class="string">&quot;INSERT INTO `array5`(`issue`, `lottery_date`, `lottery_num`, `lottery_count`, `lottery_money`, `sales`, `pond`) VALUES (%s, %s, %s, %s, %s, %s, %s) &quot;</span></span><br><span class="line">        item = (issue, lotteryDate, lotteryNum, lotteryCount, lotteryMoney, sales, pond)  <span class="comment"># 要插入的数据</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;item：&quot;</span>, item)</span><br><span class="line">        cursor.execute(sql, item)</span><br><span class="line">        cnx.commit()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lists) == <span class="number">30</span>:</span><br><span class="line">        <span class="comment"># 如果lists长度为30就说明还有下一页，继续循环</span></span><br><span class="line">        pageNos += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 否则结束循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">cursor.close()  <span class="comment"># 关闭游标</span></span><br><span class="line">cnx.close()  <span class="comment"># 关闭连接</span></span><br><span class="line"></span><br><span class="line">data[<span class="string">&#x27;期号&#x27;</span>] = issueList</span><br><span class="line">data[<span class="string">&#x27;开奖日期&#x27;</span>] = lotteryDateList</span><br><span class="line">data[<span class="string">&#x27;开奖号码&#x27;</span>] = lotteryNumList</span><br><span class="line">data[<span class="string">&#x27;中奖注数&#x27;</span>] = lotteryCountList</span><br><span class="line">data[<span class="string">&#x27;中奖金额（元）&#x27;</span>] = lotteryMoneyList</span><br><span class="line">data[<span class="string">&#x27;销售额（元）&#x27;</span>] = salesList</span><br><span class="line">data[<span class="string">&#x27;奖池金额（元）&#x27;</span>] = pondList</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data, columns=columns)</span><br><span class="line">df.to_excel(<span class="string">&#x27;D:\my\plw.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line">endtime = time.time()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;耗时：&quot;</span>, endtime - starttime, <span class="string">&quot;秒&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="预测开奖号码"><a href="#预测开奖号码" class="headerlink" title="预测开奖号码"></a>预测开奖号码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">today = date.today()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用mysql-connector-python驱动程序连接MySQL数据库</span></span><br><span class="line">cnx = mysql.connector.connect(</span><br><span class="line">    host=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    user=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    password=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database=<span class="string">&#x27;&#x27;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"># 将 mysql.connector 连接对象转换为 SQLAlchemy 连接对象</span></span><br><span class="line">engine = create_engine(<span class="string">&#x27;mysql+mysqlconnector://&#x27;</span>, creator=<span class="keyword">lambda</span>: cnx)</span><br><span class="line">cursor = cnx.cursor()</span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">days_between_dates</span>(<span class="params">start_date, end_date</span>):</span><br><span class="line">    delta = end_date - start_date</span><br><span class="line">    <span class="keyword">return</span> delta.days</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cursor.execute(</span><br><span class="line">    <span class="string">&#x27;SELECT lottery_date,issue,lottery_num FROM `array5` ORDER BY lottery_date DESC LIMIT 1&#x27;</span>)</span><br><span class="line">result = <span class="built_in">list</span>(cursor.fetchall())</span><br><span class="line">lotteryDateLast = result[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">issueLast = result[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算天数差异</span></span><br><span class="line">days = days_between_dates(lotteryDateLast, today)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> days &gt; <span class="number">0</span>:</span><br><span class="line">    url = <span class="string">&#x27;https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=350133&amp;provinceId=0&amp;pageSize=&#123;&#125;&amp;isVerify=1&amp;pageNo=1&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        days)</span><br><span class="line">    response = requests.get(url, headers=header)</span><br><span class="line">    content = response.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    js = json.loads(content)</span><br><span class="line">    numbers = js.get(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line">    lists = numbers.get(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">list</span> <span class="keyword">in</span> lists:</span><br><span class="line">        issue = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawNum&#x27;</span>)</span><br><span class="line">        lotteryDate = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawTime&#x27;</span>)</span><br><span class="line">        lotteryNum = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawResult&#x27;</span>)</span><br><span class="line">        lotteryCount = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeCount&#x27;</span>)</span><br><span class="line">        lotteryMoney = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeAmount&#x27;</span>)</span><br><span class="line">        sales = <span class="built_in">list</span>.get(<span class="string">&#x27;totalSaleAmount&#x27;</span>)</span><br><span class="line">        pond = <span class="built_in">list</span>.get(<span class="string">&#x27;poolBalanceAfterdraw&#x27;</span>)</span><br><span class="line">        cursor.execute(</span><br><span class="line">            <span class="string">&#x27;SELECT count(1) AS count FROM `array5` WHERE issue = %s&#x27;</span>, [issue])</span><br><span class="line">        count = cursor.fetchone()</span><br><span class="line">        <span class="keyword">if</span> count[<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">            sql = <span class="string">&quot;INSERT INTO `array5`(`issue`, `lottery_date`, `lottery_num`, `lottery_count`, `lottery_money`, `sales`, `pond`) VALUES (%s, %s, %s, %s, %s, %s, %s) &quot;</span></span><br><span class="line">            item = (issue, lotteryDate, lotteryNum, lotteryCount,</span><br><span class="line">                    lotteryMoney, sales, pond)  <span class="comment"># 要插入的数据</span></span><br><span class="line">            cursor.execute(sql, item)</span><br><span class="line">            cnx.commit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">predict_num</span>(<span class="params">num</span>):</span><br><span class="line">    query = <span class="string">&quot;SELECT issue, lottery_date, SUBSTRING(lottery_num, &#123;&#125;, 1) AS lottery_num FROM array5 ORDER BY lottery_date DESC LIMIT 7&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">        num)</span><br><span class="line">    data = pd.read_sql(query, engine)</span><br><span class="line">    <span class="comment"># 准备特征和目标变量</span></span><br><span class="line">    X = data[[<span class="string">&#x27;issue&#x27;</span>, <span class="string">&#x27;lottery_date&#x27;</span>]]</span><br><span class="line">    y = data[<span class="string">&#x27;lottery_num&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将日期转换为时间戳</span></span><br><span class="line">    X.loc[:, <span class="string">&#x27;lottery_date&#x27;</span>] = pd.to_datetime(X[<span class="string">&#x27;lottery_date&#x27;</span>]).apply(<span class="keyword">lambda</span> x: x.timestamp())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建线性回归模型并拟合数据</span></span><br><span class="line">    model = LinearRegression()</span><br><span class="line">    model.fit(X, y)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取最新的数据用于预测</span></span><br><span class="line">    <span class="comment"># 创建包含新数据的 DataFrame</span></span><br><span class="line">    new_data = pd.DataFrame(</span><br><span class="line">        &#123;<span class="string">&#x27;issue&#x27;</span>: [issueLast + <span class="number">1</span>], <span class="string">&#x27;lottery_date&#x27;</span>: [today]&#125;)</span><br><span class="line">    new_data[<span class="string">&#x27;lottery_date&#x27;</span>] = pd.to_datetime(</span><br><span class="line">        new_data[<span class="string">&#x27;lottery_date&#x27;</span>]).apply(<span class="keyword">lambda</span> x: x.timestamp())</span><br><span class="line">    new_X = new_data[[<span class="string">&#x27;issue&#x27;</span>, <span class="string">&#x27;lottery_date&#x27;</span>]]</span><br><span class="line">    <span class="comment"># 进行预测</span></span><br><span class="line">    prediction = model.predict(new_X)</span><br><span class="line">    rounded_prediction = <span class="built_in">int</span>(<span class="built_in">round</span>(prediction[<span class="number">0</span>], <span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> rounded_prediction</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">columns = [predict_num(<span class="number">1</span>), predict_num(<span class="number">3</span>), predict_num(</span><br><span class="line">    <span class="number">5</span>), predict_num(<span class="number">7</span>), predict_num(<span class="number">9</span>)]</span><br><span class="line">randNums = <span class="string">&#x27; &#x27;</span>.join([<span class="built_in">str</span>(column) <span class="keyword">for</span> column <span class="keyword">in</span> columns])</span><br><span class="line">cursor.execute(</span><br><span class="line">    <span class="string">&#x27;SELECT count(1) AS count FROM `array5_rand` WHERE random_num = %s AND issue = %s&#x27;</span>, [randNums, issueLast + <span class="number">1</span>])</span><br><span class="line">count = cursor.fetchone()</span><br><span class="line"><span class="keyword">if</span> count[<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">    sql = <span class="string">&quot;INSERT INTO `array5_rand`(`random_num`, `issue`) VALUES (%s, %s) &quot;</span></span><br><span class="line">    item = (randNums, issueLast + <span class="number">1</span>)  <span class="comment"># 要插入的数据</span></span><br><span class="line">    cursor.execute(sql, item)</span><br><span class="line">    cnx.commit()</span><br><span class="line">cursor.execute(</span><br><span class="line">            <span class="string">&#x27;SELECT count(1) AS count FROM `array5` WHERE lottery_num = %s&#x27;</span>, [randNums])</span><br><span class="line">count = cursor.fetchone()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;开奖号码为:&quot;</span>, randNums, <span class="string">&quot;|| 此号码历史上共开出&quot;</span>, count[<span class="number">0</span>], <span class="string">&quot;次&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cursor.close()  <span class="comment"># 关闭游标</span></span><br><span class="line">cnx.close()  <span class="comment"># 关闭连接</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>线性回归模型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>深入了解 Git 的工作原理及其常见用法</title>
-    <url>/devops/2f5987d952d3.html</url>
-    <content><![CDATA[<p>当今软件开发领域中，版本控制系统是不可或缺的一环。Git 是目前最流行的分布式版本控制系统之一。它被广泛应用于许多项目中，以便于管理和跟踪代码变更。在本文中，我们将深入了解 Git 的工作原理及其常见用法。</p>
-<span id="more"></span>
-
-<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><h2 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h2><p>Git的本地仓库是指存储在本地计算机上的代码仓库，它包含三个主要区域：工作区、暂存区和版本库。这些区域共同构成了Git的基本工作流程。</p>
-<h3 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h3><p>工作区是指当前正在开发的项目文件夹，其中包含源代码、配置文件、图片等资源。在Git中，工作区是与本地仓库和远程仓库分离的，即使工作区的代码被修改或删除，也不会影响到本地仓库和远程仓库。</p>
-<h3 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h3><p>暂存区是指本地仓库中的一个中间状态，用来保存将要提交到版本库的修改内容。当对工作区中的文件进行修改后，可以将修改后的文件添加到暂存区中，表示将这些文件包含在下一次提交中。暂存区可以让开发者更加灵活地控制代码的变更和版本管理。</p>
-<h3 id="版本库"><a href="#版本库" class="headerlink" title="版本库"></a>版本库</h3><p>版本库是指包含所有提交历史记录的仓库。每当对本地仓库进行一次提交时，Git就会生成一条新的提交记录，并保存在版本库中。该记录包括提交的作者、提交时间、提交的描述信息等内容。版本库中的数据可以用来恢复到任何一个过去的状态，或者比较不同版本之间的差异。</p>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>除了本地仓库，Git还有另外一个重要的组成部分——远程仓库。远程仓库是指存储在远程服务器上的代码仓库，也是多人协作和分享代码的主要方式。在使用Git进行开发时，通常需要将本地仓库中的代码推送（push）到远程仓库中，或者从远程仓库中拉取（pull）最新的代码更新。</p>
-<p>Git的远程仓库通过网络与本地仓库进行交互，这个过程包含以下几个步骤：</p>
-<ol>
-<li><p>克隆远程仓库：如果想要获取远程仓库中的代码，需要先进行克隆（clone）操作。克隆远程仓库时，Git会下载远程仓库中的所有代码和历史记录，并将它们保存在本地计算机中。</p>
-</li>
-<li><p>修改本地仓库：在本地仓库中进行开发和修改。可以添加、删除、修改文件等操作，并且可以使用Git的各种命令进行版本管理。</p>
-</li>
-<li><p>推送到远程仓库：当对本地仓库进行一次提交后，需要将本地仓库的修改推送（push）到远程仓库中。推送操作会将本地仓库中的所有提交记录上传到远程仓库中，从而让其他人也能够查看和使用这些代码。如果远程仓库已经存在与本地仓库不同的修改，推送操作会被拒绝，需要先拉取最新的修改并合并冲突。</p>
-</li>
-<li><p>拉取远程仓库：当其他人对远程仓库进行修改后，可以通过拉取（pull）操作将最新的代码更新到本地仓库中。拉取操作会将远程仓库中的代码下载到本地计算机，并与本地仓库进行合并（merge），从而保持代码的同步和一致性。</p>
-</li>
-<li><p>合并冲突：当有多人对同一个文件进行修改时，可能会出现冲突（conflict）的情况。这时需要手动解决冲突，即打开有冲突的文件，找出冲突部分并进行修改或删除，然后再次提交到本地仓库中。</p>
-</li>
-</ol>
-<p>总之，Git的工作原理是建立在本地仓库和远程仓库之间的交互上的。通过Git的各种命令和操作，可以方便地管理、控制和分享代码，使团队协作更加高效和灵活。深入理解Git的工作原理和机制，不仅有助于提高开发者的技术水平，也能够为项目的成功和成长做出贡献。</p>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>在开始使用Git之前，先要安装Git。可以从<a href="https://git-scm.com/downloads">官方网站</a>下载适合自己操作系统的安装包，然后按照默认设置进行安装。</p>
-<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><p>要使用Git管理一个项目，首先需要将其初始化为Git仓库。打开终端并进入项目目录，然后运行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<p>这将在项目目录中创建一个新的.git文件夹，其中包含Git所需的所有必要文件。</p>
-<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><p>要将文件添加到Git仓库中，可以使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以指定单个文件名称（例如<code>index.html</code>）或一个包含多个文件的目录（例如<code>images/</code>）。</p>
-<h2 id="提交更改"><a href="#提交更改" class="headerlink" title="提交更改"></a>提交更改</h2><p>当你更新了文件并想将更改提交到Git仓库时，可以使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;commit message&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>在引号内输入有关此次提交的简短说明。请确保提交的消息足够明确以便其他人理解。</p>
-<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>在任何时候，都可以使用以下命令查看Git仓库的状态：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<p>这将列出已更改但未提交的文件，并提供有关项目当前状态的其他信息。</p>
-<h2 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h2><p>要查看Git仓库的提交历史记录，可以使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-
-<p>这将显示所有提交的详细信息，包括提交哈希值、提交时间和作者。</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>分支是指指向代码版本的指针。每个Git仓库都至少有一个主分支，即<code>master</code>分支。可以创建新的分支并在其中进行更改，然后合并回主分支。</p>
-<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p>要创建新的分支，请运行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以自己取任何有意义的名字作为分支名称。</p>
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>要切换到不同的分支，请运行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以根据需要随时在分支之间切换。</p>
-<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p>当在其他分支中进行了更改并准备将其合并回主分支时，可以使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git merge &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>将当前分支与要合并的分支名称一起传递。</p>
-<h1 id="Rebase-与-Merge-的区别"><a href="#Rebase-与-Merge-的区别" class="headerlink" title="Rebase 与 Merge 的区别"></a>Rebase 与 Merge 的区别</h1><h2 id="Git-Merge"><a href="#Git-Merge" class="headerlink" title="Git Merge"></a>Git Merge</h2><p><code>git merge</code> 用于将一个分支的更改合并到另一个分支上。在进行合并时，Git会创建一个新的提交包含两个分支的状态。这意味着如果你在两个分支上都做了更改，那么将这些更改合并到一起时可能会发生冲突。</p>
-<p>例如，考虑以下情况：</p>
-<ol>
-<li>创建一个名为<code>feature-branch</code>的新分支。</li>
-<li>在<code>feature-branch</code>上更改文件<code>index.html</code>。</li>
-<li>在<code>master</code>分支上更新文件<code>index.html</code>并提交更改。</li>
-<li>使用<code>git merge feature-branch</code>将<code>feature-branch</code>分支的更改合并到<code>master</code>分支上。</li>
-</ol>
-<p>在此示例中，如果<code>feature-branch</code>与<code>master</code>中都更改了<code>index.html</code>文件，则可能会发生冲突。Git将提示您解决此冲突并手动合并这些更改。</p>
-<h2 id="Git-Rebase"><a href="#Git-Rebase" class="headerlink" title="Git Rebase"></a>Git Rebase</h2><p><code>git rebase</code> 也用于将一个分支的更改合并到另一个分支上，但它的工作方式略有不同。使用 <code>git rebase</code> 时，Git会将当前分支基于与另一个分支的共同祖先，然后将所有更改应用到目标分支中。这意味着不需要创建新的提交，而是在目标分支中应用所有更改。</p>
-<p>例如，考虑以下情况：</p>
-<ol>
-<li>创建一个名为<code>feature-branch</code>的新分支。</li>
-<li>在<code>feature-branch</code>上更新文件<code>index.html</code>。</li>
-<li>在 <code>master</code> 分支上更新文件 <code>index.html</code> 并提交更改。</li>
-<li>使用 <code>git rebase master</code> 将 <code>feature-branch</code> 分支的更改合并到 <code>master</code> 分支上。</li>
-</ol>
-<p>在此示例中，Git会将<code>feature-branch</code>分支上的更改重新应用到<code>master</code>分支上。这样就可以创建一个干净的、线性的提交历史记录，而不是一个包含多个分支和合并的历史记录。</p>
-<h2 id="Rebase-与-Merge-的区别-1"><a href="#Rebase-与-Merge-的区别-1" class="headerlink" title="Rebase 与 Merge 的区别"></a>Rebase 与 Merge 的区别</h2><p>现在我们来总结一下 <code>git merge</code> 与 <code>git rebase</code> 的区别：</p>
-<ul>
-<li>Git merge 会将两个分支的状态合并成一个新的提交，而 Git rebase 会将当前分支的更改应用到目标分支上。</li>
-<li>Git merge 可能会导致冲突并需要手动解决，而 Git rebase 通常会创建一个干净的、线性的提交历史记录。</li>
-<li>Git merge 可以保留原始分支的提交历史记录，而 Git rebase 可能会撤销一些提交并更改它们的顺序。</li>
-</ul>
-<h2 id="何时使用-Git-Rebase-或-Git-Merge？"><a href="#何时使用-Git-Rebase-或-Git-Merge？" class="headerlink" title="何时使用 Git Rebase 或 Git Merge？"></a>何时使用 Git Rebase 或 Git Merge？</h2><p>现在您可能会问自己何时应该使用 <code>git merge</code> 或 <code>git rebase</code>。这是一个根据情况而定的问题，并没有绝对的答案。下面是一些指导原则：</p>
-<ul>
-<li>当您要合并两个分支且它们的更改相互独立时，请使用 <code>git merge</code>。</li>
-<li>当您想要创建一个干净的、线性的提交历史记录时，请使用 <code>git rebase</code>。</li>
-<li>当您不确定应该使用哪种方法时，请优先考虑使用 <code>git merge</code>。</li>
-</ul>
-<h1 id="如何利用Git进行团队协作"><a href="#如何利用Git进行团队协作" class="headerlink" title="如何利用Git进行团队协作"></a>如何利用Git进行团队协作</h1><h2 id="分支管理-1"><a href="#分支管理-1" class="headerlink" title="分支管理"></a>分支管理</h2><p>在Git中，分支是指指向代码版本的指针。每个Git仓库都至少有一个主分支，即<code>master</code>分支。可以创建新的分支并在其中进行更改，然后合并回主分支。</p>
-<p>通常情况下，团队成员应该创建自己的分支，并在其上进行更改和开发。这样可以避免对主分支造成不必要的干扰和风险。一旦完成更改并确保代码质量，就可以将其合并到主分支上。</p>
-<h2 id="Pull-Requests"><a href="#Pull-Requests" class="headerlink" title="Pull Requests"></a>Pull Requests</h2><p>Pull Requests 是 GitHub 上的一项功能，可以让团队成员在自己的分支上更改代码后向主分支提交请求。这些请求可以供其他成员审查并提出反馈意见。</p>
-<p>Pull Requests 可以成为进行团队协作和代码审查的重要工具。当团队成员提交 Pull Requests 时，其他人可以查看更改内容、评论以及提出建议。这可以帮助团队确保提交的代码质量和一致性，并且可以鼓励更好的合作和沟通。</p>
-<h2 id="Code-Reviews"><a href="#Code-Reviews" class="headerlink" title="Code Reviews"></a>Code Reviews</h2><p>Code Review 是指在代码合并之前，团队中的其他成员对代码进行审查和反馈。这是一种有效的方法，可以确保开发过程中代码质量的高标准，并且可以避免错误和漏洞。在进行 Code Review 时，应该尽可能详细地查看代码，并提出有关潜在问题、更改建议和最佳实践的意见。</p>
-<h2 id="Git-Hooks"><a href="#Git-Hooks" class="headerlink" title="Git Hooks"></a>Git Hooks</h2><p>Git hooks 是在 Git 操作期间自动运行的脚本。它们可以用于验证提交、运行测试或进行其他自定义检查。通过使用 Git hooks，可以确保团队成员提交的代码符合特定标准，并促进整体代码质量和可靠性。</p>
-<h1 id="Git-stash：暂时保存你的更改"><a href="#Git-stash：暂时保存你的更改" class="headerlink" title="Git stash：暂时保存你的更改"></a>Git stash：暂时保存你的更改</h1><p>在开发过程中，有时需要临时更改代码以测试某些功能或修复错误。但是，在进行此类更改时，您可能需要切换到其他分支或处理紧急问题。这时就需要一个能够保存当前更改的机制，Git stash 命令就可以很好地完成这个任务。</p>
-<h2 id="什么是-Git-stash？"><a href="#什么是-Git-stash？" class="headerlink" title="什么是 Git stash？"></a>什么是 Git stash？</h2><p>Git stash 是一种命令，它允许您暂存正在进行的工作并回到干净的工作目录。使用 Git stash 命令，您可以将当前分支上的修改暂时存储在堆栈中，然后恢复到干净的提交状态。这使您可以在不影响其他分支的情况下解决临时性问题。</p>
-<h2 id="如何使用-Git-stash？"><a href="#如何使用-Git-stash？" class="headerlink" title="如何使用 Git stash？"></a>如何使用 Git stash？</h2><p>以下是使用 Git stash 的基本步骤：</p>
-<h3 id="将更改存储在-Git-stash-中"><a href="#将更改存储在-Git-stash-中" class="headerlink" title="将更改存储在 Git stash 中"></a>将更改存储在 Git stash 中</h3><p>要将当前未提交的更改暂存，请运行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash save <span class="string">&quot;message&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>其中，“message”是对此次存储的描述。</p>
-<h3 id="恢复更改"><a href="#恢复更改" class="headerlink" title="恢复更改"></a>恢复更改</h3><p>如果需要恢复之前存储的更改，可以使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
-
-<p>这将恢复最近的存储更改并将其应用于当前分支。</p>
-<h3 id="查看存储的更改"><a href="#查看存储的更改" class="headerlink" title="查看存储的更改"></a>查看存储的更改</h3><p>要查看所有存储的更改列表，请运行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
-
-<p>这将列出所有之前存储的更改。</p>
-<h3 id="删除存储的更改"><a href="#删除存储的更改" class="headerlink" title="删除存储的更改"></a>删除存储的更改</h3><p>如果不再需要存储的更改，请使用以下命令删除它们：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash drop stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中，n 是要删除的存储项的索引编号。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Git stash 命令是一个非常有用的工具，可以帮助开发者在不影响其他分支的情况下解决临时性问题。通过将当前未提交的更改暂存到堆栈中并恢复到干净的提交状态，您可以有效地管理您的代码并使开发过程更加流畅。</p>
-<h1 id="Git-submodule：子模块的使用与管理"><a href="#Git-submodule：子模块的使用与管理" class="headerlink" title="Git submodule：子模块的使用与管理"></a>Git submodule：子模块的使用与管理</h1><p>当您需要在一个 Git 仓库中引用另一个仓库时，可以使用 Git 子模块。Git 子模块允许您将一个 Git 仓库作为另一个 Git 仓库的子目录。</p>
-<h2 id="什么是-Git-子模块？"><a href="#什么是-Git-子模块？" class="headerlink" title="什么是 Git 子模块？"></a>什么是 Git 子模块？</h2><p>Git 子模块允许您将一个 Git 仓库作为另一个 Git 仓库的子目录。这意味着您可以将一个单独的仓库拆分成多个模块，并在其他项目中使用这些模块。子模块提供了一种灵活的方法，可以在不复制所有代码的情况下使用独立的代码库。</p>
-<h2 id="如何使用-Git-子模块？"><a href="#如何使用-Git-子模块？" class="headerlink" title="如何使用 Git 子模块？"></a>如何使用 Git 子模块？</h2><p>以下是使用 Git 子模块的基本步骤：</p>
-<h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><p>要添加一个新的子模块，请使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git submodule add https://github.com/example-repository.git path/to/submodule</span><br></pre></td></tr></table></figure>
-
-<p>其中，“example-repository”是子模块的 URL，“path&#x2F;to&#x2F;submodule”是子模块将保存的目录路径。</p>
-<h3 id="初始化子模块"><a href="#初始化子模块" class="headerlink" title="初始化子模块"></a>初始化子模块</h3><p>在完成子模块的添加后，需要初始化它们。要初始化所有子模块，请运行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
-
-<h3 id="更新子模块"><a href="#更新子模块" class="headerlink" title="更新子模块"></a>更新子模块</h3><p>要更新一个子模块，请切换到该子模块的目录，并使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
-
-<p>这将从子模块的远程存储库中拉取最新更改。</p>
-<h3 id="删除子模块"><a href="#删除子模块" class="headerlink" title="删除子模块"></a>删除子模块</h3><p>如果不再需要一个子模块，可以使用以下命令删除它：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git submodule deinit path/to/submodule</span><br><span class="line">git <span class="built_in">rm</span> path/to/submodule</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>使用 Git 子模块时，请注意以下几点：</p>
-<ul>
-<li>子模块仅包含一个指向另一个 Git 仓库的引用。确保在项目中包含所有必需的依赖项。</li>
-<li>每个子模块都有自己的提交历史记录。确保及时更新和提交子模块的更改。</li>
-<li>如果您在一个父级仓库中使用了子模块，则应优先考虑将其纳入整体开发流程，以确保团队协作。</li>
-</ul>
-<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>Git 子模块是将多个 Git 仓库拆分成独立代码库的一种灵活方法。通过添加、初始化、更新和删除子模块，您可以轻松地管理您的代码库并使其更具可维护性。但需要注意的是，子模块仅包含一个指向另一个 Git 仓库的引用，还需要包含必需的依赖项并进行适当的团队协作。</p>
-<h1 id="Git-工作流程：Gitflow"><a href="#Git-工作流程：Gitflow" class="headerlink" title="Git 工作流程：Gitflow"></a>Git 工作流程：Gitflow</h1><p>Git 是一种流行的版本控制系统，被广泛用于团队协作和代码管理。为了更好地组织和管理开发流程，很多团队采用不同的 Git 工作流程模型。其中一种流行的模型是 Gitflow。</p>
-<h2 id="什么是-Gitflow？"><a href="#什么是-Gitflow？" class="headerlink" title="什么是 Gitflow？"></a>什么是 Gitflow？</h2><p>Gitflow 是一种基于 Git 的分支管理工作流程模型。它使用两个主要分支来跟踪代码库的开发状态：</p>
-<ul>
-<li><strong>主分支（Master branch）</strong>：包含稳定版本的代码，并且只能由管理员进行更改。</li>
-<li><strong>开发分支（Develop branch）</strong>：包含最新的开发代码，所有团队成员都可以在此分支上进行更改。</li>
-</ul>
-<p>除此之外，Gitflow 还使用以下三种辅助分支来实现功能开发和发布：</p>
-<ul>
-<li><strong>特性分支（Feature branches）</strong>：用于新功能或修复错误的分支，从 Develop 分支中创建并合并回 Develop 分支。</li>
-<li><strong>发布分支（Release branches）</strong>：预发布测试的分支，从 Develop 分支中创建并合并回 Develop 和 Master 分支。</li>
-<li><strong>修复分支（Hotfix branches）</strong>：用于修复紧急问题的分支，从 Master 分支中创建并合并回 Develop 和 Master 分支。</li>
-</ul>
-<h2 id="如何使用-Gitflow？"><a href="#如何使用-Gitflow？" class="headerlink" title="如何使用 Gitflow？"></a>如何使用 Gitflow？</h2><p>以下是使用 Gitflow 的基本步骤：</p>
-<h3 id="初始化-Gitflow"><a href="#初始化-Gitflow" class="headerlink" title="初始化 Gitflow"></a>初始化 Gitflow</h3><p>要初始化 Gitflow，请使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow init</span><br></pre></td></tr></table></figure>
-
-<p>在运行此命令时，您需要选择主分支和开发分支的名称。默认情况下，它们是 Master 和 Develop 分支。</p>
-<h3 id="创建新特性分支"><a href="#创建新特性分支" class="headerlink" title="创建新特性分支"></a>创建新特性分支</h3><p>要创建新特性分支，请使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow feature start &lt;feature-name&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="完成特性分支"><a href="#完成特性分支" class="headerlink" title="完成特性分支"></a>完成特性分支</h3><p>完成特性分支后，可以使用以下命令将其合并回 Develop 分支：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow feature finish &lt;feature-name&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="发布版本"><a href="#发布版本" class="headerlink" title="发布版本"></a>发布版本</h3><p>要发布版本，请使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow release start &lt;version&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="完成发布分支"><a href="#完成发布分支" class="headerlink" title="完成发布分支"></a>完成发布分支</h3><p>发布前测试完成后，可以使用以下命令将其合并回 Develop 和 Master 分支：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow release finish &lt;version&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="修复紧急问题"><a href="#修复紧急问题" class="headerlink" title="修复紧急问题"></a>修复紧急问题</h3><p>要修复紧急问题，请使用以下命令创建一个新的 Hotfix 分支：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow hotfix start &lt;version&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后，完成修复后，可以使用以下命令将其合并回 Develop 和 Master 分支：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow hotfix finish &lt;version&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h2><p>使用 Gitflow 时，请注意以下几点：</p>
-<ul>
-<li>确保团队成员了解 Gitflow 工作流程，并且遵守标准分支命名约定。</li>
-<li>在进行功能开发或修复错误时，应该始终从最新的 Develop 分支开始创建特性分支。</li>
-<li>在发布前，请确保已在相应的发布分支上测试代码，并解决所有问题。</li>
-</ul>
-<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>Gitflow 工作流程模型是一种基于 Git 的分支管理方法，可以帮助团队更好地组织和管理开发流程。通过使用主分支、开发分支、特性分支、发布分支和修复分支等分支类型，可以实现代码库的稳定性和可靠性。但需要注意的是，要让整个团队理解并遵守标准分支命名约定，以确保顺畅的合作和沟通。</p>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>详解JDBC：Java操作关系型数据库的标准API</title>
-    <url>/java/200e79a7ab3c.html</url>
-    <content><![CDATA[<p>Java数据库连接（Java DataBase Connectivity，简称JDBC）是Java语言中用于操作关系型数据库的API。它允许Java程序与多种不同类型的数据库进行交互，从而保证了Java应用程序的可移植性和协作性。</p>
-<span id="more"></span>
-
-<h1 id="JDBC的组成"><a href="#JDBC的组成" class="headerlink" title="JDBC的组成"></a>JDBC的组成</h1><p>JDBC由两部分组成：JDBC API和JDBC驱动程序。其中，JDBC API提供了访问数据库的标准接口，而JDBC驱动程序则提供了实现该接口的具体代码，使得Java程序能够与各种不同类型的数据库进行通信。</p>
-<p>JDBC API包括以下三个核心接口：</p>
-<ul>
-<li>Connection 接口：用于建立与数据库的连接。</li>
-<li>Statement 接口：用于执行SQL语句。</li>
-<li>ResultSet 接口：用于处理查询结果。</li>
-</ul>
-<p>JDBC驱动程序按照实现方式可以分为四类：</p>
-<ul>
-<li>基于JDBC-ODBC桥接器的驱动程序：这种驱动程序将JDBC的调用转换为ODBC的调用，然后通过ODBC连接到数据库。由于需要额外的ODBC组件，因此不太常用。</li>
-<li>基于本地API的驱动程序：这种驱动程序直接使用数据库在本地提供的API进行交互，通常是Java Native Interface（JNI）或本机代码库。它的优点是速度快，性能高，但只能在特定的操作系统上运行，并且需要为每个操作系统编写特定的驱动程序。</li>
-<li>网络协议驱动程序：这种驱动程序通过网络协议与远程服务器进行通信，例如TCP&#x2F;IP协议。它的优点是可以跨平台运行，并且可以支持多个数据库。这是目前最常用的JDBC驱动程序类型。</li>
-<li>自定义协议驱动程序：这种驱动程序使用自定义的协议与数据库进行通信，例如IBMAS400 JDBC驱动程序使用AS&#x2F;400的通信协议。这种驱动程序只适用于特定的数据库和应用场景。</li>
-</ul>
-<h2 id="添加JDBC驱动程序"><a href="#添加JDBC驱动程序" class="headerlink" title="添加JDBC驱动程序"></a>添加JDBC驱动程序</h2><p>com.mysql.cj.jdbc.Driver属于网络协议驱动程序，它是MySQL数据库的JDBC驱动程序中的最新版本，使用TCP&#x2F;IP协议与MySQL服务器进行通信。</p>
-<p>在使用Maven添加JDBC驱动程序时，需要在项目的pom.xml文件中添加相应的依赖，例如：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.33<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这样就会自动下载MySQL数据库的JDBC驱动程序，并将其打包到项目中。在代码中，可以像平常一样加载驱动程序，例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="com-mysql-cj-jdbc-Driver和com-mysql-jdbc-Driver有什么不同"><a href="#com-mysql-cj-jdbc-Driver和com-mysql-jdbc-Driver有什么不同" class="headerlink" title="com.mysql.cj.jdbc.Driver和com.mysql.jdbc.Driver有什么不同"></a>com.mysql.cj.jdbc.Driver和com.mysql.jdbc.Driver有什么不同</h2><p>com.mysql.jdbc.Driver是MySQL JDBC驱动程序的旧版本，而com.mysql.cj.jdbc.Driver则是其最新版本。这两个驱动程序在使用方式上基本相同，但有以下几点区别：</p>
-<ol>
-<li>包名不同：com.mysql.jdbc.Driver的包名为com.mysql.jdbc，而com.mysql.cj.jdbc.Driver的包名为com.mysql.cj.jdbc。</li>
-<li>默认字符集不同：com.mysql.cj.jdbc.Driver默认使用UTF-8字符集，而com.mysql.jdbc.Driver默认使用Latin1字符集。</li>
-<li>时间类型的处理方式不同：com.mysql.cj.jdbc.Driver使用Java 8中的新时间类型（LocalDate、LocalTime和LocalDateTime），而com.mysql.jdbc.Driver则使用Java.sql.Date、Time和Timestamp。</li>
-<li>数据库连接参数不同：com.mysql.cj.jdbc.Driver使用新的数据库连接参数格式（例如useSSL&#x3D;false），而com.mysql.jdbc.Driver使用旧的数据库连接参数格式（例如useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8）。</li>
-</ol>
-<p>因此，在使用MySQL JDBC驱动程序时，建议使用最新版本的com.mysql.cj.jdbc.Driver，并根据实际情况进行相应的配置。如果使用的是旧版本的com.mysql.jdbc.Driver，可以考虑升级到最新版或者使用兼容的驱动程序。</p>
-<h1 id="JDBC的工作原理"><a href="#JDBC的工作原理" class="headerlink" title="JDBC的工作原理"></a>JDBC的工作原理</h1><p>JDBC的工作过程可以分为以下几个步骤：</p>
-<ol>
-<li>加载JDBC驱动程序：使用Class.forName()方法加载JDBC驱动程序。</li>
-<li>建立数据库连接：使用DriverManager.getConnection()方法获取数据库连接。</li>
-<li>创建Statement对象：使用Connection.createStatement()方法创建Statement对象。</li>
-<li>执行SQL语句：使用Statement对象执行SQL语句。</li>
-<li>处理结果集：使用ResultSet对象处理查询结果。</li>
-<li>关闭连接和释放资源：使用close()方法关闭连接和释放资源。</li>
-</ol>
-<p>下面是一个使用JDBC操作MySQL数据库的示例代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JDBCDemo</span> &#123;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">JDBC_DRIVER</span> <span class="operator">=</span> <span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">DB_URL</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://localhost:3306/test&quot;</span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">USER</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PASS</span> <span class="operator">=</span> <span class="string">&quot;password&quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">      <span class="type">Statement</span> <span class="variable">stmt</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">         Class.forName(JDBC_DRIVER);</span><br><span class="line">         System.out.println(<span class="string">&quot;Connecting to database...&quot;</span>);</span><br><span class="line">         conn = DriverManager.getConnection(DB_URL,USER,PASS);</span><br><span class="line">         System.out.println(<span class="string">&quot;Creating statement...&quot;</span>);</span><br><span class="line">         stmt = conn.createStatement();</span><br><span class="line">         String sql;</span><br><span class="line">         sql = <span class="string">&quot;SELECT id, name, age FROM student&quot;</span>;</span><br><span class="line">         <span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> stmt.executeQuery(sql);</span><br><span class="line">         <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">id</span>  <span class="operator">=</span> rs.getInt(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> rs.getString(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> rs.getInt(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">            System.out.print(<span class="string">&quot;ID: &quot;</span> + id);</span><br><span class="line">            System.out.print(<span class="string">&quot;, Name: &quot;</span> + name);</span><br><span class="line">            System.out.print(<span class="string">&quot;, Age: &quot;</span> + age);</span><br><span class="line">            System.out.println();</span><br><span class="line">         &#125;</span><br><span class="line">         rs.close();</span><br><span class="line">         stmt.close();</span><br><span class="line">         conn.close();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(SQLException se) &#123;</span><br><span class="line">         se.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(stmt!=<span class="literal">null</span>)</span><br><span class="line">               stmt.close();</span><br><span class="line">         &#125; <span class="keyword">catch</span>(SQLException se2) &#123;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(conn!=<span class="literal">null</span>)</span><br><span class="line">               conn.close();</span><br><span class="line">         &#125; <span class="keyword">catch</span>(SQLException se) &#123;</span><br><span class="line">            se.printStackTrace();</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(<span class="string">&quot;Goodbye!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上代码使用了MySQL的JDBC驱动程序来连接和操作MySQL数据库。它首先加载JDBC驱动程序，然后建立与数据库的连接，创建Statement对象，执行SQL语句并处理结果集，最后关闭连接和释放资源。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>JDBC是Java语言中用于操作关系型数据库的API，通过提供标准接口和驱动程序，使得Java应用程序能够与各种不同类型的数据库进行通信。JDBC的使用过程可以分为加载驱动程序、建立连接、创建Statement对象、执行SQL语句和处理结果集等步骤。JNI是Java Web开发中必不可少的一环，了解和掌握JDBC的使用对于Java Web开发人员来说是非常重要的。</p>
-<p>在实际开发中，我们需要注意以下几点：</p>
-<ol>
-<li>避免SQL注入攻击：使用PreparedStatement对象代替Statement对象可以有效避免SQL注入攻击。</li>
-<li>防止资源泄漏：在finally块中关闭ResultSet、Statement和Connection对象可以防止资源泄漏。</li>
-<li>提高性能：使用批量操作和预编译语句可以提高JDBC的性能。</li>
-<li>选择合适的驱动程序：根据实际情况选择合适的JDBC驱动程序可以提高应用程序的稳定性和性能。</li>
-</ol>
-<p>总之，JDBC是Java语言中操作关系型数据库的标准API，通过掌握JDBC的使用可以实现Java程序与多种不同类型的数据库进行交互，从而保证了Java应用程序的可移植性和协作性。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>JDBC</tag>
-        <tag>常用API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>轻松搭建个性化博客，最全Hexo部署教程来袭！</title>
-    <url>/blog/8be213b60955.html</url>
-    <content><![CDATA[<p>当今社交媒体的兴起让个人网站逐渐失去了其往日的荣耀，但对于一些喜欢写作、分享的人来说，拥有一个独立的博客仍然是非常有吸引力的。Hexo 是一个基于 Node.js 的静态博客生成器，它可以轻松地将你的Markdown格式文章转换成 HTML 文件，并部署到 GitHub Pages 或其他静态托管服务上。</p>
-<span id="more"></span>
-
-<p>接下来我们会先建毛胚房（基础框架），再精装修（优化完善），在搭建过程中一步步学习，并探索自己喜欢的风格，最终建造一座美观舒适的“小房子”。</p>
-<h1 id="Hexo的基本搭建"><a href="#Hexo的基本搭建" class="headerlink" title="Hexo的基本搭建"></a>Hexo的基本搭建</h1><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>安装Hexo前，需要有一个GitHub账号，电脑（此教程是在Windows环境下）需已有以下应用程序：</p>
-<ul>
-<li><p><a href="https://nodejs.org/">Node.js (nodejs.org)</a></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101426398.png" alt="Node.js官网"></p>
-</li>
-<li><p><a href="https://git-scm.com/download/win">Git (git-scm.com)</a></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101428966.png" alt="Git官网"></p>
-</li>
-</ul>
-<p>如果你的电脑已安装上述应用，可以直接进行下一步。</p>
-<p>如果未安装，可以到官方网站选择下载与你电脑操作系统相对应的安装包，安装步骤很简单，一路下一步就可以了。</p>
-<div class="note warning"><p>使用 Node.js 官方安装程序时，请确保勾选 <strong>Add to PATH</strong> 选项（默认已勾选）。</p>
-</div>
-
-<p>此教程安装使用的版本：</p>
-<ul>
-<li>Node.js 18.15.0</li>
-<li>Git 2.40.0</li>
-</ul>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p><strong>确保上述应用安装完毕后，打开cmd命令行终端。</strong></p>
-<details class="note primary"><summary><p>点击查看cmd命令行终端介绍</p>
-</summary>
-<p>“cmd”是Windows系统中的命令行终端程序，可以用于执行各种系统命令和批处理脚本。在Windows系统中，打开cmd命令行终端的方法如下：</p>
-<ol>
-<li>按下Win+R键组合，打开“运行”对话框。</li>
-<li>在“运行”对话框中输入“cmd”，按下Enter键或者点击“确定”按钮。</li>
-<li>或者在Windows资源管理器中，打开任意一个目录，并在地址栏中输入“cmd”命令，按下Enter键即可打开命令行终端并自动切换到当前目录。</li>
-</ol>
-<p>在cmd命令行终端中，用户可以输入各种系统命令和参数，进行文件管理、网络操作、进程控制等功能。例如，可以使用dir命令查看当前目录下的所有文件和子目录，使用netstat命令查看网络连接状态，使用tasklist命令查看正在运行的进程列表等等。</p>
-
-</details>
-
-<p><strong>使用npm全局安装Hexo，执行命令：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101434839.png" alt="安装成功后" style="zoom:67%;" />
-
-<h2 id="初始化Hexo"><a href="#初始化Hexo" class="headerlink" title="初始化Hexo"></a>初始化Hexo</h2><ol>
-<li><p><strong>新建空文件夹<code>mybolg</code></strong></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101441982.png" alt="mybolg文件夹"></p>
-</li>
-<li><p><strong>在地址栏中输入<code>cmd</code>，回车打开命令行终端</strong></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101443511.png" alt="地址栏输入cmd"></p>
-</li>
-<li><p><strong>在命令行终端执行初始化命令：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>等待执行完成后，继续执行：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<details class="note primary"><summary><p>点击查看”npm install”命令介绍</p>
-</summary>
-<p>“npm install”是npm（Node Package Manager）命令中的一种，用于安装当前项目所需要的依赖关系（即所需的各种npm包）。具体含义如下：</p>
-<ul>
-<li>“npm”表示使用npm命令。</li>
-<li>“install”表示安装依赖关系。</li>
-</ul>
-<p>在执行”npm install”命令时，npm会自动从npm仓库下载所需的npm包，并将它们安装到当前项目目录下的node_modules文件夹中。可以在项目根目录下找到一个名为package.json的文件，其中记录了项目需要的所有依赖包及其版本号。如果该文件存在，则npm会根据其中的定义自动安装所有的依赖包；如果不存在，则npm只会安装必要的依赖包以满足当前项目的基本运行需求。</p>
-<p>需要注意的是，使用”npm install”命令时，可以添加不同的参数来指定安装方式和操作方式。例如，可以使用”–save”参数将安装的依赖包信息保存到package.json文件中，方便其他开发人员或机器使用。可以使用”-g”参数进行全局安装，以供任何项目使用。也可以使用”–production”参数仅安装生产环境需要的依赖包，而忽略开发环境需要的依赖包。</p>
-
-</details></li>
-</ol>
-<hr>
-<p>上述流程完成后，会看到<code>myblog</code>文件夹中有如下文件：</p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101453142.png" alt="myblog文件夹"></p>
-<p>   <strong>简单介绍一下每个文件的用处：</strong></p>
-<ul>
-<li>node_modules：整个项目的环境依赖。</li>
-<li>source：新建的markdown 文章都保存在这个目录下的_post文件夹下 。</li>
-<li>scaffolds：模版文件夹。模板是指在新建文章<code>hexo new post &#39;title&#39;</code>，文件中默认填充scaffold&#x2F;post.md中的Front-matter内容。</li>
-<li>themes：主题目录</li>
-<li>_config.yml：全局配置文件，很多信息都是在这个文件中配置的，比如网站的名字、副标题、网站描述信息、作者等。</li>
-<li>package.json：应用程序的信息。</li>
-</ul>
-<p>到这里一个毛胚房（最原始的博客模板）其实就搭建好了，在命令行终端中执行命令：</p>
-   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>   <img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101515955.png" alt="执行命令：hexo s"></p>
-<p>   在浏览器中打开<a href="http://localhost:4000/%EF%BC%8C%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E6%AF%9B%E8%83%9A%E6%88%BF%E7%9A%84%E6%A0%B7%E5%AD%90%E4%BA%86%EF%BC%9A">http://localhost:4000/，就能看到毛胚房的样子了：</a></p>
-<p>   <img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101521644.png" alt="毛胚房"></p>
-<p>是不是很简单？三行命令就能搭建博客！</p>
-<h2 id="写一个简单的博客"><a href="#写一个简单的博客" class="headerlink" title="写一个简单的博客"></a>写一个简单的博客</h2><ol>
-<li><p><strong>在命令行终端中执行命令：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;demo&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101640072.png" alt="执行命令 hexo new &#39;demo&#39;"></p>
-<p>可以看到在<code>D:\blog\mybolg\source\_posts</code>路径下，生成了demo.md文件，“demo”是文件名，同时也是文章的标题，你可以来自己定义。</p>
-<div class="note danger"><p>文件名（也就是<code>title</code>）不要重复</p>
-</div>
-
-<p>当然也可以直接在该路径下新建markdown文件，不过直接新建的markdown文件是空白的，需要自己配置yaml，使用命令创建的文件是根据scaffolds文件夹下的<code>post.md</code>模板生成的。</p>
-</li>
-<li><p><strong>打开<code>demo.md</code>文件，输入你要编辑的内容</strong></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101654220.png" alt="demo"></p>
-<p>在命令行终端中执行命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>在浏览器中打开<a href="http://localhost:4000/%EF%BC%8C%E6%9F%A5%E7%9C%8B%E6%96%B0%E5%86%99%E7%9A%84%E6%96%87%E7%AB%A0%EF%BC%9A">http://localhost:4000/，查看新写的文章：</a></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101736784.png" alt="demo页面"></p>
-</li>
-</ol>
-<h2 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h2><h3 id="新建关于页面"><a href="#新建关于页面" class="headerlink" title="新建关于页面"></a>新建关于页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;about&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>执行命令后，<code>mybolg\source\about</code>路径下会生成一个<code>index.md</code>文件，你可以在里面填写自己的一些自我介绍。</p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304120939512.png" alt="关于"></p>
-<h3 id="新建标签页面"><a href="#新建标签页面" class="headerlink" title="新建标签页面"></a>新建标签页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>执行命令后，<code>mybolg\source\tags</code>路径下会生成一个<code>index.md</code>文件，不用填写内容，会有插件自动生成。</p>
-<p>文件内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2023-04-12 09:39:44</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="新建分类页面"><a href="#新建分类页面" class="headerlink" title="新建分类页面"></a>新建分类页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;categories&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>执行命令后，<code>mybolg\source\categories</code>路径下会生成一个<code>index.md</code>文件，不用填写内容，会有插件自动生成。</p>
-<p>文件内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">分类</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2023-04-12 09:39:56</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;categories&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><p>打开<code>myblog</code>文件夹下的<code>_config.yml</code>文件进行配置：</p>
-<h3 id="站点信息"><a href="#站点信息" class="headerlink" title="站点信息"></a>站点信息</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#网站标题</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">与或非&#x27;s</span> <span class="string">Blog</span></span><br><span class="line"><span class="comment">#网站副标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#网站描述</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">个人成长记录与分享</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="comment">#作者</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">与或非</span></span><br><span class="line"><span class="comment">#语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="comment">#网站时区</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="URL信息"><a href="#URL信息" class="headerlink" title="URL信息"></a>URL信息</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://andornot.top</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">&#x27;:category/:hash.html&#x27;</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>url：后续会使用GitHub Pages部署，因此url配置：</p>
-<p><code>https://你的GitHub用户名.github.io</code></p>
-<div class="note info"><p>比如我的GitHub用户名是<code>andornottop</code>，url配置<code>https://andornottop.github.io/</code></p>
-<p>如果自己有域名可以配置自己的域名。</p>
-</div>
-</li>
-<li><p>permalink：文章的 <a href="https://hexo.io/zh-cn/docs/permalinks">永久链接</a> 格式，默认值<code>:year/:month/:day/:title/</code>，我这里改为<code>:category/:hash.html</code>。</p>
-<div class="note info"><p>因为原来的格式分级太多，且用了<code>:title</code>，当<code>:title</code>为中文时不太方便。<code>:category</code>可以在<code>category_map</code>做中英文映射处理，<code>:hash</code>为文件名（与 <code>:title</code> 相同）和日期的 SHA1 哈希值（12位16进制数）。</p>
-<p><code>category_map</code>映射配置例子：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">default_category:</span> <span class="string">uncategorized</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line">  <span class="string">随笔杂记:</span> <span class="string">note</span></span><br><span class="line">  <span class="string">计算机基础知识:</span> <span class="string">base</span></span><br><span class="line">  <span class="string">Java相关知识:</span> <span class="string">java</span></span><br><span class="line">  <span class="string">Java开发框架:</span> <span class="string">framework</span></span><br><span class="line">  <span class="string">数据库:</span> <span class="string">database</span></span><br></pre></td></tr></table></figure></div></li>
-</ul>
-<hr>
-<p>是不是感觉已经可以写博客了？当然到这里还没结束，毛胚房怎么能住人呢？接下来我们选择NexT的主题来进行一步一步装修。</p>
-<h1 id="配置NexT主题"><a href="#配置NexT主题" class="headerlink" title="配置NexT主题"></a>配置NexT主题</h1><p>NexT 是一款非常流行的 Hexo 主题，具有许多令人印象深刻的功能，其中一些包括：</p>
-<ol>
-<li>支持多种语言和代码高亮</li>
-<li>自适应布局和响应式设计</li>
-<li>支持多种社交媒体链接和评论系统</li>
-<li>可自定义的导航菜单和侧边栏</li>
-<li>基于 Pjax 技术的无刷新页面加载</li>
-<li>可配置的归档、分类和标签页面</li>
-<li>可自定义的关键词和描述标签</li>
-<li>支持 Google Analytics 和站点地图等 SEO 工具</li>
-</ol>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101606813.png" alt="NexT Schemes——四种风格可选"></p>
-<h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><p>进入到<code>themes</code>文件夹下，在命令行终端执行：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next next</span><br></pre></td></tr></table></figure>
-
-<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>在<code>myblog</code>文件夹下打开<code>_config.yml</code>，将<code>theme</code>的值改为<code>next</code>。</p>
-<img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101737189.png" alt="theme配置" style="zoom:67%;" />
-
-<h2 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h2><p>在命令行终端中执行命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>此时即可使用浏览器访问 <code>http://localhost:4000</code>，检查站点是否正确运行。</p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304121019664.png" alt="NexT 主题"></p>
-<h2 id="配置主题插件"><a href="#配置主题插件" class="headerlink" title="配置主题插件"></a>配置主题插件</h2><p>在<code>mybolg\themes\next</code>文件夹找到<code>_config.yml</code>配置文件，复制一份重命名为<code>_config.next.yml</code>，然后将<code>_config.next.yml</code>移动到<code>mybolg</code>文件夹下，NexT主题相关配置就在<code>_config.next.yml</code>修改。</p>
-<div class="note warning"><p>不建议在<code>mybolg\themes\next</code>文件夹下的文件中直接修改内容，因为修改后日后更新主题可能会把已修改的文件覆盖。</p>
-<p>Hexo 在合并主题配置时，Hexo 配置文件中的 <code>theme_config</code> 的优先级最高，其次是 <code>_config.[theme].yml</code> 文件，最后是位于主题目录下的 <code>_config.yml</code> 文件。</p>
-</div>
-
-<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><p>NexT主题有四种Scheme可以选择，也可以开启暗黑模式：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Scheme Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Dark Mode</span></span><br><span class="line"><span class="attr">darkmode:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Site-Information-Settings"><a href="#Site-Information-Settings" class="headerlink" title="Site Information Settings"></a>Site Information Settings</h3><h4 id="设置图标"><a href="#设置图标" class="headerlink" title="设置图标"></a>设置图标</h4><p>可以将图标文件放到<code>mybolg\source\images</code>文件夹下</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo_and.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /manifest.json</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="设置许可"><a href="#设置许可" class="headerlink" title="设置许可"></a>设置许可</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Creative Commons 4.0 International License.</span></span><br><span class="line"><span class="comment"># See: https://creativecommons.org/about/cclicenses/</span></span><br><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="comment"># Available values: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="comment"># Available values: big | small</span></span><br><span class="line">  <span class="attr">size:</span> <span class="string">small</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># You can set a language value if you prefer a translated version of CC license, e.g. deed.zh</span></span><br><span class="line">  <span class="comment"># CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="设置菜单"><a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Usage: `Key: /link/ || icon`</span></span><br><span class="line"><span class="comment"># Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-sensitive.</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.</span></span><br><span class="line"><span class="comment"># External url should start with http:// or https://</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable / Disable menu icons / item badges.</span></span><br><span class="line"><span class="attr">menu_settings:</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">badges:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>另外也支持次级菜单，配置参考<a href="https://theme-next.js.org/docs/theme-settings/#Configuring-Menu-Items">Theme Settings | NexT (theme-next.js.org)</a></p>
-<h4 id="配置头像"><a href="#配置头像" class="headerlink" title="配置头像"></a>配置头像</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="comment">#/images/avatar.gif</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be displayed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="侧边栏社交链接"><a href="#侧边栏社交链接" class="headerlink" title="侧边栏社交链接"></a>侧边栏社交链接</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Social Links</span></span><br><span class="line"><span class="comment"># Usage: `Key: permalink || icon`</span></span><br><span class="line"><span class="comment"># Key is the link label showing to end users.</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.</span></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/andornottop</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:andornottop@163.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="comment">#Weibo: https://weibo.com/yourname || fab fa-weibo</span></span><br><span class="line">  <span class="comment">#Twitter: https://twitter.com/yourname || fab fa-twitter</span></span><br><span class="line">  <span class="comment">#FB Page: https://www.facebook.com/yourname || fab fa-facebook</span></span><br><span class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span></span><br><span class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || fab fa-youtube</span></span><br><span class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || fab fa-instagram</span></span><br><span class="line">  <span class="comment">#Skype: skype:yourname?call|chat || fab fa-skype</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social_icons:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">icons_only:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">transition:</span> <span class="literal">false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>以上是一些我个人的配置，仅供参考，更加详细的配置的文档请参考<a href="https://theme-next.js.org/docs/theme-settings/">Theme Settings | NexT (theme-next.js.org)</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><div class="note info"><p>本节主要介绍讲博客部署到GitHub Pages，由于某些原因，GitHub 访问会不太稳定，可能需要科学地上网。</p>
-</div>
-
-<p>我这里部署的流程是先在GitHub建立两个空仓库：</p>
-<ul>
-<li>一个私有仓库存储博客源代码</li>
-<li>一个公有仓库存储Hexo生成的页面，因为部署GitHub Pages的仓库，免费账号必须权限公有</li>
-</ul>
-<p>官方教程使用的是一个公有仓库部署到GitHub Pages，源代码在主分支，生成的静态页面文件在会放在储存库中的 <code>gh-pages</code> 分支，这样源代码免费账号必须设置权限公有，但是部署操作会简单。如果你想按这种方式部署，可以参考官方文档<a href="https://hexo.io/zh-cn/docs/github-pages">在 GitHub Pages 上部署 Hexo | Hexo</a>。</p>
-<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><p>下面介绍我的部署流程：</p>
-<ol>
-<li><p><strong>登录<a href="https://github.com/">GitHub</a>账号，点击右上角 “+” ，选择 “New repository”。</strong></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111003984.png" alt="GitHub"></p>
-</li>
-<li><p><strong>输入仓库名 “myblog”，因为这个仓库是要存储博客的源代码，建议设置私有权限，其他的选项不用处理，点击下面的 ”create repository“。</strong></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111153878.png" alt="new repository"></p>
-</li>
-<li><p><strong>回到本地 <code>myblog</code>文件夹下，打开命令行终端，执行命令初始化本地 Git 仓库：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>添加文件并提交更改：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Initial commit&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>将当前 Git 仓库的默认分支从原来的分支名（通常为 master）更改为 main：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>与远程 Git 仓库关联，<remote_repo_url>要换成你自己的仓库地址：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;remote_repo_url&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111332245.png" alt="新建仓库地址"></p>
-</li>
-<li><p><strong>将本地 Git 仓库中的代码推送到远程 Git 仓库中：</strong></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>登录你的<a href="https://github.com/">GitHub</a>账户，打开<code>myblog</code>仓库会看到本地仓库的文件已经推送到了你的远程GitHub仓库里面。</strong></p>
-</li>
-<li><p><strong>按照第1、2步再创建一个仓库：</strong></p>
-<ul>
-<li>仓库权限：Public</li>
-<li>仓库命名格式：&lt;你的 GitHub 用户名&gt;.github.io</li>
-</ul>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111500577.png" alt="公共仓库名"></p>
-</li>
-<li><p><strong>打开命令行终端，生成SSH 密钥对</strong>：</p>
-</li>
-</ol>
-<p>  输入命令：</p>
-  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;blog_deploy_key&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>  需要多次回车。</p>
-<ol start="11">
-<li><p><strong>打开C盘用户文件夹，找到<code>.shh</code>文件夹，里面<code>id_rsa</code> 是私钥，<code>id_rsa_pub</code>是公钥，可以用记事本打开查看。</strong></p>
-<p>请注意，私钥应始终保持机密，并妥善保管。</p>
-</li>
-<li><p><strong>将公钥（<code>id_rsa_pub</code>里的全部内容）复制，打开GitHub仓库<code>&lt;你的 GitHub 用户名&gt;.github.io</code>：</strong></p>
-<ul>
-<li><p>找到<code>Settings</code>页面，并选择“Deploy keys”或“SSH keys”选项卡。</p>
-</li>
-<li><p>单击“Add deploy key”按钮，然后将公钥的内容粘贴到<code>Key</code>文本框中。</p>
-</li>
-<li><p>Title填写：blog_deploy_key</p>
-</li>
-<li><p>勾选<code>Allow write access</code></p>
-</li>
-</ul>
-</li>
-<li><p><strong>将私钥（<code>id_rsa</code>里的全部内容）复制，打开GitHub仓库<code>myblog</code>：</strong></p>
-<ul>
-<li>找到<code>Settings</code>页面，并选择“Secrets and variables”下的“Actions”选项卡。</li>
-<li>单击“New repository secret”按钮，然后将私钥的内容粘贴到<code>Secret</code>文本框中。</li>
-<li>Name填写：ACTIONS_DEPLOY_KEY</li>
-</ul>
-</li>
-<li><p><strong>点击<code>Actions</code>，去创建一个<code>pages.yml</code>文件：</strong></p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111348396.png" alt="set up a workflow yourself"></p>
-</li>
-<li><p><strong>接着将以下内容复制进去，并按要求改动内容：</strong></p>
-<ul>
-<li><p>文件名称改为<code>pages.yml</code></p>
-</li>
-<li><p><code>external_repository</code>改为你自己的<code>用户名/仓库名</code>：</p>
-<p><code>&lt;你的 GitHub 用户名&gt;/&lt;你的 GitHub 用户名&gt;.github.io</code></p>
-</li>
-<li><p>安装主题时保留主题目录中的 <code>.git</code> 文件夹以方便更新，GitHub Actions 对子模块的处理有点问题。所以需要在 Workflow 文件中用 <code>with</code> 标注出你使用的子模块。</p>
-<div class="note info"><p>在部署时这里踩了大坑，官方文档中未提及子模块的问题，导致生成的静态文件是空白的，无意间看到这位老哥的博客<a href="https://www.cnblogs.com/Helium-Air/p/15646484.html">使用 GitHub Actions 部署 Hexo 博客 - 智子酱 - 博客园 (cnblogs.com)</a>帮了大忙</p>
-</div></li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 主题文件夹</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">theme</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">next-theme/hexo-theme-next</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">master</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">themes/next</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">18.15</span><span class="number">.0</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;18.15.0&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">~/.npm</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.os</span> <span class="string">&#125;&#125;-node-$&#123;&#123;</span> <span class="string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.os &#125;&#125;-node-</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span> <span class="string">npm</span> <span class="string">ci</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">deploy_key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.ACTIONS_DEPLOY_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">external_repository:</span> <span class="string">andornottop/andornottop.github.io</span></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">main</span>  <span class="comment"># default: gh-pages</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>点击<code>Start commit</code>，进行<code>Commit new file</code>。</p>
-</li>
-<li><p>在<code>&lt;你的 GitHub 用户名&gt;.github.io</code>仓库中找到<code>Settings</code>页面的<code>Pages</code>选项，选择<code>main</code>分支后保存，网站的 URL 将在 GitHub Pages 页面中显示。</p>
-</li>
-</ol>
-<hr>
-<p>后续每次在自己电脑上写完博客后，只需将新写的Markdown文件推送到<code>myblog</code>仓库就能自动部署了：</p>
-<p>提交并推送更改到Git存储库的命令如下：</p>
-<ol>
-<li>先使用 <code>git pull</code> 命令拉取远程仓库的更改。示例：<code>git pull origin main</code></li>
-<li>再使用 <code>git add</code> 命令将更改添加到暂存区。示例：<code>git add .</code></li>
-<li>然后使用 <code>git commit</code> 命令将更改提交到本地存储库。示例：<code>git commit -m &quot;Commit message&quot;</code></li>
-<li>最后，使用 <code>git push</code> 命令将更改推送到远程存储库。示例：<code>git push origin main</code></li>
-</ol>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h2 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h2><p>详细配置介绍<a href="https://theme-next.js.org/docs/tag-plugins/">Tag Plugins | NexT (theme-next.js.org)</a></p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>引导标识插件配置：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Note tag (bootstrap callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># Note tag style values:</span></span><br><span class="line">  <span class="comment">#  - simple    bootstrap callout old alert style. Default.</span></span><br><span class="line">  <span class="comment">#  - modern    bootstrap callout new (v2-v3) alert style.</span></span><br><span class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></span><br><span class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></span><br><span class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note danger %&#125;</span><br><span class="line"></span><br><span class="line">使用 Node.js 官方安装程序时，请确保勾选 **Add to PATH** 选项（默认已勾选）。</span><br><span class="line"></span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304121420015.png" alt="示例"></p>
-<h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><p>在<code>mybolg\source</code>文件夹下，新建<code>CNAME</code>文件，注意不要有后缀，打开将你的域名填进去即可。</p>
-<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304122009679.png" alt="CNAME"></p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li>Hexo官方文档 ：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
-<li>NexT官方文档：<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></li>
-<li>GitHub Pages action：<a href="https://github.com/marketplace/actions/github-pages-action">https://github.com/marketplace/actions/github-pages-action</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>博客部署</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>Hexo</tag>
-        <tag>NexT</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>从零开始学习MyBatis</title>
     <url>/framework/94c19ee73f8c.html</url>
     <content><![CDATA[<ol>
@@ -2241,6 +1645,602 @@
       <tags>
         <tag>Java</tag>
         <tag>MyBatis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于线性回归模型预测体彩大乐透和排列五开奖号码</title>
+    <url>/python/4c587eb93222.html</url>
+    <content><![CDATA[<p>事先声明：线性回归模型无法预测随机数，本文以学习为主图一乐。</p>
+<p>整体思路：先爬取开奖数据，存储到Excel表格或者数据库中，然后每天爬取最新的一条开奖数据进行更新。取近七次开奖数据（数据量过大预测数据会趋于一个固定值），以期号和开奖时间做特征变量，开奖号码为目标变量创建线性回归模型并拟合数据。最后用最新的期号和开奖时间进行预测开奖号码。</p>
+<span id="more"></span>
+
+<h1 id="爬取数据"><a href="#爬取数据" class="headerlink" title="爬取数据"></a>爬取数据</h1><h2 id="大乐透"><a href="#大乐透" class="headerlink" title="大乐透"></a>大乐透</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">starttime = time.time()</span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">columns = [<span class="string">&#x27;开奖日期&#x27;</span>, <span class="string">&#x27;期号&#x27;</span>, <span class="string">&#x27;前区&#x27;</span>, <span class="string">&#x27;后区&#x27;</span>]</span><br><span class="line">data = collections.OrderedDict()</span><br><span class="line">dates = []</span><br><span class="line">ids = []</span><br><span class="line">front = []</span><br><span class="line">behind = []</span><br><span class="line">pageNos = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    url = <span class="string">&#x27;https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=85&amp;provinceId=0&amp;pageSize=30&amp;isVerify=1&amp;pageNo=&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pageNos)</span><br><span class="line">    </span><br><span class="line">    response = requests.get(url, headers=header)</span><br><span class="line">    content = response.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    js = json.loads(content)</span><br><span class="line">    numbers = js.get(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line">    lists = numbers.get(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> shujudict <span class="keyword">in</span> lists:</span><br><span class="line">        date = shujudict.get(<span class="string">&#x27;lotteryDrawTime&#x27;</span>)</span><br><span class="line">        dates.append(date)</span><br><span class="line">        <span class="built_in">id</span> = shujudict.get(<span class="string">&#x27;lotteryDrawNum&#x27;</span>)</span><br><span class="line">        ids.append(<span class="built_in">id</span>)</span><br><span class="line">        shuju = shujudict.get(<span class="string">&#x27;lotteryDrawResult&#x27;</span>)</span><br><span class="line">        qianqu = shuju[:<span class="number">14</span>]</span><br><span class="line">        houqu = shuju[-<span class="number">5</span>:]</span><br><span class="line">        front.append(qianqu)</span><br><span class="line">        behind.append(houqu)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lists) == <span class="number">30</span>:</span><br><span class="line">        <span class="comment"># 如果lists长度为30就说明还有下一页，继续循环</span></span><br><span class="line">        pageNos += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 否则结束循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">        </span><br><span class="line">data[<span class="string">&#x27;开奖日期&#x27;</span>] = dates</span><br><span class="line">data[<span class="string">&#x27;期号&#x27;</span>] = ids</span><br><span class="line">data[<span class="string">&#x27;前区&#x27;</span>] = front</span><br><span class="line">data[<span class="string">&#x27;后区&#x27;</span>] = behind</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data, columns=columns)</span><br><span class="line">df.to_excel(<span class="string">&#x27;D:\my\dlt.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line">endtime = time.time()</span><br><span class="line">elapsed_time = endtime - starttime</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;耗时：&quot;</span>, elapsed_time, <span class="string">&quot;秒&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="排列五"><a href="#排列五" class="headerlink" title="排列五"></a>排列五</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">starttime = time.time()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用mysql-connector-python驱动程序连接MySQL数据库</span></span><br><span class="line">cnx = mysql.connector.connect(</span><br><span class="line">    host=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    user=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    password=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database=<span class="string">&#x27;&#x27;</span></span><br><span class="line">)</span><br><span class="line">cursor = cnx.cursor()</span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">columns = [<span class="string">&#x27;期号&#x27;</span>, <span class="string">&#x27;开奖日期&#x27;</span>, <span class="string">&#x27;开奖号码&#x27;</span>, <span class="string">&#x27;中奖注数&#x27;</span>, <span class="string">&#x27;中奖金额（元）&#x27;</span>, <span class="string">&#x27;销售额（元）&#x27;</span>, <span class="string">&#x27;奖池金额（元）&#x27;</span>]</span><br><span class="line">data = collections.OrderedDict()</span><br><span class="line">issueList = []</span><br><span class="line">lotteryDateList = []</span><br><span class="line">lotteryNumList = []</span><br><span class="line">lotteryCountList = []</span><br><span class="line">lotteryMoneyList = []</span><br><span class="line">salesList = []</span><br><span class="line">pondList = []</span><br><span class="line">pageNos = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    url = <span class="string">&#x27;https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=350133&amp;provinceId=0&amp;pageSize=30&amp;isVerify=1&amp;pageNo=&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(pageNos)</span><br><span class="line">    </span><br><span class="line">    response = requests.get(url, headers=header)</span><br><span class="line">    content = response.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    js = json.loads(content)</span><br><span class="line">    numbers = js.get(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line">    lists = numbers.get(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">list</span> <span class="keyword">in</span> lists:</span><br><span class="line">        issue = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawNum&#x27;</span>)</span><br><span class="line">        issueList.append(issue)</span><br><span class="line">        lotteryDate = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawTime&#x27;</span>)</span><br><span class="line">        lotteryDateList.append(lotteryDate)</span><br><span class="line">        lotteryNum = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawResult&#x27;</span>)</span><br><span class="line">        lotteryNumList.append(lotteryNum)</span><br><span class="line">        lotteryCount = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeCount&#x27;</span>)</span><br><span class="line">        lotteryCountList.append(lotteryCount)</span><br><span class="line">        lotteryMoney = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeAmount&#x27;</span>)</span><br><span class="line">        lotteryMoneyList.append(lotteryMoney)</span><br><span class="line">        sales = <span class="built_in">list</span>.get(<span class="string">&#x27;totalSaleAmount&#x27;</span>)</span><br><span class="line">        salesList.append(sales)</span><br><span class="line">        pond = <span class="built_in">list</span>.get(<span class="string">&#x27;poolBalanceAfterdraw&#x27;</span>)</span><br><span class="line">        pondList.append(pond)</span><br><span class="line">        sql = <span class="string">&quot;INSERT INTO `array5`(`issue`, `lottery_date`, `lottery_num`, `lottery_count`, `lottery_money`, `sales`, `pond`) VALUES (%s, %s, %s, %s, %s, %s, %s) &quot;</span></span><br><span class="line">        item = (issue, lotteryDate, lotteryNum, lotteryCount, lotteryMoney, sales, pond)  <span class="comment"># 要插入的数据</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;item：&quot;</span>, item)</span><br><span class="line">        cursor.execute(sql, item)</span><br><span class="line">        cnx.commit()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lists) == <span class="number">30</span>:</span><br><span class="line">        <span class="comment"># 如果lists长度为30就说明还有下一页，继续循环</span></span><br><span class="line">        pageNos += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 否则结束循环</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">cursor.close()  <span class="comment"># 关闭游标</span></span><br><span class="line">cnx.close()  <span class="comment"># 关闭连接</span></span><br><span class="line"></span><br><span class="line">data[<span class="string">&#x27;期号&#x27;</span>] = issueList</span><br><span class="line">data[<span class="string">&#x27;开奖日期&#x27;</span>] = lotteryDateList</span><br><span class="line">data[<span class="string">&#x27;开奖号码&#x27;</span>] = lotteryNumList</span><br><span class="line">data[<span class="string">&#x27;中奖注数&#x27;</span>] = lotteryCountList</span><br><span class="line">data[<span class="string">&#x27;中奖金额（元）&#x27;</span>] = lotteryMoneyList</span><br><span class="line">data[<span class="string">&#x27;销售额（元）&#x27;</span>] = salesList</span><br><span class="line">data[<span class="string">&#x27;奖池金额（元）&#x27;</span>] = pondList</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data, columns=columns)</span><br><span class="line">df.to_excel(<span class="string">&#x27;D:\my\plw.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line">endtime = time.time()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;耗时：&quot;</span>, endtime - starttime, <span class="string">&quot;秒&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="预测开奖号码"><a href="#预测开奖号码" class="headerlink" title="预测开奖号码"></a>预测开奖号码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> date</span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">today = date.today()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用mysql-connector-python驱动程序连接MySQL数据库</span></span><br><span class="line">cnx = mysql.connector.connect(</span><br><span class="line">    host=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    user=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    password=<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    database=<span class="string">&#x27;&#x27;</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"># 将 mysql.connector 连接对象转换为 SQLAlchemy 连接对象</span></span><br><span class="line">engine = create_engine(<span class="string">&#x27;mysql+mysqlconnector://&#x27;</span>, creator=<span class="keyword">lambda</span>: cnx)</span><br><span class="line">cursor = cnx.cursor()</span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">days_between_dates</span>(<span class="params">start_date, end_date</span>):</span><br><span class="line">    delta = end_date - start_date</span><br><span class="line">    <span class="keyword">return</span> delta.days</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cursor.execute(</span><br><span class="line">    <span class="string">&#x27;SELECT lottery_date,issue,lottery_num FROM `array5` ORDER BY lottery_date DESC LIMIT 1&#x27;</span>)</span><br><span class="line">result = <span class="built_in">list</span>(cursor.fetchall())</span><br><span class="line">lotteryDateLast = result[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">issueLast = result[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算天数差异</span></span><br><span class="line">days = days_between_dates(lotteryDateLast, today)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> days &gt; <span class="number">0</span>:</span><br><span class="line">    url = <span class="string">&#x27;https://webapi.sporttery.cn/gateway/lottery/getHistoryPageListV1.qry?gameNo=350133&amp;provinceId=0&amp;pageSize=&#123;&#125;&amp;isVerify=1&amp;pageNo=1&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">        days)</span><br><span class="line">    response = requests.get(url, headers=header)</span><br><span class="line">    content = response.content.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    js = json.loads(content)</span><br><span class="line">    numbers = js.get(<span class="string">&#x27;value&#x27;</span>)</span><br><span class="line">    lists = numbers.get(<span class="string">&#x27;list&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">list</span> <span class="keyword">in</span> lists:</span><br><span class="line">        issue = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawNum&#x27;</span>)</span><br><span class="line">        lotteryDate = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawTime&#x27;</span>)</span><br><span class="line">        lotteryNum = <span class="built_in">list</span>.get(<span class="string">&#x27;lotteryDrawResult&#x27;</span>)</span><br><span class="line">        lotteryCount = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeCount&#x27;</span>)</span><br><span class="line">        lotteryMoney = <span class="built_in">list</span>.get(<span class="string">&#x27;prizeLevelList&#x27;</span>)[<span class="number">0</span>].get(<span class="string">&#x27;stakeAmount&#x27;</span>)</span><br><span class="line">        sales = <span class="built_in">list</span>.get(<span class="string">&#x27;totalSaleAmount&#x27;</span>)</span><br><span class="line">        pond = <span class="built_in">list</span>.get(<span class="string">&#x27;poolBalanceAfterdraw&#x27;</span>)</span><br><span class="line">        cursor.execute(</span><br><span class="line">            <span class="string">&#x27;SELECT count(1) AS count FROM `array5` WHERE issue = %s&#x27;</span>, [issue])</span><br><span class="line">        count = cursor.fetchone()</span><br><span class="line">        <span class="keyword">if</span> count[<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">            sql = <span class="string">&quot;INSERT INTO `array5`(`issue`, `lottery_date`, `lottery_num`, `lottery_count`, `lottery_money`, `sales`, `pond`) VALUES (%s, %s, %s, %s, %s, %s, %s) &quot;</span></span><br><span class="line">            item = (issue, lotteryDate, lotteryNum, lotteryCount,</span><br><span class="line">                    lotteryMoney, sales, pond)  <span class="comment"># 要插入的数据</span></span><br><span class="line">            cursor.execute(sql, item)</span><br><span class="line">            cnx.commit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">predict_num</span>(<span class="params">num</span>):</span><br><span class="line">    query = <span class="string">&quot;SELECT issue, lottery_date, SUBSTRING(lottery_num, &#123;&#125;, 1) AS lottery_num FROM array5 ORDER BY lottery_date DESC LIMIT 7&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">        num)</span><br><span class="line">    data = pd.read_sql(query, engine)</span><br><span class="line">    <span class="comment"># 准备特征和目标变量</span></span><br><span class="line">    X = data[[<span class="string">&#x27;issue&#x27;</span>, <span class="string">&#x27;lottery_date&#x27;</span>]]</span><br><span class="line">    y = data[<span class="string">&#x27;lottery_num&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将日期转换为时间戳</span></span><br><span class="line">    X.loc[:, <span class="string">&#x27;lottery_date&#x27;</span>] = pd.to_datetime(X[<span class="string">&#x27;lottery_date&#x27;</span>]).apply(<span class="keyword">lambda</span> x: x.timestamp())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建线性回归模型并拟合数据</span></span><br><span class="line">    model = LinearRegression()</span><br><span class="line">    model.fit(X, y)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取最新的数据用于预测</span></span><br><span class="line">    <span class="comment"># 创建包含新数据的 DataFrame</span></span><br><span class="line">    new_data = pd.DataFrame(</span><br><span class="line">        &#123;<span class="string">&#x27;issue&#x27;</span>: [issueLast + <span class="number">1</span>], <span class="string">&#x27;lottery_date&#x27;</span>: [today]&#125;)</span><br><span class="line">    new_data[<span class="string">&#x27;lottery_date&#x27;</span>] = pd.to_datetime(</span><br><span class="line">        new_data[<span class="string">&#x27;lottery_date&#x27;</span>]).apply(<span class="keyword">lambda</span> x: x.timestamp())</span><br><span class="line">    new_X = new_data[[<span class="string">&#x27;issue&#x27;</span>, <span class="string">&#x27;lottery_date&#x27;</span>]]</span><br><span class="line">    <span class="comment"># 进行预测</span></span><br><span class="line">    prediction = model.predict(new_X)</span><br><span class="line">    rounded_prediction = <span class="built_in">int</span>(<span class="built_in">round</span>(prediction[<span class="number">0</span>], <span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> rounded_prediction</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">columns = [predict_num(<span class="number">1</span>), predict_num(<span class="number">3</span>), predict_num(</span><br><span class="line">    <span class="number">5</span>), predict_num(<span class="number">7</span>), predict_num(<span class="number">9</span>)]</span><br><span class="line">randNums = <span class="string">&#x27; &#x27;</span>.join([<span class="built_in">str</span>(column) <span class="keyword">for</span> column <span class="keyword">in</span> columns])</span><br><span class="line">cursor.execute(</span><br><span class="line">    <span class="string">&#x27;SELECT count(1) AS count FROM `array5_rand` WHERE random_num = %s AND issue = %s&#x27;</span>, [randNums, issueLast + <span class="number">1</span>])</span><br><span class="line">count = cursor.fetchone()</span><br><span class="line"><span class="keyword">if</span> count[<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">    sql = <span class="string">&quot;INSERT INTO `array5_rand`(`random_num`, `issue`) VALUES (%s, %s) &quot;</span></span><br><span class="line">    item = (randNums, issueLast + <span class="number">1</span>)  <span class="comment"># 要插入的数据</span></span><br><span class="line">    cursor.execute(sql, item)</span><br><span class="line">    cnx.commit()</span><br><span class="line">cursor.execute(</span><br><span class="line">            <span class="string">&#x27;SELECT count(1) AS count FROM `array5` WHERE lottery_num = %s&#x27;</span>, [randNums])</span><br><span class="line">count = cursor.fetchone()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;开奖号码为:&quot;</span>, randNums, <span class="string">&quot;|| 此号码历史上共开出&quot;</span>, count[<span class="number">0</span>], <span class="string">&quot;次&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cursor.close()  <span class="comment"># 关闭游标</span></span><br><span class="line">cnx.close()  <span class="comment"># 关闭连接</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>线性回归模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深入了解 Git 的工作原理及其常见用法</title>
+    <url>/devops/2f5987d952d3.html</url>
+    <content><![CDATA[<p>当今软件开发领域中，版本控制系统是不可或缺的一环。Git 是目前最流行的分布式版本控制系统之一。它被广泛应用于许多项目中，以便于管理和跟踪代码变更。在本文中，我们将深入了解 Git 的工作原理及其常见用法。</p>
+<span id="more"></span>
+
+<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><h2 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h2><p>Git的本地仓库是指存储在本地计算机上的代码仓库，它包含三个主要区域：工作区、暂存区和版本库。这些区域共同构成了Git的基本工作流程。</p>
+<h3 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h3><p>工作区是指当前正在开发的项目文件夹，其中包含源代码、配置文件、图片等资源。在Git中，工作区是与本地仓库和远程仓库分离的，即使工作区的代码被修改或删除，也不会影响到本地仓库和远程仓库。</p>
+<h3 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h3><p>暂存区是指本地仓库中的一个中间状态，用来保存将要提交到版本库的修改内容。当对工作区中的文件进行修改后，可以将修改后的文件添加到暂存区中，表示将这些文件包含在下一次提交中。暂存区可以让开发者更加灵活地控制代码的变更和版本管理。</p>
+<h3 id="版本库"><a href="#版本库" class="headerlink" title="版本库"></a>版本库</h3><p>版本库是指包含所有提交历史记录的仓库。每当对本地仓库进行一次提交时，Git就会生成一条新的提交记录，并保存在版本库中。该记录包括提交的作者、提交时间、提交的描述信息等内容。版本库中的数据可以用来恢复到任何一个过去的状态，或者比较不同版本之间的差异。</p>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>除了本地仓库，Git还有另外一个重要的组成部分——远程仓库。远程仓库是指存储在远程服务器上的代码仓库，也是多人协作和分享代码的主要方式。在使用Git进行开发时，通常需要将本地仓库中的代码推送（push）到远程仓库中，或者从远程仓库中拉取（pull）最新的代码更新。</p>
+<p>Git的远程仓库通过网络与本地仓库进行交互，这个过程包含以下几个步骤：</p>
+<ol>
+<li><p>克隆远程仓库：如果想要获取远程仓库中的代码，需要先进行克隆（clone）操作。克隆远程仓库时，Git会下载远程仓库中的所有代码和历史记录，并将它们保存在本地计算机中。</p>
+</li>
+<li><p>修改本地仓库：在本地仓库中进行开发和修改。可以添加、删除、修改文件等操作，并且可以使用Git的各种命令进行版本管理。</p>
+</li>
+<li><p>推送到远程仓库：当对本地仓库进行一次提交后，需要将本地仓库的修改推送（push）到远程仓库中。推送操作会将本地仓库中的所有提交记录上传到远程仓库中，从而让其他人也能够查看和使用这些代码。如果远程仓库已经存在与本地仓库不同的修改，推送操作会被拒绝，需要先拉取最新的修改并合并冲突。</p>
+</li>
+<li><p>拉取远程仓库：当其他人对远程仓库进行修改后，可以通过拉取（pull）操作将最新的代码更新到本地仓库中。拉取操作会将远程仓库中的代码下载到本地计算机，并与本地仓库进行合并（merge），从而保持代码的同步和一致性。</p>
+</li>
+<li><p>合并冲突：当有多人对同一个文件进行修改时，可能会出现冲突（conflict）的情况。这时需要手动解决冲突，即打开有冲突的文件，找出冲突部分并进行修改或删除，然后再次提交到本地仓库中。</p>
+</li>
+</ol>
+<p>总之，Git的工作原理是建立在本地仓库和远程仓库之间的交互上的。通过Git的各种命令和操作，可以方便地管理、控制和分享代码，使团队协作更加高效和灵活。深入理解Git的工作原理和机制，不仅有助于提高开发者的技术水平，也能够为项目的成功和成长做出贡献。</p>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>在开始使用Git之前，先要安装Git。可以从<a href="https://git-scm.com/downloads">官方网站</a>下载适合自己操作系统的安装包，然后按照默认设置进行安装。</p>
+<h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><p>要使用Git管理一个项目，首先需要将其初始化为Git仓库。打开终端并进入项目目录，然后运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>这将在项目目录中创建一个新的.git文件夹，其中包含Git所需的所有必要文件。</p>
+<h2 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h2><p>要将文件添加到Git仓库中，可以使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以指定单个文件名称（例如<code>index.html</code>）或一个包含多个文件的目录（例如<code>images/</code>）。</p>
+<h2 id="提交更改"><a href="#提交更改" class="headerlink" title="提交更改"></a>提交更改</h2><p>当你更新了文件并想将更改提交到Git仓库时，可以使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;commit message&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在引号内输入有关此次提交的简短说明。请确保提交的消息足够明确以便其他人理解。</p>
+<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>在任何时候，都可以使用以下命令查看Git仓库的状态：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p>这将列出已更改但未提交的文件，并提供有关项目当前状态的其他信息。</p>
+<h2 id="查看历史记录"><a href="#查看历史记录" class="headerlink" title="查看历史记录"></a>查看历史记录</h2><p>要查看Git仓库的提交历史记录，可以使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p>这将显示所有提交的详细信息，包括提交哈希值、提交时间和作者。</p>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><p>分支是指指向代码版本的指针。每个Git仓库都至少有一个主分支，即<code>master</code>分支。可以创建新的分支并在其中进行更改，然后合并回主分支。</p>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p>要创建新的分支，请运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以自己取任何有意义的名字作为分支名称。</p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>要切换到不同的分支，请运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以根据需要随时在分支之间切换。</p>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p>当在其他分支中进行了更改并准备将其合并回主分支时，可以使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git merge &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>将当前分支与要合并的分支名称一起传递。</p>
+<h1 id="Rebase-与-Merge-的区别"><a href="#Rebase-与-Merge-的区别" class="headerlink" title="Rebase 与 Merge 的区别"></a>Rebase 与 Merge 的区别</h1><h2 id="Git-Merge"><a href="#Git-Merge" class="headerlink" title="Git Merge"></a>Git Merge</h2><p><code>git merge</code> 用于将一个分支的更改合并到另一个分支上。在进行合并时，Git会创建一个新的提交包含两个分支的状态。这意味着如果你在两个分支上都做了更改，那么将这些更改合并到一起时可能会发生冲突。</p>
+<p>例如，考虑以下情况：</p>
+<ol>
+<li>创建一个名为<code>feature-branch</code>的新分支。</li>
+<li>在<code>feature-branch</code>上更改文件<code>index.html</code>。</li>
+<li>在<code>master</code>分支上更新文件<code>index.html</code>并提交更改。</li>
+<li>使用<code>git merge feature-branch</code>将<code>feature-branch</code>分支的更改合并到<code>master</code>分支上。</li>
+</ol>
+<p>在此示例中，如果<code>feature-branch</code>与<code>master</code>中都更改了<code>index.html</code>文件，则可能会发生冲突。Git将提示您解决此冲突并手动合并这些更改。</p>
+<h2 id="Git-Rebase"><a href="#Git-Rebase" class="headerlink" title="Git Rebase"></a>Git Rebase</h2><p><code>git rebase</code> 也用于将一个分支的更改合并到另一个分支上，但它的工作方式略有不同。使用 <code>git rebase</code> 时，Git会将当前分支基于与另一个分支的共同祖先，然后将所有更改应用到目标分支中。这意味着不需要创建新的提交，而是在目标分支中应用所有更改。</p>
+<p>例如，考虑以下情况：</p>
+<ol>
+<li>创建一个名为<code>feature-branch</code>的新分支。</li>
+<li>在<code>feature-branch</code>上更新文件<code>index.html</code>。</li>
+<li>在 <code>master</code> 分支上更新文件 <code>index.html</code> 并提交更改。</li>
+<li>使用 <code>git rebase master</code> 将 <code>feature-branch</code> 分支的更改合并到 <code>master</code> 分支上。</li>
+</ol>
+<p>在此示例中，Git会将<code>feature-branch</code>分支上的更改重新应用到<code>master</code>分支上。这样就可以创建一个干净的、线性的提交历史记录，而不是一个包含多个分支和合并的历史记录。</p>
+<h2 id="Rebase-与-Merge-的区别-1"><a href="#Rebase-与-Merge-的区别-1" class="headerlink" title="Rebase 与 Merge 的区别"></a>Rebase 与 Merge 的区别</h2><p>现在我们来总结一下 <code>git merge</code> 与 <code>git rebase</code> 的区别：</p>
+<ul>
+<li>Git merge 会将两个分支的状态合并成一个新的提交，而 Git rebase 会将当前分支的更改应用到目标分支上。</li>
+<li>Git merge 可能会导致冲突并需要手动解决，而 Git rebase 通常会创建一个干净的、线性的提交历史记录。</li>
+<li>Git merge 可以保留原始分支的提交历史记录，而 Git rebase 可能会撤销一些提交并更改它们的顺序。</li>
+</ul>
+<h2 id="何时使用-Git-Rebase-或-Git-Merge？"><a href="#何时使用-Git-Rebase-或-Git-Merge？" class="headerlink" title="何时使用 Git Rebase 或 Git Merge？"></a>何时使用 Git Rebase 或 Git Merge？</h2><p>现在您可能会问自己何时应该使用 <code>git merge</code> 或 <code>git rebase</code>。这是一个根据情况而定的问题，并没有绝对的答案。下面是一些指导原则：</p>
+<ul>
+<li>当您要合并两个分支且它们的更改相互独立时，请使用 <code>git merge</code>。</li>
+<li>当您想要创建一个干净的、线性的提交历史记录时，请使用 <code>git rebase</code>。</li>
+<li>当您不确定应该使用哪种方法时，请优先考虑使用 <code>git merge</code>。</li>
+</ul>
+<h1 id="如何利用Git进行团队协作"><a href="#如何利用Git进行团队协作" class="headerlink" title="如何利用Git进行团队协作"></a>如何利用Git进行团队协作</h1><h2 id="分支管理-1"><a href="#分支管理-1" class="headerlink" title="分支管理"></a>分支管理</h2><p>在Git中，分支是指指向代码版本的指针。每个Git仓库都至少有一个主分支，即<code>master</code>分支。可以创建新的分支并在其中进行更改，然后合并回主分支。</p>
+<p>通常情况下，团队成员应该创建自己的分支，并在其上进行更改和开发。这样可以避免对主分支造成不必要的干扰和风险。一旦完成更改并确保代码质量，就可以将其合并到主分支上。</p>
+<h2 id="Pull-Requests"><a href="#Pull-Requests" class="headerlink" title="Pull Requests"></a>Pull Requests</h2><p>Pull Requests 是 GitHub 上的一项功能，可以让团队成员在自己的分支上更改代码后向主分支提交请求。这些请求可以供其他成员审查并提出反馈意见。</p>
+<p>Pull Requests 可以成为进行团队协作和代码审查的重要工具。当团队成员提交 Pull Requests 时，其他人可以查看更改内容、评论以及提出建议。这可以帮助团队确保提交的代码质量和一致性，并且可以鼓励更好的合作和沟通。</p>
+<h2 id="Code-Reviews"><a href="#Code-Reviews" class="headerlink" title="Code Reviews"></a>Code Reviews</h2><p>Code Review 是指在代码合并之前，团队中的其他成员对代码进行审查和反馈。这是一种有效的方法，可以确保开发过程中代码质量的高标准，并且可以避免错误和漏洞。在进行 Code Review 时，应该尽可能详细地查看代码，并提出有关潜在问题、更改建议和最佳实践的意见。</p>
+<h2 id="Git-Hooks"><a href="#Git-Hooks" class="headerlink" title="Git Hooks"></a>Git Hooks</h2><p>Git hooks 是在 Git 操作期间自动运行的脚本。它们可以用于验证提交、运行测试或进行其他自定义检查。通过使用 Git hooks，可以确保团队成员提交的代码符合特定标准，并促进整体代码质量和可靠性。</p>
+<h1 id="Git-stash：暂时保存你的更改"><a href="#Git-stash：暂时保存你的更改" class="headerlink" title="Git stash：暂时保存你的更改"></a>Git stash：暂时保存你的更改</h1><p>在开发过程中，有时需要临时更改代码以测试某些功能或修复错误。但是，在进行此类更改时，您可能需要切换到其他分支或处理紧急问题。这时就需要一个能够保存当前更改的机制，Git stash 命令就可以很好地完成这个任务。</p>
+<h2 id="什么是-Git-stash？"><a href="#什么是-Git-stash？" class="headerlink" title="什么是 Git stash？"></a>什么是 Git stash？</h2><p>Git stash 是一种命令，它允许您暂存正在进行的工作并回到干净的工作目录。使用 Git stash 命令，您可以将当前分支上的修改暂时存储在堆栈中，然后恢复到干净的提交状态。这使您可以在不影响其他分支的情况下解决临时性问题。</p>
+<h2 id="如何使用-Git-stash？"><a href="#如何使用-Git-stash？" class="headerlink" title="如何使用 Git stash？"></a>如何使用 Git stash？</h2><p>以下是使用 Git stash 的基本步骤：</p>
+<h3 id="将更改存储在-Git-stash-中"><a href="#将更改存储在-Git-stash-中" class="headerlink" title="将更改存储在 Git stash 中"></a>将更改存储在 Git stash 中</h3><p>要将当前未提交的更改暂存，请运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash save <span class="string">&quot;message&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，“message”是对此次存储的描述。</p>
+<h3 id="恢复更改"><a href="#恢复更改" class="headerlink" title="恢复更改"></a>恢复更改</h3><p>如果需要恢复之前存储的更改，可以使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
+
+<p>这将恢复最近的存储更改并将其应用于当前分支。</p>
+<h3 id="查看存储的更改"><a href="#查看存储的更改" class="headerlink" title="查看存储的更改"></a>查看存储的更改</h3><p>要查看所有存储的更改列表，请运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
+
+<p>这将列出所有之前存储的更改。</p>
+<h3 id="删除存储的更改"><a href="#删除存储的更改" class="headerlink" title="删除存储的更改"></a>删除存储的更改</h3><p>如果不再需要存储的更改，请使用以下命令删除它们：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git stash drop stash@&#123;n&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，n 是要删除的存储项的索引编号。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Git stash 命令是一个非常有用的工具，可以帮助开发者在不影响其他分支的情况下解决临时性问题。通过将当前未提交的更改暂存到堆栈中并恢复到干净的提交状态，您可以有效地管理您的代码并使开发过程更加流畅。</p>
+<h1 id="Git-submodule：子模块的使用与管理"><a href="#Git-submodule：子模块的使用与管理" class="headerlink" title="Git submodule：子模块的使用与管理"></a>Git submodule：子模块的使用与管理</h1><p>当您需要在一个 Git 仓库中引用另一个仓库时，可以使用 Git 子模块。Git 子模块允许您将一个 Git 仓库作为另一个 Git 仓库的子目录。</p>
+<h2 id="什么是-Git-子模块？"><a href="#什么是-Git-子模块？" class="headerlink" title="什么是 Git 子模块？"></a>什么是 Git 子模块？</h2><p>Git 子模块允许您将一个 Git 仓库作为另一个 Git 仓库的子目录。这意味着您可以将一个单独的仓库拆分成多个模块，并在其他项目中使用这些模块。子模块提供了一种灵活的方法，可以在不复制所有代码的情况下使用独立的代码库。</p>
+<h2 id="如何使用-Git-子模块？"><a href="#如何使用-Git-子模块？" class="headerlink" title="如何使用 Git 子模块？"></a>如何使用 Git 子模块？</h2><p>以下是使用 Git 子模块的基本步骤：</p>
+<h3 id="添加子模块"><a href="#添加子模块" class="headerlink" title="添加子模块"></a>添加子模块</h3><p>要添加一个新的子模块，请使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git submodule add https://github.com/example-repository.git path/to/submodule</span><br></pre></td></tr></table></figure>
+
+<p>其中，“example-repository”是子模块的 URL，“path&#x2F;to&#x2F;submodule”是子模块将保存的目录路径。</p>
+<h3 id="初始化子模块"><a href="#初始化子模块" class="headerlink" title="初始化子模块"></a>初始化子模块</h3><p>在完成子模块的添加后，需要初始化它们。要初始化所有子模块，请运行以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新子模块"><a href="#更新子模块" class="headerlink" title="更新子模块"></a>更新子模块</h3><p>要更新一个子模块，请切换到该子模块的目录，并使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<p>这将从子模块的远程存储库中拉取最新更改。</p>
+<h3 id="删除子模块"><a href="#删除子模块" class="headerlink" title="删除子模块"></a>删除子模块</h3><p>如果不再需要一个子模块，可以使用以下命令删除它：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git submodule deinit path/to/submodule</span><br><span class="line">git <span class="built_in">rm</span> path/to/submodule</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>使用 Git 子模块时，请注意以下几点：</p>
+<ul>
+<li>子模块仅包含一个指向另一个 Git 仓库的引用。确保在项目中包含所有必需的依赖项。</li>
+<li>每个子模块都有自己的提交历史记录。确保及时更新和提交子模块的更改。</li>
+<li>如果您在一个父级仓库中使用了子模块，则应优先考虑将其纳入整体开发流程，以确保团队协作。</li>
+</ul>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>Git 子模块是将多个 Git 仓库拆分成独立代码库的一种灵活方法。通过添加、初始化、更新和删除子模块，您可以轻松地管理您的代码库并使其更具可维护性。但需要注意的是，子模块仅包含一个指向另一个 Git 仓库的引用，还需要包含必需的依赖项并进行适当的团队协作。</p>
+<h1 id="Git-工作流程：Gitflow"><a href="#Git-工作流程：Gitflow" class="headerlink" title="Git 工作流程：Gitflow"></a>Git 工作流程：Gitflow</h1><p>Git 是一种流行的版本控制系统，被广泛用于团队协作和代码管理。为了更好地组织和管理开发流程，很多团队采用不同的 Git 工作流程模型。其中一种流行的模型是 Gitflow。</p>
+<h2 id="什么是-Gitflow？"><a href="#什么是-Gitflow？" class="headerlink" title="什么是 Gitflow？"></a>什么是 Gitflow？</h2><p>Gitflow 是一种基于 Git 的分支管理工作流程模型。它使用两个主要分支来跟踪代码库的开发状态：</p>
+<ul>
+<li><strong>主分支（Master branch）</strong>：包含稳定版本的代码，并且只能由管理员进行更改。</li>
+<li><strong>开发分支（Develop branch）</strong>：包含最新的开发代码，所有团队成员都可以在此分支上进行更改。</li>
+</ul>
+<p>除此之外，Gitflow 还使用以下三种辅助分支来实现功能开发和发布：</p>
+<ul>
+<li><strong>特性分支（Feature branches）</strong>：用于新功能或修复错误的分支，从 Develop 分支中创建并合并回 Develop 分支。</li>
+<li><strong>发布分支（Release branches）</strong>：预发布测试的分支，从 Develop 分支中创建并合并回 Develop 和 Master 分支。</li>
+<li><strong>修复分支（Hotfix branches）</strong>：用于修复紧急问题的分支，从 Master 分支中创建并合并回 Develop 和 Master 分支。</li>
+</ul>
+<h2 id="如何使用-Gitflow？"><a href="#如何使用-Gitflow？" class="headerlink" title="如何使用 Gitflow？"></a>如何使用 Gitflow？</h2><p>以下是使用 Gitflow 的基本步骤：</p>
+<h3 id="初始化-Gitflow"><a href="#初始化-Gitflow" class="headerlink" title="初始化 Gitflow"></a>初始化 Gitflow</h3><p>要初始化 Gitflow，请使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow init</span><br></pre></td></tr></table></figure>
+
+<p>在运行此命令时，您需要选择主分支和开发分支的名称。默认情况下，它们是 Master 和 Develop 分支。</p>
+<h3 id="创建新特性分支"><a href="#创建新特性分支" class="headerlink" title="创建新特性分支"></a>创建新特性分支</h3><p>要创建新特性分支，请使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow feature start &lt;feature-name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成特性分支"><a href="#完成特性分支" class="headerlink" title="完成特性分支"></a>完成特性分支</h3><p>完成特性分支后，可以使用以下命令将其合并回 Develop 分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow feature finish &lt;feature-name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="发布版本"><a href="#发布版本" class="headerlink" title="发布版本"></a>发布版本</h3><p>要发布版本，请使用以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow release start &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完成发布分支"><a href="#完成发布分支" class="headerlink" title="完成发布分支"></a>完成发布分支</h3><p>发布前测试完成后，可以使用以下命令将其合并回 Develop 和 Master 分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow release finish &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修复紧急问题"><a href="#修复紧急问题" class="headerlink" title="修复紧急问题"></a>修复紧急问题</h3><p>要修复紧急问题，请使用以下命令创建一个新的 Hotfix 分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow hotfix start &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后，完成修复后，可以使用以下命令将其合并回 Develop 和 Master 分支：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git flow hotfix finish &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h2><p>使用 Gitflow 时，请注意以下几点：</p>
+<ul>
+<li>确保团队成员了解 Gitflow 工作流程，并且遵守标准分支命名约定。</li>
+<li>在进行功能开发或修复错误时，应该始终从最新的 Develop 分支开始创建特性分支。</li>
+<li>在发布前，请确保已在相应的发布分支上测试代码，并解决所有问题。</li>
+</ul>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>Gitflow 工作流程模型是一种基于 Git 的分支管理方法，可以帮助团队更好地组织和管理开发流程。通过使用主分支、开发分支、特性分支、发布分支和修复分支等分支类型，可以实现代码库的稳定性和可靠性。但需要注意的是，要让整个团队理解并遵守标准分支命名约定，以确保顺畅的合作和沟通。</p>
+]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>详解JDBC：Java操作关系型数据库的标准API</title>
+    <url>/java/200e79a7ab3c.html</url>
+    <content><![CDATA[<p>Java数据库连接（Java DataBase Connectivity，简称JDBC）是Java语言中用于操作关系型数据库的API。它允许Java程序与多种不同类型的数据库进行交互，从而保证了Java应用程序的可移植性和协作性。</p>
+<span id="more"></span>
+
+<h1 id="JDBC的组成"><a href="#JDBC的组成" class="headerlink" title="JDBC的组成"></a>JDBC的组成</h1><p>JDBC由两部分组成：JDBC API和JDBC驱动程序。其中，JDBC API提供了访问数据库的标准接口，而JDBC驱动程序则提供了实现该接口的具体代码，使得Java程序能够与各种不同类型的数据库进行通信。</p>
+<p>JDBC API包括以下三个核心接口：</p>
+<ul>
+<li>Connection 接口：用于建立与数据库的连接。</li>
+<li>Statement 接口：用于执行SQL语句。</li>
+<li>ResultSet 接口：用于处理查询结果。</li>
+</ul>
+<p>JDBC驱动程序按照实现方式可以分为四类：</p>
+<ul>
+<li>基于JDBC-ODBC桥接器的驱动程序：这种驱动程序将JDBC的调用转换为ODBC的调用，然后通过ODBC连接到数据库。由于需要额外的ODBC组件，因此不太常用。</li>
+<li>基于本地API的驱动程序：这种驱动程序直接使用数据库在本地提供的API进行交互，通常是Java Native Interface（JNI）或本机代码库。它的优点是速度快，性能高，但只能在特定的操作系统上运行，并且需要为每个操作系统编写特定的驱动程序。</li>
+<li>网络协议驱动程序：这种驱动程序通过网络协议与远程服务器进行通信，例如TCP&#x2F;IP协议。它的优点是可以跨平台运行，并且可以支持多个数据库。这是目前最常用的JDBC驱动程序类型。</li>
+<li>自定义协议驱动程序：这种驱动程序使用自定义的协议与数据库进行通信，例如IBMAS400 JDBC驱动程序使用AS&#x2F;400的通信协议。这种驱动程序只适用于特定的数据库和应用场景。</li>
+</ul>
+<h2 id="添加JDBC驱动程序"><a href="#添加JDBC驱动程序" class="headerlink" title="添加JDBC驱动程序"></a>添加JDBC驱动程序</h2><p>com.mysql.cj.jdbc.Driver属于网络协议驱动程序，它是MySQL数据库的JDBC驱动程序中的最新版本，使用TCP&#x2F;IP协议与MySQL服务器进行通信。</p>
+<p>在使用Maven添加JDBC驱动程序时，需要在项目的pom.xml文件中添加相应的依赖，例如：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.33<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样就会自动下载MySQL数据库的JDBC驱动程序，并将其打包到项目中。在代码中，可以像平常一样加载驱动程序，例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="com-mysql-cj-jdbc-Driver和com-mysql-jdbc-Driver有什么不同"><a href="#com-mysql-cj-jdbc-Driver和com-mysql-jdbc-Driver有什么不同" class="headerlink" title="com.mysql.cj.jdbc.Driver和com.mysql.jdbc.Driver有什么不同"></a>com.mysql.cj.jdbc.Driver和com.mysql.jdbc.Driver有什么不同</h2><p>com.mysql.jdbc.Driver是MySQL JDBC驱动程序的旧版本，而com.mysql.cj.jdbc.Driver则是其最新版本。这两个驱动程序在使用方式上基本相同，但有以下几点区别：</p>
+<ol>
+<li>包名不同：com.mysql.jdbc.Driver的包名为com.mysql.jdbc，而com.mysql.cj.jdbc.Driver的包名为com.mysql.cj.jdbc。</li>
+<li>默认字符集不同：com.mysql.cj.jdbc.Driver默认使用UTF-8字符集，而com.mysql.jdbc.Driver默认使用Latin1字符集。</li>
+<li>时间类型的处理方式不同：com.mysql.cj.jdbc.Driver使用Java 8中的新时间类型（LocalDate、LocalTime和LocalDateTime），而com.mysql.jdbc.Driver则使用Java.sql.Date、Time和Timestamp。</li>
+<li>数据库连接参数不同：com.mysql.cj.jdbc.Driver使用新的数据库连接参数格式（例如useSSL&#x3D;false），而com.mysql.jdbc.Driver使用旧的数据库连接参数格式（例如useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8）。</li>
+</ol>
+<p>因此，在使用MySQL JDBC驱动程序时，建议使用最新版本的com.mysql.cj.jdbc.Driver，并根据实际情况进行相应的配置。如果使用的是旧版本的com.mysql.jdbc.Driver，可以考虑升级到最新版或者使用兼容的驱动程序。</p>
+<h1 id="JDBC的工作原理"><a href="#JDBC的工作原理" class="headerlink" title="JDBC的工作原理"></a>JDBC的工作原理</h1><p>JDBC的工作过程可以分为以下几个步骤：</p>
+<ol>
+<li>加载JDBC驱动程序：使用Class.forName()方法加载JDBC驱动程序。</li>
+<li>建立数据库连接：使用DriverManager.getConnection()方法获取数据库连接。</li>
+<li>创建Statement对象：使用Connection.createStatement()方法创建Statement对象。</li>
+<li>执行SQL语句：使用Statement对象执行SQL语句。</li>
+<li>处理结果集：使用ResultSet对象处理查询结果。</li>
+<li>关闭连接和释放资源：使用close()方法关闭连接和释放资源。</li>
+</ol>
+<p>下面是一个使用JDBC操作MySQL数据库的示例代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JDBCDemo</span> &#123;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">JDBC_DRIVER</span> <span class="operator">=</span> <span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">DB_URL</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://localhost:3306/test&quot;</span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">USER</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PASS</span> <span class="operator">=</span> <span class="string">&quot;password&quot;</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">      <span class="type">Statement</span> <span class="variable">stmt</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">         Class.forName(JDBC_DRIVER);</span><br><span class="line">         System.out.println(<span class="string">&quot;Connecting to database...&quot;</span>);</span><br><span class="line">         conn = DriverManager.getConnection(DB_URL,USER,PASS);</span><br><span class="line">         System.out.println(<span class="string">&quot;Creating statement...&quot;</span>);</span><br><span class="line">         stmt = conn.createStatement();</span><br><span class="line">         String sql;</span><br><span class="line">         sql = <span class="string">&quot;SELECT id, name, age FROM student&quot;</span>;</span><br><span class="line">         <span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> stmt.executeQuery(sql);</span><br><span class="line">         <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">id</span>  <span class="operator">=</span> rs.getInt(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> rs.getString(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> rs.getInt(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">            System.out.print(<span class="string">&quot;ID: &quot;</span> + id);</span><br><span class="line">            System.out.print(<span class="string">&quot;, Name: &quot;</span> + name);</span><br><span class="line">            System.out.print(<span class="string">&quot;, Age: &quot;</span> + age);</span><br><span class="line">            System.out.println();</span><br><span class="line">         &#125;</span><br><span class="line">         rs.close();</span><br><span class="line">         stmt.close();</span><br><span class="line">         conn.close();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(SQLException se) &#123;</span><br><span class="line">         se.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(stmt!=<span class="literal">null</span>)</span><br><span class="line">               stmt.close();</span><br><span class="line">         &#125; <span class="keyword">catch</span>(SQLException se2) &#123;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(conn!=<span class="literal">null</span>)</span><br><span class="line">               conn.close();</span><br><span class="line">         &#125; <span class="keyword">catch</span>(SQLException se) &#123;</span><br><span class="line">            se.printStackTrace();</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(<span class="string">&quot;Goodbye!&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码使用了MySQL的JDBC驱动程序来连接和操作MySQL数据库。它首先加载JDBC驱动程序，然后建立与数据库的连接，创建Statement对象，执行SQL语句并处理结果集，最后关闭连接和释放资源。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>JDBC是Java语言中用于操作关系型数据库的API，通过提供标准接口和驱动程序，使得Java应用程序能够与各种不同类型的数据库进行通信。JDBC的使用过程可以分为加载驱动程序、建立连接、创建Statement对象、执行SQL语句和处理结果集等步骤。JNI是Java Web开发中必不可少的一环，了解和掌握JDBC的使用对于Java Web开发人员来说是非常重要的。</p>
+<p>在实际开发中，我们需要注意以下几点：</p>
+<ol>
+<li>避免SQL注入攻击：使用PreparedStatement对象代替Statement对象可以有效避免SQL注入攻击。</li>
+<li>防止资源泄漏：在finally块中关闭ResultSet、Statement和Connection对象可以防止资源泄漏。</li>
+<li>提高性能：使用批量操作和预编译语句可以提高JDBC的性能。</li>
+<li>选择合适的驱动程序：根据实际情况选择合适的JDBC驱动程序可以提高应用程序的稳定性和性能。</li>
+</ol>
+<p>总之，JDBC是Java语言中操作关系型数据库的标准API，通过掌握JDBC的使用可以实现Java程序与多种不同类型的数据库进行交互，从而保证了Java应用程序的可移植性和协作性。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>JDBC</tag>
+        <tag>常用API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>轻松搭建个性化博客，最全Hexo部署教程来袭！</title>
+    <url>/blog/8be213b60955.html</url>
+    <content><![CDATA[<p>当今社交媒体的兴起让个人网站逐渐失去了其往日的荣耀，但对于一些喜欢写作、分享的人来说，拥有一个独立的博客仍然是非常有吸引力的。Hexo 是一个基于 Node.js 的静态博客生成器，它可以轻松地将你的Markdown格式文章转换成 HTML 文件，并部署到 GitHub Pages 或其他静态托管服务上。</p>
+<span id="more"></span>
+
+<p>接下来我们会先建毛胚房（基础框架），再精装修（优化完善），在搭建过程中一步步学习，并探索自己喜欢的风格，最终建造一座美观舒适的“小房子”。</p>
+<h1 id="Hexo的基本搭建"><a href="#Hexo的基本搭建" class="headerlink" title="Hexo的基本搭建"></a>Hexo的基本搭建</h1><h2 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h2><p>安装Hexo前，需要有一个GitHub账号，电脑（此教程是在Windows环境下）需已有以下应用程序：</p>
+<ul>
+<li><p><a href="https://nodejs.org/">Node.js (nodejs.org)</a></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101426398.png" alt="Node.js官网"></p>
+</li>
+<li><p><a href="https://git-scm.com/download/win">Git (git-scm.com)</a></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101428966.png" alt="Git官网"></p>
+</li>
+</ul>
+<p>如果你的电脑已安装上述应用，可以直接进行下一步。</p>
+<p>如果未安装，可以到官方网站选择下载与你电脑操作系统相对应的安装包，安装步骤很简单，一路下一步就可以了。</p>
+<div class="note warning"><p>使用 Node.js 官方安装程序时，请确保勾选 <strong>Add to PATH</strong> 选项（默认已勾选）。</p>
+</div>
+
+<p>此教程安装使用的版本：</p>
+<ul>
+<li>Node.js 18.15.0</li>
+<li>Git 2.40.0</li>
+</ul>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p><strong>确保上述应用安装完毕后，打开cmd命令行终端。</strong></p>
+<details class="note primary"><summary><p>点击查看cmd命令行终端介绍</p>
+</summary>
+<p>“cmd”是Windows系统中的命令行终端程序，可以用于执行各种系统命令和批处理脚本。在Windows系统中，打开cmd命令行终端的方法如下：</p>
+<ol>
+<li>按下Win+R键组合，打开“运行”对话框。</li>
+<li>在“运行”对话框中输入“cmd”，按下Enter键或者点击“确定”按钮。</li>
+<li>或者在Windows资源管理器中，打开任意一个目录，并在地址栏中输入“cmd”命令，按下Enter键即可打开命令行终端并自动切换到当前目录。</li>
+</ol>
+<p>在cmd命令行终端中，用户可以输入各种系统命令和参数，进行文件管理、网络操作、进程控制等功能。例如，可以使用dir命令查看当前目录下的所有文件和子目录，使用netstat命令查看网络连接状态，使用tasklist命令查看正在运行的进程列表等等。</p>
+
+</details>
+
+<p><strong>使用npm全局安装Hexo，执行命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101434839.png" alt="安装成功后" style="zoom:67%;" />
+
+<h2 id="初始化Hexo"><a href="#初始化Hexo" class="headerlink" title="初始化Hexo"></a>初始化Hexo</h2><ol>
+<li><p><strong>新建空文件夹<code>mybolg</code></strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101441982.png" alt="mybolg文件夹"></p>
+</li>
+<li><p><strong>在地址栏中输入<code>cmd</code>，回车打开命令行终端</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101443511.png" alt="地址栏输入cmd"></p>
+</li>
+<li><p><strong>在命令行终端执行初始化命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>等待执行完成后，继续执行：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<details class="note primary"><summary><p>点击查看”npm install”命令介绍</p>
+</summary>
+<p>“npm install”是npm（Node Package Manager）命令中的一种，用于安装当前项目所需要的依赖关系（即所需的各种npm包）。具体含义如下：</p>
+<ul>
+<li>“npm”表示使用npm命令。</li>
+<li>“install”表示安装依赖关系。</li>
+</ul>
+<p>在执行”npm install”命令时，npm会自动从npm仓库下载所需的npm包，并将它们安装到当前项目目录下的node_modules文件夹中。可以在项目根目录下找到一个名为package.json的文件，其中记录了项目需要的所有依赖包及其版本号。如果该文件存在，则npm会根据其中的定义自动安装所有的依赖包；如果不存在，则npm只会安装必要的依赖包以满足当前项目的基本运行需求。</p>
+<p>需要注意的是，使用”npm install”命令时，可以添加不同的参数来指定安装方式和操作方式。例如，可以使用”–save”参数将安装的依赖包信息保存到package.json文件中，方便其他开发人员或机器使用。可以使用”-g”参数进行全局安装，以供任何项目使用。也可以使用”–production”参数仅安装生产环境需要的依赖包，而忽略开发环境需要的依赖包。</p>
+
+</details></li>
+</ol>
+<hr>
+<p>上述流程完成后，会看到<code>myblog</code>文件夹中有如下文件：</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101453142.png" alt="myblog文件夹"></p>
+<p>   <strong>简单介绍一下每个文件的用处：</strong></p>
+<ul>
+<li>node_modules：整个项目的环境依赖。</li>
+<li>source：新建的markdown 文章都保存在这个目录下的_post文件夹下 。</li>
+<li>scaffolds：模版文件夹。模板是指在新建文章<code>hexo new post &#39;title&#39;</code>，文件中默认填充scaffold&#x2F;post.md中的Front-matter内容。</li>
+<li>themes：主题目录</li>
+<li>_config.yml：全局配置文件，很多信息都是在这个文件中配置的，比如网站的名字、副标题、网站描述信息、作者等。</li>
+<li>package.json：应用程序的信息。</li>
+</ul>
+<p>到这里一个毛胚房（最原始的博客模板）其实就搭建好了，在命令行终端中执行命令：</p>
+   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>   <img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101515955.png" alt="执行命令：hexo s"></p>
+<p>   在浏览器中打开<a href="http://localhost:4000/%EF%BC%8C%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E6%AF%9B%E8%83%9A%E6%88%BF%E7%9A%84%E6%A0%B7%E5%AD%90%E4%BA%86%EF%BC%9A">http://localhost:4000/，就能看到毛胚房的样子了：</a></p>
+<p>   <img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101521644.png" alt="毛胚房"></p>
+<p>是不是很简单？三行命令就能搭建博客！</p>
+<h2 id="写一个简单的博客"><a href="#写一个简单的博客" class="headerlink" title="写一个简单的博客"></a>写一个简单的博客</h2><ol>
+<li><p><strong>在命令行终端中执行命令：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;demo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101640072.png" alt="执行命令 hexo new &#39;demo&#39;"></p>
+<p>可以看到在<code>D:\blog\mybolg\source\_posts</code>路径下，生成了demo.md文件，“demo”是文件名，同时也是文章的标题，你可以来自己定义。</p>
+<div class="note danger"><p>文件名（也就是<code>title</code>）不要重复</p>
+</div>
+
+<p>当然也可以直接在该路径下新建markdown文件，不过直接新建的markdown文件是空白的，需要自己配置yaml，使用命令创建的文件是根据scaffolds文件夹下的<code>post.md</code>模板生成的。</p>
+</li>
+<li><p><strong>打开<code>demo.md</code>文件，输入你要编辑的内容</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101654220.png" alt="demo"></p>
+<p>在命令行终端中执行命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中打开<a href="http://localhost:4000/%EF%BC%8C%E6%9F%A5%E7%9C%8B%E6%96%B0%E5%86%99%E7%9A%84%E6%96%87%E7%AB%A0%EF%BC%9A">http://localhost:4000/，查看新写的文章：</a></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101736784.png" alt="demo页面"></p>
+</li>
+</ol>
+<h2 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h2><h3 id="新建关于页面"><a href="#新建关于页面" class="headerlink" title="新建关于页面"></a>新建关于页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;about&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>mybolg\source\about</code>路径下会生成一个<code>index.md</code>文件，你可以在里面填写自己的一些自我介绍。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304120939512.png" alt="关于"></p>
+<h3 id="新建标签页面"><a href="#新建标签页面" class="headerlink" title="新建标签页面"></a>新建标签页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>mybolg\source\tags</code>路径下会生成一个<code>index.md</code>文件，不用填写内容，会有插件自动生成。</p>
+<p>文件内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2023-04-12 09:39:44</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="新建分类页面"><a href="#新建分类页面" class="headerlink" title="新建分类页面"></a>新建分类页面</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo new page <span class="string">&quot;categories&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行命令后，<code>mybolg\source\categories</code>路径下会生成一个<code>index.md</code>文件，不用填写内容，会有插件自动生成。</p>
+<p>文件内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">分类</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2023-04-12 09:39:56</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;categories&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><p>打开<code>myblog</code>文件夹下的<code>_config.yml</code>文件进行配置：</p>
+<h3 id="站点信息"><a href="#站点信息" class="headerlink" title="站点信息"></a>站点信息</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#网站标题</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">与或非&#x27;s</span> <span class="string">Blog</span></span><br><span class="line"><span class="comment">#网站副标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#网站描述</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">个人成长记录与分享</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="comment">#作者</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">与或非</span></span><br><span class="line"><span class="comment">#语言</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="comment">#网站时区</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="URL信息"><a href="#URL信息" class="headerlink" title="URL信息"></a>URL信息</h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://andornot.top</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">&#x27;:category/:hash.html&#x27;</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>url：后续会使用GitHub Pages部署，因此url配置：</p>
+<p><code>https://你的GitHub用户名.github.io</code></p>
+<div class="note info"><p>比如我的GitHub用户名是<code>andornottop</code>，url配置<code>https://andornottop.github.io/</code></p>
+<p>如果自己有域名可以配置自己的域名。</p>
+</div>
+</li>
+<li><p>permalink：文章的 <a href="https://hexo.io/zh-cn/docs/permalinks">永久链接</a> 格式，默认值<code>:year/:month/:day/:title/</code>，我这里改为<code>:category/:hash.html</code>。</p>
+<div class="note info"><p>因为原来的格式分级太多，且用了<code>:title</code>，当<code>:title</code>为中文时不太方便。<code>:category</code>可以在<code>category_map</code>做中英文映射处理，<code>:hash</code>为文件名（与 <code>:title</code> 相同）和日期的 SHA1 哈希值（12位16进制数）。</p>
+<p><code>category_map</code>映射配置例子：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">default_category:</span> <span class="string">uncategorized</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line">  <span class="string">随笔杂记:</span> <span class="string">note</span></span><br><span class="line">  <span class="string">计算机基础知识:</span> <span class="string">base</span></span><br><span class="line">  <span class="string">Java相关知识:</span> <span class="string">java</span></span><br><span class="line">  <span class="string">Java开发框架:</span> <span class="string">framework</span></span><br><span class="line">  <span class="string">数据库:</span> <span class="string">database</span></span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<hr>
+<p>是不是感觉已经可以写博客了？当然到这里还没结束，毛胚房怎么能住人呢？接下来我们选择NexT的主题来进行一步一步装修。</p>
+<h1 id="配置NexT主题"><a href="#配置NexT主题" class="headerlink" title="配置NexT主题"></a>配置NexT主题</h1><p>NexT 是一款非常流行的 Hexo 主题，具有许多令人印象深刻的功能，其中一些包括：</p>
+<ol>
+<li>支持多种语言和代码高亮</li>
+<li>自适应布局和响应式设计</li>
+<li>支持多种社交媒体链接和评论系统</li>
+<li>可自定义的导航菜单和侧边栏</li>
+<li>基于 Pjax 技术的无刷新页面加载</li>
+<li>可配置的归档、分类和标签页面</li>
+<li>可自定义的关键词和描述标签</li>
+<li>支持 Google Analytics 和站点地图等 SEO 工具</li>
+</ol>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101606813.png" alt="NexT Schemes——四种风格可选"></p>
+<h2 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h2><p>进入到<code>themes</code>文件夹下，在命令行终端执行：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next next</span><br></pre></td></tr></table></figure>
+
+<h2 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h2><p>在<code>myblog</code>文件夹下打开<code>_config.yml</code>，将<code>theme</code>的值改为<code>next</code>。</p>
+<img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304101737189.png" alt="theme配置" style="zoom:67%;" />
+
+<h2 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h2><p>在命令行终端中执行命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>此时即可使用浏览器访问 <code>http://localhost:4000</code>，检查站点是否正确运行。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304121019664.png" alt="NexT 主题"></p>
+<h2 id="配置主题插件"><a href="#配置主题插件" class="headerlink" title="配置主题插件"></a>配置主题插件</h2><p>在<code>mybolg\themes\next</code>文件夹找到<code>_config.yml</code>配置文件，复制一份重命名为<code>_config.next.yml</code>，然后将<code>_config.next.yml</code>移动到<code>mybolg</code>文件夹下，NexT主题相关配置就在<code>_config.next.yml</code>修改。</p>
+<div class="note warning"><p>不建议在<code>mybolg\themes\next</code>文件夹下的文件中直接修改内容，因为修改后日后更新主题可能会把已修改的文件覆盖。</p>
+<p>Hexo 在合并主题配置时，Hexo 配置文件中的 <code>theme_config</code> 的优先级最高，其次是 <code>_config.[theme].yml</code> 文件，最后是位于主题目录下的 <code>_config.yml</code> 文件。</p>
+</div>
+
+<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><p>NexT主题有四种Scheme可以选择，也可以开启暗黑模式：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Scheme Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Dark Mode</span></span><br><span class="line"><span class="attr">darkmode:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Site-Information-Settings"><a href="#Site-Information-Settings" class="headerlink" title="Site Information Settings"></a>Site Information Settings</h3><h4 id="设置图标"><a href="#设置图标" class="headerlink" title="设置图标"></a>设置图标</h4><p>可以将图标文件放到<code>mybolg\source\images</code>文件夹下</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/logo_non1200.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo_and.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /manifest.json</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置许可"><a href="#设置许可" class="headerlink" title="设置许可"></a>设置许可</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Creative Commons 4.0 International License.</span></span><br><span class="line"><span class="comment"># See: https://creativecommons.org/about/cclicenses/</span></span><br><span class="line"><span class="attr">creative_commons:</span></span><br><span class="line">  <span class="comment"># Available values: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero</span></span><br><span class="line">  <span class="attr">license:</span> <span class="string">by-nc-sa</span></span><br><span class="line">  <span class="comment"># Available values: big | small</span></span><br><span class="line">  <span class="attr">size:</span> <span class="string">small</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># You can set a language value if you prefer a translated version of CC license, e.g. deed.zh</span></span><br><span class="line">  <span class="comment"># CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org</span></span><br><span class="line">  <span class="attr">language:</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="设置菜单"><a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Usage: `Key: /link/ || icon`</span></span><br><span class="line"><span class="comment"># Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-sensitive.</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.</span></span><br><span class="line"><span class="comment"># External url should start with http:// or https://</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable / Disable menu icons / item badges.</span></span><br><span class="line"><span class="attr">menu_settings:</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">badges:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>另外也支持次级菜单，配置参考<a href="https://theme-next.js.org/docs/theme-settings/#Configuring-Menu-Items">Theme Settings | NexT (theme-next.js.org)</a></p>
+<h4 id="配置头像"><a href="#配置头像" class="headerlink" title="配置头像"></a>配置头像</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="comment">#/images/avatar.gif</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be displayed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="侧边栏社交链接"><a href="#侧边栏社交链接" class="headerlink" title="侧边栏社交链接"></a>侧边栏社交链接</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Social Links</span></span><br><span class="line"><span class="comment"># Usage: `Key: permalink || icon`</span></span><br><span class="line"><span class="comment"># Key is the link label showing to end users.</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.</span></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="attr">GitHub:</span> <span class="string">https://github.com/andornottop</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span></span><br><span class="line">  <span class="attr">E-Mail:</span> <span class="string">mailto:andornottop@163.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span></span><br><span class="line">  <span class="comment">#Weibo: https://weibo.com/yourname || fab fa-weibo</span></span><br><span class="line">  <span class="comment">#Twitter: https://twitter.com/yourname || fab fa-twitter</span></span><br><span class="line">  <span class="comment">#FB Page: https://www.facebook.com/yourname || fab fa-facebook</span></span><br><span class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow</span></span><br><span class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || fab fa-youtube</span></span><br><span class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || fab fa-instagram</span></span><br><span class="line">  <span class="comment">#Skype: skype:yourname?call|chat || fab fa-skype</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social_icons:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">icons_only:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">transition:</span> <span class="literal">false</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>以上是一些我个人的配置，仅供参考，更加详细的配置的文档请参考<a href="https://theme-next.js.org/docs/theme-settings/">Theme Settings | NexT (theme-next.js.org)</a></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><div class="note info"><p>本节主要介绍讲博客部署到GitHub Pages，由于某些原因，GitHub 访问会不太稳定，可能需要科学地上网。</p>
+</div>
+
+<p>我这里部署的流程是先在GitHub建立两个空仓库：</p>
+<ul>
+<li>一个私有仓库存储博客源代码</li>
+<li>一个公有仓库存储Hexo生成的页面，因为部署GitHub Pages的仓库，免费账号必须权限公有</li>
+</ul>
+<p>官方教程使用的是一个公有仓库部署到GitHub Pages，源代码在主分支，生成的静态页面文件在会放在储存库中的 <code>gh-pages</code> 分支，这样源代码免费账号必须设置权限公有，但是部署操作会简单。如果你想按这种方式部署，可以参考官方文档<a href="https://hexo.io/zh-cn/docs/github-pages">在 GitHub Pages 上部署 Hexo | Hexo</a>。</p>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><p>下面介绍我的部署流程：</p>
+<ol>
+<li><p><strong>登录<a href="https://github.com/">GitHub</a>账号，点击右上角 “+” ，选择 “New repository”。</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111003984.png" alt="GitHub"></p>
+</li>
+<li><p><strong>输入仓库名 “myblog”，因为这个仓库是要存储博客的源代码，建议设置私有权限，其他的选项不用处理，点击下面的 ”create repository“。</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111153878.png" alt="new repository"></p>
+</li>
+<li><p><strong>回到本地 <code>myblog</code>文件夹下，打开命令行终端，执行命令初始化本地 Git 仓库：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>添加文件并提交更改：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;Initial commit&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>将当前 Git 仓库的默认分支从原来的分支名（通常为 master）更改为 main：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>与远程 Git 仓库关联，<remote_repo_url>要换成你自己的仓库地址：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;remote_repo_url&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111332245.png" alt="新建仓库地址"></p>
+</li>
+<li><p><strong>将本地 Git 仓库中的代码推送到远程 Git 仓库中：</strong></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>登录你的<a href="https://github.com/">GitHub</a>账户，打开<code>myblog</code>仓库会看到本地仓库的文件已经推送到了你的远程GitHub仓库里面。</strong></p>
+</li>
+<li><p><strong>按照第1、2步再创建一个仓库：</strong></p>
+<ul>
+<li>仓库权限：Public</li>
+<li>仓库命名格式：&lt;你的 GitHub 用户名&gt;.github.io</li>
+</ul>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111500577.png" alt="公共仓库名"></p>
+</li>
+<li><p><strong>打开命令行终端，生成SSH 密钥对</strong>：</p>
+</li>
+</ol>
+<p>  输入命令：</p>
+  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;blog_deploy_key&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>  需要多次回车。</p>
+<ol start="11">
+<li><p><strong>打开C盘用户文件夹，找到<code>.shh</code>文件夹，里面<code>id_rsa</code> 是私钥，<code>id_rsa_pub</code>是公钥，可以用记事本打开查看。</strong></p>
+<p>请注意，私钥应始终保持机密，并妥善保管。</p>
+</li>
+<li><p><strong>将公钥（<code>id_rsa_pub</code>里的全部内容）复制，打开GitHub仓库<code>&lt;你的 GitHub 用户名&gt;.github.io</code>：</strong></p>
+<ul>
+<li><p>找到<code>Settings</code>页面，并选择“Deploy keys”或“SSH keys”选项卡。</p>
+</li>
+<li><p>单击“Add deploy key”按钮，然后将公钥的内容粘贴到<code>Key</code>文本框中。</p>
+</li>
+<li><p>Title填写：blog_deploy_key</p>
+</li>
+<li><p>勾选<code>Allow write access</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>将私钥（<code>id_rsa</code>里的全部内容）复制，打开GitHub仓库<code>myblog</code>：</strong></p>
+<ul>
+<li>找到<code>Settings</code>页面，并选择“Secrets and variables”下的“Actions”选项卡。</li>
+<li>单击“New repository secret”按钮，然后将私钥的内容粘贴到<code>Secret</code>文本框中。</li>
+<li>Name填写：ACTIONS_DEPLOY_KEY</li>
+</ul>
+</li>
+<li><p><strong>点击<code>Actions</code>，去创建一个<code>pages.yml</code>文件：</strong></p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304111348396.png" alt="set up a workflow yourself"></p>
+</li>
+<li><p><strong>接着将以下内容复制进去，并按要求改动内容：</strong></p>
+<ul>
+<li><p>文件名称改为<code>pages.yml</code></p>
+</li>
+<li><p><code>external_repository</code>改为你自己的<code>用户名/仓库名</code>：</p>
+<p><code>&lt;你的 GitHub 用户名&gt;/&lt;你的 GitHub 用户名&gt;.github.io</code></p>
+</li>
+<li><p>安装主题时保留主题目录中的 <code>.git</code> 文件夹以方便更新，GitHub Actions 对子模块的处理有点问题。所以需要在 Workflow 文件中用 <code>with</code> 标注出你使用的子模块。</p>
+<div class="note info"><p>在部署时这里踩了大坑，官方文档中未提及子模块的问题，导致生成的静态文件是空白的，无意间看到这位老哥的博客<a href="https://www.cnblogs.com/Helium-Air/p/15646484.html">使用 GitHub Actions 部署 Hexo 博客 - 智子酱 - 博客园 (cnblogs.com)</a>帮了大忙</p>
+</div></li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line"></span><br><span class="line">          <span class="comment"># 主题文件夹</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">theme</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">next-theme/hexo-theme-next</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">master</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">themes/next</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">18.15</span><span class="number">.0</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;18.15.0&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">~/.npm</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.os</span> <span class="string">&#125;&#125;-node-$&#123;&#123;</span> <span class="string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.os &#125;&#125;-node-</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span> <span class="string">npm</span> <span class="string">ci</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">deploy_key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.ACTIONS_DEPLOY_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">external_repository:</span> <span class="string">andornottop/andornottop.github.io</span></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">main</span>  <span class="comment"># default: gh-pages</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>点击<code>Start commit</code>，进行<code>Commit new file</code>。</p>
+</li>
+<li><p>在<code>&lt;你的 GitHub 用户名&gt;.github.io</code>仓库中找到<code>Settings</code>页面的<code>Pages</code>选项，选择<code>main</code>分支后保存，网站的 URL 将在 GitHub Pages 页面中显示。</p>
+</li>
+</ol>
+<hr>
+<p>后续每次在自己电脑上写完博客后，只需将新写的Markdown文件推送到<code>myblog</code>仓库就能自动部署了：</p>
+<p>提交并推送更改到Git存储库的命令如下：</p>
+<ol>
+<li>先使用 <code>git pull</code> 命令拉取远程仓库的更改。示例：<code>git pull origin main</code></li>
+<li>再使用 <code>git add</code> 命令将更改添加到暂存区。示例：<code>git add .</code></li>
+<li>然后使用 <code>git commit</code> 命令将更改提交到本地存储库。示例：<code>git commit -m &quot;Commit message&quot;</code></li>
+<li>最后，使用 <code>git push</code> 命令将更改推送到远程存储库。示例：<code>git push origin main</code></li>
+</ol>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><h2 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h2><p>详细配置介绍<a href="https://theme-next.js.org/docs/tag-plugins/">Tag Plugins | NexT (theme-next.js.org)</a></p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>引导标识插件配置：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Note tag (bootstrap callout)</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># Note tag style values:</span></span><br><span class="line">  <span class="comment">#  - simple    bootstrap callout old alert style. Default.</span></span><br><span class="line">  <span class="comment">#  - modern    bootstrap callout new (v2-v3) alert style.</span></span><br><span class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></span><br><span class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">flat</span></span><br><span class="line">  <span class="attr">icons:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></span><br><span class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></span><br><span class="line">  <span class="attr">light_bg_offset:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% note danger %&#125;</span><br><span class="line"></span><br><span class="line">使用 Node.js 官方安装程序时，请确保勾选 **Add to PATH** 选项（默认已勾选）。</span><br><span class="line"></span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304121420015.png" alt="示例"></p>
+<h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><p>在<code>mybolg\source</code>文件夹下，新建<code>CNAME</code>文件，注意不要有后缀，打开将你的域名填进去即可。</p>
+<p><img data-src="https://andornot.oss-cn-hangzhou.aliyuncs.com/imgs/202304122009679.png" alt="CNAME"></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li>Hexo官方文档 ：<a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></li>
+<li>NexT官方文档：<a href="https://theme-next.js.org/docs/">https://theme-next.js.org/docs/</a></li>
+<li>GitHub Pages action：<a href="https://github.com/marketplace/actions/github-pages-action">https://github.com/marketplace/actions/github-pages-action</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>博客部署</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>Hexo</tag>
+        <tag>NexT</tag>
       </tags>
   </entry>
 </search>
